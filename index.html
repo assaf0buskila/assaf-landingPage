@@ -459,6 +459,14 @@
       -webkit-backface-visibility: hidden;
     }
 
+    .hero-orbit-card-face {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      overflow: hidden;
+      transform-style: preserve-3d;
+    }
+
     .hero-orbit-card img {
       width: 100%;
       height: 100%;
@@ -1022,12 +1030,34 @@
       word-break: break-word;
     }
 
+    /* Shown only on mobile next to CTA; hidden on desktop */
+    .footer-email-inline {
+      display: none;
+      font-size: 13px;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+      text-transform: none;
+      max-width: 100%;
+    }
+
+    .footer-mobile-head {
+      display: contents;
+    }
+
     @media (hover: hover) and (pointer: fine) {
       .footer-cta:hover {
         color: var(--text-muted);
       }
 
       .footer-email-link:hover {
+        color: var(--text);
+        border-color: var(--text);
+      }
+
+      .footer-email-inline:hover {
         color: var(--text);
         border-color: var(--text);
       }
@@ -1109,6 +1139,24 @@
       flex-direction: row-reverse;
     }
 
+    /* Desktop + Hebrew: center captions under work tiles */
+    @media (min-width: 801px) {
+      [dir="rtl"] .works-grid--compact .work-info {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      [dir="rtl"] .works-grid--compact .work-info > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+      }
+    }
+
     /* SERVICES */
     [dir="rtl"] .service-content {
       flex-direction: row-reverse;
@@ -1140,6 +1188,31 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        max-height: 46vh;
+      }
+
+      .hero-orbit-scene {
+        perspective: 1200px;
+        perspective-origin: 50% 40%;
+        min-height: 220px;
+      }
+
+      .hero-orbit-tilt {
+        width: min(90vw, 360px);
+        height: min(90vw, 360px);
+        transform: rotateX(16deg);
+      }
+
+      .hero-orbit-card {
+        width: 92px;
+        height: 92px;
+        margin: -46px 0 0 -46px;
+        transform: rotateY(calc(var(--orbit-i) * 72deg)) translateZ(172px);
+        border-radius: 12px;
+      }
+
+      .hero-orbit-card-face {
+        transform: rotateX(-16deg);
       }
 
       .hero-content {
@@ -1153,6 +1226,47 @@
 
       .footer {
         padding: 80px 20px 30px;
+      }
+
+      .footer-mobile-head {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 14px 22px;
+        width: 100%;
+        margin-bottom: 36px;
+      }
+
+      .footer-cta {
+        margin-bottom: 0;
+        font-size: clamp(40px, 11.5vw, 58px);
+        text-align: center;
+      }
+
+      html[data-a11y-font="1"] .footer-cta {
+        font-size: clamp(44px, 12vw, 64px);
+      }
+
+      html[data-a11y-font="2"] .footer-cta {
+        font-size: clamp(48px, 12.5vw, 72px);
+      }
+
+      .footer-email-inline {
+        display: inline-flex !important;
+        align-items: center;
+        white-space: nowrap;
+        font-size: clamp(11px, 3.2vw, 14px);
+        max-width: min(100%, calc(100vw - 48px));
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-shrink: 1;
+        min-width: 0;
+      }
+
+      [dir="rtl"] .footer-mobile-head {
+        flex-direction: row-reverse;
       }
 
       .works-grid,
@@ -1195,6 +1309,21 @@
         gap: 32px;
       }
 
+      .works-grid--compact .work-info,
+      .work-card .work-info {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .works-grid--compact .work-info > div,
+      .work-card .work-info > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+      }
+
       .service-card {
         aspect-ratio: auto;
         min-height: 280px;
@@ -1209,41 +1338,18 @@
       }
 
       .footer-bottom {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        grid-template-rows: auto auto;
-        column-gap: 16px;
-        row-gap: 18px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
         align-items: center;
+        gap: 16px;
+        width: 100%;
         text-align: start;
       }
 
-      .footer-bottom > span {
-        grid-column: 1;
-        grid-row: 1;
-        justify-self: start;
-      }
-
-      .footer-bottom > .footer-links {
-        grid-column: 2;
-        grid-row: 1;
-        justify-self: end;
-      }
-
       .footer-bottom > .footer-email-link {
-        grid-column: 1 / -1;
-        grid-row: 2;
-        justify-self: stretch;
-        white-space: nowrap;
-        overflow-x: auto;
-        overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
-        max-width: 100%;
-        word-break: normal;
-        padding-bottom: 4px;
-        scrollbar-width: thin;
-        font-size: clamp(11px, 2.9vw, 13px);
-        letter-spacing: 0.02em;
+        display: none;
       }
 
       .footer-links {
@@ -1583,19 +1689,29 @@
           <div class="hero-orbit-tilt">
             <div class="hero-orbit-ring">
               <figure class="hero-orbit-card" style="--orbit-i: 0">
-                <img src="assents/1.jpg" alt="" width="68" height="68" loading="eager" decoding="async" />
+                <div class="hero-orbit-card-face">
+                  <img src="assents/1.jpg" alt="" width="92" height="92" loading="eager" decoding="async" />
+                </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 1">
-                <img src="assents/2.jpg" alt="" width="68" height="68" loading="eager" decoding="async" />
+                <div class="hero-orbit-card-face">
+                  <img src="assents/2.jpg" alt="" width="92" height="92" loading="eager" decoding="async" />
+                </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 2">
-                <img src="assents/3.jpg" alt="" width="68" height="68" loading="eager" decoding="async" />
+                <div class="hero-orbit-card-face">
+                  <img src="assents/3.jpg" alt="" width="92" height="92" loading="eager" decoding="async" />
+                </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 3">
-                <img src="assents/4.jpg" alt="" width="68" height="68" loading="eager" decoding="async" />
+                <div class="hero-orbit-card-face">
+                  <img src="assents/4.jpg" alt="" width="92" height="92" loading="eager" decoding="async" />
+                </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 4">
-                <img src="assents/5.jpg" alt="" width="68" height="68" loading="eager" decoding="async" />
+                <div class="hero-orbit-card-face">
+                  <img src="assents/5.jpg" alt="" width="92" height="92" loading="eager" decoding="async" />
+                </div>
               </figure>
             </div>
           </div>
@@ -1622,7 +1738,7 @@
             <p class="about-desc"
               data-en="I build websites that are clean, fast, and actually useful for businesses  not just visually impressive. I focus on making them perform and convert."
               data-he="יאני בונה אתרים שהם נקיים, מהירים ושימושיים לעסקים   לא רק מרשימים חזותית. אני מתמקד בכך שהם יהיו פרקטיים ויובילו להמרה מליד ללקוח.">
-              אני בונה אתרים שהם נקיים, מהירים ושימושיים לעסקים   לא רק מרשימים חזותית. אני מתמקד בכך שהם יבצעו ויהפכו.</p>
+              אני בונה אתרים שהם נקיים, מהירים ושימושיים לעסקים   לא רק מרשימים חזותית. אני מתמקד בכך שהם יהיו פרקטיים ויובילו להמרה מליד ללקוח.</p>
           </div>
 
           <div class="about-block">
@@ -1751,9 +1867,12 @@
 
   <!-- FOOTER -->
   <footer class="footer" id="contact">
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=assaf.buskila10@gmail.com&su=Inquiry+from+website"
-      class="footer-cta" target="_blank" rel="noopener noreferrer"
-      data-en="Get in Touch" data-he="צור קשר">צור קשר</a>
+    <div class="footer-mobile-head">
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=assaf.buskila10@gmail.com&su=Inquiry+from+website"
+        class="footer-cta" target="_blank" rel="noopener noreferrer"
+        data-en="Get in Touch" data-he="צור קשר">צור קשר</a>
+      <a href="mailto:assaf.buskila10@gmail.com" class="footer-email-inline">assaf.buskila10@gmail.com</a>
+    </div>
 
     <div class="footer-bottom reveal">
       <span data-en="© 2026 Assaf Buskila" data-he="© 2026 אסף בוסקילה">© 2026 אסף בוסקילה</span>
