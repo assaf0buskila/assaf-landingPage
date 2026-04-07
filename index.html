@@ -1179,45 +1179,52 @@
       }
 
       .hero {
-        padding: 0 20px 72px;
-        justify-content: space-between;
-        padding-top: max(72px, env(safe-area-inset-top));
+        padding: 0 20px 40px;
+        justify-content: flex-start;
+        padding-top: max(48px, env(safe-area-inset-top));
+        gap: 4px;
       }
 
       .hero-orbit {
         display: flex;
         align-items: center;
         justify-content: center;
-        max-height: 46vh;
+        flex: 0 0 auto;
+        max-height: min(36vh, 300px);
+        min-height: 0;
+        margin-block: 0;
       }
 
       .hero-orbit-scene {
-        perspective: 1200px;
-        perspective-origin: 50% 40%;
-        min-height: 220px;
+        perspective: 1400px;
+        perspective-origin: 50% 38%;
+        min-height: 0;
+        height: auto;
       }
 
       .hero-orbit-tilt {
-        width: min(90vw, 360px);
-        height: min(90vw, 360px);
-        transform: rotateX(16deg);
+        --orbit-box: min(92vw, 400px, min(38vh, 304px));
+        width: var(--orbit-box);
+        height: var(--orbit-box);
+        transform: rotateX(9deg);
       }
 
       .hero-orbit-card {
-        width: 92px;
-        height: 92px;
-        margin: -46px 0 0 -46px;
-        transform: rotateY(calc(var(--orbit-i) * 72deg)) translateZ(172px);
-        border-radius: 12px;
+        width: 108px;
+        height: 108px;
+        margin: -54px 0 0 -54px;
+        transform: rotateY(calc(var(--orbit-i) * 72deg)) translateZ(min(42vw, 200px));
+        border-radius: 14px;
       }
 
       .hero-orbit-card-face {
-        transform: rotateX(-16deg);
+        transform: rotateX(-24deg);
       }
 
       .hero-content {
         flex-shrink: 0;
-        margin-top: auto;
+        margin-top: 0;
+        padding-top: 4px;
       }
 
       .section {
@@ -1265,8 +1272,26 @@
         min-width: 0;
       }
 
+      /* Hebrew: mail and CTA swap places vs English */
       [dir="rtl"] .footer-mobile-head {
-        flex-direction: row-reverse;
+        flex-direction: row;
+      }
+
+      [dir="rtl"] .footer-mobile-head .footer-email-inline {
+        order: 1;
+      }
+
+      [dir="rtl"] .footer-mobile-head .footer-cta {
+        order: 2;
+        font-size: clamp(46px, 12.8vw, 68px);
+      }
+
+      html[data-a11y-font="1"][dir="rtl"] .footer-mobile-head .footer-cta {
+        font-size: clamp(50px, 13.2vw, 74px);
+      }
+
+      html[data-a11y-font="2"][dir="rtl"] .footer-mobile-head .footer-cta {
+        font-size: clamp(54px, 13.8vw, 80px);
       }
 
       .works-grid,
@@ -1690,27 +1715,27 @@
             <div class="hero-orbit-ring">
               <figure class="hero-orbit-card" style="--orbit-i: 0">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/1.jpg" alt="" width="92" height="92" loading="eager" decoding="async" />
+                  <img src="assents/1.jpg" alt="" width="108" height="108" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 1">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/2.jpg" alt="" width="92" height="92" loading="eager" decoding="async" />
+                  <img src="assents/2.jpg" alt="" width="108" height="108" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 2">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/3.jpg" alt="" width="92" height="92" loading="eager" decoding="async" />
+                  <img src="assents/3.jpg" alt="" width="108" height="108" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 3">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/4.jpg" alt="" width="92" height="92" loading="eager" decoding="async" />
+                  <img src="assents/4.jpg" alt="" width="108" height="108" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 4">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/5.jpg" alt="" width="92" height="92" loading="eager" decoding="async" />
+                  <img src="assents/5.jpg" alt="" width="108" height="108" loading="eager" decoding="async" />
                 </div>
               </figure>
             </div>
@@ -1737,14 +1762,14 @@
             <h4 class="about-subtitle" data-en="WHAT I DO" data-he="מה אני עושה">מה אני עושה</h4>
             <p class="about-desc"
               data-en="I build websites that are clean, fast, and actually useful for businesses  not just visually impressive. I focus on making them perform and convert."
-              data-he="יאני בונה אתרים שהם נקיים, מהירים ושימושיים לעסקים   לא רק מרשימים חזותית. אני מתמקד בכך שהם יהיו פרקטיים ויובילו להמרה מליד ללקוח.">
+              data-he="אני בונה אתרים שהם נקיים, מהירים ושימושיים לעסקים   לא רק מרשימים חזותית. אני מתמקד בכך שהם יהיו פרקטיים ויובילו להמרה מליד ללקוח.">
               אני בונה אתרים שהם נקיים, מהירים ושימושיים לעסקים   לא רק מרשימים חזותית. אני מתמקד בכך שהם יהיו פרקטיים ויובילו להמרה מליד ללקוח.</p>
           </div>
 
           <div class="about-block">
             <h4 class="about-subtitle" data-en="BACKGROUND" data-he="רקע">רקע</h4>
             <p class="about-desc"
-              data-en="Industrial Engineering student with hands-on experience building AI-based systems for data analysis and automation. Former IDF combat officer discipline and responsibility are part of how I work."
+              data-en="Industrial management Engineering student with hands-on experience building AI-based systems for data analysis and automation. Former IDF combat officer discipline and responsibility are part of how I work."
               data-he="סטודנט להנדסת תעשייה וניהול עם ניסיון מעשי בבניית מערכות מבוססות AI לניתוח נתונים ואוטומציה. קצין לחימה לשעבר בצה״ל משמעת ואחריות הם חלק מהאופן שבו אני עובד.">
               סטודנט להנדסת תעשייה וניהול עם ניסיון מעשי בבניית מערכות מבוססות AI לניתוח נתונים ואוטומציה. קצין לחימה לשעבר בצה״ל   משמעת ואחריות הם חלק מהאופן שבו אני עובד.</p>
           </div>
