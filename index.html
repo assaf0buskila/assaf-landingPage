@@ -1179,7 +1179,8 @@
       }
 
       .hero {
-        padding: 0 20px 40px;
+        min-height: 0;
+        padding: 0 20px 28px;
         justify-content: flex-start;
         padding-top: max(48px, env(safe-area-inset-top));
         gap: 4px;
@@ -1228,7 +1229,11 @@
       }
 
       .section {
-        padding: 80px 20px;
+        padding: 52px 20px;
+      }
+
+      #about.section {
+        padding-top: 28px;
       }
 
       .footer {
@@ -1237,11 +1242,11 @@
 
       .footer-mobile-head {
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-direction: column;
+        flex-wrap: nowrap;
         align-items: center;
         justify-content: center;
-        gap: 14px 22px;
+        gap: 10px;
         width: 100%;
         margin-bottom: 36px;
       }
@@ -1263,26 +1268,18 @@
       .footer-email-inline {
         display: inline-flex !important;
         align-items: center;
+        justify-content: center;
         white-space: nowrap;
         font-size: clamp(11px, 3.2vw, 14px);
         max-width: min(100%, calc(100vw - 48px));
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        flex-shrink: 1;
+        flex-shrink: 0;
         min-width: 0;
       }
 
-      /* Hebrew: mail and CTA swap places vs English */
-      [dir="rtl"] .footer-mobile-head {
-        flex-direction: row;
-      }
-
-      [dir="rtl"] .footer-mobile-head .footer-email-inline {
-        order: 1;
-      }
-
+      /* Hebrew: larger CTA (stacked above email for all languages) */
       [dir="rtl"] .footer-mobile-head .footer-cta {
-        order: 2;
         font-size: clamp(46px, 12.8vw, 68px);
       }
 
@@ -1292,6 +1289,17 @@
 
       html[data-a11y-font="2"][dir="rtl"] .footer-mobile-head .footer-cta {
         font-size: clamp(54px, 13.8vw, 80px);
+      }
+
+      .about-image-container {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+      }
+
+      .about-photo.about-photo--color-mobile {
+        filter: grayscale(0%) contrast(1);
+        transform: scale(1.02);
       }
 
       .works-grid,
@@ -2431,6 +2439,17 @@
           { threshold: 0.28, rootMargin: '0px 0px -10% 0px' }
         );
         workCards.forEach(card => workIo.observe(card));
+      }
+
+      // 8. About photo — tap to toggle full color (mobile only)
+      const aboutImgWrap = document.querySelector('.about-image-container');
+      const aboutPhotoEl = document.querySelector('.about-photo');
+      const aboutMobileMq = window.matchMedia('(max-width: 800px)');
+      if (aboutImgWrap && aboutPhotoEl) {
+        aboutImgWrap.addEventListener('click', () => {
+          if (!aboutMobileMq.matches) return;
+          aboutPhotoEl.classList.toggle('about-photo--color-mobile');
+        });
       }
 
     });
