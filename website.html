@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio — Web Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0f0f0f;
+      --white: #fff;
+      --gray: #a6a6a6;
+      --dark-gray: #1a1a1a;
+      --font: 'Inter', sans-serif;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.5;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ─── CURSOR ─── */
+    .cursor-dot {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: var(--white);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, background 0.2s;
+    }
+
+    .cursor-dot.expanded {
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(2px);
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background: transparent;
+    }
+
+    .nav-logo {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gray);
+    }
+
+    .nav-location {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 40px 80px;
+      position: relative;
+    }
+
+    .hero-title {
+      font-size: clamp(52px, 7vw, 96px);
+      font-weight: 500;
+      letter-spacing: -0.06em;
+      line-height: 1;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      color: var(--gray);
+      max-width: 480px;
+      line-height: 1.2;
+    }
+
+    /* Char animation */
+    .char {
+      display: inline-block;
+      opacity: 0;
+      filter: blur(10px);
+      transform: translateY(10px) scale(0.95);
+      transition: opacity 0.4s, filter 0.4s, transform 0.4s;
+    }
+
+    .char.visible {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0) scale(1);
+    }
+
+    /* ─── SECTIONS ─── */
+    .section {
+      padding: 80px 40px;
+    }
+
+    .section-label {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 40px;
+    }
+
+    /* ─── WORKS ─── */
+    .works-section {
+      padding: 60px 40px;
+    }
+
+    .works-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 20px;
+    }
+
+    .works-title {
+      font-size: clamp(36px, 4vw, 52px);
+      font-weight: 500;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .see-all {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      border-bottom: 0.5px solid var(--white);
+      padding-bottom: 2px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .see-all:hover {
+      color: var(--gray);
+      border-color: var(--gray);
+    }
+
+    /* Projects grid — Jorge style */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      cursor: none;
+      display: block;
+      text-decoration: none;
+    }
+
+    .project-img {
+      width: 100%;
+      aspect-ratio: 0.8;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.9);
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.4s;
+    }
+
+    .project-card:hover .project-img {
+      transform: scale(1.04);
+      filter: brightness(1);
+    }
+
+    /* Mouse-follow image reveal overlay */
+    .mouse-img {
+      position: fixed;
+      width: 320px;
+      pointer-events: none;
+      z-index: 500;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .mouse-img img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .mouse-img.active {
+      opacity: 1;
+    }
+
+    .project-info {
+      padding: 14px 0 10px;
+      border-top: 0.5px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .project-name {
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .project-category {
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      color: var(--gray);
+      text-transform: uppercase;
+    }
+
+    /* ─── ABOUT ─── */
+    .about-section {
+      padding: 120px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: flex-start;
+    }
+
+    .about-label {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+
+    .about-title {
+      font-size: clamp(36px, 4vw, 56px);
+      font-weight: 500;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 32px;
+    }
+
+    .about-text {
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      color: var(--gray);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    /* Mobile circle photo */
+    .about-img-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-img-circle {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: #1a1a1a;
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .about-img-circle::after {
+      content: 'AI VISUAL';
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* ─── SERVICES ─── */
+    .services-section {
+      padding: 80px 40px;
+    }
+
+    .services-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 160px;
+      gap: 40px;
+      align-items: baseline;
+      padding: 28px 0;
+      border-bottom: 0.5px solid rgba(255, 255, 255, 0.12);
+      transition: background 0.2s;
+    }
+
+    .service-row:first-child {
+      border-top: 0.5px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .service-num {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .service-name {
+      font-size: clamp(20px, 2.5vw, 32px);
+      font-weight: 500;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .service-tag {
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-align: right;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--dark-gray);
+      padding: 60px 40px 40px;
+    }
+
+    .footer-cta {
+      font-size: clamp(40px, 6vw, 80px);
+      font-weight: 500;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 60px;
+      color: var(--white);
+      text-decoration: none;
+      display: block;
+      transition: color 0.15s;
+    }
+
+    .footer-cta:hover {
+      color: var(--gray);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover {
+      color: var(--gray);
+    }
+
+    .footer-copy {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    /* ─── MOBILE ─── */
+    .mobile-circle-wrap {
+      display: none;
+      position: relative;
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+      margin: 40px 0;
+    }
+
+    .mobile-circle {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 0.5px solid rgba(255, 255, 255, 0.15);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #1a1a1a;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .mobile-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.85);
+    }
+
+    /* ─── REVEAL ANIMATIONS ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─── MOBILE BREAKPOINT ─── */
+    @media (max-width: 810px) {
+      nav {
+        padding: 20px;
+      }
+
+      .nav-links,
+      .nav-location {
+        display: none;
+      }
+
+      .hero {
+        padding: 0 20px 60px;
+      }
+
+      .works-section,
+      .section,
+      .services-section,
+      .about-section {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .mobile-circle-wrap {
+        display: block;
+      }
+
+      .about-img-wrap {
+        display: none;
+      }
+
+      .service-row {
+        grid-template-columns: 60px 1fr;
+        gap: 20px;
+      }
+
+      .service-tag {
+        display: none;
+      }
+
+      footer {
+        padding: 40px 20px;
+      }
+
+      .mouse-img {
+        display: none;
+      }
+
+      body {
+        cursor: auto;
+      }
+
+      .cursor-dot {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <!-- Mouse-follow image card -->
+  <div class="mouse-img" id="mouseImg">
+    <img src="" alt="" id="mouseImgEl" />
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Studio©</a>
+    <ul class="nav-links">
+      <li><a href="#works">Works</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <span class="nav-location">Tel Aviv</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1 class="hero-title" id="heroTitle">
+      Web studio<br>that converts
+    </h1>
+    <p class="hero-sub" id="heroSub">
+      AI-powered websites built for Israeli brands — in 7 days.
+    </p>
+  </section>
+
+  <!-- WORKS -->
+  <section class="works-section" id="works">
+    <div class="works-header reveal">
+      <h2 class="works-title">Selected Works</h2>
+      <a href="#works" class="see-all">See all works</a>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <a href="#" class="project-card reveal"
+        data-img="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" style="transition-delay:0.05s">
+        <div style="width:100%;aspect-ratio:0.8;background:#1a1a1a;position:relative;overflow:hidden;">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+            <svg width="100%" height="100%" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="xMidYMid slice">
+              <rect width="400" height="500" fill="#1c1a14" />
+              <circle cx="200" cy="220" r="80" fill="rgba(255,255,255,0.03)" />
+              <text x="200" y="400" text-anchor="middle" fill="rgba(255,255,255,0.1)" font-family="Inter,sans-serif"
+                font-size="10" letter-spacing="4">RESTAURANT · WEBSITE</text>
+            </svg>
+          </div>
+        </div>
+        <div class="project-info">
+          <div>
+            <div class="project-name">Hamara Kitchen</div>
+            <div class="project-category">Restaurant</div>
+          </div>
+          <div style="font-size:18px;color:var(--gray);">↗</div>
+        </div>
+      </a>
+
+      <!-- Project 2 -->
+      <a href="#" class="project-card reveal"
+        data-img="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80"
+        style="transition-delay:0.1s">
+        <div style="width:100%;aspect-ratio:0.8;background:#151518;position:relative;overflow:hidden;">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+            <svg width="100%" height="100%" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="xMidYMid slice">
+              <rect width="400" height="500" fill="#14141a" />
+              <rect x="120" y="120" width="160" height="200" rx="2" fill="rgba(255,255,255,0.03)" />
+              <text x="200" y="420" text-anchor="middle" fill="rgba(255,255,255,0.1)" font-family="Inter,sans-serif"
+                font-size="10" letter-spacing="4">LIFESTYLE · BRAND</text>
+            </svg>
+          </div>
+        </div>
+        <div class="project-info">
+          <div>
+            <div class="project-name">Adar Studio</div>
+            <div class="project-category">Lifestyle</div>
+          </div>
+          <div style="font-size:18px;color:var(--gray);">↗</div>
+        </div>
+      </a>
+
+      <!-- Project 3 — full width -->
+      <a href="#" class="project-card reveal"
+        data-img="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=1000&q=80"
+        style="grid-column:span 2;transition-delay:0.15s">
+        <div style="width:100%;aspect-ratio:2;background:#1a1614;position:relative;overflow:hidden;">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+            <svg width="100%" height="100%" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="xMidYMid slice">
+              <rect width="800" height="400" fill="#1a1614" />
+              <text x="400" y="220" text-anchor="middle" fill="rgba(255,255,255,0.08)" font-family="Inter,sans-serif"
+                font-size="64" font-weight="500" letter-spacing="-4">FASHION</text>
+              <text x="400" y="340" text-anchor="middle" fill="rgba(255,255,255,0.1)" font-family="Inter,sans-serif"
+                font-size="10" letter-spacing="4">E-COMMERCE · AI VISUALS</text>
+            </svg>
+          </div>
+        </div>
+        <div class="project-info">
+          <div>
+            <div class="project-name">Nuut Fashion</div>
+            <div class="project-category">E-commerce · AI Visuals</div>
+          </div>
+          <div style="font-size:18px;color:var(--gray);">↗</div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services-section" id="services">
+    <p class="section-label reveal">What we do</p>
+    <div class="services-list">
+      <div class="service-row reveal">
+        <span class="service-num">01</span>
+        <span class="service-name">Performance Websites</span>
+        <span class="service-tag">Next.js · Vercel</span>
+      </div>
+      <div class="service-row reveal" style="transition-delay:0.05s">
+        <span class="service-num">02</span>
+        <span class="service-name">AI Visual Direction</span>
+        <span class="service-tag">Flux · MYstudio</span>
+      </div>
+      <div class="service-row reveal" style="transition-delay:0.1s">
+        <span class="service-num">03</span>
+        <span class="service-name">Brand Identity</span>
+        <span class="service-tag">Logo · System</span>
+      </div>
+      <div class="service-row reveal" style="transition-delay:0.15s">
+        <span class="service-num">04</span>
+        <span class="service-name">Growth & Retainer</span>
+        <span class="service-tag">SEO · CRO</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div>
+      <p class="about-label reveal">About</p>
+      <h2 class="about-title reveal">Built different. On purpose.</h2>
+      <p class="about-text reveal">We're not a 40-person agency. We're a sharp, AI-augmented studio that moves fast and
+        ships sites that actually work.</p>
+      <p class="about-text reveal" style="transition-delay:0.05s">Our edge: an in-house AI image generation pipeline. No
+        stock. No generic AI. Brand-specific visuals, generated to convert.</p>
+
+      <!-- Mobile circle photo -->
+      <div class="mobile-circle-wrap" id="mobileCircleWrap">
+        <div class="mobile-circle" id="mobileCircle">
+          <div
+            style="width:100%;height:100%;background:linear-gradient(135deg,#1c1a14,#222018);display:flex;align-items:center;justify-content:center;">
+            <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1" />
+              <text x="30" y="35" text-anchor="middle" fill="rgba(255,255,255,0.15)" font-family="Inter" font-size="8"
+                letter-spacing="2">AI</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-img-wrap reveal">
+      <div class="about-img-circle"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <a href="mailto:hello@studio.com" class="footer-cta reveal">Get in touch</a>
+    <div class="footer-bottom">
+      <div class="footer-links">
+        <a href="mailto:hello@studio.com">Email</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+      </div>
+      <span class="footer-copy">©2026</span>
+    </div>
+  </footer>
+
+  <script>
+    /* ─── CURSOR ─── */
+    const dot = document.getElementById('cursorDot');
+    let cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+    let dx = cx, dy = cy;
+
+    document.addEventListener('mousemove', e => {
+      cx = e.clientX; cy = e.clientY;
+      dot.style.left = cx + 'px';
+      dot.style.top = cy + 'px';
+    });
+
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => dot.classList.add('expanded'));
+      el.addEventListener('mouseleave', () => dot.classList.remove('expanded'));
+    });
+
+    /* ─── CHAR ANIMATION ─── */
+    function animateChars(el, baseDelay = 0) {
+      const text = el.innerText;
+      el.innerHTML = '';
+      const lines = text.split('\n');
+      lines.forEach((line, li) => {
+        const words = line.split(' ');
+        words.forEach((word, wi) => {
+          const span = document.createElement('span');
+          span.style.whiteSpace = 'nowrap';
+          word.split('').forEach((ch, ci) => {
+            const c = document.createElement('span');
+            c.className = 'char';
+            c.textContent = ch;
+            c.style.transitionDelay = (baseDelay + (wi * word.length + ci) * 0.015) + 's';
+            span.appendChild(c);
+          });
+          el.appendChild(span);
+          if (wi < words.length - 1) el.appendChild(document.createTextNode(' '));
+        });
+        if (li < lines.length - 1) el.appendChild(document.createElement('br'));
+      });
+    }
+
+    animateChars(document.getElementById('heroTitle'), 0.2);
+    animateChars(document.getElementById('heroSub'), 0.5);
+
+    setTimeout(() => {
+      document.querySelectorAll('#heroTitle .char, #heroSub .char').forEach(c => c.classList.add('visible'));
+    }, 100);
+
+    /* ─── MOUSE-FOLLOW IMAGE ─── */
+    const mouseImg = document.getElementById('mouseImg');
+    const mouseImgEl = document.getElementById('mouseImgEl');
+    let imgRaf;
+    let imgX = 0, imgY = 0;
+    let targetX = 0, targetY = 0;
+
+    function lerpImg() {
+      imgX += (targetX - imgX) * 0.1;
+      imgY += (targetY - imgY) * 0.1;
+      mouseImg.style.left = imgX + 'px';
+      mouseImg.style.top = imgY + 'px';
+      imgRaf = requestAnimationFrame(lerpImg);
+    }
+    lerpImg();
+
+    document.querySelectorAll('.project-card').forEach(card => {
+      const src = card.dataset.img;
+
+      card.addEventListener('mouseenter', () => {
+        if (!src) return;
+        mouseImgEl.src = src;
+        mouseImg.classList.add('active');
+        // snap to current position
+        targetX = cx; targetY = cy;
+        imgX = cx; imgY = cy;
+      });
+
+      card.addEventListener('mousemove', e => {
+        targetX = e.clientX;
+        targetY = e.clientY;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        mouseImg.classList.remove('active');
+      });
+    });
+
+    /* ─── SCROLL REVEAL ─── */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          // reveal element
+          e.target.classList.add('in');
+          // char reveals inside
+          e.target.querySelectorAll('.char').forEach(c => c.classList.add('visible'));
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(r => io.observe(r));
+
+    /* ─── MOBILE CIRCLE GYRO / TOUCH ─── */
+    const circle = document.getElementById('mobileCircle');
+    if (circle) {
+      // Touch drag
+      let startX = 0;
+      document.getElementById('mobileCircleWrap')?.addEventListener('touchstart', e => {
+        startX = e.touches[0].clientX;
+      });
+      document.getElementById('mobileCircleWrap')?.addEventListener('touchmove', e => {
+        const dx = e.touches[0].clientX - startX;
+        const wrap = document.getElementById('mobileCircleWrap');
+        const maxShift = wrap.offsetWidth / 2 - 100;
+        const shift = Math.max(-maxShift, Math.min(maxShift, dx * 0.5));
+        circle.style.transform = `translate(calc(-50% + ${shift}px), -50%)`;
+      });
+      document.getElementById('mobileCircleWrap')?.addEventListener('touchend', () => {
+        circle.style.transform = 'translate(-50%, -50%)';
+      });
+
+      // Device orientation
+      if (window.DeviceOrientationEvent) {
+        window.addEventListener('deviceorientation', e => {
+          if (e.gamma === null) return;
+          const tilt = Math.max(-30, Math.min(30, e.gamma));
+          const wrap = document.getElementById('mobileCircleWrap');
+          if (!wrap) return;
+          const maxShift = wrap.offsetWidth / 2 - 100;
+          const shift = (tilt / 30) * maxShift;
+          circle.style.transform = `translate(calc(-50% + ${shift}px), calc(-50% + ${(e.beta - 40) * 0.3}px))`;
+        });
+      }
+    }
+  </script>
+
+</body>
+
+</html>
