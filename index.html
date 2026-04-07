@@ -4,17 +4,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Replace SITE_URL in canonical, og:url, JSON-LD, sitemap & robots if you use a custom domain -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="google-site-verification" content="PASTE_CODE_HERE" />
+  <meta name="theme-color" content="#0f0f0f" />
+
+  <title>Assaf Buskila | Fast websites for growing businesses · אסף בוסקילה</title>
   <meta name="description"
-    content="אסף בוסקילה   סטודנט להנדסת תעשייה. בונה אתרים מהירים וברורים לעסקים קטנים וצומחים. Assaf Buskila builds fast, conversion-focused websites for growing businesses." />
-  <title>אסף בוסקילה   אתרים שמביאים תוצאות | Assaf Buskila</title>
-  <meta property="og:title" content="Assaf Buskila   Websites that perform" />
+    content="Assaf Buskila builds fast, clear websites for small and growing businesses—focused on performance and conversions. סטודנט להנדסת תעשייה וניהול, אתרים מודרניים ומהירים." />
+
+  <link rel="canonical" href="https://assaf-landing-page.vercel.app/" />
+
+  <meta property="og:locale" content="he_IL" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:title" content="Assaf Buskila | Websites that perform" />
   <meta property="og:description"
-    content="Industrial engineering student building clean, fast websites for small and growing businesses." />
+    content="Industrial engineering student building clean, fast, conversion-focused websites for small and growing businesses." />
   <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Assaf Buskila   Websites that perform" />
+  <meta property="og:url" content="https://assaf-landing-page.vercel.app/" />
+  <meta property="og:image" content="https://assaf-landing-page.vercel.app/assents/about%20me.png" />
+  <meta property="og:image:alt" content="Assaf Buskila" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Assaf Buskila | Websites that perform" />
   <meta name="twitter:description"
-    content="Industrial engineering student building clean, fast websites for small and growing businesses." />
+    content="Industrial engineering student building clean, fast, conversion-focused websites for small and growing businesses." />
+  <meta name="twitter:image" content="https://assaf-landing-page.vercel.app/assents/about%20me.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://assaf-landing-page.vercel.app/#website",
+        "url": "https://assaf-landing-page.vercel.app/",
+        "name": "Assaf Buskila",
+        "alternateName": "אסף בוסקילה",
+        "description": "Fast, conversion-focused websites for small and growing businesses.",
+        "inLanguage": ["he", "en"],
+        "publisher": { "@id": "https://assaf-landing-page.vercel.app/#person" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://assaf-landing-page.vercel.app/#person",
+        "name": "Assaf Buskila",
+        "alternateName": "אסף בוסקילה",
+        "url": "https://assaf-landing-page.vercel.app/",
+        "image": "https://assaf-landing-page.vercel.app/assents/about%20me.png",
+        "description": "Industrial engineering student building modern websites, design, and brand basics for businesses.",
+        "jobTitle": "Web developer & designer",
+        "email": "assaf.buskila10@gmail.com",
+        "sameAs": [
+          "https://www.linkedin.com/in/assaf-buskila-11ab7a347/",
+          "https://www.instagram.com/assaf_buskila/"
+        ]
+      }
+    ]
+  }
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -1703,7 +1751,7 @@
   </div>
 
   <!-- NAV -->
-  <nav>
+  <nav aria-label="ניווט ראשי · Main navigation">
     <a href="#home" class="nav-logo" data-en="Assaf Buskila" data-he="אסף בוסקילה">אסף בוסקילה</a>
     <div class="nav-right">
       <button type="button" class="lang-toggle" id="langToggle" data-lang="he"
@@ -1771,7 +1819,7 @@
 
         <div class="about-text">
           <div class="about-block">
-            <h4 class="about-subtitle" data-en="WHAT I DO" data-he="מה אני עושה">מה אני עושה</h4>
+            <h3 class="about-subtitle" data-en="WHAT I DO" data-he="מה אני עושה">מה אני עושה</h3>
             <p class="about-desc"
               data-en="I build websites that are clean, fast, and actually useful for businesses  not just visually impressive. I focus on making them perform and convert."
               data-he="אני בונה אתרים שהם נקיים, מהירים ושימושיים לעסקים   לא רק מרשימים חזותית. אני מתמקד בכך שהם יהיו פרקטיים ויובילו להמרה מליד ללקוח.">
@@ -1779,7 +1827,7 @@
           </div>
 
           <div class="about-block">
-            <h4 class="about-subtitle" data-en="BACKGROUND" data-he="רקע">רקע</h4>
+            <h3 class="about-subtitle" data-en="BACKGROUND" data-he="רקע">רקע</h3>
             <p class="about-desc"
               data-en="Industrial management Engineering student with hands-on experience building AI-based systems for data analysis and automation. Former IDF combat officer discipline and responsibility are part of how I work."
               data-he="סטודנט להנדסת תעשייה וניהול עם ניסיון מעשי בבניית מערכות מבוססות AI לניתוח נתונים ואוטומציה. קצין לחימה לשעבר בצה״ל משמעת ואחריות הם חלק מהאופן שבו אני עובד.">
@@ -1787,7 +1835,7 @@
           </div>
 
           <div class="about-block">
-            <h4 class="about-subtitle" data-en="FOCUS" data-he="מיקוד">מיקוד</h4>
+            <h3 class="about-subtitle" data-en="FOCUS" data-he="מיקוד">מיקוד</h3>
             <p class="about-desc"
               data-en="Currently helping small and growing businesses build a solid online presence with modern, efficient websites."
               data-he="כיום אני עוזר לעסקים קטנים וצומחים לבנות נוכחות מקוונת חזקה עם אתרים מודרניים ויעילים.">
@@ -1796,7 +1844,7 @@
         </div>
 
         <div class="about-image-container">
-          <img src="assents/about me.png" alt="Assaf Buskila" class="about-photo" loading="lazy" decoding="async" />
+          <img src="assents/about me.png" alt="אסף בוסקילה — Assaf Buskila, מפתח אתרים" class="about-photo" loading="lazy" decoding="async" />
         </div>
 
       </div>
@@ -1808,7 +1856,7 @@
       <div class="services-grid">
 
         <div class="service-card reveal">
-          <img src="assents/Websites%20%26%20Landing%20Pages.jpg" alt="" class="service-bg" loading="lazy" decoding="async" />
+          <img src="assents/Websites%20%26%20Landing%20Pages.jpg" alt="" class="service-bg" loading="lazy" decoding="async" role="presentation" />
           <div class="service-content">
             <h3 class="service-name" data-en="Websites & landing pages" data-he="אתרים ודפי נחיתה">אתרים ודפי נחיתה</h3>
             <span class="service-icon">+</span>
@@ -1819,7 +1867,7 @@
         </div>
 
         <div class="service-card reveal">
-          <img src="assents/Design%20%26%20Layout.jpg" alt="" class="service-bg" loading="lazy" decoding="async" />
+          <img src="assents/Design%20%26%20Layout.jpg" alt="" class="service-bg" loading="lazy" decoding="async" role="presentation" />
           <div class="service-content">
             <h3 class="service-name" data-en="Design & layout" data-he="עיצוב ופריסה">עיצוב ופריסה</h3>
             <span class="service-icon">+</span>
@@ -1830,7 +1878,7 @@
         </div>
 
         <div class="service-card reveal">
-          <img src="assents/Brand%20Basics.jpg" alt="" class="service-bg" loading="lazy" decoding="async" />
+          <img src="assents/Brand%20Basics.jpg" alt="" class="service-bg" loading="lazy" decoding="async" role="presentation" />
           <div class="service-content">
             <h3 class="service-name" data-en="Brand basics" data-he="מיתוג">יסודות</h3>
             <span class="service-icon">+</span>
@@ -1841,7 +1889,7 @@
         </div>
 
         <div class="service-card reveal">
-          <img src="assents/Care%20After%20Launch.jpg" alt="" class="service-bg" loading="lazy" decoding="async" />
+          <img src="assents/Care%20After%20Launch.jpg" alt="" class="service-bg" loading="lazy" decoding="async" role="presentation" />
           <div class="service-content">
             <h3 class="service-name" data-en="Care after launch" data-he="ליווי אחרי העלייה לאוויר">ליווי אחרי העלייה לאוויר</h3>
             <span class="service-icon">+</span>
@@ -1887,7 +1935,7 @@
         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=assaf.buskila10@gmail.com&su=Let%27s+work+together"
           class="work-card reveal" target="_blank" rel="noopener noreferrer">
           <div class="work-tile">
-            <img src="assents/wanna%20be%20the%20next.jpg" alt="" class="work-tile-img work-tile-img--cover" loading="lazy" decoding="async" />
+            <img src="assents/wanna%20be%20the%20next.jpg" alt="רוצים להיות הפרויקט הבא — צור קשר" class="work-tile-img work-tile-img--cover" loading="lazy" decoding="async" />
           </div>
           <div class="work-info">
             <div>
