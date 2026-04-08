@@ -1,5 +1,4 @@
-# Replace domain below if you use a custom URL
 User-agent: *
 Allow: /
 
-Sitemap: https://assaf-landing-page.vercel.app/sitemap.xml
+Sitemap: https://assafweb.com/sitemap.xml
