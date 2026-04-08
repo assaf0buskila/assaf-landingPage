@@ -801,6 +801,11 @@
       flex-shrink: 0;
     }
 
+    /* Portrait CTA photo: frame matches typical phone/portrait shots so contain fills width and shows full copy */
+    .work-tile--portrait-cta {
+      aspect-ratio: 3 / 4;
+    }
+
     .work-tile-img {
       position: absolute;
       inset: 0;
@@ -823,6 +828,14 @@
       object-fit: cover;
       object-position: center top;
       padding: 0;
+      filter: brightness(0.88);
+    }
+
+    .work-tile-img--contain-flush {
+      object-fit: contain;
+      object-position: center;
+      padding: 0;
+      box-sizing: border-box;
       filter: brightness(0.88);
     }
 
@@ -1450,6 +1463,10 @@
         aspect-ratio: 1 / 1;
       }
 
+      .work-tile.work-tile--portrait-cta {
+        aspect-ratio: 3 / 4;
+      }
+
       .works-grid--compact {
         grid-template-columns: 1fr;
         max-width: 100%;
@@ -2020,8 +2037,8 @@
 
         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=assaf.buskila10@gmail.com&su=Let%27s+work+together"
           class="work-card reveal" target="_blank" rel="noopener noreferrer">
-          <div class="work-tile">
-            <img src="assents/wanna%20be%20the%20next.jpg" alt="רוצים להיות הפרויקט הבא — צור קשר" class="work-tile-img work-tile-img--cover" loading="lazy" decoding="async" />
+          <div class="work-tile work-tile--portrait-cta">
+            <img src="assents/wanna%20be%20the%20next.jpg" alt="רוצים להיות הפרויקט הבא — צור קשר" class="work-tile-img work-tile-img--contain-flush" loading="lazy" decoding="async" />
           </div>
           <div class="work-info">
             <div>
