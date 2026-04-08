@@ -431,6 +431,43 @@
       text-transform: uppercase;
     }
 
+    /* Desktop-only: hint above hero image trail */
+    .hero-mouse-hint {
+      display: none;
+      position: absolute;
+      left: 50%;
+      top: 42%;
+      transform: translate(-50%, -50%);
+      z-index: 4;
+      pointer-events: none;
+      margin: 0;
+      padding: 0 20px;
+      max-width: min(420px, 88vw);
+      text-align: center;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      opacity: 0.88;
+    }
+
+    @media (min-width: 801px) and (hover: hover) and (pointer: fine) {
+      .hero-mouse-hint {
+        display: block;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-mouse-hint {
+        display: none !important;
+      }
+    }
+
+    html.a11y-reduce-motion .hero-mouse-hint {
+      display: none !important;
+    }
+
     /* Mobile-only: 3D orbital gallery (Saturn-style ring, ~30° tilt) */
     .hero-orbit {
       display: none;
@@ -497,7 +534,7 @@
       height: 68px;
       margin: -34px 0 0 -34px;
       transform-style: preserve-3d;
-      transform: rotateY(calc(var(--orbit-i) * 72deg)) translateZ(132px);
+      transform: rotateY(calc(var(--orbit-i) * 45deg)) translateZ(158px);
       border-radius: 10px;
       overflow: hidden;
       box-shadow:
@@ -972,20 +1009,21 @@
     .services-footnote {
       margin-top: 36px;
       margin-bottom: 0;
-      max-width: min(720px, 100%);
-      font-size: 14px;
-      line-height: 1.6;
-      letter-spacing: -0.01em;
-      color: var(--text-muted);
+      max-width: min(780px, 100%);
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.55;
+      letter-spacing: -0.02em;
+      color: var(--text);
       text-align: start;
     }
 
     html[data-a11y-font="1"] .services-footnote {
-      font-size: 15px;
+      font-size: 19px;
     }
 
     html[data-a11y-font="2"] .services-footnote {
-      font-size: 16px;
+      font-size: 21px;
     }
 
     /* ============================================================
@@ -1285,7 +1323,7 @@
         width: 108px;
         height: 108px;
         margin: -54px 0 0 -54px;
-        transform: rotateY(calc(var(--orbit-i) * 72deg)) translateZ(min(42vw, 200px));
+        transform: rotateY(calc(var(--orbit-i) * 45deg)) translateZ(min(50vw, 232px));
         border-radius: 14px;
       }
 
@@ -1382,7 +1420,8 @@
 
       .services-footnote {
         margin-top: 28px;
-        font-size: 13px;
+        font-size: 16px;
+        font-weight: 600;
       }
 
       .section--works-compact {
@@ -1793,6 +1832,8 @@
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="hero-trail-layer" id="heroTrailLayer" aria-hidden="true"></div>
 
+      <p class="hero-mouse-hint" aria-hidden="true" data-en="Move your mouse" data-he="הזז את העכבר">הזז את העכבר</p>
+
       <div class="hero-orbit" aria-hidden="true">
         <div class="hero-orbit-scene">
           <div class="hero-orbit-tilt">
@@ -1820,6 +1861,21 @@
               <figure class="hero-orbit-card" style="--orbit-i: 4">
                 <div class="hero-orbit-card-face">
                   <img src="assents/5.jpg" alt="" width="108" height="108" loading="eager" decoding="async" />
+                </div>
+              </figure>
+              <figure class="hero-orbit-card" style="--orbit-i: 5">
+                <div class="hero-orbit-card-face">
+                  <img src="assents/6.jpg" alt="" width="108" height="108" loading="eager" decoding="async" />
+                </div>
+              </figure>
+              <figure class="hero-orbit-card" style="--orbit-i: 6">
+                <div class="hero-orbit-card-face">
+                  <img src="assents/7.jpg" alt="" width="108" height="108" loading="eager" decoding="async" />
+                </div>
+              </figure>
+              <figure class="hero-orbit-card" style="--orbit-i: 7">
+                <div class="hero-orbit-card-face">
+                  <img src="assents/8.jpg" alt="" width="108" height="108" loading="eager" decoding="async" />
                 </div>
               </figure>
             </div>
@@ -2431,7 +2487,8 @@
       const trailLayer   = document.getElementById('heroTrailLayer');
       const trailSrcs    = [
         'assents/1.jpg', 'assents/2.jpg', 'assents/3.jpg',
-        'assents/4.jpg', 'assents/5.jpg'
+        'assents/4.jpg', 'assents/5.jpg', 'assents/6.jpg',
+        'assents/7.jpg', 'assents/8.jpg'
       ];
 
       if (!motionReduced()) {
