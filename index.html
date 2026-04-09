@@ -1093,6 +1093,101 @@
       background: #111;
     }
 
+    /* Hint: tap / click for full color (mobile-first; visible on all breakpoints) */
+    .about-tap-hint {
+      position: absolute;
+      z-index: 2;
+      inset-inline-end: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      pointer-events: none;
+      padding: 10px 12px;
+      max-width: min(46%, 200px);
+    }
+
+    .about-tap-hint__label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text);
+      line-height: 1.2;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.75);
+    }
+
+    html[data-a11y-font="1"] .about-tap-hint__label {
+      font-size: 12px;
+    }
+
+    html[data-a11y-font="2"] .about-tap-hint__label {
+      font-size: 13px;
+    }
+
+    .about-tap-hint__arrow-wrap {
+      display: inline-flex;
+      flex-shrink: 0;
+      animation: aboutHintNudgeRtl 1.35s ease-in-out infinite;
+    }
+
+    [dir="ltr"] .about-tap-hint__arrow-wrap {
+      animation-name: aboutHintNudgeLtr;
+    }
+
+    .about-tap-hint__arrow {
+      width: 28px;
+      height: 28px;
+      color: var(--text);
+      opacity: 0.92;
+      filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.65));
+      display: block;
+    }
+
+    [dir="ltr"] .about-tap-hint__arrow {
+      transform: scaleX(-1);
+    }
+
+    @keyframes aboutHintNudgeRtl {
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      50% {
+        transform: translateX(-4px);
+      }
+    }
+
+    @keyframes aboutHintNudgeLtr {
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      50% {
+        transform: translateX(4px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .about-tap-hint__arrow-wrap {
+        animation: none;
+      }
+    }
+
+    html.a11y-reduce-motion .about-tap-hint__arrow-wrap {
+      animation: none !important;
+    }
+
+    /* Desktop: grayscale lifts on hover — no tap affordance needed */
+    @media (min-width: 801px) and (hover: hover) and (pointer: fine) {
+      .about-tap-hint {
+        display: none;
+      }
+    }
+
     .about-photo {
       width: 100%;
       height: 100%;
@@ -1331,16 +1426,17 @@
         transform: rotateX(9deg);
       }
 
+      /* Tighter ring + narrower 3:4 portrait tiles (closer spacing, less “air” between frames) */
       .hero-orbit-card {
-        width: 108px;
-        height: 108px;
-        margin: -54px 0 0 -54px;
-        transform: rotateY(calc(var(--orbit-i) * 45deg)) translateZ(min(50vw, 232px));
-        border-radius: 14px;
+        width: 54px;
+        height: 72px;
+        margin: -36px 0 0 -27px;
+        transform: rotateY(calc(var(--orbit-i) * 45deg)) translateZ(min(34vw, 148px));
+        border-radius: 10px;
       }
 
       .hero-orbit-card-face {
-        transform: rotateX(-24deg);
+        transform: rotateX(-18deg);
       }
 
       .hero-content {
@@ -1852,42 +1948,42 @@
             <div class="hero-orbit-ring">
               <figure class="hero-orbit-card" style="--orbit-i: 0">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/1.jpg" alt="" width="108" height="108" loading="eager" decoding="async" />
+                  <img src="assents/1.jpg" alt="" width="54" height="72" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 1">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/2.jpg" alt="" width="108" height="108" loading="eager" decoding="async" />
+                  <img src="assents/2.jpg" alt="" width="54" height="72" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 2">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/3.jpg" alt="" width="108" height="108" loading="eager" decoding="async" />
+                  <img src="assents/3.jpg" alt="" width="54" height="72" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 3">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/4.jpg" alt="" width="108" height="108" loading="eager" decoding="async" />
+                  <img src="assents/4.jpg" alt="" width="54" height="72" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 4">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/5.jpg" alt="" width="108" height="108" loading="eager" decoding="async" />
+                  <img src="assents/5.jpg" alt="" width="54" height="72" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 5">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/6.jpg" alt="" width="108" height="108" loading="eager" decoding="async" />
+                  <img src="assents/6.jpg" alt="" width="54" height="72" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 6">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/7.jpg" alt="" width="108" height="108" loading="eager" decoding="async" />
+                  <img src="assents/7.jpg" alt="" width="54" height="72" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 7">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/8.jpg" alt="" width="108" height="108" loading="eager" decoding="async" />
+                  <img src="assents/8.jpg" alt="" width="54" height="72" loading="eager" decoding="async" />
                 </div>
               </figure>
             </div>
@@ -1936,6 +2032,16 @@
         </div>
 
         <div class="about-image-container">
+          <div class="about-tap-hint" aria-hidden="true">
+            <span class="about-tap-hint__label" data-en="Tap me" data-he="לחץ עליי">לחץ עליי</span>
+            <span class="about-tap-hint__arrow-wrap">
+              <svg class="about-tap-hint__arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 12h12" />
+                <path d="M13 6l6 6-6 6" />
+              </svg>
+            </span>
+          </div>
           <img src="assents/about me.png" alt="אסף בוסקילה — Assaf Buskila, מפתח אתרים" class="about-photo" loading="lazy" decoding="async" />
         </div>
 
