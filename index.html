@@ -1043,8 +1043,8 @@
    ============================================================ */
     .about-grid {
       display: grid;
-      grid-template-columns: 5fr 4fr;
-      gap: 64px;
+      grid-template-columns: minmax(0, 1.05fr) minmax(260px, min(40vw, 420px));
+      gap: clamp(48px, 5vw, 72px);
       align-items: center;
     }
 
@@ -1093,19 +1093,32 @@
       background: #111;
     }
 
-    /* Hint: tap / click for full color — top edge of photo */
+    @media (min-width: 801px) {
+      #about .about-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(280px, min(36vw, 400px));
+      }
+
+      #about .about-image-container {
+        margin-inline: 0;
+        justify-self: stretch;
+        max-width: none;
+      }
+    }
+
+    /* Hint: bottom edge — arrow nudges up toward the photo (tap mobile / hover desktop) */
     .about-tap-hint {
       position: absolute;
       z-index: 2;
-      inset-inline-end: 8px;
-      top: 8px;
+      inset-inline-end: 10px;
+      bottom: 10px;
+      top: auto;
       transform: none;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       pointer-events: none;
       padding: 6px 8px;
-      max-width: min(92%, 260px);
+      max-width: min(92%, 280px);
     }
 
     .about-tap-hint__label {
@@ -1129,7 +1142,7 @@
     .about-tap-hint__arrow-wrap {
       display: inline-flex;
       flex-shrink: 0;
-      animation: aboutHintNudgeDown 1.35s ease-in-out infinite;
+      animation: aboutHintNudgeUp 1.35s ease-in-out infinite;
     }
 
     .about-tap-hint__arrow {
@@ -1141,14 +1154,14 @@
       display: block;
     }
 
-    @keyframes aboutHintNudgeDown {
+    @keyframes aboutHintNudgeUp {
       0%,
       100% {
         transform: translateY(0);
       }
 
       50% {
-        transform: translateY(5px);
+        transform: translateY(-5px);
       }
     }
 
@@ -1160,13 +1173,6 @@
 
     html.a11y-reduce-motion .about-tap-hint__arrow-wrap {
       animation: none !important;
-    }
-
-    /* Desktop: grayscale lifts on hover — no tap affordance needed */
-    @media (min-width: 801px) and (hover: hover) and (pointer: fine) {
-      .about-tap-hint {
-        display: none;
-      }
     }
 
     .about-photo {
@@ -1388,36 +1394,36 @@
         align-items: center;
         justify-content: center;
         flex: 0 0 auto;
-        max-height: min(56vh, 460px);
+        max-height: min(52vh, 440px);
         min-height: 0;
         margin-block: 0;
       }
 
       .hero-orbit-scene {
-        perspective: 1200px;
-        perspective-origin: 50% 42%;
+        perspective: 1300px;
+        perspective-origin: 50% 40%;
         min-height: 0;
         height: auto;
       }
 
       .hero-orbit-tilt {
-        --orbit-box: min(96vw, 460px, min(52vh, 420px));
+        --orbit-box: min(96vw, 460px, min(50vh, 400px));
         width: var(--orbit-box);
         height: var(--orbit-box);
         transform: rotateX(9deg);
       }
 
-      /* 3× tile size vs base orbit, tight translateZ so frames overlap (no open ring gap) */
+      /* 3:4 tiles — wide translateZ so frames orbit separately (no stacked pile) */
       .hero-orbit-card {
-        width: 162px;
-        height: 216px;
-        margin: -108px 0 0 -81px;
-        transform: rotateY(calc(var(--orbit-i) * 45deg)) translateZ(min(24vw, 102px));
-        border-radius: 30px;
+        width: 96px;
+        height: 128px;
+        margin: -64px 0 0 -48px;
+        transform: rotateY(calc(var(--orbit-i) * 45deg)) translateZ(min(50vw, 218px));
+        border-radius: 14px;
       }
 
       .hero-orbit-card-face {
-        transform: rotateX(-14deg);
+        transform: rotateX(-16deg);
       }
 
       .hero-content {
@@ -1929,42 +1935,42 @@
             <div class="hero-orbit-ring">
               <figure class="hero-orbit-card" style="--orbit-i: 0">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/1.jpg" alt="" width="162" height="216" loading="eager" decoding="async" />
+                  <img src="assents/1.jpg" alt="" width="96" height="128" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 1">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/2.jpg" alt="" width="162" height="216" loading="eager" decoding="async" />
+                  <img src="assents/2.jpg" alt="" width="96" height="128" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 2">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/3.jpg" alt="" width="162" height="216" loading="eager" decoding="async" />
+                  <img src="assents/3.jpg" alt="" width="96" height="128" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 3">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/4.jpg" alt="" width="162" height="216" loading="eager" decoding="async" />
+                  <img src="assents/4.jpg" alt="" width="96" height="128" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 4">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/5.jpg" alt="" width="162" height="216" loading="eager" decoding="async" />
+                  <img src="assents/5.jpg" alt="" width="96" height="128" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 5">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/6.jpg" alt="" width="162" height="216" loading="eager" decoding="async" />
+                  <img src="assents/6.jpg" alt="" width="96" height="128" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 6">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/7.jpg" alt="" width="162" height="216" loading="eager" decoding="async" />
+                  <img src="assents/7.jpg" alt="" width="96" height="128" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 7">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/8.jpg" alt="" width="162" height="216" loading="eager" decoding="async" />
+                  <img src="assents/8.jpg" alt="" width="96" height="128" loading="eager" decoding="async" />
                 </div>
               </figure>
             </div>
@@ -1982,7 +1988,8 @@
 
     <!-- ABOUT ME (was at end before   now right after hero) -->
     <section class="section" id="about">
-      <h2 class="section-title reveal" data-en="I'm Assaf Buskila" data-he="אני אסף בוסקילה">אני אסף בוסקילההיי </h2
+      <h2 class="section-title reveal" data-en="I'm Assaf Buskila" data-he="היי אני אסף בוסקילה">היי אני אסף/h2>
+
       <div class="about-grid reveal">
 
         <div class="about-text">
@@ -2013,11 +2020,11 @@
 
         <div class="about-image-container">
           <div class="about-tap-hint" aria-hidden="true">
-            <span class="about-tap-hint__label" data-en="Tap me" data-he="לחץ עליי">לחץ עליי</span>
+            <span class="about-tap-hint__label" data-en="Try me" data-he="נסה אותי">נסה אותי</span>
             <span class="about-tap-hint__arrow-wrap">
               <svg class="about-tap-hint__arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M6 9l6 6 6-6" />
+                <path d="M18 15l-6-6-6 6" />
               </svg>
             </span>
           </div>
