@@ -1093,19 +1093,19 @@
       background: #111;
     }
 
-    /* Hint: tap / click for full color (mobile-first; visible on all breakpoints) */
+    /* Hint: tap / click for full color — top edge of photo */
     .about-tap-hint {
       position: absolute;
       z-index: 2;
-      inset-inline-end: 0;
-      top: 50%;
-      transform: translateY(-50%);
+      inset-inline-end: 8px;
+      top: 8px;
+      transform: none;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       pointer-events: none;
-      padding: 10px 12px;
-      max-width: min(46%, 200px);
+      padding: 6px 8px;
+      max-width: min(92%, 260px);
     }
 
     .about-tap-hint__label {
@@ -1129,11 +1129,7 @@
     .about-tap-hint__arrow-wrap {
       display: inline-flex;
       flex-shrink: 0;
-      animation: aboutHintNudgeRtl 1.35s ease-in-out infinite;
-    }
-
-    [dir="ltr"] .about-tap-hint__arrow-wrap {
-      animation-name: aboutHintNudgeLtr;
+      animation: aboutHintNudgeDown 1.35s ease-in-out infinite;
     }
 
     .about-tap-hint__arrow {
@@ -1145,29 +1141,14 @@
       display: block;
     }
 
-    [dir="ltr"] .about-tap-hint__arrow {
-      transform: scaleX(-1);
-    }
-
-    @keyframes aboutHintNudgeRtl {
+    @keyframes aboutHintNudgeDown {
       0%,
       100% {
-        transform: translateX(0);
+        transform: translateY(0);
       }
 
       50% {
-        transform: translateX(-4px);
-      }
-    }
-
-    @keyframes aboutHintNudgeLtr {
-      0%,
-      100% {
-        transform: translateX(0);
-      }
-
-      50% {
-        transform: translateX(4px);
+        transform: translateY(5px);
       }
     }
 
@@ -1407,36 +1388,36 @@
         align-items: center;
         justify-content: center;
         flex: 0 0 auto;
-        max-height: min(36vh, 300px);
+        max-height: min(56vh, 460px);
         min-height: 0;
         margin-block: 0;
       }
 
       .hero-orbit-scene {
-        perspective: 1400px;
-        perspective-origin: 50% 38%;
+        perspective: 1200px;
+        perspective-origin: 50% 42%;
         min-height: 0;
         height: auto;
       }
 
       .hero-orbit-tilt {
-        --orbit-box: min(92vw, 400px, min(38vh, 304px));
+        --orbit-box: min(96vw, 460px, min(52vh, 420px));
         width: var(--orbit-box);
         height: var(--orbit-box);
         transform: rotateX(9deg);
       }
 
-      /* Tighter ring + narrower 3:4 portrait tiles (closer spacing, less “air” between frames) */
+      /* 3× tile size vs base orbit, tight translateZ so frames overlap (no open ring gap) */
       .hero-orbit-card {
-        width: 54px;
-        height: 72px;
-        margin: -36px 0 0 -27px;
-        transform: rotateY(calc(var(--orbit-i) * 45deg)) translateZ(min(34vw, 148px));
-        border-radius: 10px;
+        width: 162px;
+        height: 216px;
+        margin: -108px 0 0 -81px;
+        transform: rotateY(calc(var(--orbit-i) * 45deg)) translateZ(min(24vw, 102px));
+        border-radius: 30px;
       }
 
       .hero-orbit-card-face {
-        transform: rotateX(-18deg);
+        transform: rotateX(-14deg);
       }
 
       .hero-content {
@@ -1948,42 +1929,42 @@
             <div class="hero-orbit-ring">
               <figure class="hero-orbit-card" style="--orbit-i: 0">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/1.jpg" alt="" width="54" height="72" loading="eager" decoding="async" />
+                  <img src="assents/1.jpg" alt="" width="162" height="216" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 1">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/2.jpg" alt="" width="54" height="72" loading="eager" decoding="async" />
+                  <img src="assents/2.jpg" alt="" width="162" height="216" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 2">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/3.jpg" alt="" width="54" height="72" loading="eager" decoding="async" />
+                  <img src="assents/3.jpg" alt="" width="162" height="216" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 3">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/4.jpg" alt="" width="54" height="72" loading="eager" decoding="async" />
+                  <img src="assents/4.jpg" alt="" width="162" height="216" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 4">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/5.jpg" alt="" width="54" height="72" loading="eager" decoding="async" />
+                  <img src="assents/5.jpg" alt="" width="162" height="216" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 5">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/6.jpg" alt="" width="54" height="72" loading="eager" decoding="async" />
+                  <img src="assents/6.jpg" alt="" width="162" height="216" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 6">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/7.jpg" alt="" width="54" height="72" loading="eager" decoding="async" />
+                  <img src="assents/7.jpg" alt="" width="162" height="216" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 7">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/8.jpg" alt="" width="54" height="72" loading="eager" decoding="async" />
+                  <img src="assents/8.jpg" alt="" width="162" height="216" loading="eager" decoding="async" />
                 </div>
               </figure>
             </div>
@@ -2001,8 +1982,7 @@
 
     <!-- ABOUT ME (was at end before   now right after hero) -->
     <section class="section" id="about">
-      <h2 class="section-title reveal" data-en="I'm Assaf Buskila" data-he="אני אסף בוסקילה">אני אסף בוסקילה</h2>
-
+      <h2 class="section-title reveal" data-en="I'm Assaf Buskila" data-he="אני אסף בוסקילה">אני אסף בוסקילההיי </h2
       <div class="about-grid reveal">
 
         <div class="about-text">
@@ -2037,8 +2017,7 @@
             <span class="about-tap-hint__arrow-wrap">
               <svg class="about-tap-hint__arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M4 12h12" />
-                <path d="M13 6l6 6-6 6" />
+                <path d="M6 9l6 6 6-6" />
               </svg>
             </span>
           </div>
