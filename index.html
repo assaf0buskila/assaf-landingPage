@@ -13,26 +13,27 @@
   <link rel="icon" href="/assents/about%20me.png" type="image/png" sizes="any" />
   <link rel="apple-touch-icon" href="/assents/about%20me.png" />
 
-  <title>Assaf Buskila | Fast websites for growing businesses · אסף בוסקילה</title>
+  <title>אסף בוסקילה | Assaf Buskila — אתרים מהירים לעסקים · Fast websites</title>
   <meta name="description"
-    content="Assaf Buskila builds fast, clear websites for small and growing businesses—focused on performance and conversions. סטודנט להנדסת תעשייה וניהול, אתרים מודרניים ומהירים." />
+    content="אסף בוסקילה (Assaf Buskila) — בניית אתרים ודפי נחיתה מהירים וברורים לעסקים קטנים וצומחים, עם דגש על ביצועים והמרות. Industrial engineering student, modern performance-focused sites." />
+  <meta name="keywords" content="אסף בוסקילה, Assaf Buskila, אסף בוסקילה אתרים, בניית אתרים, דף נחיתה, Assaf Buskila website developer" />
 
   <link rel="canonical" href="https://www.assafweb.com/" />
 
   <meta property="og:locale" content="he_IL" />
   <meta property="og:locale:alternate" content="en_US" />
-  <meta property="og:title" content="Assaf Buskila | Websites that perform" />
+  <meta property="og:title" content="אסף בוסקילה | Assaf Buskila — אתרים שמביאים תוצאות" />
   <meta property="og:description"
-    content="Industrial engineering student building clean, fast, conversion-focused websites for small and growing businesses." />
+    content="אסף בוסקילה — אתרים ודפי נחיתה מהירים לעסקים. Assaf Buskila: clean, conversion-focused web design and development." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.assafweb.com/" />
   <meta property="og:image" content="https://www.assafweb.com/assents/about%20me.png" />
-  <meta property="og:image:alt" content="Assaf Buskila" />
+  <meta property="og:image:alt" content="אסף בוסקילה — Assaf Buskila" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Assaf Buskila | Websites that perform" />
+  <meta name="twitter:title" content="אסף בוסקילה | Assaf Buskila — אתרים שמביאים תוצאות" />
   <meta name="twitter:description"
-    content="Industrial engineering student building clean, fast, conversion-focused websites for small and growing businesses." />
+    content="אסף בוסקילה — אתרים ודפי נחיתה מהירים לעסקים. Assaf Buskila: performance-focused websites." />
   <meta name="twitter:image" content="https://www.assafweb.com/assents/about%20me.png" />
 
   <script type="application/ld+json">
@@ -44,8 +45,8 @@
         "@id": "https://www.assafweb.com/#website",
         "url": "https://www.assafweb.com/",
         "name": "Assaf Buskila",
-        "alternateName": "אסף בוסקילה",
-        "description": "Fast, conversion-focused websites for small and growing businesses.",
+        "alternateName": ["אסף בוסקילה", "Assaf Buskila websites"],
+        "description": "אסף בוסקילה — אתרים מהירים וממוקדי המרה לעסקים קטנים וצומחים. Assaf Buskila: fast, conversion-focused websites.",
         "inLanguage": ["he", "en"],
         "publisher": { "@id": "https://www.assafweb.com/#person" }
       },
@@ -53,11 +54,12 @@
         "@type": "Person",
         "@id": "https://www.assafweb.com/#person",
         "name": "Assaf Buskila",
-        "alternateName": "אסף בוסקילה",
+        "alternateName": ["אסף בוסקילה", "אסף בוסקילה מפתח אתרים"],
         "url": "https://www.assafweb.com/",
         "image": "https://www.assafweb.com/assents/about%20me.png",
-        "description": "Industrial engineering student building modern websites, design, and brand basics for businesses.",
-        "jobTitle": "Web developer & designer",
+        "description": "אסף בוסקילה — מפתח ומעצב אתרים לעסקים; סטודנט להנדסת תעשייה וניהול. Assaf Buskila builds modern websites, design, and brand basics for businesses.",
+        "jobTitle": "מפתח אתרים ומעצב · Web developer & designer",
+        "knowsAbout": ["בניית אתרים", "דפי נחיתה", "מיתוג עסקי", "Web performance", "Landing pages", "Small business websites"],
         "email": "assaf.buskila10@gmail.com",
         "sameAs": [
           "https://www.linkedin.com/in/assaf-buskila-11ab7a347/",
@@ -1709,6 +1711,67 @@
       text-decoration: none !important;
     }
 
+    /* Mobile sticky CTA (appears after hero scroll) */
+    .sticky-cta {
+      display: none;
+    }
+
+    @media (max-width: 800px) {
+      .sticky-cta {
+        display: block;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 8980;
+        padding: 10px 16px max(12px, env(safe-area-inset-bottom));
+        pointer-events: none;
+        transform: translateY(110%);
+        transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      html.site-locked .sticky-cta {
+        transform: translateY(110%);
+      }
+
+      .sticky-cta.sticky-cta--visible {
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .sticky-cta__link {
+        display: block;
+        text-align: center;
+        padding: 14px 22px;
+        border-radius: 999px;
+        background: rgba(28, 28, 28, 0.92);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: clamp(12px, 3.2vw, 14px);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.35);
+      }
+
+      html.sticky-cta-on .a11y-fab {
+        bottom: max(88px, calc(72px + env(safe-area-inset-bottom)));
+      }
+
+      html.sticky-cta-on {
+        scroll-padding-bottom: 88px;
+      }
+    }
+
+    @media (max-width: 800px) and (prefers-reduced-motion: reduce) {
+      .sticky-cta {
+        transition: none;
+      }
+    }
+
     .a11y-fab {
       position: fixed;
       bottom: 20px;
@@ -1926,23 +1989,67 @@
     }
 
     /* ============================================================
-       SCREEN BREAK OVERLAY
+       SCREEN BREAK OVERLAY (full-viewport ice → 3 taps)
        ============================================================ */
     .screen-break-overlay {
       position: fixed;
       inset: 0;
       z-index: 99999;
-      background: rgba(8, 8, 8, 0.92);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
       cursor: pointer;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 20px;
+      gap: 0;
+      /* Ice: cool glaze + depth, not flat gray */
+      background:
+        radial-gradient(ellipse 120% 80% at 50% 20%, rgba(200, 235, 255, 0.14) 0%, transparent 55%),
+        radial-gradient(ellipse 90% 60% at 80% 90%, rgba(180, 220, 255, 0.08) 0%, transparent 50%),
+        linear-gradient(165deg, rgba(12, 22, 32, 0.94) 0%, rgba(6, 12, 18, 0.97) 100%);
+      backdrop-filter: blur(22px) saturate(1.15);
+      -webkit-backdrop-filter: blur(22px) saturate(1.15);
       transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
-                  backdrop-filter 0.8s ease;
+                  backdrop-filter 0.8s ease,
+                  background 0.45s ease;
+      touch-action: none;
+    }
+
+    /* Fine grain + frost sheen (no extra assets) */
+    .screen-break-overlay::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.35;
+      background-image:
+        repeating-linear-gradient(
+          125deg,
+          transparent 0,
+          transparent 1px,
+          rgba(255, 255, 255, 0.03) 1px,
+          rgba(255, 255, 255, 0.03) 2px
+        ),
+        repeating-linear-gradient(
+          -55deg,
+          transparent 0,
+          transparent 2px,
+          rgba(255, 255, 255, 0.018) 2px,
+          rgba(255, 255, 255, 0.018) 3px
+        );
+      mix-blend-mode: overlay;
+    }
+
+    .screen-break-overlay[data-tap="1"] {
+      background:
+        radial-gradient(ellipse 120% 80% at 50% 20%, rgba(200, 235, 255, 0.1) 0%, transparent 55%),
+        linear-gradient(165deg, rgba(14, 24, 34, 0.88) 0%, rgba(8, 14, 20, 0.92) 100%);
+    }
+
+    .screen-break-overlay[data-tap="2"] {
+      background:
+        radial-gradient(ellipse 120% 80% at 50% 20%, rgba(200, 235, 255, 0.07) 0%, transparent 55%),
+        linear-gradient(165deg, rgba(18, 28, 38, 0.82) 0%, rgba(10, 16, 24, 0.88) 100%);
     }
 
     .screen-break-overlay canvas {
@@ -1955,34 +2062,31 @@
     }
 
     .screen-break-overlay__hint {
-      font-size: clamp(11px, 2.5vw, 14px);
-      color: rgba(255, 255, 255, 0.4);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      font-weight: 400;
+      position: relative;
       z-index: 2;
-      animation: hintPulse 2.5s ease-in-out infinite;
+      font-size: clamp(13px, 3.2vw, 18px);
+      color: rgba(255, 255, 255, 0.55);
+      letter-spacing: 0.55em;
+      text-transform: lowercase;
+      font-weight: 500;
       user-select: none;
+      text-shadow: 0 0 28px rgba(200, 235, 255, 0.35);
+      animation: hintPulse 2.5s ease-in-out infinite;
     }
 
     @keyframes hintPulse {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 0.75; }
+      0%, 100% { opacity: 0.45; }
+      50% { opacity: 0.92; }
     }
 
-    .screen-break-overlay__counter {
-      font-size: clamp(120px, 22vw, 240px);
-      font-weight: 100;
-      color: rgba(255, 255, 255, 0.03);
-      line-height: 1;
-      z-index: 2;
-      user-select: none;
-      transition: transform 0.25s ease, color 0.25s ease;
+    .screen-break-overlay__hint--bump {
+      animation: tapBump 0.35s ease;
     }
 
-    .screen-break-overlay__counter.bump {
-      transform: scale(1.2);
-      color: rgba(255, 255, 255, 0.07);
+    @keyframes tapBump {
+      0% { transform: scale(1); }
+      40% { transform: scale(1.08); }
+      100% { transform: scale(1); }
     }
 
     .screen-break-overlay.shattered {
@@ -1999,8 +2103,6 @@
     }
     html.site-revealed .screen-break-overlay { display: none; }
 
-    .screen-break-overlay { touch-action: none; }
-
     /* ============================================================
        MOBILE PHONE CAROUSEL (hero replacement)
        ============================================================ */
@@ -2011,7 +2113,13 @@
     .phone-carousel-scene {
       position: relative;
       width: 100%;
-      height: 330px;
+      max-width: min(100%, 420px);
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: min(52vh, 420px);
       perspective: 1000px;
       overflow: visible;
     }
@@ -2019,7 +2127,8 @@
     .phone-carousel-viewport {
       position: relative;
       width: 100%;
-      height: 100%;
+      height: min(52vh, 360px);
+      min-height: 280px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -2085,27 +2194,32 @@
       pointer-events: none;
     }
 
-    .phone-carousel-hand {
-      position: absolute;
-      bottom: -8px;
-      right: 14%;
-      width: 72px;
+    .phone-carousel-pointer {
+      flex-shrink: 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      width: 100%;
+      padding-top: 4px;
       z-index: 5;
-      transform: rotate(-45deg);
-      animation: pointerSwipe 3.8s ease-in-out infinite;
-      filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45));
     }
 
-    @keyframes pointerSwipe {
-      0%, 100% { transform: rotate(-45deg) translateX(0); }
-      25% { transform: rotate(-42deg) translateX(8px); }
-      55% { transform: rotate(-48deg) translateX(-8px); }
-      80% { transform: rotate(-45deg) translateX(2px); }
+    .phone-carousel-pointer__arrow {
+      width: 40px;
+      height: 40px;
+      color: rgba(255, 255, 255, 0.5);
+      filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.4));
+      animation: pointerNudgeUp 2.6s ease-in-out infinite;
+    }
+
+    @keyframes pointerNudgeUp {
+      0%, 100% { transform: translateY(4px); opacity: 0.65; }
+      50% { transform: translateY(-10px); opacity: 1; }
     }
 
     .phone-carousel-caption {
       text-align: center;
-      margin-top: 28px;
+      margin-top: 14px;
       font-size: clamp(14px, 3.8vw, 17px);
       font-weight: 500;
       letter-spacing: 0.01em;
@@ -2128,7 +2242,9 @@
       .phone-carousel {
         display: block;
         flex: 0 0 auto;
-        margin-block: 4px 0;
+        align-self: center;
+        width: 100%;
+        margin-block: 8px 0;
       }
 
       /* About mobile: photo beside 3rd block only, first 2 full width */
@@ -2193,24 +2309,24 @@
     /* Reduced motion: disable new animations */
     @media (prefers-reduced-motion: reduce) {
       .neon-bg-layer::after { animation: none; }
-      .phone-carousel-hand { animation: none; }
+      .phone-carousel-pointer__arrow { animation: none; }
       .screen-break-overlay__hint { animation: none; opacity: 0.5; }
       .phone-carousel-caption { animation: none; }
     }
 
     html.a11y-reduce-motion .neon-bg-layer::after { animation: none !important; }
-    html.a11y-reduce-motion .phone-carousel-hand { animation: none !important; }
+    html.a11y-reduce-motion .phone-carousel-pointer__arrow { animation: none !important; }
     html.a11y-reduce-motion .screen-break-overlay__hint { animation: none !important; }
   </style>
 </head>
 
 <body>
 
-  <!-- SCREEN BREAK OVERLAY — 3 clicks to shatter -->
-  <div class="screen-break-overlay" id="screenBreak" aria-hidden="true">
+  <!-- SCREEN BREAK OVERLAY — 3 taps to shatter (visible copy: tap only) -->
+  <div class="screen-break-overlay" id="screenBreak" role="button" tabindex="0"
+    aria-label="Tap three times to enter the site">
     <canvas id="crackCanvas"></canvas>
-    <span class="screen-break-overlay__hint" data-en="Click to enter" data-he="לחץ כדי להיכנס">לחץ כדי להיכנס</span>
-    <span class="screen-break-overlay__counter" id="breakCounter">3</span>
+    <span class="screen-break-overlay__hint" id="breakTapHint">tap</span>
   </div>
 
   <a href="#main-content" class="skip-link" data-en="Skip to main content" data-he="דלג לתוכן הראשי">דלג לתוכן הראשי</a>
@@ -2311,8 +2427,12 @@
             <div class="phone-frame" data-pos="hidden" data-idx="6"><img src="assents/7.jpg" alt="" loading="eager" decoding="async" /></div>
             <div class="phone-frame" data-pos="hidden" data-idx="7"><img src="assents/8.jpg" alt="" loading="eager" decoding="async" /></div>
           </div>
-          <!-- Crystal pointer — tap / swipe indicator -->
-          <img class="phone-carousel-hand" src="assents/pointer.png" alt="" aria-hidden="true" decoding="async" />
+          <div class="phone-carousel-pointer" aria-hidden="true">
+            <svg class="phone-carousel-pointer__arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 15l-6-6-6 6" />
+            </svg>
+          </div>
         </div>
         <p class="phone-carousel-caption" data-en="You can create anything you imagine" data-he="ניתן ליצור כל מה שעולה לכם לראש">ניתן ליצור כל מה שעולה לכם לראש</p>
       </div>
@@ -2321,7 +2441,9 @@
         <h1 class="hero-title">
           <span data-en="Hey, glad you're here!" data-he="היי, כיף שבאת!">היי, כיף שבאת!</span>
         </h1>
-        <p class="hero-sub" data-en="Industrial management Engineering student · Websites that perform" data-he="סטודנט להנדסת תעשייה וניהול אתרים שמביאים תוצאות">סטודנט להנדסת תעשייה וניהול · אתרים שמביאים תוצאות</p>
+        <p class="hero-sub"
+          data-en="Assaf Buskila · Industrial management Engineering student · Websites that perform"
+          data-he="אסף בוסקילה · סטודנט להנדסת תעשייה וניהול · אתרים שמביאים תוצאות">אסף בוסקילה · סטודנט להנדסת תעשייה וניהול · אתרים שמביאים תוצאות</p>
       </div>
     </section>
 
@@ -2499,6 +2621,12 @@
       </div>
     </div>
   </footer>
+
+  <!-- Mobile: sticky CTA after leaving hero (conversion) -->
+  <div class="sticky-cta" id="stickyCta" aria-hidden="true">
+    <a href="#contact" class="sticky-cta__link"
+      data-en="Start a project" data-he="בואו נדבר על האתר">בואו נדבר על האתר</a>
+  </div>
 
   <button type="button" class="a11y-fab" id="a11yOpenBtn" aria-expanded="false" aria-controls="a11yPanel"
     aria-label="פתח תפריט נגישות">
@@ -3036,105 +3164,175 @@
         });
       }
 
-      // 9. SCREEN BREAK OVERLAY — 3 clicks to shatter and reveal
+      // 9. SCREEN BREAK OVERLAY — 3 taps: global ice cracks + optional accent at tap point
       const breakOverlay = document.getElementById('screenBreak');
       const crackCanvas = document.getElementById('crackCanvas');
-      const breakCounter = document.getElementById('breakCounter');
+      const breakTapHint = document.getElementById('breakTapHint');
+
+      function finishScreenBreak() {
+        if (!breakOverlay) return;
+        setTimeout(() => {
+          breakOverlay.classList.add('shattered');
+          document.documentElement.classList.remove('site-locked');
+          setTimeout(() => {
+            document.documentElement.classList.add('site-revealed');
+            breakOverlay.remove();
+          }, 1000);
+        }, motionReduced() ? 80 : 420);
+      }
+
+      function bumpTapHint() {
+        if (!breakTapHint) return;
+        breakTapHint.classList.remove('screen-break-overlay__hint--bump');
+        void breakTapHint.offsetWidth;
+        breakTapHint.classList.add('screen-break-overlay__hint--bump');
+        setTimeout(() => breakTapHint.classList.remove('screen-break-overlay__hint--bump'), 350);
+      }
 
       if (breakOverlay && crackCanvas) {
-        // Lock scroll while overlay is visible
         document.documentElement.classList.add('site-locked');
 
-        const ctx = crackCanvas.getContext('2d');
         let clicksRemaining = 3;
+        let tapPhase = 0;
+        const ctx = crackCanvas.getContext('2d');
 
         function resizeCanvas() {
-          crackCanvas.width = window.innerWidth * (window.devicePixelRatio || 1);
-          crackCanvas.height = window.innerHeight * (window.devicePixelRatio || 1);
-          crackCanvas.style.width = window.innerWidth + 'px';
-          crackCanvas.style.height = window.innerHeight + 'px';
-          ctx.scale(window.devicePixelRatio || 1, window.devicePixelRatio || 1);
+          const dpr = window.devicePixelRatio || 1;
+          const w = window.innerWidth;
+          const h = window.innerHeight;
+          crackCanvas.width = w * dpr;
+          crackCanvas.height = h * dpr;
+          crackCanvas.style.width = w + 'px';
+          crackCanvas.style.height = h + 'px';
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          redrawIceCracks();
         }
+
+        function drawBranchLine(x0, y0, angle, maxLen, steps, wobble, alphaBase, lineW, glow) {
+          const stepLen = maxLen / steps;
+          let x = x0;
+          let y = y0;
+          let a = angle;
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          for (let s = 0; s < steps; s++) {
+            a += (Math.random() - 0.5) * wobble;
+            x += Math.cos(a) * stepLen;
+            y += Math.sin(a) * stepLen;
+            ctx.lineTo(x, y);
+            if (Math.random() > 0.55) {
+              const subA = a + (Math.random() - 0.5) * 1.6;
+              const subLen = stepLen * (0.2 + Math.random() * 0.5);
+              ctx.moveTo(x, y);
+              ctx.lineTo(x + Math.cos(subA) * subLen, y + Math.sin(subA) * subLen);
+              ctx.moveTo(x, y);
+            }
+          }
+          ctx.strokeStyle = `rgba(255,255,255,${alphaBase})`;
+          ctx.lineWidth = lineW;
+          ctx.stroke();
+          if (glow) {
+            ctx.strokeStyle = `rgba(200,230,255,${alphaBase * 0.22})`;
+            ctx.lineWidth = lineW + 2.5;
+            ctx.stroke();
+          }
+        }
+
+        function drawBurstFrom(sx, sy, phase, scale) {
+          const w = window.innerWidth;
+          const h = window.innerHeight;
+          const reach = Math.min(w, h) * (0.18 + phase * 0.1) * scale;
+          const branches = 5 + phase * 3 + Math.floor(Math.random() * 4);
+          for (let i = 0; i < branches; i++) {
+            const base = (Math.PI * 2 / branches) * i + (Math.random() - 0.5) * 0.5;
+            const steps = 5 + Math.floor(Math.random() * 5);
+            const alpha = 0.22 + phase * 0.12 + Math.random() * 0.1;
+            drawBranchLine(sx, sy, base, reach + Math.random() * reach * 0.4, steps, 0.85, alpha, 0.6 + Math.random() * 0.9, true);
+          }
+        }
+
+        function getSeedsLayer(layerIdx) {
+          const w = window.innerWidth;
+          const h = window.innerHeight;
+          if (layerIdx === 1) {
+            return [
+              [w * 0.5, h * 0.48],
+              [w * 0.08, h * 0.12],
+              [w * 0.92, h * 0.1],
+              [w * 0.1, h * 0.88],
+              [w * 0.9, h * 0.9]
+            ];
+          }
+          if (layerIdx === 2) {
+            return [
+              [w * 0.5, h * 0.08],
+              [w * 0.5, h * 0.94],
+              [w * 0.04, h * 0.5],
+              [w * 0.96, h * 0.5]
+            ];
+          }
+          const edge = [];
+          for (let i = 0; i < 5; i++) {
+            const t = (i + 0.5) / 5;
+            edge.push([w * t, 0], [w * t, h], [0, h * t], [w, h * t]);
+          }
+          return edge;
+        }
+
+        function drawIceLayer(layerIdx) {
+          const phase = layerIdx;
+          const scale = layerIdx === 1 ? 0.95 : layerIdx === 2 ? 1.12 : 1.28;
+          const intensity = layerIdx / 3;
+          getSeedsLayer(layerIdx).forEach(([sx, sy]) => {
+            drawBurstFrom(sx, sy, phase, scale * (0.85 + intensity * 0.2));
+          });
+        }
+
+        function drawClickAccent(cx, cy, phase) {
+          drawBurstFrom(cx, cy, Math.min(3, phase), 0.55);
+        }
+
+        function redrawIceCracks() {
+          if (motionReduced()) return;
+          const w = window.innerWidth;
+          const h = window.innerHeight;
+          ctx.clearRect(0, 0, w, h);
+          if (tapPhase >= 1) drawIceLayer(1);
+          if (tapPhase >= 2) drawIceLayer(2);
+          if (tapPhase >= 3) drawIceLayer(3);
+        }
+
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        function drawCrack(x, y, intensity) {
-          const branches = 6 + Math.floor(intensity * 5);
-          for (let i = 0; i < branches; i++) {
-            let angle = (Math.PI * 2 / branches) * i + (Math.random() - 0.5) * 0.6;
-            const maxLen = 60 + intensity * 80 + Math.random() * 60;
-            const steps = 4 + Math.floor(Math.random() * 5);
-            const stepLen = maxLen / steps;
-
-            ctx.beginPath();
-            ctx.moveTo(x, y);
-            let cx = x, cy = y;
-
-            for (let s = 0; s < steps; s++) {
-              angle += (Math.random() - 0.5) * 0.9;
-              cx += Math.cos(angle) * stepLen;
-              cy += Math.sin(angle) * stepLen;
-              ctx.lineTo(cx, cy);
-
-              // Sub-branches for realism
-              if (Math.random() > 0.5) {
-                const subAngle = angle + (Math.random() - 0.5) * 1.8;
-                const subLen = stepLen * (0.25 + Math.random() * 0.45);
-                ctx.moveTo(cx, cy);
-                ctx.lineTo(
-                  cx + Math.cos(subAngle) * subLen,
-                  cy + Math.sin(subAngle) * subLen
-                );
-                ctx.moveTo(cx, cy);
-              }
-            }
-
-            // White crack line
-            ctx.strokeStyle = `rgba(255,255,255,${0.35 + intensity * 0.2})`;
-            ctx.lineWidth = 0.8 + Math.random() * 1.2;
-            ctx.stroke();
-
-            // Faint glow line
-            ctx.beginPath();
-            ctx.moveTo(x, y);
-            let gx = x, gy = y;
-            let ga = (Math.PI * 2 / branches) * i + (Math.random() - 0.5) * 0.3;
-            for (let s = 0; s < steps; s++) {
-              ga += (Math.random() - 0.5) * 0.7;
-              gx += Math.cos(ga) * stepLen * 0.9;
-              gy += Math.sin(ga) * stepLen * 0.9;
-              ctx.lineTo(gx, gy);
-            }
-            ctx.strokeStyle = `rgba(200,220,255,${0.08 + intensity * 0.06})`;
-            ctx.lineWidth = 3 + Math.random() * 2;
-            ctx.stroke();
-          }
-        }
-
-        breakOverlay.addEventListener('click', (e) => {
+        function onTap(clientX, clientY) {
           if (clicksRemaining <= 0) return;
           clicksRemaining--;
+          tapPhase = 3 - clicksRemaining;
+          breakOverlay.setAttribute('data-tap', String(tapPhase));
+          bumpTapHint();
 
-          const intensity = (3 - clicksRemaining) / 3;
-          drawCrack(e.clientX, e.clientY, intensity);
-
-          // Bump counter animation
-          if (breakCounter) {
-            breakCounter.textContent = String(clicksRemaining);
-            breakCounter.classList.add('bump');
-            setTimeout(() => breakCounter.classList.remove('bump'), 250);
+          if (!motionReduced()) {
+            redrawIceCracks();
+            drawClickAccent(clientX, clientY, tapPhase);
           }
 
           if (clicksRemaining === 0) {
-            // Final shatter
-            setTimeout(() => {
-              breakOverlay.classList.add('shattered');
-              document.documentElement.classList.remove('site-locked');
-              setTimeout(() => {
-                document.documentElement.classList.add('site-revealed');
-                breakOverlay.remove();
-              }, 1000);
-            }, 400);
+            finishScreenBreak();
+          }
+        }
+
+        breakOverlay.addEventListener('click', e => {
+          if (clicksRemaining <= 0) return;
+          onTap(e.clientX, e.clientY);
+        });
+
+        breakOverlay.addEventListener('keydown', e => {
+          if (clicksRemaining <= 0) return;
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            const r = breakOverlay.getBoundingClientRect();
+            onTap(r.left + r.width / 2, r.top + r.height / 2);
           }
         });
       }
@@ -3178,6 +3376,23 @@
             updateCarousel();
           }
         }, { passive: true });
+      }
+
+      // 11. Sticky mobile CTA — after hero scrolls out of view
+      const stickyCta = document.getElementById('stickyCta');
+      const homeSection = document.getElementById('home');
+      if (stickyCta && homeSection && window.matchMedia('(max-width: 800px)').matches) {
+        const stickyRoot = document.documentElement;
+        const ioSticky = new IntersectionObserver(
+          ([entry]) => {
+            const show = !entry.isIntersecting;
+            stickyCta.classList.toggle('sticky-cta--visible', show);
+            stickyRoot.classList.toggle('sticky-cta-on', show);
+            stickyCta.setAttribute('aria-hidden', show ? 'false' : 'true');
+          },
+          { threshold: 0, rootMargin: '0px 0px -1px 0px' }
+        );
+        ioSticky.observe(homeSection);
       }
 
     });
