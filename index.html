@@ -1222,7 +1222,7 @@
       transition: opacity 0.3s, transform 0.3s var(--ease), filter 0.3s;
     }
 
-    /* WhatsApp brand accent on dark UI (icon + label share one green) */
+    /* WhatsApp: label in brand green; icon sits on speckled green “chip” (blended, WhatsApp-like) */
     .footer-cta--whatsapp {
       --wa-green: #25d366;
       --wa-green-hover: #34e475;
@@ -1230,18 +1230,63 @@
       flex-wrap: wrap;
       color: var(--wa-green);
       line-height: 1.05;
+      align-items: center;
     }
 
     [dir="rtl"] .footer-cta--whatsapp {
       flex-direction: row-reverse;
     }
 
+    .footer-cta__icon-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      padding: clamp(10px, 2.2vw, 14px);
+      border-radius: 24px;
+      isolation: isolate;
+      color: #fff;
+      background: linear-gradient(152deg, #0d6e34 0%, #25d366 46%, #159c4a 100%);
+      box-shadow:
+        0 6px 28px rgba(37, 211, 102, 0.38),
+        inset 0 1px 0 rgba(255, 255, 255, 0.28);
+      transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
+    }
+
+    .footer-cta__icon-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background-image:
+        radial-gradient(rgba(255, 255, 255, 0.2) 0.7px, transparent 1px),
+        radial-gradient(rgba(0, 0, 0, 0.07) 0.7px, transparent 1px);
+      background-size: 5px 5px, 7px 7px;
+      background-position: 0 0, 3px 4px;
+      opacity: 0.65;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+    }
+
+    .footer-cta__icon-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(ellipse 95% 75% at 28% 22%, rgba(255, 255, 255, 0.28), transparent 58%);
+      pointer-events: none;
+    }
+
     .footer-cta__wa-icon {
+      position: relative;
+      z-index: 1;
       width: clamp(52px, 9vw, 104px);
       height: auto;
       max-width: 100%;
       flex-shrink: 0;
       fill: currentColor;
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.22));
     }
 
     .footer-cta__label {
@@ -1280,28 +1325,8 @@
       --wa-green-hover: #8fffc0;
     }
 
-    .footer-email-link {
-      font-size: 13px;
-      color: var(--text-muted);
-      letter-spacing: 0.03em;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-      padding-bottom: 1px;
-      transition: color 0.2s, border-color 0.2s;
-      white-space: normal;
-      word-break: break-word;
-    }
-
-    /* Shown only on mobile next to CTA; hidden on desktop */
-    .footer-email-inline {
-      display: none;
-      font-size: 13px;
-      color: var(--text-muted);
-      letter-spacing: 0.03em;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-      padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
-      text-transform: none;
-      max-width: 100%;
+    html.a11y-high-contrast .footer-cta__icon-wrap {
+      border: 2px solid #fff;
     }
 
     .footer-mobile-head {
@@ -1314,14 +1339,10 @@
         transform: scale(1.03);
       }
 
-      .footer-email-link:hover {
-        color: var(--text);
-        border-color: var(--text);
-      }
-
-      .footer-email-inline:hover {
-        color: var(--text);
-        border-color: var(--text);
+      .footer-cta--whatsapp:hover .footer-cta__icon-wrap {
+        box-shadow:
+          0 10px 36px rgba(37, 211, 102, 0.48),
+          inset 0 1px 0 rgba(255, 255, 255, 0.35);
       }
 
       .footer-links a:hover {
@@ -1554,19 +1575,6 @@
         width: clamp(60px, 16vw, 112px);
       }
 
-      .footer-email-inline {
-        display: inline-flex !important;
-        align-items: center;
-        justify-content: center;
-        white-space: nowrap;
-        font-size: clamp(11px, 3.2vw, 14px);
-        max-width: min(100%, calc(100vw - 48px));
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        flex-shrink: 0;
-        min-width: 0;
-      }
-
       /* Hebrew: slightly larger label + icon when RTL */
       [dir="rtl"] .footer-mobile-head .footer-cta__label {
         font-size: clamp(46px, 12.8vw, 68px);
@@ -1703,10 +1711,6 @@
         gap: 16px;
         width: 100%;
         text-align: start;
-      }
-
-      .footer-bottom > .footer-email-link {
-        display: none;
       }
 
       .footer-links {
@@ -2636,19 +2640,19 @@
       object-fit: contain;
       object-position: center bottom;
       filter: drop-shadow(0 8px 22px rgba(0, 0, 0, 0.55));
-      /* Tip toward center phones; clockwise bias so it reads “pointing up” at the strip */
-      transform-origin: 28% 78%;
+      /* Tip aimed at center phone strip — extra clockwise so it reads “up & right” at the row */
+      transform-origin: 22% 74%;
       animation: pointerHeroMotion 2.8s ease-in-out infinite;
     }
 
     /* Float + slight rotation so the glass cursor feels alive under the phone strip */
     @keyframes pointerHeroMotion {
       0%, 100% {
-        transform: translateY(6px) rotate(6deg);
+        transform: translateY(6px) rotate(18deg);
         opacity: 0.88;
       }
       50% {
-        transform: translateY(-14px) rotate(14deg);
+        transform: translateY(-14px) rotate(28deg);
         opacity: 1;
       }
     }
@@ -3128,19 +3132,19 @@
       <a href="https://wa.me/972523393768?text=%D7%94%D7%99%D7%99%20%D7%9E%D7%94%20%D7%A7%D7%95%D7%A8%D7%94%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%D7%9A%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%95%D7%A2%20%D7%90%D7%99%D7%AA%D7%9A%20%D7%A4%D7%92%D7%99%D7%A9%D7%94"
         id="footerWhatsAppCta" class="footer-cta footer-cta--whatsapp" target="_blank" rel="noopener noreferrer"
         aria-label="צור קשר בוואטסאפ">
-        <svg class="footer-cta__wa-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="96" height="96"
-          aria-hidden="true" focusable="false">
-          <path fill="currentColor"
-            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.883 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-        </svg>
+        <span class="footer-cta__icon-wrap">
+          <svg class="footer-cta__wa-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="96" height="96"
+            aria-hidden="true" focusable="false">
+            <path fill="currentColor"
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.883 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+          </svg>
+        </span>
         <span class="footer-cta__label" data-en="Get in Touch" data-he="צור קשר">צור קשר</span>
       </a>
-      <a href="mailto:assaf.buskila10@gmail.com" class="footer-email-inline">assaf.buskila10@gmail.com</a>
     </div>
 
     <div class="footer-bottom reveal">
       <span data-en="© 2026 Assaf Buskila" data-he="© 2026 אסף בוסקילה">© 2026 אסף בוסקילה</span>
-      <a href="mailto:assaf.buskila10@gmail.com" class="footer-email-link">assaf.buskila10@gmail.com</a>
       <div class="footer-links">
         <a href="https://www.instagram.com/assaf_buskila/" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.linkedin.com/in/assaf-buskila-11ab7a347/" target="_blank" rel="noopener">LinkedIn</a>
