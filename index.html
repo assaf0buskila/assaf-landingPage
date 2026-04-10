@@ -1588,6 +1588,23 @@
       .service-card {
         aspect-ratio: auto;
         min-height: 280px;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+      }
+
+      .service-bg {
+        filter: grayscale(100%) contrast(1.05);
+        transition:
+          opacity 0.5s var(--ease),
+          transform 0.5s var(--ease),
+          filter 0.5s var(--ease);
+      }
+
+      .service-card.service-card--color-mobile .service-bg {
+        filter: grayscale(0%) contrast(1);
+        opacity: 0.4;
+        transform: scale(1.05);
       }
 
       .about-text {
@@ -1715,6 +1732,7 @@
 
     html.a11y-high-contrast .service-bg {
       opacity: 0.35;
+      filter: none !important;
     }
 
     html.a11y-underline-links a {
@@ -2211,14 +2229,19 @@
     /* Mobile-only: branded open GIF (desktop keeps blur-lift, no GIF) */
     .screen-break-overlay__gif {
       display: none;
-      width: min(92vw, 420px);
+      width: min(96vw, 630px);
       max-width: 100%;
       height: auto;
-      max-height: min(52vh, 460px);
+      max-height: min(78vh, 690px);
       object-fit: contain;
+      object-position: center center;
       pointer-events: none;
       user-select: none;
       -webkit-user-drag: none;
+      /* Sharper compositing when scaled (closer to “native” pixel grid on mobile) */
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
 
     .screen-break-overlay__title {
@@ -2365,6 +2388,10 @@
       .screen-break-overlay__stars,
       .screen-break-overlay__intro-glow {
         display: none !important;
+      }
+
+      .screen-break-overlay__intro {
+        max-width: min(96vw, 720px);
       }
 
       .screen-break-overlay__gif {
@@ -2703,7 +2730,7 @@
     <div class="screen-break-overlay__stars" aria-hidden="true"></div>
     <div class="screen-break-overlay__intro">
       <div class="screen-break-overlay__intro-glow" aria-hidden="true"></div>
-      <img src="assents/open-intro-mobile.gif" alt="" class="screen-break-overlay__gif" width="420" height="420"
+      <img src="assents/open-intro-mobile.gif" alt="" class="screen-break-overlay__gif" width="630"
         decoding="async" fetchpriority="high" />
       <h1 class="screen-break-overlay__title">
         <span data-en="Hey, glad you're here!" data-he="היי, כיף שבאת!">היי, כיף שבאת!</span>
@@ -3549,6 +3576,14 @@
           aboutPhotoEl.classList.toggle('about-photo--color-mobile');
         });
       }
+
+      // 8b. Service cards — tap image area to toggle full color (mobile only, same idea as about photo)
+      document.querySelectorAll('#services .service-card').forEach(serviceCard => {
+        serviceCard.addEventListener('click', () => {
+          if (!aboutMobileMq.matches) return;
+          serviceCard.classList.toggle('service-card--color-mobile');
+        });
+      });
 
       // 9. ENTRY OVERLAY — 3 taps: CSS blur-lift stages (no canvas)
       const breakOverlay = document.getElementById('screenBreak');
