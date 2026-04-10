@@ -1904,9 +1904,11 @@
       position: absolute;
       inset: -25%;
       background: url('assents/neon-bg.gif') center / cover;
-      opacity: 0.06;
+      opacity: 0.09;
       mix-blend-mode: screen;
       animation: neonDrift 28s ease-in-out infinite alternate;
+      mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 30%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 30%, transparent 75%);
     }
 
     @keyframes neonDrift {
@@ -1990,8 +1992,14 @@
       -webkit-backdrop-filter: blur(0);
     }
 
-    html.site-locked { overflow: hidden; }
+    html.site-locked,
+    html.site-locked body {
+      overflow: hidden;
+      touch-action: none;
+    }
     html.site-revealed .screen-break-overlay { display: none; }
+
+    .screen-break-overlay { touch-action: none; }
 
     /* ============================================================
        MOBILE PHONE CAROUSEL (hero replacement)
@@ -2079,20 +2087,20 @@
 
     .phone-carousel-hand {
       position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-44%);
-      width: 90px;
+      bottom: -8px;
+      right: 14%;
+      width: 72px;
       z-index: 5;
-      animation: handSwipe 3.8s ease-in-out infinite;
-      filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.4));
+      transform: rotate(-45deg);
+      animation: pointerSwipe 3.8s ease-in-out infinite;
+      filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45));
     }
 
-    @keyframes handSwipe {
-      0%, 100% { transform: translateX(-44%) rotate(0deg); }
-      20% { transform: translateX(-34%) rotate(-2deg); }
-      50% { transform: translateX(-54%) rotate(1.5deg); }
-      80% { transform: translateX(-44%) rotate(-0.5deg); }
+    @keyframes pointerSwipe {
+      0%, 100% { transform: rotate(-45deg) translateX(0); }
+      25% { transform: rotate(-42deg) translateX(8px); }
+      55% { transform: rotate(-48deg) translateX(-8px); }
+      80% { transform: rotate(-45deg) translateX(2px); }
     }
 
     .phone-carousel-caption {
@@ -2123,26 +2131,62 @@
         margin-block: 4px 0;
       }
 
-      /* About: side-by-side with smaller photo */
+      /* About mobile: photo beside 3rd block only, first 2 full width */
       .about-grid {
-        grid-template-columns: 1fr 105px !important;
-        gap: 16px !important;
+        display: grid !important;
+        grid-template-columns: 1fr 100px !important;
+        grid-template-rows: auto auto auto !important;
+        gap: 24px 14px !important;
         align-items: start;
       }
 
+      /* Make about-text a transparent wrapper so its children become grid items */
+      .about-text {
+        display: contents !important;
+      }
+
+      /* First two blocks: full width */
+      .about-block:nth-child(1) {
+        grid-column: 1 / -1;
+      }
+
+      .about-block:nth-child(2) {
+        grid-column: 1 / -1;
+      }
+
+      /* Third block: only first column */
+      .about-block:nth-child(3) {
+        grid-column: 1;
+        grid-row: 3;
+      }
+
+      /* Photo: beside third block */
       .about-image-container {
-        width: 105px !important;
-        max-width: 105px !important;
+        grid-column: 2 !important;
+        grid-row: 3 !important;
+        width: 100px !important;
+        max-width: 100px !important;
         aspect-ratio: 3 / 4 !important;
         border-radius: 14px;
+        align-self: start;
       }
 
       .about-photo {
         border-radius: 14px;
       }
 
+      /* Restore tap hint inside smaller photo */
       .about-tap-hint {
-        display: none;
+        display: inline-flex;
+        font-size: 9px;
+        padding: 4px 5px;
+        inset-inline-end: 4px;
+        bottom: 4px;
+      }
+
+      .about-tap-hint__arrow {
+        width: 18px;
+        height: 18px;
       }
     }
 
@@ -2267,51 +2311,8 @@
             <div class="phone-frame" data-pos="hidden" data-idx="6"><img src="assents/7.jpg" alt="" loading="eager" decoding="async" /></div>
             <div class="phone-frame" data-pos="hidden" data-idx="7"><img src="assents/8.jpg" alt="" loading="eager" decoding="async" /></div>
           </div>
-          <!-- Realistic swiping hand -->
-          <svg class="phone-carousel-hand" viewBox="0 0 180 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="skinMain" x1="90" y1="0" x2="90" y2="240" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#F5D0B5"/>
-                <stop offset="45%" stop-color="#E8B494"/>
-                <stop offset="100%" stop-color="#D49A78"/>
-              </linearGradient>
-              <linearGradient id="skinDeep" x1="90" y1="40" x2="90" y2="240" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#EAC09E"/>
-                <stop offset="100%" stop-color="#C88A68"/>
-              </linearGradient>
-              <linearGradient id="nailFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#FAE8DC"/>
-                <stop offset="100%" stop-color="#F0D0BC"/>
-              </linearGradient>
-              <filter id="hShadow"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.28"/></filter>
-            </defs>
-            <g filter="url(#hShadow)">
-              <!-- Wrist + palm -->
-              <path d="M48 240 L48 148 Q48 125 60 112 L120 112 Q132 125 132 148 L132 240 Z" fill="url(#skinMain)"/>
-              <!-- Thumb -->
-              <path d="M48 165 Q30 150 24 128 Q18 105 32 96 Q44 88 52 105 Q58 120 48 148 Z" fill="url(#skinMain)"/>
-              <path d="M36 104 Q34 98 38 94 Q44 88 50 96" stroke="#D49A78" stroke-width="0.8" fill="none" opacity="0.5"/>
-              <!-- Index finger (extended for swipe) -->
-              <path d="M62 112 Q62 48 72 26 Q78 12 90 12 Q102 12 108 26 Q118 48 118 112 Z" fill="url(#skinMain)"/>
-              <!-- Middle finger -->
-              <path d="M78 112 Q80 44 88 24 Q92 14 100 14 Q108 14 112 24 Q120 44 122 112 Z" fill="url(#skinDeep)" opacity="0.96"/>
-              <!-- Ring finger -->
-              <path d="M96 116 Q98 58 104 42 Q108 32 114 32 Q120 32 124 42 Q130 58 132 116 Z" fill="url(#skinDeep)" opacity="0.93"/>
-              <!-- Pinky -->
-              <path d="M112 124 Q114 76 118 62 Q121 54 126 54 Q131 54 134 62 Q138 76 140 124 Z" fill="url(#skinDeep)" opacity="0.9"/>
-              <!-- Fingernails -->
-              <ellipse cx="90" cy="18" rx="10" ry="7" fill="url(#nailFill)" opacity="0.45"/>
-              <ellipse cx="100" cy="20" rx="9" ry="6" fill="url(#nailFill)" opacity="0.35"/>
-              <ellipse cx="114" cy="38" rx="8" ry="5.5" fill="url(#nailFill)" opacity="0.3"/>
-              <ellipse cx="126" cy="60" rx="6.5" ry="5" fill="url(#nailFill)" opacity="0.25"/>
-              <!-- Knuckle creases -->
-              <path d="M56 150 Q90 138 126 155" stroke="#C8906A" stroke-width="0.7" fill="none" opacity="0.3"/>
-              <path d="M50 176 Q88 164 130 180" stroke="#C8906A" stroke-width="0.7" fill="none" opacity="0.22"/>
-              <!-- Finger joint lines -->
-              <path d="M72 68 Q90 62 110 70" stroke="#D49A78" stroke-width="0.5" fill="none" opacity="0.25"/>
-              <path d="M74 88 Q90 82 112 90" stroke="#D49A78" stroke-width="0.5" fill="none" opacity="0.2"/>
-            </g>
-          </svg>
+          <!-- Crystal pointer — tap / swipe indicator -->
+          <img class="phone-carousel-hand" src="assents/pointer.png" alt="" aria-hidden="true" decoding="async" />
         </div>
         <p class="phone-carousel-caption" data-en="You can create anything you imagine" data-he="ניתן ליצור כל מה שעולה לכם לראש">ניתן ליצור כל מה שעולה לכם לראש</p>
       </div>
