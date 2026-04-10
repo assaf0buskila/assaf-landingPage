@@ -1888,10 +1888,286 @@
         width: min(320px, calc(100vw - 32px));
       }
     }
+    /* ============================================================
+       NEON BACKGROUND LAYER
+       ============================================================ */
+    .neon-bg-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .neon-bg-layer::after {
+      content: '';
+      position: absolute;
+      inset: -25%;
+      background: url('assents/neon-bg.gif') center / cover;
+      opacity: 0.06;
+      mix-blend-mode: screen;
+      animation: neonDrift 28s ease-in-out infinite alternate;
+    }
+
+    @keyframes neonDrift {
+      0% { transform: scale(1.1) translate(0, 0) rotate(0deg); }
+      33% { transform: scale(1.18) translate(-2%, 1.5%) rotate(1deg); }
+      66% { transform: scale(1.22) translate(1.5%, -2%) rotate(-1deg); }
+      100% { transform: scale(1.12) translate(-1%, 1%) rotate(0.5deg); }
+    }
+
+    #about { position: relative; overflow: hidden; }
+    #about > *:not(.neon-bg-layer),
+    .footer > *:not(.neon-bg-layer) {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ============================================================
+       SCREEN BREAK OVERLAY
+       ============================================================ */
+    .screen-break-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: rgba(8, 8, 8, 0.92);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+                  backdrop-filter 0.8s ease;
+    }
+
+    .screen-break-overlay canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .screen-break-overlay__hint {
+      font-size: clamp(11px, 2.5vw, 14px);
+      color: rgba(255, 255, 255, 0.4);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 400;
+      z-index: 2;
+      animation: hintPulse 2.5s ease-in-out infinite;
+      user-select: none;
+    }
+
+    @keyframes hintPulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.75; }
+    }
+
+    .screen-break-overlay__counter {
+      font-size: clamp(120px, 22vw, 240px);
+      font-weight: 100;
+      color: rgba(255, 255, 255, 0.03);
+      line-height: 1;
+      z-index: 2;
+      user-select: none;
+      transition: transform 0.25s ease, color 0.25s ease;
+    }
+
+    .screen-break-overlay__counter.bump {
+      transform: scale(1.2);
+      color: rgba(255, 255, 255, 0.07);
+    }
+
+    .screen-break-overlay.shattered {
+      opacity: 0;
+      pointer-events: none;
+      backdrop-filter: blur(0);
+      -webkit-backdrop-filter: blur(0);
+    }
+
+    html.site-locked { overflow: hidden; }
+    html.site-revealed .screen-break-overlay { display: none; }
+
+    /* ============================================================
+       MOBILE PHONE CAROUSEL (hero replacement)
+       ============================================================ */
+    .phone-carousel {
+      display: none;
+    }
+
+    .phone-carousel-scene {
+      position: relative;
+      width: 100%;
+      height: 330px;
+      perspective: 1000px;
+      overflow: visible;
+    }
+
+    .phone-carousel-viewport {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-style: preserve-3d;
+    }
+
+    .phone-frame {
+      position: absolute;
+      width: 136px;
+      height: 242px;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 3px solid rgba(255, 255, 255, 0.12);
+      background: #111;
+      box-shadow:
+        0 14px 44px rgba(0, 0, 0, 0.55),
+        0 2px 8px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform, opacity;
+    }
+
+    .phone-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .phone-frame[data-pos="center"] {
+      transform: translateX(0) scale(1);
+      opacity: 1;
+      z-index: 3;
+    }
+
+    .phone-frame[data-pos="left"] {
+      transform: translateX(-105px) scale(0.76) rotateY(18deg);
+      opacity: 0.5;
+      z-index: 1;
+    }
+
+    .phone-frame[data-pos="right"] {
+      transform: translateX(105px) scale(0.76) rotateY(-18deg);
+      opacity: 0.5;
+      z-index: 1;
+    }
+
+    .phone-frame[data-pos="far-left"] {
+      transform: translateX(-170px) scale(0.5) rotateY(30deg);
+      opacity: 0;
+      z-index: 0;
+    }
+
+    .phone-frame[data-pos="far-right"] {
+      transform: translateX(170px) scale(0.5) rotateY(-30deg);
+      opacity: 0;
+      z-index: 0;
+    }
+
+    .phone-frame[data-pos="hidden"] {
+      transform: scale(0.4);
+      opacity: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .phone-carousel-hand {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-44%);
+      width: 90px;
+      z-index: 5;
+      animation: handSwipe 3.8s ease-in-out infinite;
+      filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.4));
+    }
+
+    @keyframes handSwipe {
+      0%, 100% { transform: translateX(-44%) rotate(0deg); }
+      20% { transform: translateX(-34%) rotate(-2deg); }
+      50% { transform: translateX(-54%) rotate(1.5deg); }
+      80% { transform: translateX(-44%) rotate(-0.5deg); }
+    }
+
+    .phone-carousel-caption {
+      text-align: center;
+      margin-top: 28px;
+      font-size: clamp(14px, 3.8vw, 17px);
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      background: linear-gradient(135deg, #ffffff 0%, #00ff88 45%, #00bbff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: captionShimmer 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes captionShimmer {
+      0% { background-position: 0% 50%; filter: brightness(0.9); }
+      100% { background-position: 100% 50%; filter: brightness(1.2); }
+    }
+
+    /* Mobile overrides for carousel + about layout */
+    @media (max-width: 800px) {
+      .hero-orbit { display: none !important; }
+
+      .phone-carousel {
+        display: block;
+        flex: 0 0 auto;
+        margin-block: 4px 0;
+      }
+
+      /* About: side-by-side with smaller photo */
+      .about-grid {
+        grid-template-columns: 1fr 105px !important;
+        gap: 16px !important;
+        align-items: start;
+      }
+
+      .about-image-container {
+        width: 105px !important;
+        max-width: 105px !important;
+        aspect-ratio: 3 / 4 !important;
+        border-radius: 14px;
+      }
+
+      .about-photo {
+        border-radius: 14px;
+      }
+
+      .about-tap-hint {
+        display: none;
+      }
+    }
+
+    /* Reduced motion: disable new animations */
+    @media (prefers-reduced-motion: reduce) {
+      .neon-bg-layer::after { animation: none; }
+      .phone-carousel-hand { animation: none; }
+      .screen-break-overlay__hint { animation: none; opacity: 0.5; }
+      .phone-carousel-caption { animation: none; }
+    }
+
+    html.a11y-reduce-motion .neon-bg-layer::after { animation: none !important; }
+    html.a11y-reduce-motion .phone-carousel-hand { animation: none !important; }
+    html.a11y-reduce-motion .screen-break-overlay__hint { animation: none !important; }
   </style>
 </head>
 
 <body>
+
+  <!-- SCREEN BREAK OVERLAY — 3 clicks to shatter -->
+  <div class="screen-break-overlay" id="screenBreak" aria-hidden="true">
+    <canvas id="crackCanvas"></canvas>
+    <span class="screen-break-overlay__hint" data-en="Click to enter" data-he="לחץ כדי להיכנס">לחץ כדי להיכנס</span>
+    <span class="screen-break-overlay__counter" id="breakCounter">3</span>
+  </div>
 
   <a href="#main-content" class="skip-link" data-en="Skip to main content" data-he="דלג לתוכן הראשי">דלג לתוכן הראשי</a>
 
@@ -1978,9 +2254,71 @@
         </div>
       </div>
 
+      <!-- MOBILE PHONE CAROUSEL (replaces orbit on mobile) -->
+      <div class="phone-carousel" aria-hidden="true">
+        <div class="phone-carousel-scene">
+          <div class="phone-carousel-viewport" id="phoneViewport">
+            <div class="phone-frame" data-pos="hidden" data-idx="0"><img src="assents/1.jpg" alt="" loading="eager" decoding="async" /></div>
+            <div class="phone-frame" data-pos="far-left" data-idx="1"><img src="assents/2.jpg" alt="" loading="eager" decoding="async" /></div>
+            <div class="phone-frame" data-pos="left" data-idx="2"><img src="assents/3.jpg" alt="" loading="eager" decoding="async" /></div>
+            <div class="phone-frame" data-pos="center" data-idx="3"><img src="assents/4.jpg" alt="" loading="eager" decoding="async" /></div>
+            <div class="phone-frame" data-pos="right" data-idx="4"><img src="assents/5.jpg" alt="" loading="eager" decoding="async" /></div>
+            <div class="phone-frame" data-pos="far-right" data-idx="5"><img src="assents/6.jpg" alt="" loading="eager" decoding="async" /></div>
+            <div class="phone-frame" data-pos="hidden" data-idx="6"><img src="assents/7.jpg" alt="" loading="eager" decoding="async" /></div>
+            <div class="phone-frame" data-pos="hidden" data-idx="7"><img src="assents/8.jpg" alt="" loading="eager" decoding="async" /></div>
+          </div>
+          <!-- Realistic swiping hand -->
+          <svg class="phone-carousel-hand" viewBox="0 0 180 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="skinMain" x1="90" y1="0" x2="90" y2="240" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#F5D0B5"/>
+                <stop offset="45%" stop-color="#E8B494"/>
+                <stop offset="100%" stop-color="#D49A78"/>
+              </linearGradient>
+              <linearGradient id="skinDeep" x1="90" y1="40" x2="90" y2="240" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#EAC09E"/>
+                <stop offset="100%" stop-color="#C88A68"/>
+              </linearGradient>
+              <linearGradient id="nailFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#FAE8DC"/>
+                <stop offset="100%" stop-color="#F0D0BC"/>
+              </linearGradient>
+              <filter id="hShadow"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.28"/></filter>
+            </defs>
+            <g filter="url(#hShadow)">
+              <!-- Wrist + palm -->
+              <path d="M48 240 L48 148 Q48 125 60 112 L120 112 Q132 125 132 148 L132 240 Z" fill="url(#skinMain)"/>
+              <!-- Thumb -->
+              <path d="M48 165 Q30 150 24 128 Q18 105 32 96 Q44 88 52 105 Q58 120 48 148 Z" fill="url(#skinMain)"/>
+              <path d="M36 104 Q34 98 38 94 Q44 88 50 96" stroke="#D49A78" stroke-width="0.8" fill="none" opacity="0.5"/>
+              <!-- Index finger (extended for swipe) -->
+              <path d="M62 112 Q62 48 72 26 Q78 12 90 12 Q102 12 108 26 Q118 48 118 112 Z" fill="url(#skinMain)"/>
+              <!-- Middle finger -->
+              <path d="M78 112 Q80 44 88 24 Q92 14 100 14 Q108 14 112 24 Q120 44 122 112 Z" fill="url(#skinDeep)" opacity="0.96"/>
+              <!-- Ring finger -->
+              <path d="M96 116 Q98 58 104 42 Q108 32 114 32 Q120 32 124 42 Q130 58 132 116 Z" fill="url(#skinDeep)" opacity="0.93"/>
+              <!-- Pinky -->
+              <path d="M112 124 Q114 76 118 62 Q121 54 126 54 Q131 54 134 62 Q138 76 140 124 Z" fill="url(#skinDeep)" opacity="0.9"/>
+              <!-- Fingernails -->
+              <ellipse cx="90" cy="18" rx="10" ry="7" fill="url(#nailFill)" opacity="0.45"/>
+              <ellipse cx="100" cy="20" rx="9" ry="6" fill="url(#nailFill)" opacity="0.35"/>
+              <ellipse cx="114" cy="38" rx="8" ry="5.5" fill="url(#nailFill)" opacity="0.3"/>
+              <ellipse cx="126" cy="60" rx="6.5" ry="5" fill="url(#nailFill)" opacity="0.25"/>
+              <!-- Knuckle creases -->
+              <path d="M56 150 Q90 138 126 155" stroke="#C8906A" stroke-width="0.7" fill="none" opacity="0.3"/>
+              <path d="M50 176 Q88 164 130 180" stroke="#C8906A" stroke-width="0.7" fill="none" opacity="0.22"/>
+              <!-- Finger joint lines -->
+              <path d="M72 68 Q90 62 110 70" stroke="#D49A78" stroke-width="0.5" fill="none" opacity="0.25"/>
+              <path d="M74 88 Q90 82 112 90" stroke="#D49A78" stroke-width="0.5" fill="none" opacity="0.2"/>
+            </g>
+          </svg>
+        </div>
+        <p class="phone-carousel-caption" data-en="You can create anything you imagine" data-he="ניתן ליצור כל מה שעולה לכם לראש">ניתן ליצור כל מה שעולה לכם לראש</p>
+      </div>
+
       <div class="hero-content" id="heroContent">
         <h1 class="hero-title">
-          <span data-en="Websites that work for your business" data-he="היי הגעת לאתר שלי">היי הגעת לאתר שלי</span>
+          <span data-en="Hey, glad you're here!" data-he="היי, כיף שבאת!">היי, כיף שבאת!</span>
         </h1>
         <p class="hero-sub" data-en="Industrial management Engineering student · Websites that perform" data-he="סטודנט להנדסת תעשייה וניהול אתרים שמביאים תוצאות">סטודנט להנדסת תעשייה וניהול · אתרים שמביאים תוצאות</p>
       </div>
@@ -1988,21 +2326,22 @@
 
     <!-- ABOUT ME (was at end before   now right after hero) -->
     <section class="section" id="about">
-      <h2 class="section-title reveal" data-en="I'm Assaf Buskila" data-he="היי אני אסף בוסקילה">היי אני אסף בוסקילה</h2>
+      <div class="neon-bg-layer" aria-hidden="true"></div>
+      <h2 class="section-title reveal" data-en="Before we start, a bit about me.." data-he="אז קצת לפני שמתחילים אספר לך על עצמי..">אז קצת לפני שמתחילים אספר לך על עצמי..</h2>
 
       <div class="about-grid reveal">
 
         <div class="about-text">
           <div class="about-block">
-            <h3 class="about-subtitle" data-en="WHAT I DO" data-he="מה אני עושה">מה אני עושה</h3>
+            <h3 class="about-subtitle" data-en="SO WHAT DO I DO" data-he="אז מה אני עושה">אז מה אני עושה</h3>
             <p class="about-desc"
-              data-en="I build websites that are clean, fast, and actually useful for businesses  not just visually impressive. I focus on making them perform and convert."
-              data-he="אני בונה אתרים שהם נקיים, מהירים ושימושיים לעסקים   לא רק מרשימים חזותית. אני מתמקד בכך שהם יהיו פרקטיים ויובילו להמרה מליד ללקוח.">
-              אני בונה אתרים שהם נקיים, מהירים ושימושיים לעסקים   לא רק מרשימים חזותית. אני מתמקד בכך שהם יהיו פרקטיים ויובילו להמרה מליד ללקוח.</p>
+              data-en="I build websites that are clean, fast, and actually useful for businesses  not just visually impressive. I focus on making them perform and convert. All with personal guidance."
+              data-he="אני בונה אתרים שהם נקיים, מהירים ושימושיים לעסקים   לא רק מרשימים חזותית. אני מתמקד בכך שהם יהיו פרקטיים ויובילו להמרה מליד ללקוח. הכל בליווי אישי.">
+              אני בונה אתרים שהם נקיים, מהירים ושימושיים לעסקים   לא רק מרשימים חזותית. אני מתמקד בכך שהם יהיו פרקטיים ויובילו להמרה מליד ללקוח. הכל בליווי אישי.</p>
           </div>
 
           <div class="about-block">
-            <h3 class="about-subtitle" data-en="BACKGROUND" data-he="רקע">רקע</h3>
+            <h3 class="about-subtitle" data-en="BACKGROUND" data-he="הרקע שלי"> הרקע שלי</h3>
             <p class="about-desc"
               data-en="Industrial management Engineering student with hands-on experience building AI-based systems for data analysis and automation. Former IDF combat officer discipline and responsibility are part of how I work."
               data-he="סטודנט להנדסת תעשייה וניהול עם ניסיון מעשי בבניית מערכות מבוססות AI לניתוח נתונים ואוטומציה. קצין לחימה לשעבר בצה״ל משמעת ואחריות הם חלק מהאופן שבו אני עובד.">
@@ -2013,8 +2352,8 @@
             <h3 class="about-subtitle" data-en="FOCUS" data-he="מיקוד">מיקוד</h3>
             <p class="about-desc"
               data-en="Currently helping small and growing businesses build a solid online presence with modern, efficient websites."
-              data-he="כיום אני עוזר לעסקים קטנים וצומחים לבנות נוכחות מקוונת חזקה עם אתרים מודרניים ויעילים.">
-              כיום אני עוזר לעסקים קטנים וצומחים לבנות נוכחות מקוונת חזקה עם אתרים מודרניים ויעילים.</p>
+              data-he="כיום אני רוצה לעזור לעסקים קטנים וצומחים לבנות נוכחות מקוונת חזקה עם אתרים מודרניים ויעילים.">
+              כיום אני רוצה לעזור לעסקים קטנים וצומחים לבנות נוכחות מקוונת חזקה עם אתרים מודרניים ויעילים.</p>
           </div>
         </div>
 
@@ -2141,7 +2480,8 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="footer" id="contact">
+  <footer class="footer" id="contact" style="position:relative;overflow:hidden;">
+    <div class="neon-bg-layer" aria-hidden="true"></div>
     <div class="footer-mobile-head">
       <a href="https://wa.me/972523393768?text=%D7%94%D7%99%D7%99%20%D7%9E%D7%94%20%D7%A7%D7%95%D7%A8%D7%94%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%D7%9A%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%95%D7%A2%20%D7%90%D7%99%D7%AA%D7%9A%20%D7%A4%D7%92%D7%99%D7%A9%D7%94"
         class="footer-cta" target="_blank" rel="noopener noreferrer"
@@ -2693,6 +3033,150 @@
           if (!aboutMobileMq.matches) return;
           aboutPhotoEl.classList.toggle('about-photo--color-mobile');
         });
+      }
+
+      // 9. SCREEN BREAK OVERLAY — 3 clicks to shatter and reveal
+      const breakOverlay = document.getElementById('screenBreak');
+      const crackCanvas = document.getElementById('crackCanvas');
+      const breakCounter = document.getElementById('breakCounter');
+
+      if (breakOverlay && crackCanvas) {
+        // Lock scroll while overlay is visible
+        document.documentElement.classList.add('site-locked');
+
+        const ctx = crackCanvas.getContext('2d');
+        let clicksRemaining = 3;
+
+        function resizeCanvas() {
+          crackCanvas.width = window.innerWidth * (window.devicePixelRatio || 1);
+          crackCanvas.height = window.innerHeight * (window.devicePixelRatio || 1);
+          crackCanvas.style.width = window.innerWidth + 'px';
+          crackCanvas.style.height = window.innerHeight + 'px';
+          ctx.scale(window.devicePixelRatio || 1, window.devicePixelRatio || 1);
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        function drawCrack(x, y, intensity) {
+          const branches = 6 + Math.floor(intensity * 5);
+          for (let i = 0; i < branches; i++) {
+            let angle = (Math.PI * 2 / branches) * i + (Math.random() - 0.5) * 0.6;
+            const maxLen = 60 + intensity * 80 + Math.random() * 60;
+            const steps = 4 + Math.floor(Math.random() * 5);
+            const stepLen = maxLen / steps;
+
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            let cx = x, cy = y;
+
+            for (let s = 0; s < steps; s++) {
+              angle += (Math.random() - 0.5) * 0.9;
+              cx += Math.cos(angle) * stepLen;
+              cy += Math.sin(angle) * stepLen;
+              ctx.lineTo(cx, cy);
+
+              // Sub-branches for realism
+              if (Math.random() > 0.5) {
+                const subAngle = angle + (Math.random() - 0.5) * 1.8;
+                const subLen = stepLen * (0.25 + Math.random() * 0.45);
+                ctx.moveTo(cx, cy);
+                ctx.lineTo(
+                  cx + Math.cos(subAngle) * subLen,
+                  cy + Math.sin(subAngle) * subLen
+                );
+                ctx.moveTo(cx, cy);
+              }
+            }
+
+            // White crack line
+            ctx.strokeStyle = `rgba(255,255,255,${0.35 + intensity * 0.2})`;
+            ctx.lineWidth = 0.8 + Math.random() * 1.2;
+            ctx.stroke();
+
+            // Faint glow line
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            let gx = x, gy = y;
+            let ga = (Math.PI * 2 / branches) * i + (Math.random() - 0.5) * 0.3;
+            for (let s = 0; s < steps; s++) {
+              ga += (Math.random() - 0.5) * 0.7;
+              gx += Math.cos(ga) * stepLen * 0.9;
+              gy += Math.sin(ga) * stepLen * 0.9;
+              ctx.lineTo(gx, gy);
+            }
+            ctx.strokeStyle = `rgba(200,220,255,${0.08 + intensity * 0.06})`;
+            ctx.lineWidth = 3 + Math.random() * 2;
+            ctx.stroke();
+          }
+        }
+
+        breakOverlay.addEventListener('click', (e) => {
+          if (clicksRemaining <= 0) return;
+          clicksRemaining--;
+
+          const intensity = (3 - clicksRemaining) / 3;
+          drawCrack(e.clientX, e.clientY, intensity);
+
+          // Bump counter animation
+          if (breakCounter) {
+            breakCounter.textContent = String(clicksRemaining);
+            breakCounter.classList.add('bump');
+            setTimeout(() => breakCounter.classList.remove('bump'), 250);
+          }
+
+          if (clicksRemaining === 0) {
+            // Final shatter
+            setTimeout(() => {
+              breakOverlay.classList.add('shattered');
+              document.documentElement.classList.remove('site-locked');
+              setTimeout(() => {
+                document.documentElement.classList.add('site-revealed');
+                breakOverlay.remove();
+              }, 1000);
+            }, 400);
+          }
+        });
+      }
+
+      // 10. MOBILE PHONE CAROUSEL — auto-sliding coverflow
+      const phoneViewport = document.getElementById('phoneViewport');
+      if (phoneViewport && isMobile) {
+        const frames = [...phoneViewport.querySelectorAll('.phone-frame')];
+        const total = frames.length;
+        let centerIdx = 3; // start with image 4 centered
+        const positions = ['far-left', 'left', 'center', 'right', 'far-right'];
+
+        function updateCarousel() {
+          frames.forEach((frame, i) => {
+            const offset = ((i - centerIdx) % total + total + Math.floor(total / 2)) % total - Math.floor(total / 2);
+            let pos = 'hidden';
+            if (offset === 0) pos = 'center';
+            else if (offset === -1) pos = 'left';
+            else if (offset === 1) pos = 'right';
+            else if (offset === -2) pos = 'far-left';
+            else if (offset === 2) pos = 'far-right';
+            frame.setAttribute('data-pos', pos);
+          });
+        }
+
+        updateCarousel();
+        setInterval(() => {
+          centerIdx = (centerIdx + 1) % total;
+          updateCarousel();
+        }, 3200);
+
+        // Allow swipe gesture on the carousel
+        let touchStartX = 0;
+        phoneViewport.addEventListener('touchstart', (e) => {
+          touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+        phoneViewport.addEventListener('touchend', (e) => {
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          if (Math.abs(dx) > 40) {
+            centerIdx = (centerIdx + (dx < 0 ? 1 : total - 1)) % total;
+            updateCarousel();
+          }
+        }, { passive: true });
       }
 
     });
