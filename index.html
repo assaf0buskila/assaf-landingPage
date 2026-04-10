@@ -1444,6 +1444,12 @@
         padding-top: 4px;
       }
 
+      /* Intro copy lives in the open-screen video — hide duplicate hero lines on mobile */
+      .hero .hero-title,
+      .hero .hero-sub {
+        display: none !important;
+      }
+
       .section {
         padding: 52px 20px;
       }
@@ -2202,16 +2208,18 @@
       pointer-events: auto;
     }
 
-    /* Mobile-only: branded open animation (desktop keeps blur-lift, no GIF) */
-    .screen-break-overlay__gif {
+    /* Mobile-only: branded open video (desktop keeps blur-lift, no video) */
+    .screen-break-overlay__video {
       display: none;
       width: min(92vw, 420px);
+      max-width: 100%;
       height: auto;
       max-height: min(52vh, 460px);
       object-fit: contain;
       pointer-events: none;
       user-select: none;
       -webkit-user-drag: none;
+      background: #000;
     }
 
     .screen-break-overlay__title {
@@ -2360,7 +2368,7 @@
         display: none !important;
       }
 
-      .screen-break-overlay__gif {
+      .screen-break-overlay__video {
         display: block;
       }
 
@@ -2555,20 +2563,6 @@
         min-height: 300px;
       }
 
-      /* Soft purple wash behind phones (ties hero to entry aurora, Xtract token family) */
-      .phone-carousel-viewport::before {
-        content: '';
-        position: absolute;
-        inset: -25% -20%;
-        z-index: 0;
-        pointer-events: none;
-        background: radial-gradient(ellipse 55% 50% at 50% 42%,
-          rgba(129, 74, 200, 0.14) 0%,
-          rgba(223, 122, 254, 0.06) 45%,
-          transparent 70%);
-        filter: blur(2px);
-      }
-
       html:not(.a11y-reduce-motion) .phone-carousel-viewport {
         animation: phoneViewportDrift 9s ease-in-out infinite;
       }
@@ -2699,7 +2693,7 @@
 
 <body>
 
-  <!-- ENTRY OVERLAY — desktop: 3 taps blur-lift · mobile: GIF + tap (no duplicate headline text) -->
+  <!-- ENTRY OVERLAY — desktop: 3 taps blur-lift · mobile: intro MP4 + tap (hero headline hidden on mobile) -->
   <div class="screen-break-overlay" id="screenBreak" role="button" tabindex="0"
     aria-label="Tap three times to enter the site">
     <div class="screen-break-overlay__aurora" aria-hidden="true">
@@ -2710,8 +2704,10 @@
     <div class="screen-break-overlay__stars" aria-hidden="true"></div>
     <div class="screen-break-overlay__intro">
       <div class="screen-break-overlay__intro-glow" aria-hidden="true"></div>
-      <img src="assents/page-gif-mobile.gif" alt="" class="screen-break-overlay__gif" width="420" height="420"
-        decoding="async" fetchpriority="high" />
+      <video class="screen-break-overlay__video" muted playsinline autoplay loop preload="metadata"
+        aria-hidden="true">
+        <source src="assents/open-intro-mobile.mp4" type="video/mp4" />
+      </video>
       <h1 class="screen-break-overlay__title">
         <span data-en="Hey, glad you're here!" data-he="היי, כיף שבאת!">היי, כיף שבאת!</span>
       </h1>
@@ -3563,6 +3559,8 @@
 
       function finishScreenBreak() {
         if (!breakOverlay) return;
+        const introVid = breakOverlay.querySelector('.screen-break-overlay__video');
+        if (introVid) introVid.pause();
         setTimeout(() => {
           breakOverlay.classList.add('shattered');
           document.documentElement.classList.remove('site-locked');
@@ -3590,6 +3588,10 @@
         if (entryMobileMq.matches) {
           breakOverlay.classList.add('screen-break-overlay--xtract');
           breakOverlay.setAttribute('aria-label', 'Tap to enter the site');
+          const introVid = breakOverlay.querySelector('.screen-break-overlay__video');
+          if (introVid) {
+            introVid.play().catch(() => {});
+          }
         }
 
         function onTap() {
