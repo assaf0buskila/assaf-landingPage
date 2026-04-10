@@ -2229,10 +2229,10 @@
     /* Mobile-only: branded open GIF (desktop keeps blur-lift, no GIF) */
     .screen-break-overlay__gif {
       display: none;
-      width: min(96vw, 630px);
+      width: min(100vw - 12px, 840px);
       max-width: 100%;
       height: auto;
-      max-height: min(78vh, 690px);
+      max-height: min(88vh, 900px);
       object-fit: contain;
       object-position: center center;
       pointer-events: none;
@@ -2391,7 +2391,8 @@
       }
 
       .screen-break-overlay__intro {
-        max-width: min(96vw, 720px);
+        max-width: min(100vw - 12px, 900px);
+        padding-inline: 6px;
       }
 
       .screen-break-overlay__gif {
@@ -2730,7 +2731,7 @@
     <div class="screen-break-overlay__stars" aria-hidden="true"></div>
     <div class="screen-break-overlay__intro">
       <div class="screen-break-overlay__intro-glow" aria-hidden="true"></div>
-      <img src="assents/open-intro-mobile.gif" alt="" class="screen-break-overlay__gif" width="630"
+      <img src="assents/open-intro-mobile.gif" alt="" class="screen-break-overlay__gif" width="840"
         decoding="async" fetchpriority="high" />
       <h1 class="screen-break-overlay__title">
         <span data-en="Hey, glad you're here!" data-he="היי, כיף שבאת!">היי, כיף שבאת!</span>
