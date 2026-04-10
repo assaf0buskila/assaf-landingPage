@@ -1771,8 +1771,17 @@
         bottom: max(88px, calc(72px + env(safe-area-inset-bottom)));
       }
 
+      /* Let users scroll past the fixed bar so footer / #contact isn’t trapped underneath */
       html.sticky-cta-on {
-        scroll-padding-bottom: 88px;
+        scroll-padding-bottom: max(96px, calc(76px + env(safe-area-inset-bottom)));
+      }
+
+      html.sticky-cta-on body {
+        padding-bottom: max(96px, calc(76px + env(safe-area-inset-bottom)));
+      }
+
+      #contact {
+        scroll-margin-bottom: max(96px, calc(76px + env(safe-area-inset-bottom)));
       }
     }
 
@@ -2163,6 +2172,32 @@
       pointer-events: none;
     }
 
+    /* Xtract-like central violet bloom (saved Framer page is compiled — we match the look in CSS) */
+    .screen-break-overlay__intro-glow {
+      display: none;
+      position: absolute;
+      left: 50%;
+      top: 38%;
+      width: min(160vw, 620px);
+      height: min(160vw, 620px);
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(
+        ellipse 52% 48% at 50% 50%,
+        rgba(129, 74, 200, 0.42) 0%,
+        rgba(223, 122, 254, 0.18) 38%,
+        transparent 72%
+      );
+      filter: blur(48px);
+      opacity: 0.95;
+    }
+
+    .screen-break-overlay__intro > :not(.screen-break-overlay__intro-glow) {
+      position: relative;
+      z-index: 1;
+    }
+
     .screen-break-overlay__intro .screen-break-overlay__hint {
       pointer-events: auto;
     }
@@ -2279,11 +2314,12 @@
         radial-gradient(1px 1px at 92% 68%, rgba(255, 255, 255, 0.4), transparent);
     }
 
+    /* Framer-style spring-ish entrance (approximation — not the bundled runtime) */
     @keyframes xtractReveal {
       from {
-        opacity: 0;
-        transform: translateY(32px);
-        filter: blur(10px);
+        opacity: 0.001;
+        transform: translateY(44px);
+        filter: blur(12px);
       }
       to {
         opacity: 1;
@@ -2310,18 +2346,22 @@
         display: block;
       }
 
+      .screen-break-overlay__intro-glow {
+        display: block;
+      }
+
       html:not(.a11y-reduce-motion) .screen-break-overlay__title span {
         display: inline-block;
-        animation: xtractReveal 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+        animation: xtractReveal 1s cubic-bezier(0.175, 0.885, 0.32, 1.06) 0.1s both;
       }
 
       html:not(.a11y-reduce-motion) .screen-break-overlay__sub {
-        animation: xtractReveal 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.38s both;
+        animation: xtractReveal 1s cubic-bezier(0.175, 0.885, 0.32, 1.06) 0.35s both;
       }
 
       html:not(.a11y-reduce-motion) .screen-break-overlay__hint {
         opacity: 0;
-        animation: xtractReveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.72s forwards;
+        animation: xtractReveal 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.06) 0.68s forwards;
       }
 
       html.a11y-reduce-motion .screen-break-overlay__title span,
@@ -2667,6 +2707,7 @@
     </div>
     <div class="screen-break-overlay__stars" aria-hidden="true"></div>
     <div class="screen-break-overlay__intro">
+      <div class="screen-break-overlay__intro-glow" aria-hidden="true"></div>
       <h1 class="screen-break-overlay__title">
         <span data-en="Hey, glad you're here!" data-he="היי, כיף שבאת!">היי, כיף שבאת!</span>
       </h1>
