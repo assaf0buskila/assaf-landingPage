@@ -2202,6 +2202,18 @@
       pointer-events: auto;
     }
 
+    /* Mobile-only: branded open animation (desktop keeps blur-lift, no GIF) */
+    .screen-break-overlay__gif {
+      display: none;
+      width: min(92vw, 420px);
+      height: auto;
+      max-height: min(52vh, 460px);
+      object-fit: contain;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
     .screen-break-overlay__title {
       margin: 0;
       font-size: clamp(26px, 7.2vw, 42px);
@@ -2341,31 +2353,27 @@
         display: none;
       }
 
+      /* GIF carries the headline — hide HTML title/sub so it doesn’t repeat under the hero */
       .screen-break-overlay__aurora,
-      .screen-break-overlay__stars {
-        display: block;
-      }
-
+      .screen-break-overlay__stars,
       .screen-break-overlay__intro-glow {
+        display: none !important;
+      }
+
+      .screen-break-overlay__gif {
         display: block;
       }
 
-      html:not(.a11y-reduce-motion) .screen-break-overlay__title span {
-        display: inline-block;
-        animation: xtractReveal 1s cubic-bezier(0.175, 0.885, 0.32, 1.06) 0.1s both;
-      }
-
-      html:not(.a11y-reduce-motion) .screen-break-overlay__sub {
-        animation: xtractReveal 1s cubic-bezier(0.175, 0.885, 0.32, 1.06) 0.35s both;
+      .screen-break-overlay__title,
+      .screen-break-overlay__sub {
+        display: none !important;
       }
 
       html:not(.a11y-reduce-motion) .screen-break-overlay__hint {
         opacity: 0;
-        animation: xtractReveal 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.06) 0.68s forwards;
+        animation: xtractReveal 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.06) 0.5s forwards;
       }
 
-      html.a11y-reduce-motion .screen-break-overlay__title span,
-      html.a11y-reduce-motion .screen-break-overlay__sub,
       html.a11y-reduce-motion .screen-break-overlay__hint {
         opacity: 1 !important;
         animation: none !important;
@@ -2374,17 +2382,11 @@
       }
 
       @media (prefers-reduced-motion: reduce) {
-        .screen-break-overlay__title span,
-        .screen-break-overlay__sub,
         .screen-break-overlay__hint {
           opacity: 1 !important;
           animation: none !important;
           transform: none !important;
           filter: none !important;
-        }
-
-        .screen-break-overlay__blob {
-          animation: none !important;
         }
       }
     }
@@ -2697,7 +2699,7 @@
 
 <body>
 
-  <!-- ENTRY OVERLAY — desktop: 3 taps blur-lift · mobile: Xtract-style aurora + text reveal, 1 tap -->
+  <!-- ENTRY OVERLAY — desktop: 3 taps blur-lift · mobile: GIF + tap (no duplicate headline text) -->
   <div class="screen-break-overlay" id="screenBreak" role="button" tabindex="0"
     aria-label="Tap three times to enter the site">
     <div class="screen-break-overlay__aurora" aria-hidden="true">
@@ -2708,6 +2710,8 @@
     <div class="screen-break-overlay__stars" aria-hidden="true"></div>
     <div class="screen-break-overlay__intro">
       <div class="screen-break-overlay__intro-glow" aria-hidden="true"></div>
+      <img src="assents/page-gif-mobile.gif" alt="" class="screen-break-overlay__gif" width="420" height="420"
+        decoding="async" fetchpriority="high" />
       <h1 class="screen-break-overlay__title">
         <span data-en="Hey, glad you're here!" data-he="היי, כיף שבאת!">היי, כיף שבאת!</span>
       </h1>
