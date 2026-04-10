@@ -2404,6 +2404,21 @@
         display: none !important;
       }
 
+      .screen-break-overlay__hint {
+        font-size: clamp(24px, 5.6vw, 30px);
+        letter-spacing: 0.28em;
+      }
+
+      .screen-break-overlay__hint--bump {
+        animation-name: tapBumpMobile;
+      }
+
+      @keyframes tapBumpMobile {
+        0% { transform: scale(1); letter-spacing: 0.28em; }
+        45% { transform: scale(1.06); letter-spacing: 0.34em; }
+        100% { transform: scale(1); letter-spacing: 0.28em; }
+      }
+
       html:not(.a11y-reduce-motion) .screen-break-overlay__hint {
         opacity: 0;
         animation: xtractReveal 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.06) 0.5s forwards;
@@ -2534,17 +2549,28 @@
       z-index: 5;
     }
 
-    .phone-carousel-pointer__arrow {
-      width: 40px;
-      height: 40px;
-      color: rgba(255, 255, 255, 0.5);
-      filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.4));
-      animation: pointerNudgeUp 2.6s ease-in-out infinite;
+    .phone-carousel-pointer__img {
+      display: block;
+      width: min(72px, 20vw);
+      height: auto;
+      max-height: 88px;
+      object-fit: contain;
+      object-position: center bottom;
+      filter: drop-shadow(0 8px 22px rgba(0, 0, 0, 0.55));
+      transform-origin: 40% 85%;
+      animation: pointerHeroMotion 2.8s ease-in-out infinite;
     }
 
-    @keyframes pointerNudgeUp {
-      0%, 100% { transform: translateY(4px); opacity: 0.65; }
-      50% { transform: translateY(-10px); opacity: 1; }
+    /* Float + slight rotation so the glass cursor feels alive under the phone strip */
+    @keyframes pointerHeroMotion {
+      0%, 100% {
+        transform: translateY(6px) rotate(-18deg);
+        opacity: 0.88;
+      }
+      50% {
+        transform: translateY(-14px) rotate(-10deg);
+        opacity: 1;
+      }
     }
 
     .phone-carousel-caption {
@@ -2703,7 +2729,7 @@
     /* Reduced motion: disable new animations */
     @media (prefers-reduced-motion: reduce) {
       .neon-bg-layer::after { animation: none; }
-      .phone-carousel-pointer__arrow { animation: none; }
+      .phone-carousel-pointer__img { animation: none; }
       .screen-break-overlay__hint { animation: none; opacity: 0.5; }
       .phone-carousel-caption { animation: none; }
       .phone-carousel-viewport { animation: none !important; }
@@ -2711,7 +2737,7 @@
     }
 
     html.a11y-reduce-motion .neon-bg-layer::after { animation: none !important; }
-    html.a11y-reduce-motion .phone-carousel-pointer__arrow { animation: none !important; }
+    html.a11y-reduce-motion .phone-carousel-pointer__img { animation: none !important; }
     html.a11y-reduce-motion .screen-break-overlay__hint { animation: none !important; }
     html.a11y-reduce-motion .phone-carousel-viewport { animation: none !important; }
     html.a11y-reduce-motion .phone-frame[data-pos="center"] { animation: none !important; }
@@ -2842,10 +2868,8 @@
             <div class="phone-frame" data-pos="hidden" data-idx="7"><img src="assents/8.jpg" alt="" loading="eager" decoding="async" /></div>
           </div>
           <div class="phone-carousel-pointer" aria-hidden="true">
-            <svg class="phone-carousel-pointer__arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 15l-6-6-6 6" />
-            </svg>
+            <img src="assents/pointer.png" alt="" class="phone-carousel-pointer__img" width="72" height="72"
+              decoding="async" loading="eager" />
           </div>
         </div>
         <p class="phone-carousel-caption" data-en="You can create anything you imagine" data-he="ניתן ליצור כל מה שעולה לכם לראש">ניתן ליצור כל מה שעולה לכם לראש</p>
@@ -2864,7 +2888,8 @@
     <!-- ABOUT ME (was at end before   now right after hero) -->
     <section class="section" id="about">
       <div class="neon-bg-layer" aria-hidden="true"></div>
-      <h2 class="section-title reveal" data-en="Before we start, a bit about me.." data-he="אז קצת לפני שמתחילים אספר לך על עצמי..">אז קצת לפני שמתחילים אספר לך על עצמי..</h2>
+      <h2 class="section-title reveal" data-en="So before we start, I’ll tell you a bit about myself"
+        data-he="אז לפני שמתחילים אספר לך קצת על עצמי״">אז לפני שמתחילים אספר לך קצת על עצמי״</h2>
 
       <div class="about-grid reveal">
 
