@@ -9,6 +9,10 @@
   <meta name="google-site-verification" content="PASTE_CODE_HERE" />
   <meta name="theme-color" content="#0f0f0f" />
 
+  <!-- Mobile splash GIF: start download early (same path as <img> below). Skips desktop to avoid huge fetch. -->
+  <link rel="preload" href="assents/open-intro-mobile.gif" as="image" type="image/gif" fetchpriority="high"
+    media="(max-width: 800px)" />
+
   <!-- Favicon: Vercel project card + browser tab use /favicon.ico or these links. Same asset as OG image. -->
   <link rel="icon" href="/assents/about%20me.png" type="image/png" sizes="any" />
   <link rel="apple-touch-icon" href="/assents/about%20me.png" />
@@ -2776,7 +2780,7 @@
     <div class="screen-break-overlay__intro">
       <div class="screen-break-overlay__intro-glow" aria-hidden="true"></div>
       <img src="assents/open-intro-mobile.gif" alt="" class="screen-break-overlay__gif" width="840"
-        decoding="async" fetchpriority="high" />
+        loading="eager" decoding="sync" fetchpriority="high" />
       <h1 class="screen-break-overlay__title">
         <span data-en="Hey, glad you're here!" data-he="היי, כיף שבאת!">היי, כיף שבאת!</span>
       </h1>
@@ -2909,7 +2913,7 @@
     <section class="section" id="about">
       <div class="neon-bg-layer" aria-hidden="true"></div>
       <h2 class="section-title reveal" data-en="So before we start, I’ll tell you a bit about myself"
-        data-he="אז לפני שמתחילים אספר לך קצת על עצמי״">אז לפני שמתחילים אספר לך קצת על עצמי״</h2>
+        data-he="אז לפני שמתחילים אספר לך קצת על עצמי">אז לפני שמתחילים אספר לך קצת על עצמי</h2>
 
       <div class="about-grid reveal">
 
