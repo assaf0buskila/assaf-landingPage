@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="he" dir="rtl">
 
 <head>
@@ -10,8 +10,7 @@
   <meta name="theme-color" content="#0f0f0f" />
 
   <!-- Mobile splash GIF: start download early (same path as <img> below). Skips desktop to avoid huge fetch. -->
-  <link rel="preload" href="assents/open-intro-mobile.gif" as="image" type="image/gif" fetchpriority="high"
-    media="(max-width: 800px)" />
+  <!-- open-intro-mobile.gif preload removed: replaced by Tubes WebGL splash -->
 
   <!-- Favicon: Vercel project card + browser tab use /favicon.ico or these links. Same asset as OG image. -->
   <link rel="icon" href="/assents/about%20me.png" type="image/png" sizes="any" />
@@ -1104,8 +1103,9 @@
       margin-inline-start: auto;
       position: relative;
       aspect-ratio: 3/4;
-      overflow: hidden;
-      background: #111;
+      overflow: visible; /* allow 3D tilt to show outside bounds */
+      background: transparent;
+      border-radius: 16px;
     }
 
     @media (min-width: 801px) {
@@ -1204,6 +1204,46 @@
         transform: scale(1.03);
         filter: grayscale(0%) contrast(1);
       }
+    }
+
+    /* Imoji parallax sticker container */
+    .about-imoji-scene {
+      width: 100%;
+      height: 100%;
+      perspective: 800px;
+      perspective-origin: 50% 50%;
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .about-imoji-tilt {
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.18s ease-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-radius: inherit;
+    }
+    .about-imoji-sticker {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+      border-radius: inherit;
+    }
+    .about-imoji-sticker.active {
+      opacity: 1;
     }
 
     /* ============================================================
@@ -2058,11 +2098,27 @@
     }
 
     #about { position: relative; overflow: hidden; }
-    #about > *:not(.neon-bg-layer),
+    #about > *:not(.about-shader-canvas),
     .footer > *:not(.neon-bg-layer) {
       position: relative;
       z-index: 1;
     }
+
+    /* About section: plasma WebGL shader canvas (replaces neon-bg.gif) */
+    .about-shader-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.35;
+      mix-blend-mode: screen;
+      display: block;
+    }
+
+    /* About neon-bg-layer suppressed — only Contact keeps the GIF */
+    #about .neon-bg-layer::after { display: none !important; }
 
     /* Contact / footer: hide neon GIF tint toward bottom edge only */
     #contact .neon-bg-layer::after {
@@ -2071,7 +2127,7 @@
     }
 
     /* ============================================================
-       ENTRY OVERLAY — 3 taps: progressive blur-lift (modern, no canvas)
+       ENTRY OVERLAY — Tubes WebGL + Gooey text morph (unified desktop + mobile)
        ============================================================ */
     .screen-break-overlay {
       position: fixed;
@@ -2082,85 +2138,117 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 0;
-      background: rgba(4, 5, 8, 0.76);
-      backdrop-filter: blur(26px) saturate(1.06);
-      -webkit-backdrop-filter: blur(26px) saturate(1.06);
-      transition:
-        background 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-        backdrop-filter 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-        -webkit-backdrop-filter 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+      background: #030206;
+      transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
       touch-action: none;
       transform: scale(1);
       transform-origin: 50% 45%;
+      overflow: hidden;
     }
 
-    /* Subtle film grain — CSS only, GPU-friendly */
-    .screen-break-overlay::before {
-      content: '';
+    /* Tubes WebGL canvas fills the whole overlay */
+    .screen-break-overlay__canvas {
       position: absolute;
       inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
       z-index: 0;
-      pointer-events: none;
-      opacity: 0.2;
-      background-image:
-        repeating-linear-gradient(0deg, transparent 0 2px, rgba(255, 255, 255, 0.025) 2px 3px),
-        repeating-linear-gradient(90deg, transparent 0 2px, rgba(255, 255, 255, 0.02) 2px 3px);
-      mix-blend-mode: soft-light;
     }
 
-    /* Soft bloom — expands each stage (feels like light through glass) */
-    .screen-break-overlay::after {
-      content: '';
+    /* Fallback aurora blobs — hidden while WebGL runs, shown otherwise */
+    .screen-break-overlay__aurora {
       position: absolute;
-      inset: -20%;
-      z-index: 0;
+      inset: 0;
+      z-index: 1;
       pointer-events: none;
-      background: radial-gradient(ellipse 70% 55% at 50% 36%, rgba(255, 255, 255, 0.09) 0%, transparent 62%);
-      opacity: 0.35;
-      transform: scale(0.96);
-      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+      overflow: hidden;
+      display: none;
+    }
+    .screen-break-overlay__aurora--visible { display: block; }
+
+    .screen-break-overlay__blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(64px);
+      opacity: 0.85;
+      mix-blend-mode: screen;
+    }
+    .screen-break-overlay__blob--a {
+      width: min(120vw, 520px); height: min(120vw, 520px);
+      left: 50%; top: 32%; transform: translate(-50%, -50%);
+      background: radial-gradient(circle at 40% 40%, rgba(223,122,254,0.55) 0%, rgba(129,74,200,0.22) 42%, transparent 68%);
+      animation: auroraBlobA 16s ease-in-out infinite;
+    }
+    .screen-break-overlay__blob--b {
+      width: min(90vw, 380px); height: min(90vw, 380px);
+      right: -18%; top: 48%;
+      background: radial-gradient(circle at 50% 50%, rgba(129,74,200,0.45) 0%, rgba(223,122,254,0.18) 50%, transparent 70%);
+      animation: auroraBlobB 18s ease-in-out infinite;
+    }
+    .screen-break-overlay__blob--c {
+      width: min(70vw, 300px); height: min(70vw, 300px);
+      left: -12%; bottom: 18%;
+      background: radial-gradient(circle at 50% 50%, rgba(223,122,254,0.35) 0%, rgba(129,74,200,0.12) 55%, transparent 72%);
+      animation: auroraBlobC 14s ease-in-out infinite;
+    }
+    @keyframes auroraBlobA {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      40% { transform: translate(-52%, -48%) scale(1.08); }
+      70% { transform: translate(-48%, -52%) scale(0.96); }
+    }
+    @keyframes auroraBlobB {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(-6%,4%) scale(1.1); }
+    }
+    @keyframes auroraBlobC {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      45% { transform: translate(8%,-5%) scale(1.06); }
     }
 
-    .screen-break-overlay[data-stage="1"] {
-      background: rgba(4, 5, 8, 0.52);
-      backdrop-filter: blur(16px) saturate(1.04);
-      -webkit-backdrop-filter: blur(16px) saturate(1.04);
+    /* Gooey text morph */
+    .screen-break-goo-filter {
+      position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none;
     }
-
-    .screen-break-overlay[data-stage="1"]::after {
-      opacity: 0.52;
-      transform: scale(1.02);
+    .screen-break-goo-wrap {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: clamp(120px, 22vw, 200px);
+      pointer-events: none;
     }
-
-    .screen-break-overlay[data-stage="2"] {
-      background: rgba(4, 5, 8, 0.28);
-      backdrop-filter: blur(8px) saturate(1.02);
-      -webkit-backdrop-filter: blur(8px) saturate(1.02);
+    .screen-break-goo-texts {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: url(#goo-morph);
     }
-
-    .screen-break-overlay[data-stage="2"]::after {
-      opacity: 0.68;
-      transform: scale(1.06);
-    }
-
-    .screen-break-overlay[data-stage="3"] {
-      background: rgba(4, 5, 8, 0.08);
-      backdrop-filter: blur(2px) saturate(1);
-      -webkit-backdrop-filter: blur(2px) saturate(1);
-    }
-
-    .screen-break-overlay[data-stage="3"]::after {
-      opacity: 0.88;
-      transform: scale(1.1);
+    .screen-break-goo-text {
+      position: absolute;
+      font-size: clamp(38px, 10vw, 90px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: #fff;
+      text-align: center;
+      white-space: nowrap;
+      user-select: none;
+      line-height: 1;
+      text-shadow: 0 0 40px rgba(223,122,254,0.7), 0 0 80px rgba(129,74,200,0.4);
     }
 
     .screen-break-overlay__hint {
       position: relative;
-      z-index: 2;
-      font-size: clamp(12px, 2.8vw, 15px);
+      z-index: 3;
+      margin-top: 24px;
+      font-size: clamp(12px, 3.2vw, 16px);
       letter-spacing: 0.42em;
       text-transform: lowercase;
       font-weight: 600;
@@ -2171,7 +2259,7 @@
 
     @supports ((-webkit-background-clip: text) or (background-clip: text)) {
       .screen-break-overlay__hint {
-        background: linear-gradient(120deg, rgba(255, 255, 255, 0.95) 0%, rgba(200, 220, 255, 0.78) 100%);
+        background: linear-gradient(120deg, rgba(255,255,255,0.95) 0%, rgba(223,122,254,0.85) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
@@ -2180,8 +2268,8 @@
     }
 
     @keyframes hintPulse {
-      0%, 100% { opacity: 0.5; filter: brightness(0.95); }
-      50% { opacity: 1; filter: brightness(1.08); }
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
     }
 
     .screen-break-overlay__hint--bump {
@@ -2189,8 +2277,8 @@
     }
 
     @keyframes tapBump {
-      0% { transform: scale(1); letter-spacing: 0.42em; }
-      45% { transform: scale(1.06); letter-spacing: 0.48em; }
+      0%   { transform: scale(1); letter-spacing: 0.42em; }
+      45%  { transform: scale(1.06); letter-spacing: 0.5em; }
       100% { transform: scale(1); letter-spacing: 0.42em; }
     }
 
@@ -2198,8 +2286,6 @@
       opacity: 0;
       pointer-events: none;
       transform: scale(1.012);
-      backdrop-filter: blur(0);
-      -webkit-backdrop-filter: blur(0);
     }
 
     html.site-locked,
@@ -2209,7 +2295,15 @@
     }
     html.site-revealed .screen-break-overlay { display: none; }
 
-    /* --- Mobile entry (Xtract-inspired): purple/pink aurora + Framer-like text reveal --- */
+    /* Reduced motion: freeze goo, show static label */
+    @media (prefers-reduced-motion: reduce) {
+      .screen-break-goo-text { filter: none !important; }
+      .screen-break-overlay__hint { animation: none; opacity: 0.8; }
+    }
+    html.a11y-reduce-motion .screen-break-goo-text { filter: none !important; }
+    html.a11y-reduce-motion .screen-break-overlay__hint { animation: none !important; opacity: 0.8 !important; }
+
+    /* Legacy classes no-op'd (no longer rendered) */
     .screen-break-overlay__aurora,
     .screen-break-overlay__stars {
       display: none;
@@ -2229,7 +2323,7 @@
       pointer-events: none;
     }
 
-    /* Xtract-like central violet bloom (saved Framer page is compiled — we match the look in CSS) */
+    /* (intro-glow removed) */
     .screen-break-overlay__intro-glow {
       display: none;
       position: absolute;
@@ -2250,236 +2344,8 @@
       opacity: 0.95;
     }
 
-    .screen-break-overlay__intro > :not(.screen-break-overlay__intro-glow) {
-      position: relative;
-      z-index: 1;
-    }
-
-    .screen-break-overlay__intro .screen-break-overlay__hint {
-      pointer-events: auto;
-    }
-
-    /* Mobile-only: branded open GIF (desktop keeps blur-lift, no GIF) */
-    .screen-break-overlay__gif {
-      display: none;
-      width: min(100vw - 12px, 840px);
-      max-width: 100%;
-      height: auto;
-      max-height: min(88vh, 900px);
-      object-fit: contain;
-      object-position: center center;
-      pointer-events: none;
-      user-select: none;
-      -webkit-user-drag: none;
-      /* Sharper compositing when scaled (closer to “native” pixel grid on mobile) */
-      transform: translateZ(0);
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-    }
-
-    .screen-break-overlay__title {
-      margin: 0;
-      font-size: clamp(26px, 7.2vw, 42px);
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1.05;
-      text-transform: uppercase;
-      color: #fff;
-    }
-
-    .screen-break-overlay__sub {
-      margin: 0;
-      font-size: clamp(11px, 2.9vw, 13px);
-      font-weight: 500;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.52);
-      line-height: 1.45;
-    }
-
-    .screen-break-overlay__aurora {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    /* Tokens from Xtract Framer export: Purple rgb(129,74,200) → Pink rgb(223,122,254) */
-    .screen-break-overlay__blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(64px);
-      opacity: 0.85;
-      mix-blend-mode: screen;
-      will-change: transform;
-    }
-
-    .screen-break-overlay__blob--a {
-      width: min(120vw, 520px);
-      height: min(120vw, 520px);
-      left: 50%;
-      top: 32%;
-      transform: translate(-50%, -50%);
-      background: radial-gradient(circle at 40% 40%,
-        rgba(223, 122, 254, 0.55) 0%,
-        rgba(129, 74, 200, 0.22) 42%,
-        transparent 68%);
-      animation: auroraBlobA 16s ease-in-out infinite;
-    }
-
-    .screen-break-overlay__blob--b {
-      width: min(90vw, 380px);
-      height: min(90vw, 380px);
-      right: -18%;
-      top: 48%;
-      background: radial-gradient(circle at 50% 50%,
-        rgba(129, 74, 200, 0.45) 0%,
-        rgba(223, 122, 254, 0.18) 50%,
-        transparent 70%);
-      animation: auroraBlobB 18s ease-in-out infinite;
-    }
-
-    .screen-break-overlay__blob--c {
-      width: min(70vw, 300px);
-      height: min(70vw, 300px);
-      left: -12%;
-      bottom: 18%;
-      background: radial-gradient(circle at 50% 50%,
-        rgba(223, 122, 254, 0.35) 0%,
-        rgba(129, 74, 200, 0.12) 55%,
-        transparent 72%);
-      animation: auroraBlobC 14s ease-in-out infinite;
-    }
-
-    @keyframes auroraBlobA {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); }
-      40% { transform: translate(-52%, -48%) scale(1.08); }
-      70% { transform: translate(-48%, -52%) scale(0.96); }
-    }
-
-    @keyframes auroraBlobB {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(-6%, 4%) scale(1.1); }
-    }
-
-    @keyframes auroraBlobC {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      45% { transform: translate(8%, -5%) scale(1.06); }
-    }
-
-    .screen-break-overlay__stars {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      pointer-events: none;
-      opacity: 0.22;
-      background-image:
-        radial-gradient(1px 1px at 8% 15%, rgba(255, 255, 255, 0.55), transparent),
-        radial-gradient(1px 1px at 22% 8%, rgba(255, 255, 255, 0.4), transparent),
-        radial-gradient(1px 1px at 38% 22%, rgba(255, 255, 255, 0.45), transparent),
-        radial-gradient(1px 1px at 55% 12%, rgba(255, 255, 255, 0.35), transparent),
-        radial-gradient(1px 1px at 72% 28%, rgba(255, 255, 255, 0.5), transparent),
-        radial-gradient(1px 1px at 88% 18%, rgba(255, 255, 255, 0.38), transparent),
-        radial-gradient(1px 1px at 12% 42%, rgba(255, 255, 255, 0.42), transparent),
-        radial-gradient(1px 1px at 48% 55%, rgba(255, 255, 255, 0.33), transparent),
-        radial-gradient(1px 1px at 78% 48%, rgba(255, 255, 255, 0.48), transparent),
-        radial-gradient(1px 1px at 18% 72%, rgba(255, 255, 255, 0.36), transparent),
-        radial-gradient(1px 1px at 62% 78%, rgba(255, 255, 255, 0.44), transparent),
-        radial-gradient(1px 1px at 92% 68%, rgba(255, 255, 255, 0.4), transparent);
-    }
-
-    /* Framer-style spring-ish entrance (approximation — not the bundled runtime) */
-    @keyframes xtractReveal {
-      from {
-        opacity: 0.001;
-        transform: translateY(44px);
-        filter: blur(12px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-      }
-    }
-
-    @media (max-width: 800px) {
-      .screen-break-overlay {
-        overflow: hidden;
-        background: #030206;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        padding: 20px 0;
-      }
-
-      .screen-break-overlay::after {
-        display: none;
-      }
-
-      /* GIF carries the headline — hide HTML title/sub so it doesn’t repeat under the hero */
-      .screen-break-overlay__aurora,
-      .screen-break-overlay__stars,
-      .screen-break-overlay__intro-glow {
-        display: none !important;
-      }
-
-      .screen-break-overlay__intro {
-        max-width: min(100vw - 12px, 900px);
-        padding-inline: 6px;
-      }
-
-      .screen-break-overlay__gif {
-        display: block;
-      }
-
-      .screen-break-overlay__title,
-      .screen-break-overlay__sub {
-        display: none !important;
-      }
-
-      .screen-break-overlay__hint {
-        font-size: clamp(24px, 5.6vw, 30px);
-        letter-spacing: 0.28em;
-      }
-
-      .screen-break-overlay__hint--bump {
-        animation-name: tapBumpMobile;
-      }
-
-      @keyframes tapBumpMobile {
-        0% { transform: scale(1); letter-spacing: 0.28em; }
-        45% { transform: scale(1.06); letter-spacing: 0.34em; }
-        100% { transform: scale(1); letter-spacing: 0.28em; }
-      }
-
-      html:not(.a11y-reduce-motion) .screen-break-overlay__hint {
-        opacity: 0;
-        animation: xtractReveal 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.06) 0.5s forwards;
-      }
-
-      html.a11y-reduce-motion .screen-break-overlay__hint {
-        opacity: 1 !important;
-        animation: none !important;
-        transform: none !important;
-        filter: none !important;
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .screen-break-overlay__hint {
-          opacity: 1 !important;
-          animation: none !important;
-          transform: none !important;
-          filter: none !important;
-        }
-      }
-    }
-
-    @media (min-width: 801px) {
-      .screen-break-overlay__title,
-      .screen-break-overlay__sub {
-        display: none !important;
-      }
-    }
+    /* (intro helpers removed) */
+    /* (gif + legacy overlay media queries removed) */
 
     /* ============================================================
        MOBILE PHONE CAROUSEL (hero replacement)
@@ -2729,9 +2595,8 @@
         align-self: start;
       }
 
-      .about-photo {
-        border-radius: 14px;
-      }
+      .about-imoji-scene { border-radius: 14px; }
+      .about-imoji-sticker { border-radius: 14px; }
 
       /* Restore tap hint inside smaller photo */
       .about-tap-hint {
@@ -2768,27 +2633,34 @@
 
 <body>
 
-  <!-- ENTRY OVERLAY — desktop: 3 taps blur-lift · mobile: intro GIF + tap (hero headline hidden on mobile) -->
+  <!-- ENTRY OVERLAY — Tubes WebGL + Gooey "assaf web is here" morph · single tap to enter -->
   <div class="screen-break-overlay" id="screenBreak" role="button" tabindex="0"
-    aria-label="Tap three times to enter the site">
+    aria-label="Tap to enter the site">
+    <!-- Tubes WebGL canvas (JS fills this) -->
+    <canvas id="tubesCanvas" class="screen-break-overlay__canvas" aria-hidden="true"></canvas>
+    <!-- SVG goo filter (hidden, referenced by CSS filter: url(#goo-morph)) -->
+    <svg class="screen-break-goo-filter" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+      <defs>
+        <filter id="goo-morph">
+          <feColorMatrix in="SourceGraphic" type="matrix"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 255 -140" />
+        </filter>
+      </defs>
+    </svg>
+    <!-- Gooey morphing text -->
+    <div class="screen-break-goo-wrap" aria-hidden="true">
+      <div class="screen-break-goo-texts" id="gooTexts">
+        <span class="screen-break-goo-text" id="gooText1"></span>
+        <span class="screen-break-goo-text" id="gooText2"></span>
+      </div>
+    </div>
+    <!-- Fallback aurora (shown if WebGL unavailable) -->
     <div class="screen-break-overlay__aurora" aria-hidden="true">
       <div class="screen-break-overlay__blob screen-break-overlay__blob--a"></div>
       <div class="screen-break-overlay__blob screen-break-overlay__blob--b"></div>
       <div class="screen-break-overlay__blob screen-break-overlay__blob--c"></div>
     </div>
-    <div class="screen-break-overlay__stars" aria-hidden="true"></div>
-    <div class="screen-break-overlay__intro">
-      <div class="screen-break-overlay__intro-glow" aria-hidden="true"></div>
-      <img src="assents/open-intro-mobile.gif" alt="" class="screen-break-overlay__gif" width="840"
-        loading="eager" decoding="sync" fetchpriority="high" />
-      <h1 class="screen-break-overlay__title">
-        <span data-en="Hey, glad you're here!" data-he="היי, כיף שבאת!">היי, כיף שבאת!</span>
-      </h1>
-      <p class="screen-break-overlay__sub"
-        data-en="Assaf Buskila · Industrial management Engineering student · Websites that perform"
-        data-he="אסף בוסקילה · סטודנט להנדסת תעשייה וניהול · אתרים שמביאים תוצאות">אסף בוסקילה · סטודנט להנדסת תעשייה וניהול · אתרים שמביאים תוצאות</p>
-      <span class="screen-break-overlay__hint" id="breakTapHint">tap</span>
-    </div>
+    <span class="screen-break-overlay__hint" id="breakTapHint">tap</span>
   </div>
 
   <a href="#main-content" class="skip-link" data-en="Skip to main content" data-he="דלג לתוכן הראשי">דלג לתוכן הראשי</a>
@@ -2911,6 +2783,9 @@
 
     <!-- ABOUT ME (was at end before   now right after hero) -->
     <section class="section" id="about">
+      <!-- Plasma shader background (WebGL, replaces neon-bg.gif for About) -->
+      <canvas id="aboutShaderCanvas" class="about-shader-canvas" aria-hidden="true"></canvas>
+      <!-- Keep neon-bg-layer for Contact; About's ::after is suppressed via CSS -->
       <div class="neon-bg-layer" aria-hidden="true"></div>
       <h2 class="section-title reveal" data-en="So before we start, I’ll tell you a bit about myself"
         data-he="אז לפני שמתחילים אספר לך קצת על עצמי">אז לפני שמתחילים אספר לך קצת על עצמי</h2>
@@ -2953,7 +2828,14 @@
               </svg>
             </span>
           </div>
-          <img src="assents/about me.png" alt="אסף בוסקילה — Assaf Buskila, מפתח אתרים" class="about-photo" loading="lazy" decoding="async" />
+          <!-- Imoji parallax stickers (follow cursor / touch / device tilt) -->
+          <div class="about-imoji-scene" id="imojiScene">
+            <div class="about-imoji-tilt" id="imojiTilt">
+              <img src="assents/imoji-1.webp" alt="אסף בוסקילה" class="about-imoji-sticker active" id="imoji1" loading="lazy" decoding="async" width="400" height="533" />
+              <img src="assents/imoji-2.webp" alt="אסף בוסקילה" class="about-imoji-sticker" id="imoji2" loading="lazy" decoding="async" width="400" height="533" />
+              <img src="assents/imoji-3.webp" alt="אסף בוסקילה" class="about-imoji-sticker" id="imoji3" loading="lazy" decoding="async" width="400" height="533" />
+            </div>
+          </div>
         </div>
 
       </div>
@@ -3625,16 +3507,8 @@
         workCards.forEach(card => workIo.observe(card));
       }
 
-      // 8. About photo — tap to toggle full color (mobile only)
-      const aboutImgWrap = document.querySelector('.about-image-container');
-      const aboutPhotoEl = document.querySelector('.about-photo');
+      // 8. About photo area (imoji parallax handles tap; old about-photo removed)
       const aboutMobileMq = window.matchMedia('(max-width: 800px)');
-      if (aboutImgWrap && aboutPhotoEl) {
-        aboutImgWrap.addEventListener('click', () => {
-          if (!aboutMobileMq.matches) return;
-          aboutPhotoEl.classList.toggle('about-photo--color-mobile');
-        });
-      }
 
       // 8b. Service cards — tap image area to toggle full color (mobile only, same idea as about photo)
       document.querySelectorAll('#services .service-card').forEach(serviceCard => {
@@ -3644,67 +3518,148 @@
         });
       });
 
-      // 9. ENTRY OVERLAY — 3 taps: CSS blur-lift stages (no canvas)
-      const breakOverlay = document.getElementById('screenBreak');
-      const breakTapHint = document.getElementById('breakTapHint');
-
-      function finishScreenBreak() {
+      // 9. ENTRY OVERLAY — Tubes WebGL + Gooey morph "assaf web is here" · single tap
+      (function initSplash() {
+        const breakOverlay = document.getElementById('screenBreak');
+        const breakTapHint = document.getElementById('breakTapHint');
         if (!breakOverlay) return;
-        setTimeout(() => {
+
+        document.documentElement.classList.add('site-locked');
+        let dismissed = false;
+
+        // ── Gooey text morph ──────────────────────────────────────────
+        const TEXTS = ['ASSAF', 'WEB', 'IS', 'HERE', 'ASSAF WEB'];
+        const MORPH_TIME = 1.2;       // seconds per transition
+        const COOLDOWN_TIME = 0.3;    // pause between transitions
+        const el1 = document.getElementById('gooText1');
+        const el2 = document.getElementById('gooText2');
+        let textIdx = TEXTS.length - 1;
+        let morph = 0;
+        let cooldown = COOLDOWN_TIME;
+        let gooTime = new Date();
+        let gooRaf = null;
+
+        function setMorph(frac) {
+          if (!el1 || !el2) return;
+          el2.style.filter = 'blur(' + Math.min(8 / frac - 8, 100) + 'px)';
+          el2.style.opacity = Math.pow(frac, 0.4);
+          const f2 = 1 - frac;
+          el1.style.filter = 'blur(' + Math.min(8 / f2 - 8, 100) + 'px)';
+          el1.style.opacity = Math.pow(f2, 0.4);
+        }
+
+        function doCooldown() {
+          morph = 0;
+          if (el1 && el2) {
+            el2.style.filter = '';
+            el2.style.opacity = '1';
+            el1.style.filter = '';
+            el1.style.opacity = '0';
+          }
+        }
+
+        function tickGoo() {
+          if (dismissed) return;
+          const now = new Date();
+          const dt = (now - gooTime) / 1000;
+          gooTime = now;
+          cooldown -= dt;
+          if (cooldown <= 0) {
+            if (morph === 0) {
+              textIdx = (textIdx + 1) % TEXTS.length;
+              if (el1) el1.textContent = TEXTS[textIdx % TEXTS.length];
+              if (el2) el2.textContent = TEXTS[(textIdx + 1) % TEXTS.length];
+            }
+            morph -= cooldown;
+            cooldown = 0;
+            const frac = Math.min(morph / MORPH_TIME, 1);
+            if (frac >= 1) { cooldown = COOLDOWN_TIME; morph = 0; }
+            if (frac > 0) setMorph(frac);
+          } else {
+            doCooldown();
+          }
+          gooRaf = requestAnimationFrame(tickGoo);
+        }
+
+        if (el1 && el2 && !motionReduced()) {
+          el1.textContent = TEXTS[0];
+          el2.textContent = TEXTS[1];
+          el1.style.opacity = '1';
+          el2.style.opacity = '0';
+          gooRaf = requestAnimationFrame(tickGoo);
+        } else if (el2) {
+          el2.textContent = 'ASSAF WEB IS HERE';
+          el2.style.opacity = '1';
+          el2.style.filter = 'none';
+        }
+
+        // ── Tubes WebGL ───────────────────────────────────────────────
+        const canvas = document.getElementById('tubesCanvas');
+        const auroraEl = breakOverlay.querySelector('.screen-break-overlay__aurora');
+        let tubesApp = null;
+        let tubesDestroyed = false;
+
+        const isMobileVp = window.matchMedia('(max-width: 800px)').matches;
+
+        if (canvas) {
+          // DPR cap for mobile battery / performance
+          if (isMobileVp) {
+            const dpr = Math.min(devicePixelRatio || 1, 1.5);
+            canvas.width = Math.round(window.innerWidth * dpr);
+            canvas.height = Math.round(window.innerHeight * dpr);
+          }
+
+          import('https://cdn.jsdelivr.net/npm/threejs-components@0.0.19/build/cursors/tubes1.min.js')
+            .then(mod => {
+              if (tubesDestroyed) return;
+              const TubesCtor = (mod && mod.default) ? mod.default : mod;
+              tubesApp = TubesCtor(canvas, {
+                tubes: {
+                  colors: ['#df7afe', '#f967fb', '#6958d5'],
+                  lights: { intensity: 220, colors: ['#83f36e', '#fe8a2e', '#ff008a', '#60aed5'] }
+                }
+              });
+              if (auroraEl) auroraEl.classList.remove('screen-break-overlay__aurora--visible');
+            })
+            .catch(() => {
+              if (auroraEl) auroraEl.classList.add('screen-break-overlay__aurora--visible');
+            });
+        } else {
+          if (auroraEl) auroraEl.classList.add('screen-break-overlay__aurora--visible');
+        }
+
+        // ── Dismiss (single tap / keypress) ──────────────────────────
+        function finishSplash() {
+          if (dismissed) return;
+          dismissed = true;
+          if (gooRaf) cancelAnimationFrame(gooRaf);
           breakOverlay.classList.add('shattered');
           document.documentElement.classList.remove('site-locked');
           setTimeout(() => {
+            try { tubesApp && tubesApp.dispose && tubesApp.dispose(); } catch (e) {}
+            tubesApp = null;
+            tubesDestroyed = true;
             document.documentElement.classList.add('site-revealed');
             breakOverlay.remove();
-          }, 1000);
-        }, motionReduced() ? 60 : 320);
-      }
-
-      function bumpTapHint() {
-        if (!breakTapHint) return;
-        breakTapHint.classList.remove('screen-break-overlay__hint--bump');
-        void breakTapHint.offsetWidth;
-        breakTapHint.classList.add('screen-break-overlay__hint--bump');
-        setTimeout(() => breakTapHint.classList.remove('screen-break-overlay__hint--bump'), 400);
-      }
-
-      if (breakOverlay) {
-        document.documentElement.classList.add('site-locked');
-
-        const entryMobileMq = window.matchMedia('(max-width: 800px)');
-        let clicksRemaining = entryMobileMq.matches ? 1 : 3;
-
-        if (entryMobileMq.matches) {
-          breakOverlay.classList.add('screen-break-overlay--xtract');
-          breakOverlay.setAttribute('aria-label', 'Tap to enter the site');
+          }, 950);
         }
 
-        function onTap() {
-          if (clicksRemaining <= 0) return;
-          clicksRemaining--;
-          if (!entryMobileMq.matches) {
-            breakOverlay.setAttribute('data-stage', String(3 - clicksRemaining));
-          }
-          bumpTapHint();
-
-          if (clicksRemaining === 0) {
-            finishScreenBreak();
-          }
+        function bumpTapHint() {
+          if (!breakTapHint) return;
+          breakTapHint.classList.remove('screen-break-overlay__hint--bump');
+          void breakTapHint.offsetWidth;
+          breakTapHint.classList.add('screen-break-overlay__hint--bump');
+          setTimeout(() => breakTapHint.classList.remove('screen-break-overlay__hint--bump'), 400);
         }
 
         breakOverlay.addEventListener('click', () => {
-          if (clicksRemaining <= 0) return;
-          onTap();
+          bumpTapHint();
+          finishSplash();
         });
-
         breakOverlay.addEventListener('keydown', e => {
-          if (clicksRemaining <= 0) return;
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            onTap();
-          }
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); bumpTapHint(); finishSplash(); }
         });
-      }
+      })();
 
       // 10. MOBILE PHONE CAROUSEL — auto-sliding coverflow
       const phoneViewport = document.getElementById('phoneViewport');
@@ -3747,7 +3702,275 @@
         }, { passive: true });
       }
 
-      // 11. Sticky mobile CTA — after hero scrolls out of view
+      // 11. ABOUT PLASMA SHADER — WebGL background for #about (replaces neon-bg.gif)
+      (function initAboutShader() {
+        const canvas = document.getElementById('aboutShaderCanvas');
+        if (!canvas) return;
+
+        const gl = canvas.getContext('webgl');
+        if (!gl) return; // no WebGL — neon-bg.gif still shows via .neon-bg-layer
+
+        const VS = `
+          attribute vec4 aPos;
+          void main() { gl_Position = aPos; }
+        `;
+        const FS = `
+          precision highp float;
+          uniform vec2 iRes;
+          uniform float iTime;
+          const float spd = 0.2;
+          const float gridSW = 0.015;
+          const float axisW = 0.05;
+          const float majW = 0.025;
+          const float minW = 0.0125;
+          const float majFreq = 5.0;
+          const float minFreq = 1.0;
+          const float scale = 5.0;
+          const vec4 lineColor = vec4(0.4,0.2,0.8,1.0);
+          const float minLW = 0.01;
+          const float maxLW = 0.2;
+          const float lineSpd = 1.0*spd;
+          const float lineAmp = 1.0;
+          const float lineFreq = 0.2;
+          const float warpSpd = 0.2*spd;
+          const float warpFreq = 0.5;
+          const float warpAmp = 1.0;
+          const float offFreq = 0.5;
+          const float offSpd = 1.33*spd;
+          const float minOff = 0.6;
+          const float maxOff = 2.0;
+          const int LINES = 16;
+          #define circle(pos,r,c) smoothstep(r+gridSW,r,length(c-(pos)))
+          #define smoothLine(pos,hw,t) smoothstep(hw,0.0,abs(pos-(t)))
+          #define crispLine(pos,hw,t) smoothstep(hw+gridSW,hw,abs(pos-(t)))
+          #define perLine(freq,w,t) crispLine(freq/2.0,w,abs(mod(t,freq)-(freq)/2.0))
+          float rng(float t){return(cos(t)+cos(t*1.3+1.3)+cos(t*1.4+1.4))/3.0;}
+          float plasmaY(float x,float hf,float off){return rng(x*lineFreq+iTime*lineSpd)*hf*lineAmp+off;}
+          void main(){
+            vec2 uv=gl_FragCoord.xy/iRes.xy;
+            vec2 sp=(gl_FragCoord.xy-iRes.xy/2.0)/iRes.x*2.0*scale;
+            float hf=1.0-(cos(uv.x*6.28)*0.5+0.5);
+            float vf=1.0-(cos(uv.y*6.28)*0.5+0.5);
+            sp.y+=rng(sp.x*warpFreq+iTime*warpSpd)*warpAmp*(0.5+hf);
+            sp.x+=rng(sp.y*warpFreq+iTime*warpSpd+2.0)*warpAmp*hf;
+            vec4 lines=vec4(0.0);
+            for(int l=0;l<LINES;l++){
+              float nli=float(l)/float(LINES);
+              float ot=iTime*offSpd;
+              float op=float(l)+sp.x*offFreq;
+              float r=rng(op+ot)*0.5+0.5;
+              float hw=mix(minLW,maxLW,r*hf)/2.0;
+              float off=rng(op+ot*(1.0+nli))*mix(minOff,maxOff,hf);
+              float lp=plasmaY(sp.x,hf,off);
+              float ln=smoothLine(lp,hw,sp.y)/2.0+crispLine(lp,hw*0.15,sp.y);
+              float cx=mod(float(l)+iTime*lineSpd,25.0)-12.0;
+              vec2 cp=vec2(cx,plasmaY(cx,hf,off));
+              float ci=circle(cp,0.01,sp)*4.0;
+              lines+=(ln+ci)*lineColor*r;
+            }
+            vec4 bg=mix(vec4(0.1,0.1,0.3,1.0),vec4(0.3,0.1,0.5,1.0),uv.x);
+            bg*=vf; bg.a=1.0; bg+=lines;
+            gl_FragColor=bg;
+          }
+        `;
+
+        function mkShader(type, src) {
+          const s = gl.createShader(type);
+          gl.shaderSource(s, src);
+          gl.compileShader(s);
+          return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null;
+        }
+
+        const vs = mkShader(gl.VERTEX_SHADER, VS);
+        const fs = mkShader(gl.FRAGMENT_SHADER, FS);
+        if (!vs || !fs) return;
+        const prog = gl.createProgram();
+        gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
+        if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
+
+        const buf = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
+
+        const aPos = gl.getAttribLocation(prog, 'aPos');
+        const uRes = gl.getUniformLocation(prog, 'iRes');
+        const uTime = gl.getUniformLocation(prog, 'iTime');
+
+        const aboutSection = document.getElementById('about');
+        let shaderRaf = null;
+        let shaderStart = 0;
+        let shaderRunning = false;
+
+        function resizeShader() {
+          if (!aboutSection) return;
+          const r = aboutSection.getBoundingClientRect();
+          canvas.width = Math.round(r.width);
+          canvas.height = Math.round(r.height);
+          gl.viewport(0, 0, canvas.width, canvas.height);
+        }
+
+        function renderShader(ts) {
+          if (!shaderRunning) return;
+          if (motionReduced()) { shaderRaf = null; return; }
+          const t = (ts - shaderStart) / 1000;
+          gl.useProgram(prog);
+          gl.uniform2f(uRes, canvas.width, canvas.height);
+          gl.uniform1f(uTime, t);
+          gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+          gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+          gl.enableVertexAttribArray(aPos);
+          gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+          shaderRaf = requestAnimationFrame(renderShader);
+        }
+
+        function startShader(ts) {
+          if (shaderRunning) return;
+          shaderRunning = true;
+          shaderStart = ts || performance.now();
+          resizeShader();
+          shaderRaf = requestAnimationFrame(renderShader);
+        }
+
+        function stopShader() {
+          shaderRunning = false;
+          if (shaderRaf) { cancelAnimationFrame(shaderRaf); shaderRaf = null; }
+        }
+
+        // Render one still frame even when motion is reduced
+        if (aboutSection) {
+          resizeShader();
+          const t0 = 0;
+          gl.useProgram(prog);
+          gl.uniform2f(uRes, canvas.width, canvas.height);
+          gl.uniform1f(uTime, t0);
+          gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+          gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+          gl.enableVertexAttribArray(aPos);
+          gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+        }
+
+        const ioShader = new IntersectionObserver(([entry]) => {
+          if (entry.isIntersecting) { startShader(performance.now()); }
+          else { stopShader(); }
+        }, { threshold: 0 });
+        if (aboutSection) ioShader.observe(aboutSection);
+
+        window.addEventListener('resize', () => { resizeShader(); }, { passive: true });
+      })();
+
+      // 12. IMOJI PARALLAX — follow-cursor/touch tilt + auto-cycle stickers
+      (function initImoji() {
+        const scene = document.getElementById('imojiScene');
+        const tilt = document.getElementById('imojiTilt');
+        const stickers = [
+          document.getElementById('imoji1'),
+          document.getElementById('imoji2'),
+          document.getElementById('imoji3')
+        ];
+        if (!scene || !tilt || stickers.some(s => !s)) return;
+
+        let activeIdx = 0;
+        let cycleTimer = null;
+        let isTouching = false;
+
+        function showSticker(idx) {
+          stickers.forEach((s, i) => s.classList.toggle('active', i === idx));
+          activeIdx = idx;
+        }
+
+        function nextSticker() {
+          showSticker((activeIdx + 1) % stickers.length);
+        }
+
+        function startCycle() {
+          stopCycle();
+          cycleTimer = setInterval(nextSticker, 2500);
+        }
+
+        function stopCycle() {
+          if (cycleTimer) { clearInterval(cycleTimer); cycleTimer = null; }
+        }
+
+        startCycle();
+
+        // Tap/click cycles through stickers
+        scene.addEventListener('click', () => {
+          nextSticker();
+          stopCycle();
+          startCycle();
+        });
+
+        if (motionReduced()) return; // no tilt on reduced-motion
+
+        const MAX_TILT = 14; // degrees
+
+        function applyTilt(rx, ry) {
+          tilt.style.transform = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateZ(16px)';
+        }
+
+        function resetTilt() {
+          tilt.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0)';
+        }
+
+        // Desktop: pointer move on the about-image-container
+        const container = scene.closest('.about-image-container') || scene;
+        container.addEventListener('pointermove', e => {
+          if (isTouching) return;
+          const rect = container.getBoundingClientRect();
+          const nx = (e.clientX - rect.left) / rect.width - 0.5;
+          const ny = (e.clientY - rect.top) / rect.height - 0.5;
+          applyTilt(-ny * MAX_TILT, nx * MAX_TILT);
+        });
+        container.addEventListener('pointerleave', resetTilt);
+
+        // Touch: follow finger
+        container.addEventListener('touchmove', e => {
+          isTouching = true;
+          const t = e.touches[0];
+          const rect = container.getBoundingClientRect();
+          const nx = (t.clientX - rect.left) / rect.width - 0.5;
+          const ny = (t.clientY - rect.top) / rect.height - 0.5;
+          applyTilt(-ny * MAX_TILT, nx * MAX_TILT);
+        }, { passive: true });
+        container.addEventListener('touchend', () => {
+          isTouching = false;
+          resetTilt();
+        }, { passive: true });
+
+        // Mobile: device orientation (iOS requires permission on user gesture)
+        if (window.matchMedia('(hover: none)').matches && 'DeviceOrientationEvent' in window) {
+          let orientActive = false;
+          const requestOrientation = () => {
+            if (orientActive) return;
+            const req = DeviceOrientationEvent.requestPermission;
+            if (typeof req === 'function') {
+              req().then(state => {
+                if (state === 'granted') activateOrientation();
+              }).catch(() => {});
+            } else {
+              activateOrientation();
+            }
+          };
+
+          function activateOrientation() {
+            orientActive = true;
+            window.addEventListener('deviceorientation', e => {
+              if (isTouching) return;
+              const rx = Math.max(-MAX_TILT, Math.min(MAX_TILT, (e.beta || 0) - 45));
+              const ry = Math.max(-MAX_TILT, Math.min(MAX_TILT, e.gamma || 0));
+              applyTilt(rx, ry);
+            }, { passive: true });
+          }
+
+          // Request on first tap anywhere in the about section
+          const aboutSect = document.getElementById('about');
+          if (aboutSect) {
+            aboutSect.addEventListener('click', requestOrientation, { once: true });
+          }
+        }
+      })();
+
+      // 13. Sticky mobile CTA — after hero scrolls out of view
       const stickyCta = document.getElementById('stickyCta');
       const homeSection = document.getElementById('home');
       if (stickyCta && homeSection && window.matchMedia('(max-width: 800px)').matches) {
