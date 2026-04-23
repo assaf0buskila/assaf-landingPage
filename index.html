@@ -1333,76 +1333,90 @@
       }
     }
 
-    /* Fixed edge stickers (imoji), visible while scrolling the page */
-    .page-side-stickers {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 25;
-      overflow: hidden;
+    /* In-page imoji strip, shown once between About and Services */
+    .imoji-strip {
+      padding: 12px 50px 24px;
     }
 
-    .page-side-sticker {
-      position: absolute;
-      width: clamp(72px, 11vw, 130px);
-      filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.45));
+    .imoji-strip__inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: clamp(16px, 3vw, 42px);
+      pointer-events: none;
+    }
+
+    .imoji-strip__item {
+      width: clamp(78px, 10vw, 126px);
+      filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.42));
       opacity: 0.95;
       will-change: transform;
-      animation: pageSideStickerFloat 7s ease-in-out infinite;
+      animation: imojiStripFloat 7s ease-in-out infinite;
+      --imoji-offset-y: 0px;
+      --imoji-rotate: 0deg;
     }
 
-    .page-side-sticker img {
+    .imoji-strip__item img {
       display: block;
       width: 100%;
       height: auto;
-      border-radius: 12px;
+      border-radius: 14px;
       user-select: none;
       -webkit-user-drag: none;
     }
 
-    /* L, R, L down the viewport so they appear as you scroll */
-    .page-side-sticker--1 {
-      left: max(4px, env(safe-area-inset-left, 0px));
-      top: 16vh;
+    .imoji-strip__item--1 {
+      --imoji-offset-y: 8px;
+      --imoji-rotate: -7deg;
       animation-delay: 0s;
     }
 
-    .page-side-sticker--2 {
-      right: max(4px, env(safe-area-inset-right, 0px));
-      top: 44vh;
+    .imoji-strip__item--2 {
+      --imoji-offset-y: -18px;
+      --imoji-rotate: 5deg;
       animation-delay: -2.2s;
     }
 
-    .page-side-sticker--3 {
-      left: max(4px, env(safe-area-inset-left, 0px));
-      top: 72vh;
+    .imoji-strip__item--3 {
+      --imoji-offset-y: 20px;
+      --imoji-rotate: -4deg;
       animation-delay: -4.4s;
     }
 
-    @keyframes pageSideStickerFloat {
+    @keyframes imojiStripFloat {
       0%,
       100% {
-        transform: translateY(0) rotate(-3deg) scale(1);
+        transform: translateY(var(--imoji-offset-y)) rotate(var(--imoji-rotate)) scale(1);
       }
       50% {
-        transform: translateY(-12px) rotate(3deg) scale(1.02);
+        transform: translateY(calc(var(--imoji-offset-y) - 12px)) rotate(var(--imoji-rotate)) scale(1.02);
       }
     }
 
-    @media (max-width: 600px) {
-      .page-side-sticker {
-        width: clamp(52px, 20vw, 88px);
+    @media (max-width: 800px) {
+      .imoji-strip {
+        padding: 0 24px 18px;
+      }
+
+      .imoji-strip__inner {
+        gap: 12px;
+      }
+
+      .imoji-strip__item {
+        width: clamp(56px, 19vw, 86px);
         opacity: 0.88;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .page-side-sticker {
+      .imoji-strip__item {
         animation: none;
       }
     }
 
-    html.a11y-reduce-motion .page-side-sticker {
+    html.a11y-reduce-motion .imoji-strip__item {
       animation: none !important;
     }
 
@@ -2471,7 +2485,7 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-      height: clamp(120px, 22vw, 200px);
+      height: clamp(132px, 24vw, 228px);
       pointer-events: none;
     }
     .screen-break-goo-texts {
@@ -2485,9 +2499,9 @@
     }
     .screen-break-goo-text {
       position: absolute;
-      font-size: clamp(38px, 10vw, 90px);
+      font-size: clamp(50px, 12vw, 112px);
       font-weight: 900;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.04em;
       text-transform: uppercase;
       color: #fff;
       text-align: center;
@@ -2495,6 +2509,8 @@
       user-select: none;
       line-height: 1;
       text-shadow: 0 0 40px rgba(223,122,254,0.7), 0 0 80px rgba(129,74,200,0.4);
+      transform: translateZ(0);
+      backface-visibility: hidden;
     }
 
     .screen-break-overlay__hint {
@@ -2940,19 +2956,6 @@
     </div>
   </nav>
 
-  <!-- Imoji stickers: fixed left/right edges, stay visible while scrolling -->
-  <div class="page-side-stickers" aria-hidden="true">
-    <div class="page-side-sticker page-side-sticker--1">
-      <img src="assents/imoji-1.webp" alt="" width="200" height="267" loading="lazy" decoding="async" />
-    </div>
-    <div class="page-side-sticker page-side-sticker--2">
-      <img src="assents/imoji-2.webp" alt="" width="200" height="267" loading="lazy" decoding="async" />
-    </div>
-    <div class="page-side-sticker page-side-sticker--3">
-      <img src="assents/imoji-3.webp" alt="" width="200" height="267" loading="lazy" decoding="async" />
-    </div>
-  </div>
-
   <!-- MAIN -->
   <main id="main-content">
 
@@ -3097,6 +3100,20 @@
           <img src="assents/about%20me.png" alt="אסף בוסקילה" class="about-photo" loading="lazy" decoding="async" width="800" height="1067" />
         </div>
 
+      </div>
+    </section>
+
+    <section class="imoji-strip reveal" aria-hidden="true">
+      <div class="imoji-strip__inner">
+        <div class="imoji-strip__item imoji-strip__item--1">
+          <img src="assents/imoji-1.webp" alt="" width="200" height="267" loading="lazy" decoding="async" />
+        </div>
+        <div class="imoji-strip__item imoji-strip__item--2">
+          <img src="assents/imoji-2.webp" alt="" width="200" height="267" loading="lazy" decoding="async" />
+        </div>
+        <div class="imoji-strip__item imoji-strip__item--3">
+          <img src="assents/imoji-3.webp" alt="" width="200" height="267" loading="lazy" decoding="async" />
+        </div>
       </div>
     </section>
 
@@ -3875,23 +3892,27 @@
 
         // ── Gooey text morph ──────────────────────────────────────────
         const TEXTS = ['ASSAF', 'WEB', 'IS', 'HERE', 'ASSAF WEB'];
-        const MORPH_TIME = 1.2;       // seconds per transition
-        const COOLDOWN_TIME = 0.3;    // pause between transitions
+        const MORPH_TIME = 1.55;
+        const COOLDOWN_TIME = 0.18;
+        const MAX_BLUR = 22;
         const el1 = document.getElementById('gooText1');
         const el2 = document.getElementById('gooText2');
         let textIdx = TEXTS.length - 1;
         let morph = 0;
         let cooldown = COOLDOWN_TIME;
-        let gooTime = new Date();
+        let gooTime = performance.now();
         let gooRaf = null;
 
         function setMorph(frac) {
           if (!el1 || !el2) return;
-          el2.style.filter = 'blur(' + Math.min(8 / frac - 8, 100) + 'px)';
-          el2.style.opacity = Math.pow(frac, 0.4);
-          const f2 = 1 - frac;
-          el1.style.filter = 'blur(' + Math.min(8 / f2 - 8, 100) + 'px)';
-          el1.style.opacity = Math.pow(f2, 0.4);
+          const eased = frac * frac * (3 - 2 * frac);
+          const f2 = 1 - eased;
+          const blurIn = Math.max(0, (1 - eased) * MAX_BLUR);
+          const blurOut = Math.max(0, eased * MAX_BLUR);
+          el2.style.filter = 'blur(' + blurIn.toFixed(2) + 'px)';
+          el2.style.opacity = (0.28 + eased * 0.72).toFixed(3);
+          el1.style.filter = 'blur(' + blurOut.toFixed(2) + 'px)';
+          el1.style.opacity = Math.max(0, f2).toFixed(3);
         }
 
         function doCooldown() {
@@ -3906,7 +3927,7 @@
 
         function tickGoo() {
           if (dismissed) return;
-          const now = new Date();
+          const now = performance.now();
           const dt = (now - gooTime) / 1000;
           gooTime = now;
           cooldown -= dt;
@@ -3948,12 +3969,9 @@
         const isMobileVp = window.matchMedia('(max-width: 800px)').matches;
 
         if (canvas) {
-          // DPR cap for mobile battery / performance
-          if (isMobileVp) {
-            const dpr = Math.min(devicePixelRatio || 1, 1.5);
-            canvas.width = Math.round(window.innerWidth * dpr);
-            canvas.height = Math.round(window.innerHeight * dpr);
-          }
+          const dpr = Math.min(devicePixelRatio || 1, isMobileVp ? 1.15 : 1.35);
+          canvas.width = Math.round(window.innerWidth * dpr);
+          canvas.height = Math.round(window.innerHeight * dpr);
 
           import('https://cdn.jsdelivr.net/npm/threejs-components@0.0.19/build/cursors/tubes1.min.js')
             .then(mod => {
