@@ -1230,7 +1230,7 @@
       margin-inline-start: auto;
       position: relative;
       aspect-ratio: 3/4;
-      overflow: visible; /* allow 3D tilt to show outside bounds */
+      overflow: hidden;
       background: transparent;
       border-radius: 16px;
     }
@@ -1333,44 +1333,77 @@
       }
     }
 
-    /* Imoji parallax sticker container */
-    .about-imoji-scene {
-      width: 100%;
-      height: 100%;
-      perspective: 800px;
-      perspective-origin: 50% 50%;
-      position: absolute;
+    /* Fixed edge stickers (imoji), visible while scrolling the page */
+    .page-side-stickers {
+      position: fixed;
       inset: 0;
-      border-radius: 16px;
+      pointer-events: none;
+      z-index: 25;
       overflow: hidden;
     }
-    .about-imoji-tilt {
-      width: 100%;
-      height: 100%;
-      transform-style: preserve-3d;
-      transition: transform 0.18s ease-out;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      border-radius: inherit;
-    }
-    .about-imoji-sticker {
+
+    .page-side-sticker {
       position: absolute;
-      inset: 0;
+      width: clamp(72px, 11vw, 130px);
+      filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.45));
+      opacity: 0.95;
+      will-change: transform;
+      animation: pageSideStickerFloat 7s ease-in-out infinite;
+    }
+
+    .page-side-sticker img {
+      display: block;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-      pointer-events: none;
+      height: auto;
+      border-radius: 12px;
       user-select: none;
       -webkit-user-drag: none;
-      border-radius: inherit;
     }
-    .about-imoji-sticker.active {
-      opacity: 1;
+
+    /* L, R, L down the viewport so they appear as you scroll */
+    .page-side-sticker--1 {
+      left: max(4px, env(safe-area-inset-left, 0px));
+      top: 16vh;
+      animation-delay: 0s;
+    }
+
+    .page-side-sticker--2 {
+      right: max(4px, env(safe-area-inset-right, 0px));
+      top: 44vh;
+      animation-delay: -2.2s;
+    }
+
+    .page-side-sticker--3 {
+      left: max(4px, env(safe-area-inset-left, 0px));
+      top: 72vh;
+      animation-delay: -4.4s;
+    }
+
+    @keyframes pageSideStickerFloat {
+      0%,
+      100% {
+        transform: translateY(0) rotate(-3deg) scale(1);
+      }
+      50% {
+        transform: translateY(-12px) rotate(3deg) scale(1.02);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page-side-sticker {
+        width: clamp(52px, 20vw, 88px);
+        opacity: 0.88;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .page-side-sticker {
+        animation: none;
+      }
+    }
+
+    html.a11y-reduce-motion .page-side-sticker {
+      animation: none !important;
     }
 
     /* ============================================================
@@ -2815,9 +2848,6 @@
         align-self: start;
       }
 
-      .about-imoji-scene { border-radius: 14px; }
-      .about-imoji-sticker { border-radius: 14px; }
-
       /* Restore tap hint inside smaller photo */
       .about-tap-hint {
         display: inline-flex;
@@ -2909,6 +2939,19 @@
         aria-expanded="false" aria-controls="menuOverlay">תפריט</button>
     </div>
   </nav>
+
+  <!-- Imoji stickers: fixed left/right edges, stay visible while scrolling -->
+  <div class="page-side-stickers" aria-hidden="true">
+    <div class="page-side-sticker page-side-sticker--1">
+      <img src="assents/imoji-1.webp" alt="" width="200" height="267" loading="lazy" decoding="async" />
+    </div>
+    <div class="page-side-sticker page-side-sticker--2">
+      <img src="assents/imoji-2.webp" alt="" width="200" height="267" loading="lazy" decoding="async" />
+    </div>
+    <div class="page-side-sticker page-side-sticker--3">
+      <img src="assents/imoji-3.webp" alt="" width="200" height="267" loading="lazy" decoding="async" />
+    </div>
+  </div>
 
   <!-- MAIN -->
   <main id="main-content">
@@ -3051,14 +3094,7 @@
               </svg>
             </span>
           </div>
-          <!-- Imoji parallax stickers (follow cursor / touch / device tilt) -->
-          <div class="about-imoji-scene" id="imojiScene">
-            <div class="about-imoji-tilt" id="imojiTilt">
-              <img src="assents/imoji-1.webp" alt="אסף בוסקילה" class="about-imoji-sticker active" id="imoji1" loading="lazy" decoding="async" width="400" height="533" />
-              <img src="assents/imoji-2.webp" alt="אסף בוסקילה" class="about-imoji-sticker" id="imoji2" loading="lazy" decoding="async" width="400" height="533" />
-              <img src="assents/imoji-3.webp" alt="אסף בוסקילה" class="about-imoji-sticker" id="imoji3" loading="lazy" decoding="async" width="400" height="533" />
-            </div>
-          </div>
+          <img src="assents/about%20me.png" alt="אסף בוסקילה" class="about-photo" loading="lazy" decoding="async" width="800" height="1067" />
         </div>
 
       </div>
@@ -3810,8 +3846,15 @@
         workCards.forEach(card => workIo.observe(card));
       }
 
-      // 8. About photo area (imoji parallax handles tap; old about-photo removed)
+      // 8. About photo, mobile tap toggles color (grayscale → full color)
       const aboutMobileMq = window.matchMedia('(max-width: 800px)');
+      const aboutPhoto = document.querySelector('#about .about-photo');
+      if (aboutPhoto) {
+        aboutPhoto.addEventListener('click', () => {
+          if (!aboutMobileMq.matches) return;
+          aboutPhoto.classList.toggle('about-photo--color-mobile');
+        });
+      }
 
       // 8b. Service cards, tap image area to toggle full color (mobile only, same idea as about photo)
       document.querySelectorAll('#services .service-card').forEach(serviceCard => {
@@ -4161,119 +4204,7 @@
         window.addEventListener('resize', () => { resizeShader(); }, { passive: true });
       })();
 
-      // 12. IMOJI PARALLAX, follow-cursor/touch tilt + auto-cycle stickers
-      (function initImoji() {
-        const scene = document.getElementById('imojiScene');
-        const tilt = document.getElementById('imojiTilt');
-        const stickers = [
-          document.getElementById('imoji1'),
-          document.getElementById('imoji2'),
-          document.getElementById('imoji3')
-        ];
-        if (!scene || !tilt || stickers.some(s => !s)) return;
-
-        let activeIdx = 0;
-        let cycleTimer = null;
-        let isTouching = false;
-
-        function showSticker(idx) {
-          stickers.forEach((s, i) => s.classList.toggle('active', i === idx));
-          activeIdx = idx;
-        }
-
-        function nextSticker() {
-          showSticker((activeIdx + 1) % stickers.length);
-        }
-
-        function startCycle() {
-          stopCycle();
-          cycleTimer = setInterval(nextSticker, 2500);
-        }
-
-        function stopCycle() {
-          if (cycleTimer) { clearInterval(cycleTimer); cycleTimer = null; }
-        }
-
-        startCycle();
-
-        // Tap/click cycles through stickers
-        scene.addEventListener('click', () => {
-          nextSticker();
-          stopCycle();
-          startCycle();
-        });
-
-        if (motionReduced()) return; // no tilt on reduced-motion
-
-        const MAX_TILT = 14; // degrees
-
-        function applyTilt(rx, ry) {
-          tilt.style.transform = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateZ(16px)';
-        }
-
-        function resetTilt() {
-          tilt.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0)';
-        }
-
-        // Desktop: pointer move on the about-image-container
-        const container = scene.closest('.about-image-container') || scene;
-        container.addEventListener('pointermove', e => {
-          if (isTouching) return;
-          const rect = container.getBoundingClientRect();
-          const nx = (e.clientX - rect.left) / rect.width - 0.5;
-          const ny = (e.clientY - rect.top) / rect.height - 0.5;
-          applyTilt(-ny * MAX_TILT, nx * MAX_TILT);
-        });
-        container.addEventListener('pointerleave', resetTilt);
-
-        // Touch: follow finger
-        container.addEventListener('touchmove', e => {
-          isTouching = true;
-          const t = e.touches[0];
-          const rect = container.getBoundingClientRect();
-          const nx = (t.clientX - rect.left) / rect.width - 0.5;
-          const ny = (t.clientY - rect.top) / rect.height - 0.5;
-          applyTilt(-ny * MAX_TILT, nx * MAX_TILT);
-        }, { passive: true });
-        container.addEventListener('touchend', () => {
-          isTouching = false;
-          resetTilt();
-        }, { passive: true });
-
-        // Mobile: device orientation (iOS requires permission on user gesture)
-        if (window.matchMedia('(hover: none)').matches && 'DeviceOrientationEvent' in window) {
-          let orientActive = false;
-          const requestOrientation = () => {
-            if (orientActive) return;
-            const req = DeviceOrientationEvent.requestPermission;
-            if (typeof req === 'function') {
-              req().then(state => {
-                if (state === 'granted') activateOrientation();
-              }).catch(() => {});
-            } else {
-              activateOrientation();
-            }
-          };
-
-          function activateOrientation() {
-            orientActive = true;
-            window.addEventListener('deviceorientation', e => {
-              if (isTouching) return;
-              const rx = Math.max(-MAX_TILT, Math.min(MAX_TILT, (e.beta || 0) - 45));
-              const ry = Math.max(-MAX_TILT, Math.min(MAX_TILT, e.gamma || 0));
-              applyTilt(rx, ry);
-            }, { passive: true });
-          }
-
-          // Request on first tap anywhere in the about section
-          const aboutSect = document.getElementById('about');
-          if (aboutSect) {
-            aboutSect.addEventListener('click', requestOrientation, { once: true });
-          }
-        }
-      })();
-
-      // 13. Sticky mobile CTA, after hero scrolls out of view
+      // 12. Sticky mobile CTA, after hero scrolls out of view
       const stickyCta = document.getElementById('stickyCta');
       const homeSection = document.getElementById('home');
       if (stickyCta && homeSection && window.matchMedia('(max-width: 800px)').matches) {
