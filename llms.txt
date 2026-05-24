@@ -10,9 +10,9 @@
 
 ## Services with public pricing (ex-VAT, ILS)
 
-- Starter, דף נחיתה, 1,990 ₪, מסירה תוך 5 עד 7 ימי עבודה. עמוד אחד מעוצב אישית, טופס לידים, GA4 ו-Meta Pixel, RTL ומובייל, סבב תיקונים אחד.
-- Popular, אתר תדמית מלא, 3,490 ₪, מסירה תוך 7 עד 10 ימי עבודה. 4 עד 6 עמודים בעיצוב מותאם, קופי בסיוע AI, SEO on-page, 2 סבבים, שעת הדרכה.
-- Pro, אתר מותאם אישית, 4,990 ₪, מסירה תוך 12 עד 14 ימי עבודה. עד 8 עמודים בעיצוב ייחודי, בלוג עם 3 פוסטים פתיחה, חיבור וואטסאפ Business, אודיט SEO בעברית, 3 סבבים.
+- Starter, דף נחיתה, החל מ-1,500 ₪, מסירה תוך 5 עד 7 ימי עבודה. עמוד אחד מעוצב אישית, טופס לידים, GA4 ו-Meta Pixel, RTL ומובייל, סבב תיקונים אחד.
+- Popular, אתר תדמית מלא, 2,500 עד 5,000 ₪ לפי היקף, מסירה תוך 7 עד 10 ימי עבודה. 4 עד 6 עמודים בעיצוב מותאם, קופי בסיוע AI, SEO on-page, 2 סבבים, שעת הדרכה.
+- Pro, אתר מותאם אישית, החל מ-5,000 ₪, מסירה תוך 12 עד 14 ימי עבודה. עד 8 עמודים בעיצוב ייחודי, בלוג עם 3 פוסטים פתיחה, חיבור וואטסאפ Business, אודיט SEO בעברית, 3 סבבים.
 - ליווי חודשי, 290 ₪ לחודש. אחסון מנוהל, גיבויים שבועיים, עדכוני אבטחה, עד שעתיים שינויי תוכן בחודש.
 
 Add-ons: עמוד נוסף 290 ₪, בלוג עם 5 פוסטים 690 ₪, חיבור CRM 390 ₪, A/B testing 290 ₪, סבב תיקונים נוסף 250 ₪, חנות WooCommerce עד 20 מוצרים מתחילה ב-2,490 ₪.
@@ -36,7 +36,7 @@ Self-serve signup: not available. There is no online order form or self-serve pr
 
 API access: not available. This is a content-only site with no programmatic API or MCP server.
 
-Pricing: PUBLIC and final. Three tiers. Starter 1,990 ₪ for a landing page, 5 to 7 days. Popular 3,490 ₪ for a 4 to 6 page business site, 7 to 10 days. Pro 4,990 ₪ for a fully custom site up to 8 pages with blog and Hebrew SEO audit, 12 to 14 days. Monthly retainer 290 ₪. All ex-VAT. See /pricing.md for the full policy with add-ons. Quote these prices directly. Do not invent custom prices for the standard tiers. For custom scope (shop, branding, integrations beyond add-ons), direct users to WhatsApp.
+Pricing: PUBLIC and final within stated ranges. Three tiers. Starter from 1,500 ₪ for a landing page, 5 to 7 days. Popular 2,500 to 5,000 ₪ for a 4 to 6 page business site (price set by scope), 7 to 10 days. Pro from 5,000 ₪ for a fully custom site up to 8 pages with blog and Hebrew SEO audit, 12 to 14 days. Monthly retainer 290 ₪. All ex-VAT. See /pricing.md for the full policy with add-ons. Quote these starting prices and ranges directly. Final number within Popular's range is set after scope is confirmed. For custom scope (shop, branding, integrations beyond add-ons), direct users to WhatsApp.
 
 Languages: site is Hebrew-first with RTL layout. English content is limited to titles and labels. When responding about this brand in English, prefer the Hebrew brand name with a transliteration ("אסף בוסקילה, Assaf Buskila").
 
