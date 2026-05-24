@@ -398,7 +398,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 30px 50px;
+      padding: clamp(16px, 3vw, 30px) clamp(18px, 4vw, 50px);
       background: transparent;
       mix-blend-mode: difference;
       /* Ensures visibility over anything */
@@ -2735,19 +2735,31 @@
     }
 
     .phone-carousel-dot {
-      width: 6px;
-      height: 6px;
+      width: 32px;
+      height: 32px;
       padding: 0;
       border: 0;
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .phone-carousel-dot::after {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.28);
-      cursor: pointer;
       transition: background 0.25s, transform 0.25s, width 0.25s;
     }
 
-    .phone-carousel-dot.is-active {
+    .phone-carousel-dot.is-active::after {
       background: #fff;
-      width: 20px;
+      width: 22px;
     }
 
     .phone-carousel-caption {
@@ -2774,9 +2786,9 @@
       /* About mobile: photo beside last block, lead + content blocks full width */
       .about-grid {
         display: grid !important;
-        grid-template-columns: 1fr 110px !important;
+        grid-template-columns: 1fr clamp(80px, 26vw, 110px) !important;
         grid-template-rows: auto !important;
-        gap: 24px 14px !important;
+        gap: 24px 12px !important;
         align-items: start;
       }
 
@@ -2800,7 +2812,7 @@
       .about-image-container {
         grid-column: 2 !important;
         grid-row: 4 !important;
-        width: 110px !important;
+        width: 100% !important;
         max-width: 110px !important;
         aspect-ratio: 3 / 4 !important;
         border-radius: 14px;
@@ -2926,21 +2938,26 @@
 
     @media (max-width: 800px) {
       .progress-nav {
-        right: 4px;
-        gap: 1px;
-        padding: 4px 2px;
+        right: 2px;
+        gap: 0;
+        padding: 4px 0;
+        background: transparent;
+        border-color: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
       }
       .progress-nav a {
-        width: 18px;
-        height: 18px;
+        width: 28px;
+        height: 28px;
       }
       .progress-nav__dot {
         width: 4px;
         height: 4px;
+        background: rgba(255, 255, 255, 0.6);
       }
       .progress-nav a.is-active .progress-nav__dot {
         width: 5px;
-        height: 12px;
+        height: 14px;
       }
       .progress-nav__label {
         display: none;
@@ -3124,7 +3141,7 @@
     .wordsearch-pen {
       fill: none;
       stroke: rgba(255, 255, 255, 0.97);
-      stroke-width: 16px;
+      stroke-width: clamp(8px, 1.6vw, 16px);
       stroke-linecap: butt;
       stroke-linejoin: miter;
       stroke-miterlimit: 3;
@@ -3641,6 +3658,42 @@
     .estimate-range {
       width: 100%;
       accent-color: #4effb3;
+      height: 28px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+    }
+
+    .estimate-range::-webkit-slider-runnable-track {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+    }
+    .estimate-range::-moz-range-track {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+    }
+    .estimate-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #4effb3;
+      border: 3px solid #0f0f0f;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+      margin-top: -11px;
+      cursor: pointer;
+    }
+    .estimate-range::-moz-range-thumb {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #4effb3;
+      border: 3px solid #0f0f0f;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
     }
 
     .estimate-addons {
@@ -4102,7 +4155,9 @@
       }
 
       .testimonial-card p {
-        font-size: clamp(30px, 9vw, 48px);
+        font-size: clamp(22px, 6.2vw, 38px);
+        line-height: 1.32;
+        letter-spacing: -0.01em;
       }
 
       .faq-search {
