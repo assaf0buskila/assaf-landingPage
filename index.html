@@ -6247,7 +6247,20 @@
         });
         const low = Math.round(total / 100) * 100;
         const high = Math.round(total * 1.2 / 100) * 100;
-        estimateOutput.textContent = `${currency(low)} to ${currency(high)}`;
+        // Lock site + store output to the tier-aligned wording, keep landing dynamic
+        if (estimateType === 'site') {
+          estimateOutput.textContent = activeLang() === 'he'
+            ? '₪2,500 עד ₪5,000 ~'
+            : '₪2,500 to ₪5,000 ~';
+        } else if (estimateType === 'store') {
+          estimateOutput.textContent = activeLang() === 'he'
+            ? 'מ-₪5,000 ~'
+            : 'from ₪5,000 ~';
+        } else {
+          estimateOutput.textContent = activeLang() === 'he'
+            ? `${currency(low)} עד ${currency(high)}`
+            : `${currency(low)} to ${currency(high)}`;
+        }
         const typeLabel = estimateTypes.find(btn => btn.dataset.type === estimateType)?.innerText.trim() || estimateType;
         estimateWhatsApp.href = waLink(activeLang() === 'he'
           ? `היי אסף, בניתי אומדן באתר שלך: ${typeLabel}, ${pages} עמודים, תוספות: ${selected.join(', ') || 'ללא'}. טווח: ${estimateOutput.textContent}`
