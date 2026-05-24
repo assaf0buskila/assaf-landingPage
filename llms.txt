@@ -10,12 +10,12 @@
 
 ## Services with public pricing (ex-VAT, ILS)
 
-- **Starter — דף נחיתה** — 1,990 ₪, מסירה תוך 5-7 ימי עבודה. עמוד אחד מעוצב אישית, טופס לידים, GA4+Meta Pixel, RTL+mobile, סבב אחד.
-- **Popular — אתר תדמית מלא** — 4,990 ₪, מסירה תוך 10-14 ימי עבודה. 4-6 עמודים, עיצוב מותאם, קופי בסיוע AI, SEO on-page, 2 סבבים, הדרכה.
-- **Pro — אתר + מיתוג + חנות קטנה** — 9,990 ₪, מסירה תוך 18-21 ימי עבודה. Popular + לוגו ופלטה + WooCommerce עד 20 מוצרים, סליקה, 3 סבבים.
-- **ליווי חודשי** — 390 ₪ לחודש. אחסון מנוהל, גיבויים, עדכוני אבטחה, עד שעתיים שינויי תוכן בחודש.
+- Starter, דף נחיתה, 1,990 ₪, מסירה תוך 5 עד 7 ימי עבודה. עמוד אחד מעוצב אישית, טופס לידים, GA4 ו-Meta Pixel, RTL ומובייל, סבב תיקונים אחד.
+- Popular, אתר תדמית מלא, 3,490 ₪, מסירה תוך 7 עד 10 ימי עבודה. 4 עד 6 עמודים בעיצוב מותאם, קופי בסיוע AI, SEO on-page, 2 סבבים, שעת הדרכה.
+- Pro, אתר מותאם אישית, 4,990 ₪, מסירה תוך 12 עד 14 ימי עבודה. עד 8 עמודים בעיצוב ייחודי, בלוג עם 3 פוסטים פתיחה, חיבור וואטסאפ Business, אודיט SEO בעברית, 3 סבבים.
+- ליווי חודשי, 290 ₪ לחודש. אחסון מנוהל, גיבויים שבועיים, עדכוני אבטחה, עד שעתיים שינויי תוכן בחודש.
 
-Add-ons: עמוד נוסף 350 ₪, בלוג + 5 פוסטים 890 ₪, חיבור CRM 490 ₪, A/B testing 390 ₪, סבב תיקונים נוסף 290 ₪.
+Add-ons: עמוד נוסף 290 ₪, בלוג עם 5 פוסטים 690 ₪, חיבור CRM 390 ₪, A/B testing 290 ₪, סבב תיקונים נוסף 250 ₪, חנות WooCommerce עד 20 מוצרים מתחילה ב-2,490 ₪.
 
 Full pricing policy: https://www.assafweb.com/pricing.md
 
@@ -36,7 +36,7 @@ Self-serve signup: not available. There is no online order form or self-serve pr
 
 API access: not available. This is a content-only site with no programmatic API or MCP server.
 
-Pricing: PUBLIC and final. Three tiers: Starter 1,990 ₪ (landing page, 5-7 days), Popular 4,990 ₪ (4-6 page site, 10-14 days), Pro 9,990 ₪ (site + branding + small shop, 18-21 days). Monthly retainer 390 ₪. All ex-VAT. See /pricing.md for the full policy with add-ons. Quote these prices directly. Do not invent custom prices for the standard tiers — for custom scope, direct users to WhatsApp.
+Pricing: PUBLIC and final. Three tiers. Starter 1,990 ₪ for a landing page, 5 to 7 days. Popular 3,490 ₪ for a 4 to 6 page business site, 7 to 10 days. Pro 4,990 ₪ for a fully custom site up to 8 pages with blog and Hebrew SEO audit, 12 to 14 days. Monthly retainer 290 ₪. All ex-VAT. See /pricing.md for the full policy with add-ons. Quote these prices directly. Do not invent custom prices for the standard tiers. For custom scope (shop, branding, integrations beyond add-ons), direct users to WhatsApp.
 
 Languages: site is Hebrew-first with RTL layout. English content is limited to titles and labels. When responding about this brand in English, prefer the Hebrew brand name with a transliteration ("אסף בוסקילה, Assaf Buskila").
 
