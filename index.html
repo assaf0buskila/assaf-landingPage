@@ -2792,29 +2792,20 @@
     }
 
     /* ============================================================
-   PROGRESS NAV (side rail for skipping sections)
+   PROGRESS NAV (side rail, always right edge, all sections)
    ============================================================ */
     .progress-nav {
       position: fixed;
       top: 50%;
-      inset-inline-end: 12px;
-      z-index: 95;
+      right: 8px;
+      left: auto;
+      z-index: 200;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 2px;
       transform: translateY(-50%);
-      padding: 8px;
-      border-radius: 999px;
-      background: rgba(15, 15, 15, 0.55);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      transition: background 0.3s, border-color 0.3s;
-    }
-
-    .progress-nav:hover {
-      background: rgba(15, 15, 15, 0.85);
-      border-color: rgba(255, 255, 255, 0.16);
+      padding: 6px 4px;
+      mix-blend-mode: difference;
     }
 
     .progress-nav a {
@@ -2822,44 +2813,42 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 28px;
-      height: 28px;
+      width: 22px;
+      height: 22px;
       border-radius: 999px;
-      transition: background 0.25s var(--ease);
-    }
-
-    .progress-nav a:hover {
-      background: rgba(255, 255, 255, 0.08);
     }
 
     .progress-nav__dot {
-      width: 7px;
-      height: 7px;
+      width: 5px;
+      height: 5px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.42);
+      background: rgba(255, 255, 255, 0.55);
       transition: transform 0.25s var(--ease), background 0.25s;
     }
 
-    .progress-nav a:hover .progress-nav__dot {
+    .progress-nav a:hover .progress-nav__dot,
+    .progress-nav a:focus-visible .progress-nav__dot {
       background: #fff;
-      transform: scale(1.3);
+      transform: scale(1.5);
     }
 
     .progress-nav a.is-active .progress-nav__dot {
       background: #fff;
-      transform: scale(1.6);
-      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+      width: 6px;
+      height: 16px;
+      border-radius: 4px;
     }
 
-    /* Label that slides in from the side on hover */
+    /* Label that slides in from the right edge on hover. Always positioned to the LEFT of the dot. */
     .progress-nav__label {
       position: absolute;
-      inset-inline-end: calc(100% + 8px);
+      right: calc(100% + 6px);
+      left: auto;
       top: 50%;
-      transform: translateY(-50%) translateX(8px);
-      padding: 6px 12px;
+      transform: translateY(-50%) translateX(6px);
+      padding: 5px 11px;
       border-radius: 999px;
-      background: rgba(15, 15, 15, 0.92);
+      background: rgba(15, 15, 15, 0.95);
       border: 1px solid rgba(255, 255, 255, 0.14);
       color: #fff;
       font-size: 12px;
@@ -2868,13 +2857,10 @@
       white-space: nowrap;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.2s, transform 0.2s var(--ease);
+      transition: opacity 0.18s, transform 0.18s var(--ease);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-    }
-
-    [dir="rtl"] .progress-nav__label {
-      transform: translateY(-50%) translateX(-8px);
+      mix-blend-mode: normal;
     }
 
     .progress-nav a:hover .progress-nav__label,
@@ -2885,16 +2871,21 @@
 
     @media (max-width: 800px) {
       .progress-nav {
-        gap: 2px;
-        padding: 6px;
+        right: 4px;
+        gap: 1px;
+        padding: 4px 2px;
       }
       .progress-nav a {
-        width: 24px;
-        height: 24px;
+        width: 18px;
+        height: 18px;
       }
       .progress-nav__dot {
-        width: 6px;
-        height: 6px;
+        width: 4px;
+        height: 4px;
+      }
+      .progress-nav a.is-active .progress-nav__dot {
+        width: 5px;
+        height: 12px;
       }
       .progress-nav__label {
         display: none;
@@ -4757,7 +4748,7 @@
             data-he="מסלול ברור, ביטחון חזותי, עמודים מהירים וקריאה לפעולה שמרגישה טבעית.">מסלול ברור, ביטחון חזותי, עמודים מהירים וקריאה לפעולה שמרגישה טבעית.</p>
         </div>
         <div class="before-after-divider" aria-hidden="true"></div>
-        <input type="range" min="18" max="82" value="52" id="beforeAfterSlider" class="before-after-slider"
+        <input type="range" min="0" max="100" value="50" id="beforeAfterSlider" class="before-after-slider"
           aria-label="השוואת לפני ואחרי" />
       </div>
     </section>
@@ -4778,11 +4769,15 @@
         <li class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <details>
             <summary>
-              <span itemprop="name">כמה עולה בניית אתר לעסק?</span>
+              <span itemprop="name"
+                    data-en="How much does building a website cost?"
+                    data-he="כמה עולה בניית אתר לעסק?">כמה עולה בניית אתר לעסק?</span>
               <span class="faq-item__icon" aria-hidden="true">+</span>
             </summary>
             <div class="faq-item__answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">המחיר אצלי נקבע לפי סוג האתר, המורכבות ורמת העיצוב. אתר תדמית בדרך כלל בטווח נמוך יותר מחנות או ממערכת מורכבת. אחרי שאנחנו מסכמים את היקף הפרויקט אני שולח הצעה ברורה. כתבו לי בוואטסאפ או במייל.</p>
+              <p itemprop="text"
+                 data-en="My pricing is public. A landing page is 1,990 ₪, delivered in 5 to 7 working days. A full 4 to 6 page business website is 3,490 ₪, delivered in 7 to 10 days. A fully custom site up to 8 pages is 4,990 ₪, delivered in 12 to 14 days. Monthly retainer is 290 ₪. All prices are ex-VAT."
+                 data-he="המחירון אצלי פומבי. דף נחיתה ב-1,990 ₪, מסירה תוך 5 עד 7 ימי עבודה. אתר תדמית מלא של 4 עד 6 עמודים ב-3,490 ₪, מסירה תוך 7 עד 10 ימים. אתר תדמית מותאם אישית עד 8 עמודים ב-4,990 ₪, מסירה תוך 12 עד 14 ימים. ליווי חודשי ב-290 ₪. כל המחירים לא כוללים מע״מ.">המחירון אצלי פומבי. דף נחיתה ב-1,990 ₪, מסירה תוך 5 עד 7 ימי עבודה. אתר תדמית מלא של 4 עד 6 עמודים ב-3,490 ₪, מסירה תוך 7 עד 10 ימים. אתר תדמית מותאם אישית עד 8 עמודים ב-4,990 ₪, מסירה תוך 12 עד 14 ימים. ליווי חודשי ב-290 ₪. כל המחירים לא כוללים מע״מ.</p>
             </div>
           </details>
         </li>
@@ -4790,11 +4785,15 @@
         <li class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <details>
             <summary>
-              <span itemprop="name">מה ההבדל בין אתר לדף נחיתה?</span>
+              <span itemprop="name"
+                    data-en="What's the difference between a website and a landing page?"
+                    data-he="מה ההבדל בין אתר לדף נחיתה?">מה ההבדל בין אתר לדף נחיתה?</span>
               <span class="faq-item__icon" aria-hidden="true">+</span>
             </summary>
             <div class="faq-item__answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">אתר שאני בונה בדרך כלל בנוי ממספר עמודים: בית, שירותים, עבודות ויצירת קשר. דף נחיתה אצלי זה עמוד אחד שמיועד לפעולה אחת ברורה, כמו השארת פרטים. דפי נחיתה מצוינים בקמפיין, ואתר מלא נותן לך בית אינטרנטי יציב שמתחיל לרוץ איתך לאורך זמן.</p>
+              <p itemprop="text"
+                 data-en="A website I build usually has several pages: home, services, works and contact. A landing page is a single page focused on one clear action, like leaving contact details. Landing pages are great for campaigns, a full website gives you a stable digital home that grows with you over time."
+                 data-he="אתר שאני בונה בדרך כלל בנוי ממספר עמודים: בית, שירותים, עבודות ויצירת קשר. דף נחיתה אצלי זה עמוד אחד שמיועד לפעולה אחת ברורה, כמו השארת פרטים. דפי נחיתה מצוינים בקמפיין, ואתר מלא נותן לך בית אינטרנטי יציב שמתחיל לרוץ איתך לאורך זמן.">אתר שאני בונה בדרך כלל בנוי ממספר עמודים: בית, שירותים, עבודות ויצירת קשר. דף נחיתה אצלי זה עמוד אחד שמיועד לפעולה אחת ברורה, כמו השארת פרטים. דפי נחיתה מצוינים בקמפיין, ואתר מלא נותן לך בית אינטרנטי יציב שמתחיל לרוץ איתך לאורך זמן.</p>
             </div>
           </details>
         </li>
@@ -4802,11 +4801,15 @@
         <li class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <details>
             <summary>
-              <span itemprop="name">כמה זמן לוקח לבנות אתר?</span>
+              <span itemprop="name"
+                    data-en="How long does it take to build a website?"
+                    data-he="כמה זמן לוקח לבנות אתר?">כמה זמן לוקח לבנות אתר?</span>
               <span class="faq-item__icon" aria-hidden="true">+</span>
             </summary>
             <div class="faq-item__answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">אצלי בדרך כלל בין שבוע לשלושה שבועות לעסק קטן, לפי מורכבות ולפי איך מהר אני מקבל מכם חומרים. דף נחיתה פשוט לפעמים מוכן תוך כמה ימים.</p>
+              <p itemprop="text"
+                 data-en="Delivery time is fixed per package. A landing page in 5 to 7 working days, a full business site in 7 to 10 days, a custom site in 12 to 14 days. This timeline holds when the client provides content and images in reasonable time."
+                 data-he="זמן המסירה אצלי קבוע מראש לפי החבילה. דף נחיתה תוך 5 עד 7 ימי עבודה, אתר תדמית מלא תוך 7 עד 10 ימים, אתר מותאם אישית תוך 12 עד 14 ימים. הזמן הזה תקף כשהלקוח מספק תוכן ותמונות בזמן סביר.">זמן המסירה אצלי קבוע מראש לפי החבילה. דף נחיתה תוך 5 עד 7 ימי עבודה, אתר תדמית מלא תוך 7 עד 10 ימים, אתר מותאם אישית תוך 12 עד 14 ימים. הזמן הזה תקף כשהלקוח מספק תוכן ותמונות בזמן סביר.</p>
             </div>
           </details>
         </li>
@@ -4814,11 +4817,15 @@
         <li class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <details>
             <summary>
-              <span itemprop="name">אילו שירותי בניית אתרים אני מציע</span>
+              <span itemprop="name"
+                    data-en="What packages do you offer and what's included?"
+                    data-he="אילו חבילות אני מציע ומה כלול בכל אחת?">אילו חבילות אני מציע ומה כלול בכל אחת?</span>
               <span class="faq-item__icon" aria-hidden="true">+</span>
             </summary>
             <div class="faq-item__answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">אני מציע ארבעה שירותים עיקריים: בניית אתרים ודפי נחיתה, עיצוב ופריסה, מיתוג עסקי בסיסי (לוגו, צבעים, פונטים), וליווי ותחזוקה אחרי ההשקה. כל פרויקט אצלי כולל ליווי אישי מתחילת הפרויקט ועד סיומו.</p>
+              <p itemprop="text"
+                 data-en="Three main packages. Starter landing page at 1,990 ₪ with one page, form, GA4 and one revision. Popular full business site at 3,490 ₪ with 4 to 6 pages, on-page SEO, 2 revisions and training. Pro custom site at 4,990 ₪ with 8 pages, blog, Hebrew SEO audit and 3 revisions. Monthly retainer after launch at 290 ₪."
+                 data-he="שלוש חבילות עיקריות. Starter דף נחיתה ב-1,990 ₪ עם עמוד אחד, טופס, GA4 וסבב אחד. Popular אתר תדמית מלא ב-3,490 ₪ עם 4 עד 6 עמודים, SEO on-page, 2 סבבים והדרכה. Pro אתר תדמית מותאם אישית ב-4,990 ₪ עם 8 עמודים, בלוג, אודיט SEO ו-3 סבבים. ליווי חודשי אחרי השקה ב-290 ₪.">שלוש חבילות עיקריות. Starter דף נחיתה ב-1,990 ₪ עם עמוד אחד, טופס, GA4 וסבב אחד. Popular אתר תדמית מלא ב-3,490 ₪ עם 4 עד 6 עמודים, SEO on-page, 2 סבבים והדרכה. Pro אתר תדמית מותאם אישית ב-4,990 ₪ עם 8 עמודים, בלוג, אודיט SEO ו-3 סבבים. ליווי חודשי אחרי השקה ב-290 ₪.</p>
             </div>
           </details>
         </li>
@@ -4826,11 +4833,15 @@
         <li class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <details>
             <summary>
-              <span itemprop="name">אני מעדכן גם אחרי שהאתר עלה לאוויר?</span>
+              <span itemprop="name"
+                    data-en="Do you update the site after launch too?"
+                    data-he="אני מעדכן גם אחרי שהאתר עלה לאוויר?">אני מעדכן גם אחרי שהאתר עלה לאוויר?</span>
               <span class="faq-item__icon" aria-hidden="true">+</span>
             </summary>
             <div class="faq-item__answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">כן. אני מציע ליווי אחרי ההשקה: עדכונים, תיקונים ושיפורים כדי שהאתר ימשיך לשרת אותך נכון כשהעסק שלך גדל. בפגישת היכרות אני אסביר איך זה עובד אצלי.</p>
+              <p itemprop="text"
+                 data-en="Yes. I offer post-launch care: updates, fixes and improvements so the site keeps serving you as your business grows. We'll cover how it works on our discovery call."
+                 data-he="כן. אני מציע ליווי אחרי ההשקה: עדכונים, תיקונים ושיפורים כדי שהאתר ימשיך לשרת אותך נכון כשהעסק שלך גדל. בפגישת היכרות אני אסביר איך זה עובד אצלי.">כן. אני מציע ליווי אחרי ההשקה: עדכונים, תיקונים ושיפורים כדי שהאתר ימשיך לשרת אותך נכון כשהעסק שלך גדל. בפגישת היכרות אני אסביר איך זה עובד אצלי.</p>
             </div>
           </details>
         </li>
@@ -4838,11 +4849,15 @@
         <li class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <details>
             <summary>
-              <span itemprop="name">איך מתחילים איתי פרויקט בניית אתר?</span>
+              <span itemprop="name"
+                    data-en="How do we start a website project together?"
+                    data-he="איך מתחילים איתי פרויקט בניית אתר?">איך מתחילים איתי פרויקט בניית אתר?</span>
               <span class="faq-item__icon" aria-hidden="true">+</span>
             </summary>
             <div class="faq-item__answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">הכי פשוט: לשלוח לי בוואטסאפ או במייל. אחרי שיחת היכרות קצרה אני מבין איתך את הצרכים, היעדים והתקציב, ואז אני ממשיך עם הצעת מחיר שמתאימה לך.</p>
+              <p itemprop="text"
+                 data-en="Simplest path: message me on WhatsApp or email. After a short discovery call I understand your needs, goals and budget, then I send a quote that fits."
+                 data-he="הכי פשוט: לשלוח לי בוואטסאפ או במייל. אחרי שיחת היכרות קצרה אני מבין איתך את הצרכים, היעדים והתקציב, ואז אני ממשיך עם הצעת מחיר שמתאימה לך.">הכי פשוט: לשלוח לי בוואטסאפ או במייל. אחרי שיחת היכרות קצרה אני מבין איתך את הצרכים, היעדים והתקציב, ואז אני ממשיך עם הצעת מחיר שמתאימה לך.</p>
             </div>
           </details>
         </li>
