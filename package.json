@@ -2,9 +2,12 @@
   "name": "assaf-landing-page",
   "private": true,
   "scripts": {
-    "dev": "serve . -l 3000"
+    "dev": "serve . -l 3000",
+    "images:convert": "node scripts/convert-images.mjs",
+    "images:og": "node scripts/generate-og.mjs"
   },
   "devDependencies": {
-    "serve": "^14.2.4"
+    "serve": "^14.2.4",
+    "sharp": "^0.34.5"
   }
 }

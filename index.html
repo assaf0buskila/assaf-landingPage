@@ -6,20 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Production URL: https://www.assafweb.com, keep canonical / OG / JSON-LD in sync -->
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <meta name="google-site-verification" content="PASTE_CODE_HERE" />
   <meta name="theme-color" content="#0f0f0f" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
 
   <!-- Mobile splash GIF: start download early (same path as <img> below). Skips desktop to avoid huge fetch. -->
   <!-- open-intro-mobile.gif preload removed: replaced by Tubes WebGL splash -->
 
   <!-- Favicon: Vercel project card + browser tab use /favicon.ico or these links. Same asset as OG image. -->
-  <link rel="icon" href="/assents/about%20me.png" type="image/png" sizes="any" />
-  <link rel="apple-touch-icon" href="/assents/about%20me.png" />
+  <link rel="icon" href="/assets/about-me.png" type="image/png" sizes="any" />
+  <link rel="apple-touch-icon" href="/assets/about-me.png" />
 
   <title>בניית אתרים | אסף בוסקילה, אתרים מהירים לעסקים</title>
   <meta name="description"
     content="אסף בוסקילה, בניית אתרים ודפי נחיתה מהירים לעסקים קטנים וצומחים בישראל. אתרים שמביאים תוצאות, עיצוב מקצועי וליווי אישי. Assaf Buskila, web developer." />
-  <meta name="keywords" content="בניית אתרים, אסף בוסקילה, האתר של אסף, Assaf Buskila, דף נחיתה, אתר לעסקים, Assaf Buskila website developer" />
   <meta name="author" content="אסף בוסקילה" />
 
   <link rel="canonical" href="https://www.assafweb.com/" />
@@ -27,22 +26,21 @@
   <link rel="alternate" hreflang="x-default" href="https://www.assafweb.com/" />
 
   <meta property="og:locale" content="he_IL" />
-  <meta property="og:locale:alternate" content="en_US" />
-  <meta property="og:title" content="בניית אתרים | אסף בוסקילה, אתרים שמביאים תוצאות" />
+  <meta property="og:title" content="בניית אתרים | אסף בוסקילה, אתרים מהירים לעסקים" />
   <meta property="og:description"
     content="אסף בוסקילה, בניית אתרים ודפי נחיתה מהירים לעסקים קטנים וצומחים בישראל. אתרים שמביאים תוצאות עם ליווי אישי." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.assafweb.com/" />
-  <meta property="og:image" content="https://www.assafweb.com/assents/about%20me.png" />
+  <meta property="og:image" content="https://www.assafweb.com/assets/og-cover.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="אסף בוסקילה, מפתח ומעצב אתרים לעסקים" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="בניית אתרים | אסף בוסקילה, אתרים שמביאים תוצאות" />
+  <meta name="twitter:title" content="בניית אתרים | אסף בוסקילה, אתרים מהירים לעסקים" />
   <meta name="twitter:description"
     content="אסף בוסקילה, בניית אתרים ודפי נחיתה מהירים לעסקים קטנים וצומחים בישראל. ליווי אישי מתחילת ועד סוף." />
-  <meta name="twitter:image" content="https://www.assafweb.com/assents/about%20me.png" />
+  <meta name="twitter:image" content="https://www.assafweb.com/assets/og-cover.jpg" />
 
   <script type="application/ld+json">
   {
@@ -66,7 +64,7 @@
         "name": "Assaf Buskila",
         "alternateName": ["אסף בוסקילה", "אסף בוסקילה מפתח אתרים", "אסף בוסקילה בניית אתרים", "האתר של אסף"],
         "url": "https://www.assafweb.com/",
-        "image": "https://www.assafweb.com/assents/about%20me.png",
+        "image": "https://www.assafweb.com/assets/og-cover.jpg",
         "description": "אסף בוסקילה הוא מפתח ומעצב אתרים לעסקים קטנים וצומחים בישראל. מתמחה בבניית אתרים ודפי נחיתה מהירים, עם דגש על ביצועים והמרות וליווי אישי.",
         "jobTitle": "מפתח אתרים ומעצב · Web Developer & Designer",
         "knowsAbout": ["בניית אתרים", "דפי נחיתה", "מיתוג עסקי", "Web performance", "Landing pages", "Small business websites", "Frontend development"],
@@ -319,17 +317,17 @@
       box-shadow: 0 0 12px rgba(255, 255, 255, 0.35);
     }
 
-    /* White ring   frosted fill, no invert blend */
+    /* Refined ring   smaller, less blur, professional */
     .cursor-dot.expanded {
-      width: 80px;
-      height: 80px;
-      background: rgba(255, 255, 255, 0.12);
-      border: 2px solid rgba(255, 255, 255, 0.92);
+      width: 56px;
+      height: 56px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1.5px solid rgba(255, 255, 255, 0.85);
       box-shadow:
-        0 0 0 1px rgba(255, 255, 255, 0.15),
-        0 8px 32px rgba(0, 0, 0, 0.25);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+        0 0 0 1px rgba(255, 255, 255, 0.12),
+        0 4px 16px rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
     }
 
     /* ============================================================
@@ -544,12 +542,12 @@
     }
 
     .hero-title {
-      font-size: clamp(28px, 5.2vw, 64px);
-      font-weight: 700;
-      letter-spacing: -0.05em;
-      line-height: 1.05;
+      font-size: clamp(40px, 7vw, 96px);
+      font-weight: 800;
+      letter-spacing: -0.06em;
+      line-height: 1;
       text-transform: uppercase;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
 
     html[data-a11y-font="1"] .hero-title {
@@ -761,11 +759,11 @@
     }
 
     .section-title {
-      font-size: clamp(26px, 3.8vw, 52px);
-      font-weight: 600;
-      letter-spacing: -0.04em;
+      font-size: clamp(32px, 4.4vw, 60px);
+      font-weight: 700;
+      letter-spacing: -0.06em;
       text-transform: uppercase;
-      line-height: 1.08;
+      line-height: 1.02;
       margin-bottom: 56px;
       text-align: start;
     }
@@ -1331,93 +1329,6 @@
         transform: scale(1.03);
         filter: grayscale(0%) contrast(1);
       }
-    }
-
-    /* In-page imoji strip, shown once between About and Services */
-    .imoji-strip {
-      padding: 12px 50px 24px;
-    }
-
-    .imoji-strip__inner {
-      max-width: 1160px;
-      margin: 0 auto;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      gap: clamp(16px, 3vw, 42px);
-      pointer-events: none;
-    }
-
-    .imoji-strip__item {
-      width: clamp(78px, 10vw, 126px);
-      filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.42));
-      opacity: 0.95;
-      will-change: transform;
-      animation: imojiStripFloat 7s ease-in-out infinite;
-      --imoji-offset-y: 0px;
-      --imoji-rotate: 0deg;
-    }
-
-    .imoji-strip__item img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 14px;
-      user-select: none;
-      -webkit-user-drag: none;
-    }
-
-    .imoji-strip__item--1 {
-      --imoji-offset-y: 8px;
-      --imoji-rotate: -7deg;
-      animation-delay: 0s;
-    }
-
-    .imoji-strip__item--2 {
-      --imoji-offset-y: -18px;
-      --imoji-rotate: 5deg;
-      animation-delay: -2.2s;
-    }
-
-    .imoji-strip__item--3 {
-      --imoji-offset-y: 20px;
-      --imoji-rotate: -4deg;
-      animation-delay: -4.4s;
-    }
-
-    @keyframes imojiStripFloat {
-      0%,
-      100% {
-        transform: translateY(var(--imoji-offset-y)) rotate(var(--imoji-rotate)) scale(1);
-      }
-      50% {
-        transform: translateY(calc(var(--imoji-offset-y) - 12px)) rotate(var(--imoji-rotate)) scale(1.02);
-      }
-    }
-
-    @media (max-width: 800px) {
-      .imoji-strip {
-        padding: 0 24px 18px;
-      }
-
-      .imoji-strip__inner {
-        gap: 12px;
-      }
-
-      .imoji-strip__item {
-        width: clamp(56px, 19vw, 86px);
-        opacity: 0.88;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .imoji-strip__item {
-        animation: none;
-      }
-    }
-
-    html.a11y-reduce-motion .imoji-strip__item {
-      animation: none !important;
     }
 
     /* ============================================================
@@ -2349,7 +2260,7 @@
       content: '';
       position: absolute;
       inset: -25%;
-      background: url('assents/neon-bg.gif') center / cover;
+      background: url('assets/neon-bg.gif') center / cover;
       opacity: 0.09;
       mix-blend-mode: screen;
       animation: neonDrift 28s ease-in-out infinite alternate;
@@ -2879,6 +2790,898 @@
       }
     }
 
+    /* ============================================================
+       EXPERIENCE ADDITIONS
+       ============================================================ */
+    @keyframes assafHeroEnter {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .hero-stagger {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: assafHeroEnter 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+      animation-delay: calc(0.1s + var(--stagger, 0) * 0.22s);
+    }
+
+    .progress-nav {
+      position: fixed;
+      top: 50%;
+      inset-inline-start: 18px;
+      z-index: 95;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transform: translateY(-50%);
+      mix-blend-mode: difference;
+    }
+
+    .progress-nav a {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+    }
+
+    .progress-nav__dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.45);
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+      transition: transform 0.25s var(--ease), background 0.25s, box-shadow 0.25s;
+    }
+
+    .progress-nav a.is-active .progress-nav__dot {
+      background: #fff;
+      transform: scale(1.75);
+      box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.12);
+    }
+
+    @keyframes assafWordsearchDrawForward {
+      from { stroke-dashoffset: 1000px; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes assafWordsearchDrawBack {
+      from { stroke-dashoffset: -1000px; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes assafWordsearchLetterIn {
+      from {
+        color: rgba(255, 255, 255, 0.22);
+        text-shadow: 0 1px rgba(255, 255, 255, 0.08), 0 -1px rgba(0, 0, 0, 0.4);
+      }
+      to {
+        color: rgba(255, 255, 255, 0.96);
+        text-shadow: 0 0 18px rgba(78, 255, 179, 0.2), 0 1px rgba(255, 255, 255, 0.16);
+      }
+    }
+
+    @keyframes assafWordsearchLetterOut {
+      to {
+        color: rgba(255, 255, 255, 0.22);
+        text-shadow: none;
+      }
+    }
+
+    .wordsearch-hero {
+      position: absolute;
+      top: clamp(110px, 18vh, 170px);
+      inset-inline-end: clamp(22px, 5vw, 70px);
+      z-index: 8;
+      width: min(37vw, 470px);
+      min-width: 330px;
+      pointer-events: none;
+    }
+
+    .wordsearch-copy {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 10px;
+      font-family: var(--font-he);
+    }
+
+    .wordsearch-kicker {
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.58);
+    }
+
+    .wordsearch-copy strong {
+      font-size: clamp(18px, 2.4vw, 32px);
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .wordsearch-board {
+      position: relative;
+      aspect-ratio: 12 / 8;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.035)),
+        rgba(12, 12, 12, 0.78);
+      box-shadow: 0 18px 54px rgba(0, 0, 0, 0.34);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      direction: ltr;
+    }
+
+    .wordsearch-grid {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+      padding: clamp(9px, 1vw, 14px);
+    }
+
+    .wordsearch-letter {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+      min-height: 0;
+      font-family: var(--font-he);
+      font-size: clamp(16px, 2vw, 27px);
+      font-weight: 800;
+      line-height: 1;
+      color: rgba(255, 255, 255, 0.22);
+      text-align: center;
+      transition: color 0.18s;
+      user-select: none;
+    }
+
+    .wordsearch-letter.is-marked {
+      animation: assafWordsearchLetterIn var(--wordsearch-letter-ms, 0.55s) cubic-bezier(0.4, 0, 0.2, 1) both;
+      animation-delay: var(--wordsearch-letter-delay, 0s);
+    }
+
+    .wordsearch-letter.is-soft {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .wordsearch-letter.is-fading {
+      animation: assafWordsearchLetterOut 0.42s cubic-bezier(0.4, 0, 0.6, 1) both;
+    }
+
+    .wordsearch-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    .wordsearch-pen {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.96);
+      stroke-width: 13px;
+      stroke-linecap: butt;
+      stroke-linejoin: miter;
+      stroke-miterlimit: 3;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      vector-effect: non-scaling-stroke;
+      filter: drop-shadow(0 0 16px rgba(78, 255, 179, 0.34));
+    }
+
+    .wordsearch-pen.is-running.dir-forward {
+      animation: assafWordsearchDrawForward var(--wordsearch-draw-ms, 1.05s) cubic-bezier(0.45, 0.05, 0.25, 1) both;
+    }
+
+    .wordsearch-pen.is-running.dir-back {
+      animation: assafWordsearchDrawBack var(--wordsearch-draw-ms, 1.05s) cubic-bezier(0.45, 0.05, 0.25, 1) both;
+    }
+
+    .trust-strip {
+      padding: 0 clamp(20px, 5vw, 50px) 70px;
+      background: var(--bg);
+    }
+
+    .trust-strip__inner {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-block: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .trust-item {
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 26px;
+      padding: 20px;
+      border-inline-end: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: clamp(18px, 2vw, 28px);
+      font-weight: 700;
+    }
+
+    .trust-item:last-child {
+      border-inline-end: 0;
+    }
+
+    .trust-item__num {
+      font-family: var(--font);
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.48);
+    }
+
+    .process-section {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)),
+        var(--bg);
+    }
+
+    .process-rail {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      border-block: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .process-step {
+      min-height: 260px;
+      padding: clamp(20px, 3vw, 32px);
+      border-inline-end: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 28px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0));
+    }
+
+    .process-step:last-child {
+      border-inline-end: 0;
+    }
+
+    .process-step__num,
+    .lab-panel__eyebrow {
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.48);
+      text-transform: uppercase;
+    }
+
+    .process-step h3,
+    .lab-panel h3 {
+      font-size: clamp(22px, 2.4vw, 34px);
+      line-height: 1.04;
+      font-weight: 800;
+    }
+
+    .process-step p,
+    .lab-panel p {
+      color: rgba(255, 255, 255, 0.62);
+      font-size: clamp(15px, 1.45vw, 18px);
+      line-height: 1.35;
+    }
+
+    .project-lab {
+      background: #111;
+    }
+
+    .lab-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .lab-panel {
+      min-height: 560px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      padding: clamp(20px, 2.6vw, 30px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025)),
+        rgba(15, 15, 15, 0.92);
+    }
+
+    .lab-panel__head {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .quiz-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .quiz-question {
+      min-height: 76px;
+    }
+
+    .quiz-options,
+    .estimate-types,
+    .visual-tabs,
+    .quiz-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .quiz-options button,
+    .estimate-type,
+    .visual-tab,
+    .mini-btn,
+    .case-study-btn {
+      min-height: 44px;
+      padding: 10px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+
+    .quiz-options button {
+      flex: 1 1 46%;
+    }
+
+    .quiz-options button:hover,
+    .estimate-type:hover,
+    .visual-tab:hover,
+    .mini-btn:hover,
+    .case-study-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.36);
+      transform: translateY(-1px);
+    }
+
+    .estimate-type.is-active,
+    .visual-tab.is-active,
+    .mini-btn--primary {
+      background: #fff;
+      color: #0f0f0f;
+      border-color: #fff;
+    }
+
+    .quiz-actions {
+      margin-top: auto;
+    }
+
+    .quiz-result {
+      min-height: 116px;
+      padding: 18px;
+      border-radius: 8px;
+      background: rgba(78, 255, 179, 0.09);
+      color: rgba(255, 255, 255, 0.9) !important;
+    }
+
+    .range-control {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 700;
+    }
+
+    .estimate-range {
+      width: 100%;
+      accent-color: #4effb3;
+    }
+
+    .estimate-addons {
+      display: grid;
+      gap: 8px;
+    }
+
+    .estimate-addons label {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .estimate-addons input {
+      accent-color: #4effb3;
+    }
+
+    .estimate-output {
+      margin-top: auto;
+      font-family: var(--font);
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .estimate-send {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .visual-preview {
+      min-height: 300px;
+      margin-top: auto;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      background:
+        linear-gradient(145deg, var(--visual-a, #5b3b2f), var(--visual-b, #151515));
+      transition: background 0.35s var(--ease);
+    }
+
+    .visual-preview__nav {
+      width: 74%;
+      height: 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.62);
+      opacity: 0.65;
+    }
+
+    .visual-preview__hero {
+      min-height: 150px;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 18px;
+      color: #fff;
+      font-size: clamp(34px, 4.6vw, 58px);
+      font-weight: 800;
+      line-height: 0.95;
+    }
+
+    .visual-preview__rows {
+      display: grid;
+      grid-template-columns: 1fr 0.72fr 0.44fr;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .visual-preview__rows span {
+      height: 44px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .visual-preview p {
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .visual-preview--cafe { --visual-a: #8f5534; --visual-b: #231513; }
+    .visual-preview--clinic { --visual-a: #0d887f; --visual-b: #102424; }
+    .visual-preview--fitness { --visual-a: #c23d46; --visual-b: #171111; }
+    .visual-preview--law { --visual-a: #50607b; --visual-b: #11151d; }
+
+    .before-after-frame {
+      position: relative;
+      min-height: min(62vh, 600px);
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: #161616;
+    }
+
+    .before-after-layer {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 12px;
+      padding: clamp(24px, 5vw, 58px);
+    }
+
+    .before-layer {
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0)),
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 42px),
+        #141414;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .after-layer {
+      clip-path: inset(0 calc(100% - var(--split, 52%)) 0 0);
+      background:
+        linear-gradient(135deg, rgba(78, 255, 179, 0.24), rgba(0, 187, 255, 0.1)),
+        radial-gradient(circle at 22% 20%, rgba(255, 255, 255, 0.25), transparent 30%),
+        #101414;
+      color: #fff;
+    }
+
+    .before-after-layer span {
+      width: max-content;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .before-after-layer h3 {
+      max-width: 700px;
+      font-size: clamp(42px, 8vw, 112px);
+      line-height: 0.92;
+      font-weight: 800;
+    }
+
+    .before-after-layer p {
+      max-width: 520px;
+      color: inherit;
+      font-size: clamp(16px, 2vw, 24px);
+    }
+
+    .before-after-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--split, 52%);
+      width: 2px;
+      transform: translateX(-1px);
+      background: #fff;
+      box-shadow: 0 0 22px rgba(255, 255, 255, 0.55);
+      pointer-events: none;
+    }
+
+    .before-after-slider {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: ew-resize;
+    }
+
+    @keyframes testimonialFadeIn {
+      0% { opacity: 0; filter: blur(6px); }
+      60% { filter: blur(0); }
+      to { opacity: 1; filter: blur(0); }
+    }
+
+    @keyframes testimonialFadeOut {
+      from { opacity: 1; filter: blur(0); }
+      to { opacity: 0; filter: blur(6px); }
+    }
+
+    .testi-fade-in {
+      animation: testimonialFadeIn 0.62s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    }
+
+    .testi-fade-out {
+      animation: testimonialFadeOut 0.48s cubic-bezier(0.4, 0, 0.6, 1) both;
+    }
+
+    .testimonial-shell {
+      position: relative;
+      min-height: 260px;
+      border-block: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .testimonial-card {
+      position: absolute;
+      inset: 0;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+      padding-block: clamp(34px, 6vw, 70px);
+    }
+
+    .testimonial-card.is-active {
+      display: flex;
+    }
+
+    .testimonial-card p {
+      max-width: 980px;
+      font-size: clamp(34px, 5vw, 76px);
+      line-height: 1.03;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .testimonial-card span {
+      color: rgba(255, 255, 255, 0.55);
+      font-weight: 700;
+    }
+
+    .case-study-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .case-study-btn {
+      flex: 1 1 220px;
+    }
+
+    .faq-search {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .faq-search input {
+      width: 100%;
+      min-height: 54px;
+      padding: 0 16px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      font: inherit;
+      outline: none;
+    }
+
+    .faq-search input:focus {
+      border-color: rgba(255, 255, 255, 0.52);
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+    }
+
+    .faq-search span {
+      min-width: 78px;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      text-align: end;
+    }
+
+    .faq-item.is-hidden {
+      display: none;
+    }
+
+    .case-modal[hidden] {
+      display: none !important;
+    }
+
+    .case-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+    }
+
+    .case-modal__backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.76);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .case-modal__panel {
+      position: relative;
+      width: min(920px, 100%);
+      max-height: min(86vh, 760px);
+      overflow: auto;
+      padding: clamp(22px, 4vw, 44px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      background: #111;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.46);
+    }
+
+    .case-modal__close {
+      position: absolute;
+      top: 18px;
+      inset-inline-end: 18px;
+      min-height: 42px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .case-modal__kicker {
+      margin-bottom: 12px;
+      color: rgba(255, 255, 255, 0.54);
+      font-weight: 800;
+    }
+
+    .case-modal h2 {
+      max-width: 740px;
+      margin-bottom: 28px;
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: 0.96;
+    }
+
+    .case-modal__grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .case-modal__grid div {
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .case-modal__grid h3 {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .case-modal__grid p {
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .footer-cta--whatsapp {
+      will-change: transform;
+      transition: transform 0.22s var(--ease), color 0.2s, background 0.2s;
+    }
+
+    html.a11y-high-contrast .lab-panel,
+    html.a11y-high-contrast .before-after-frame,
+    html.a11y-high-contrast .case-modal__panel,
+    html.a11y-high-contrast .faq-search input {
+      border-color: #fff;
+      background: #000;
+    }
+
+    @media (max-width: 1100px) {
+      .wordsearch-hero {
+        width: min(44vw, 420px);
+        min-width: 300px;
+      }
+
+      .lab-grid,
+      .process-rail {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .lab-panel--visual {
+        grid-column: 1 / -1;
+        min-height: 460px;
+      }
+
+      .process-step:nth-child(2) {
+        border-inline-end: 0;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .progress-nav {
+        display: none;
+      }
+
+      .hero-stagger {
+        animation-delay: calc(0.08s + var(--stagger, 0) * 0.12s);
+      }
+
+      .wordsearch-hero {
+        position: relative;
+        top: auto;
+        inset-inline-end: auto;
+        width: 100%;
+        min-width: 0;
+        margin-top: 18px;
+        pointer-events: none;
+      }
+
+      .wordsearch-copy {
+        padding-inline: 20px;
+      }
+
+      .wordsearch-board {
+        width: calc(100% - 40px);
+        margin-inline: auto;
+      }
+
+      .wordsearch-letter {
+        font-size: clamp(13px, 4.6vw, 22px);
+      }
+
+      .trust-strip {
+        padding: 0 20px 46px;
+      }
+
+      .trust-strip__inner,
+      .process-rail,
+      .lab-grid,
+      .case-modal__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-item,
+      .process-step {
+        min-height: 150px;
+        border-inline-end: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .trust-item:last-child,
+      .process-step:last-child {
+        border-bottom: 0;
+      }
+
+      .lab-panel,
+      .lab-panel--visual {
+        min-height: auto;
+      }
+
+      .quiz-options button {
+        flex-basis: 100%;
+      }
+
+      .visual-preview {
+        min-height: 260px;
+      }
+
+      .before-after-frame {
+        min-height: 520px;
+      }
+
+      .before-after-layer {
+        padding: 22px;
+      }
+
+      .before-after-layer h3 {
+        font-size: clamp(38px, 13vw, 68px);
+      }
+
+      .testimonial-shell {
+        min-height: 340px;
+      }
+
+      .testimonial-card p {
+        font-size: clamp(30px, 9vw, 48px);
+      }
+
+      .faq-search {
+        grid-template-columns: 1fr;
+      }
+
+      .faq-search span {
+        text-align: start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-stagger,
+      .wordsearch-letter,
+      .wordsearch-pen,
+      .testi-fade-in,
+      .testi-fade-out {
+        animation: none !important;
+      }
+
+      .hero-stagger {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    html.a11y-reduce-motion .hero-stagger,
+    html.a11y-reduce-motion .wordsearch-letter,
+    html.a11y-reduce-motion .wordsearch-pen,
+    html.a11y-reduce-motion .testi-fade-in,
+    html.a11y-reduce-motion .testi-fade-out {
+      animation: none !important;
+    }
+
+    html.a11y-reduce-motion .hero-stagger {
+      opacity: 1;
+      transform: none;
+    }
+
     /* Reduced motion: disable new animations */
     @media (prefers-reduced-motion: reduce) {
       .neon-bg-layer::after { animation: none; }
@@ -2934,12 +3737,24 @@
   <!-- Custom cursor -->
   <div class="cursor-dot" id="cursorDot"></div>
 
+  <nav class="progress-nav" id="progressNav" aria-label="ניווט התקדמות · Progress navigation">
+    <a href="#home" data-section="home" aria-label="ראשי · Home"><span class="progress-nav__dot"></span></a>
+    <a href="#services" data-section="services" aria-label="שירותים · Services"><span class="progress-nav__dot"></span></a>
+    <a href="#process" data-section="process" aria-label="תהליך · Process"><span class="progress-nav__dot"></span></a>
+    <a href="#estimate" data-section="estimate" aria-label="מעבדת פרויקט · Project lab"><span class="progress-nav__dot"></span></a>
+    <a href="#works" data-section="works" aria-label="עבודות · Works"><span class="progress-nav__dot"></span></a>
+    <a href="#faq" data-section="faq" aria-label="שאלות נפוצות · FAQ"><span class="progress-nav__dot"></span></a>
+    <a href="#contact" data-section="contact" aria-label="צור קשר · Contact"><span class="progress-nav__dot"></span></a>
+  </nav>
+
   <!-- Overlay Menu -->
   <div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="תפריט ניווט" inert>
     <button type="button" class="menu-close" id="menuClose" data-en="Close" data-he="סגור">סגור</button>
     <a href="#home" class="menu-link" data-en="Home" data-he="ראשי">ראשי</a>
     <a href="#about" class="menu-link" data-en="About" data-he="אודות">אודות</a>
     <a href="#services" class="menu-link" data-en="Services" data-he="שירותים">שירותים</a>
+    <a href="#process" class="menu-link" data-en="Process" data-he="תהליך">תהליך</a>
+    <a href="#estimate" class="menu-link" data-en="Project Lab" data-he="מעבדת פרויקט">מעבדת פרויקט</a>
     <a href="#works" class="menu-link" data-en="Works" data-he="עבודות">עבודות</a>
     <a href="#faq" class="menu-link" data-en="FAQ" data-he="שאלות נפוצות">שאלות נפוצות</a>
     <a href="#contact" class="menu-link" data-en="Contact" data-he="צור קשר">צור קשר</a>
@@ -2972,42 +3787,42 @@
             <div class="hero-orbit-ring">
               <figure class="hero-orbit-card" style="--orbit-i: 0">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/1.jpg" alt="עבודה 1, בניית אתר לעסק מאת אסף בוסקילה" width="110" height="147" loading="eager" decoding="async" />
+                  <img src="assets/1.avif" alt="עבודה 1, בניית אתר לעסק מאת אסף בוסקילה" width="110" height="147" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 1">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/2.jpg" alt="עבודה 2, עיצוב ופיתוח אתר מאת אסף בוסקילה" width="110" height="147" loading="eager" decoding="async" />
+                  <img src="assets/2.avif" alt="עבודה 2, עיצוב ופיתוח אתר מאת אסף בוסקילה" width="110" height="147" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 2">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/3.jpg" alt="עבודה 3, דף נחיתה לעסק מאת אסף בוסקילה" width="110" height="147" loading="eager" decoding="async" />
+                  <img src="assets/3.avif" alt="עבודה 3, דף נחיתה לעסק מאת אסף בוסקילה" width="110" height="147" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 3">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/4.jpg" alt="עבודה 4, פרויקט אתר אינטרנט מאת אסף בוסקילה" width="110" height="147" loading="eager" decoding="async" />
+                  <img src="assets/4.avif" alt="עבודה 4, פרויקט אתר אינטרנט מאת אסף בוסקילה" width="110" height="147" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 4">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/5.jpg" alt="עבודה 5, בניית אתר לעסק קטן מאת אסף בוסקילה" width="110" height="147" loading="eager" decoding="async" />
+                  <img src="assets/5.avif" alt="עבודה 5, בניית אתר לעסק קטן מאת אסף בוסקילה" width="110" height="147" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 5">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/6.jpg" alt="עבודה 6, עיצוב אתר מודרני מאת אסף בוסקילה" width="110" height="147" loading="eager" decoding="async" />
+                  <img src="assets/6.avif" alt="עבודה 6, עיצוב אתר מודרני מאת אסף בוסקילה" width="110" height="147" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 6">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/7.jpg" alt="עבודה 7, מיתוג ועיצוב אתר מאת אסף בוסקילה" width="110" height="147" loading="eager" decoding="async" />
+                  <img src="assets/7.avif" alt="עבודה 7, מיתוג ועיצוב אתר מאת אסף בוסקילה" width="110" height="147" loading="eager" decoding="async" />
                 </div>
               </figure>
               <figure class="hero-orbit-card" style="--orbit-i: 7">
                 <div class="hero-orbit-card-face">
-                  <img src="assents/8.jpg" alt="עבודה 8, פרויקט בניית אתר מאת אסף בוסקילה" width="110" height="147" loading="eager" decoding="async" />
+                  <img src="assets/8.avif" alt="עבודה 8, פרויקט בניית אתר מאת אסף בוסקילה" width="110" height="147" loading="eager" decoding="async" />
                 </div>
               </figure>
             </div>
@@ -3019,14 +3834,14 @@
       <div class="phone-carousel" aria-hidden="true">
         <div class="phone-carousel-scene">
           <div class="phone-carousel-viewport" id="phoneViewport">
-            <div class="phone-frame" data-pos="hidden" data-idx="0"><img src="assents/1.jpg" alt="עבודה 1, בניית אתר לעסק מאת אסף בוסקילה" loading="eager" decoding="async" /></div>
-            <div class="phone-frame" data-pos="far-left" data-idx="1"><img src="assents/2.jpg" alt="עבודה 2, עיצוב ופיתוח אתר מאת אסף בוסקילה" loading="eager" decoding="async" /></div>
-            <div class="phone-frame" data-pos="left" data-idx="2"><img src="assents/3.jpg" alt="עבודה 3, דף נחיתה לעסק מאת אסף בוסקילה" loading="eager" decoding="async" /></div>
-            <div class="phone-frame" data-pos="center" data-idx="3"><img src="assents/4.jpg" alt="עבודה 4, פרויקט אתר אינטרנט מאת אסף בוסקילה" loading="eager" decoding="async" /></div>
-            <div class="phone-frame" data-pos="right" data-idx="4"><img src="assents/5.jpg" alt="עבודה 5, בניית אתר לעסק קטן מאת אסף בוסקילה" loading="eager" decoding="async" /></div>
-            <div class="phone-frame" data-pos="far-right" data-idx="5"><img src="assents/6.jpg" alt="עבודה 6, עיצוב אתר מודרני מאת אסף בוסקילה" loading="eager" decoding="async" /></div>
-            <div class="phone-frame" data-pos="hidden" data-idx="6"><img src="assents/7.jpg" alt="עבודה 7, מיתוג ועיצוב אתר מאת אסף בוסקילה" loading="eager" decoding="async" /></div>
-            <div class="phone-frame" data-pos="hidden" data-idx="7"><img src="assents/8.jpg" alt="עבודה 8, פרויקט בניית אתר מאת אסף בוסקילה" loading="eager" decoding="async" /></div>
+            <div class="phone-frame" data-pos="hidden" data-idx="0"><img src="assets/1.avif" alt="עבודה 1, בניית אתר לעסק מאת אסף בוסקילה" loading="eager" decoding="async" /></div>
+            <div class="phone-frame" data-pos="far-left" data-idx="1"><img src="assets/2.avif" alt="עבודה 2, עיצוב ופיתוח אתר מאת אסף בוסקילה" loading="eager" decoding="async" /></div>
+            <div class="phone-frame" data-pos="left" data-idx="2"><img src="assets/3.avif" alt="עבודה 3, דף נחיתה לעסק מאת אסף בוסקילה" loading="eager" decoding="async" /></div>
+            <div class="phone-frame" data-pos="center" data-idx="3"><img src="assets/4.avif" alt="עבודה 4, פרויקט אתר אינטרנט מאת אסף בוסקילה" loading="eager" decoding="async" /></div>
+            <div class="phone-frame" data-pos="right" data-idx="4"><img src="assets/5.avif" alt="עבודה 5, בניית אתר לעסק קטן מאת אסף בוסקילה" loading="eager" decoding="async" /></div>
+            <div class="phone-frame" data-pos="far-right" data-idx="5"><img src="assets/6.avif" alt="עבודה 6, עיצוב אתר מודרני מאת אסף בוסקילה" loading="eager" decoding="async" /></div>
+            <div class="phone-frame" data-pos="hidden" data-idx="6"><img src="assets/7.avif" alt="עבודה 7, מיתוג ועיצוב אתר מאת אסף בוסקילה" loading="eager" decoding="async" /></div>
+            <div class="phone-frame" data-pos="hidden" data-idx="7"><img src="assets/8.avif" alt="עבודה 8, פרויקט בניית אתר מאת אסף בוסקילה" loading="eager" decoding="async" /></div>
           </div>
           <div class="phone-carousel-pointer" aria-hidden="true">
             <svg class="phone-carousel-pointer__arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -3038,7 +3853,20 @@
         <p class="phone-carousel-caption" data-en="You can create anything you imagine" data-he="ניתן ליצור כל מה שעולה לכם לראש">ניתן ליצור כל מה שעולה לכם לראש</p>
       </div>
 
-      <div class="hero-content" id="heroContent">
+      <div class="wordsearch-hero hero-stagger" id="wordsearchHero" style="--stagger: 1" aria-label="חיפוש שירותים · Service word search">
+        <div class="wordsearch-copy">
+          <span class="wordsearch-kicker" data-en="Find the next build" data-he="מצא את הדבר הבא">מצא את הדבר הבא</span>
+          <strong id="wordsearchActiveLabel">אתרים</strong>
+        </div>
+        <div class="wordsearch-board" id="wordsearchBoard" aria-hidden="true">
+          <div class="wordsearch-grid" id="wordsearchGrid"></div>
+          <svg class="wordsearch-svg" id="wordsearchSvg" aria-hidden="true">
+            <path class="wordsearch-pen" id="wordsearchPen"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="hero-content hero-stagger" id="heroContent" style="--stagger: 0">
         <h1 class="hero-title">
           <span data-en="Hey, glad you're here!" data-he="היי, כיף שבאת!">היי, כיף שבאת!</span>
         </h1>
@@ -3097,22 +3925,29 @@
               </svg>
             </span>
           </div>
-          <img src="assents/about%20me.png" alt="אסף בוסקילה" class="about-photo" loading="lazy" decoding="async" width="800" height="1067" />
+          <img src="assets/about-me.avif" alt="אסף בוסקילה" class="about-photo" loading="lazy" decoding="async" width="800" height="1067" />
         </div>
 
       </div>
     </section>
 
-    <section class="imoji-strip reveal" aria-hidden="true">
-      <div class="imoji-strip__inner">
-        <div class="imoji-strip__item imoji-strip__item--1">
-          <img src="assents/imoji-1.webp" alt="" width="200" height="267" loading="lazy" decoding="async" />
+    <section class="trust-strip reveal" id="trust" aria-label="סימני אמון · Trust markers">
+      <div class="trust-strip__inner">
+        <div class="trust-item">
+          <span class="trust-item__num">01</span>
+          <span data-en="Engineering mindset" data-he="חשיבה הנדסית">חשיבה הנדסית</span>
         </div>
-        <div class="imoji-strip__item imoji-strip__item--2">
-          <img src="assents/imoji-2.webp" alt="" width="200" height="267" loading="lazy" decoding="async" />
+        <div class="trust-item">
+          <span class="trust-item__num">02</span>
+          <span data-en="AI systems experience" data-he="ניסיון במערכות AI">ניסיון במערכות AI</span>
         </div>
-        <div class="imoji-strip__item imoji-strip__item--3">
-          <img src="assents/imoji-3.webp" alt="" width="200" height="267" loading="lazy" decoding="async" />
+        <div class="trust-item">
+          <span class="trust-item__num">03</span>
+          <span data-en="Officer-level discipline" data-he="משמעת של קצין">משמעת של קצין</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-item__num">04</span>
+          <span data-en="Personal guidance" data-he="ליווי אישי">ליווי אישי</span>
         </div>
       </div>
     </section>
@@ -3123,7 +3958,7 @@
       <div class="services-grid">
 
         <div class="service-card reveal">
-          <img src="assents/Websites%20%26%20Landing%20Pages.jpg" alt="" class="service-bg" loading="lazy" decoding="async" role="presentation" />
+          <img src="assets/websites-and-landing-pages.avif" alt="" class="service-bg" loading="lazy" decoding="async" role="presentation" />
           <div class="service-content">
             <h3 class="service-name" data-en="Websites & landing pages" data-he="אתרים ודפי נחיתה">אתרים ודפי נחיתה</h3>
             <span class="service-icon">+</span>
@@ -3134,7 +3969,7 @@
         </div>
 
         <div class="service-card reveal">
-          <img src="assents/Design%20%26%20Layout.jpg" alt="" class="service-bg" loading="lazy" decoding="async" role="presentation" />
+          <img src="assets/design-and-layout.avif" alt="" class="service-bg" loading="lazy" decoding="async" role="presentation" />
           <div class="service-content">
             <h3 class="service-name" data-en="Design & layout" data-he="עיצוב ופריסה">עיצוב ופריסה</h3>
             <span class="service-icon">+</span>
@@ -3145,7 +3980,7 @@
         </div>
 
         <div class="service-card reveal">
-          <img src="assents/Brand%20Basics.jpg" alt="" class="service-bg" loading="lazy" decoding="async" role="presentation" />
+          <img src="assets/brand-basics.avif" alt="" class="service-bg" loading="lazy" decoding="async" role="presentation" />
           <div class="service-content">
             <h3 class="service-name" data-en="Brand basics" data-he="מיתוג">יסודות</h3>
             <span class="service-icon">+</span>
@@ -3156,7 +3991,7 @@
         </div>
 
         <div class="service-card reveal">
-          <img src="assents/Care%20After%20Launch.jpg" alt="" class="service-bg" loading="lazy" decoding="async" role="presentation" />
+          <img src="assets/care-after-launch.avif" alt="" class="service-bg" loading="lazy" decoding="async" role="presentation" />
           <div class="service-content">
             <h3 class="service-name" data-en="Care after launch" data-he="ליווי אחרי העלייה לאוויר">ליווי אחרי העלייה לאוויר</h3>
             <span class="service-icon">+</span>
@@ -3175,6 +4010,151 @@
       </p>
     </section>
 
+    <section class="section process-section" id="process">
+      <h2 class="section-title reveal" data-en="How the build moves" data-he="כך הפרויקט זז קדימה">כך הפרויקט זז קדימה</h2>
+      <div class="process-rail">
+        <article class="process-step reveal">
+          <span class="process-step__num">01</span>
+          <h3 data-en="Discovery" data-he="שיחת היכרות">שיחת היכרות</h3>
+          <p data-en="We map the business, audience, offer, and the one action the site must create."
+            data-he="ממפים את העסק, הקהל, ההצעה והפעולה שהאתר צריך לייצר.">ממפים את העסק, הקהל, ההצעה והפעולה שהאתר צריך לייצר.</p>
+        </article>
+        <article class="process-step reveal">
+          <span class="process-step__num">02</span>
+          <h3 data-en="Direction" data-he="כיוון עיצובי">כיוון עיצובי</h3>
+          <p data-en="Typography, visual language, page structure, and motion rules are chosen before code starts."
+            data-he="טיפוגרפיה, שפה חזותית, מבנה עמוד וכללי תנועה נבחרים לפני שמתחילים קוד.">טיפוגרפיה, שפה חזותית, מבנה עמוד וכללי תנועה נבחרים לפני שמתחילים קוד.</p>
+        </article>
+        <article class="process-step reveal">
+          <span class="process-step__num">03</span>
+          <h3 data-en="Build" data-he="פיתוח">פיתוח</h3>
+          <p data-en="The site becomes fast, responsive, accessible, and ready for real visitors."
+            data-he="האתר הופך למהיר, רספונסיבי, נגיש ומוכן למבקרים אמיתיים.">האתר הופך למהיר, רספונסיבי, נגיש ומוכן למבקרים אמיתיים.</p>
+        </article>
+        <article class="process-step reveal">
+          <span class="process-step__num">04</span>
+          <h3 data-en="Launch" data-he="עלייה לאוויר">עלייה לאוויר</h3>
+          <p data-en="Analytics, SEO basics, QA, and the final WhatsApp-ready conversion path go live."
+            data-he="אנליטיקות, בסיס SEO, בדיקות ומסלול פנייה ברור בוואטסאפ עולים לאוויר.">אנליטיקות, בסיס SEO, בדיקות ומסלול פנייה ברור בוואטסאפ עולים לאוויר.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section project-lab" id="estimate">
+      <h2 class="section-title reveal" data-en="Project Lab" data-he="מעבדת פרויקט">מעבדת פרויקט</h2>
+
+      <div class="lab-grid">
+        <article class="lab-panel lab-panel--quiz reveal" id="quizPanel">
+          <div class="lab-panel__head">
+            <span class="lab-panel__eyebrow" data-en="Match" data-he="התאמה">התאמה</span>
+            <h3 data-en="Find the right website" data-he="מצא את סוג האתר הנכון">מצא את סוג האתר הנכון</h3>
+          </div>
+          <div class="quiz-body">
+            <p class="quiz-question" id="quizQuestion"></p>
+            <div class="quiz-options" id="quizOptions"></div>
+            <p class="quiz-result" id="quizResult" hidden></p>
+          </div>
+          <div class="quiz-actions">
+            <button type="button" class="mini-btn" id="quizBack" data-en="Back" data-he="חזור">חזור</button>
+            <button type="button" class="mini-btn" id="quizRestart" data-en="Restart" data-he="התחל מחדש">התחל מחדש</button>
+            <a class="mini-btn mini-btn--primary" id="quizWhatsApp" href="#" target="_blank" rel="noopener noreferrer"
+              data-en="Send match" data-he="שלח התאמה">שלח התאמה</a>
+          </div>
+        </article>
+
+        <article class="lab-panel lab-panel--estimate reveal">
+          <div class="lab-panel__head">
+            <span class="lab-panel__eyebrow" data-en="Estimate" data-he="אומדן">אומדן</span>
+            <h3 data-en="Live budget range" data-he="טווח תקציב חי">טווח תקציב חי</h3>
+          </div>
+          <div class="estimate-types" id="estimateTypes" role="group" aria-label="סוג אתר">
+            <button type="button" class="estimate-type is-active" data-type="landing" data-en="Landing" data-he="נחיתה">נחיתה</button>
+            <button type="button" class="estimate-type" data-type="site" data-en="Website" data-he="אתר">אתר</button>
+            <button type="button" class="estimate-type" data-type="store" data-en="Store" data-he="חנות">חנות</button>
+          </div>
+          <label class="range-control" for="pageCount">
+            <span data-en="Pages" data-he="עמודים">עמודים</span>
+            <strong id="pageCountLabel">3</strong>
+          </label>
+          <input type="range" min="1" max="8" value="3" id="pageCount" class="estimate-range" />
+          <div class="estimate-addons">
+            <label><input type="checkbox" value="brand" /> <span data-en="Brand basics" data-he="מיתוג בסיסי">מיתוג בסיסי</span></label>
+            <label><input type="checkbox" value="motion" /> <span data-en="Motion layer" data-he="שכבת אנימציה">שכבת אנימציה</span></label>
+            <label><input type="checkbox" value="seo" /> <span data-en="SEO setup" data-he="הגדרת SEO">הגדרת SEO</span></label>
+            <label><input type="checkbox" value="care" /> <span data-en="Care plan" data-he="ליווי חודשי">ליווי חודשי</span></label>
+          </div>
+          <div class="estimate-output" id="estimateOutput">₪4,400 - ₪6,300</div>
+          <a class="mini-btn mini-btn--primary estimate-send" id="estimateWhatsApp" href="#" target="_blank" rel="noopener noreferrer"
+            data-en="Send estimate" data-he="שלח אומדן">שלח אומדן</a>
+        </article>
+
+        <article class="lab-panel lab-panel--visual reveal">
+          <div class="lab-panel__head">
+            <span class="lab-panel__eyebrow" data-en="AI visuals" data-he="ויזואל AI">ויזואל AI</span>
+            <h3 data-en="Change the business mood" data-he="שנה את אופי העסק">שנה את אופי העסק</h3>
+          </div>
+          <div class="visual-tabs" id="visualTabs" role="group" aria-label="סוג עסק">
+            <button type="button" class="visual-tab is-active" data-visual="cafe" data-en="Cafe" data-he="קפה">קפה</button>
+            <button type="button" class="visual-tab" data-visual="clinic" data-en="Clinic" data-he="קליניקה">קליניקה</button>
+            <button type="button" class="visual-tab" data-visual="fitness" data-en="Fitness" data-he="כושר">כושר</button>
+            <button type="button" class="visual-tab" data-visual="law" data-en="Law" data-he="משפטי">משפטי</button>
+          </div>
+          <div class="visual-preview visual-preview--cafe" id="visualPreview" aria-live="polite">
+            <div class="visual-preview__nav"></div>
+            <div class="visual-preview__hero">
+              <span id="visualTitle">Cafe Ana</span>
+            </div>
+            <div class="visual-preview__rows">
+              <span></span><span></span><span></span>
+            </div>
+            <p id="visualTags">Warm menu · fast order · local story</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section before-after-section" id="before-after">
+      <h2 class="section-title reveal" data-en="Before / After" data-he="לפני / אחרי">לפני / אחרי</h2>
+      <div class="before-after-frame reveal" id="beforeAfterFrame" style="--split: 52%">
+        <div class="before-after-layer before-layer">
+          <span data-en="Before" data-he="לפני">לפני</span>
+          <h3 data-en="Template noise" data-he="רעש של תבנית">רעש של תבנית</h3>
+          <p data-en="Weak hierarchy, unclear offer, and no clear reason to contact."
+            data-he="היררכיה חלשה, הצעה לא ברורה וללא סיבה מיידית ליצור קשר.">היררכיה חלשה, הצעה לא ברורה וללא סיבה מיידית ליצור קשר.</p>
+        </div>
+        <div class="before-after-layer after-layer">
+          <span data-en="After" data-he="אחרי">אחרי</span>
+          <h3 data-en="Focused conversion" data-he="המרה ממוקדת">המרה ממוקדת</h3>
+          <p data-en="Clear path, visual confidence, fast pages, and a CTA that feels natural."
+            data-he="מסלול ברור, ביטחון חזותי, עמודים מהירים וקריאה לפעולה שמרגישה טבעית.">מסלול ברור, ביטחון חזותי, עמודים מהירים וקריאה לפעולה שמרגישה טבעית.</p>
+        </div>
+        <div class="before-after-divider" aria-hidden="true"></div>
+        <input type="range" min="18" max="82" value="52" id="beforeAfterSlider" class="before-after-slider"
+          aria-label="השוואת לפני ואחרי" />
+      </div>
+    </section>
+
+    <section class="section testimonials-section" id="testimonials">
+      <h2 class="section-title reveal" data-en="What clients feel" data-he="מה לקוחות מרגישים">מה לקוחות מרגישים</h2>
+      <div class="testimonial-shell reveal" id="testimonialShell" aria-live="polite">
+        <article class="testimonial-card is-active" data-testimonial="0">
+          <p data-en="Assaf took a messy idea and turned it into a clear site people understand immediately."
+            data-he="אסף לקח רעיון מבולגן והפך אותו לאתר ברור שאנשים מבינים מיד.">אסף לקח רעיון מבולגן והפך אותו לאתר ברור שאנשים מבינים מיד.</p>
+          <span data-en="Small business owner" data-he="בעל עסק קטן">בעל עסק קטן</span>
+        </article>
+        <article class="testimonial-card" data-testimonial="1">
+          <p data-en="The process was fast, direct, and much more personal than working with a big studio."
+            data-he="התהליך היה מהיר, ישיר והרבה יותר אישי מעבודה מול סטודיו גדול.">התהליך היה מהיר, ישיר והרבה יותר אישי מעבודה מול סטודיו גדול.</p>
+          <span data-en="Local brand founder" data-he="מייסדת מותג מקומי">מייסדת מותג מקומי</span>
+        </article>
+        <article class="testimonial-card" data-testimonial="2">
+          <p data-en="The site finally explains what we do without a long phone call first."
+            data-he="האתר סוף סוף מסביר מה אנחנו עושים בלי שיחת טלפון ארוכה לפני.">האתר סוף סוף מסביר מה אנחנו עושים בלי שיחת טלפון ארוכה לפני.</p>
+          <span data-en="Service provider" data-he="נותן שירות">נותן שירות</span>
+        </article>
+      </div>
+    </section>
+
     <!-- SELECTED WORKS (compact row   same place About used to be: before footer) -->
     <section class="section section--works-compact" id="works">
       <h2 class="section-title reveal" data-en="Selected Works" data-he="עבודות נבחרות">עבודות נבחרות</h2>
@@ -3183,7 +4163,7 @@
 
         <a href="https://www.mochi-israel.com/" class="work-card reveal" target="_blank" rel="noopener noreferrer">
           <div class="work-tile">
-            <img src="assents/mochi-logo.png" alt="Mochi   לוגו מיתוג ורוד" class="work-tile-img work-tile-img--contain" loading="lazy" decoding="async" />
+            <img src="assets/mochi-logo.avif" alt="Mochi   לוגו מיתוג ורוד" class="work-tile-img work-tile-img--contain" loading="lazy" decoding="async" />
           </div>
           <div class="work-info">
             <div>
@@ -3195,7 +4175,7 @@
 
         <a href="https://www.cafe-ana.com/" class="work-card reveal" target="_blank" rel="noopener noreferrer">
           <div class="work-tile">
-            <img src="assents/coffee%20ana-logo.jpg" alt="קפה אנה   לוגו בית קפה" class="work-tile-img work-tile-img--contain" loading="lazy" decoding="async" />
+            <img src="assets/coffee-ana-logo.avif" alt="קפה אנה   לוגו בית קפה" class="work-tile-img work-tile-img--contain" loading="lazy" decoding="async" />
           </div>
           <div class="work-info">
             <div>
@@ -3208,7 +4188,7 @@
         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=assaf.buskila10@gmail.com&su=Let%27s+work+together"
           class="work-card reveal" target="_blank" rel="noopener noreferrer">
           <div class="work-tile">
-            <img src="assents/wanna%20be%20the%20next.jpg" alt="רוצים להיות הפרויקט הבא, צור קשר" class="work-tile-img work-tile-img--contain-flush" loading="lazy" decoding="async" />
+            <img src="assets/wanna-be-the-next.avif" alt="רוצים להיות הפרויקט הבא, צור קשר" class="work-tile-img work-tile-img--contain-flush" loading="lazy" decoding="async" />
           </div>
           <div class="work-info">
             <div>
@@ -3219,11 +4199,25 @@
         </a>
 
       </div>
+
+      <div class="case-study-actions reveal" aria-label="פתיחת סיפורי פרויקט">
+        <button type="button" class="case-study-btn" data-case="mochi" data-en="Mochi case study" data-he="סיפור פרויקט מוצ'י">סיפור פרויקט מוצ'י</button>
+        <button type="button" class="case-study-btn" data-case="ana" data-en="Coffee Ana case study" data-he="סיפור פרויקט קפה אנה">סיפור פרויקט קפה אנה</button>
+        <button type="button" class="case-study-btn" data-case="next" data-en="Plan my case" data-he="תכנן את הפרויקט שלי">תכנן את הפרויקט שלי</button>
+      </div>
     </section>
 
     <!-- FAQ, matches FAQPage JSON-LD schema above -->
     <section class="faq-section" id="faq" aria-labelledby="faqTitle" itemscope itemtype="https://schema.org/FAQPage">
       <h2 class="section-title" id="faqTitle" data-en="Frequently Asked Questions" data-he="שאלות נפוצות">שאלות נפוצות</h2>
+      <div class="faq-search reveal">
+        <label class="seo-only" for="faqSearch" data-en="Search questions" data-he="חיפוש שאלות">חיפוש שאלות</label>
+        <input id="faqSearch" type="search" autocomplete="off"
+          data-placeholder-en="Search price, timing, SEO..."
+          data-placeholder-he="חפש מחיר, זמן, SEO..."
+          placeholder="חפש מחיר, זמן, SEO..." />
+        <span id="faqSearchCount" aria-live="polite"></span>
+      </div>
       <ul class="faq-list">
 
         <li class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
@@ -3302,6 +4296,31 @@
     </section>
 
   </main>
+
+  <div class="case-modal" id="caseModal" role="dialog" aria-modal="true" aria-labelledby="caseModalTitle" hidden inert>
+    <div class="case-modal__backdrop" data-close-case></div>
+    <div class="case-modal__panel">
+      <button type="button" class="case-modal__close" id="caseModalClose" data-en="Close" data-he="סגור">סגור</button>
+      <p class="case-modal__kicker" id="caseModalKicker"></p>
+      <h2 id="caseModalTitle"></h2>
+      <div class="case-modal__grid">
+        <div>
+          <h3 data-en="Goal" data-he="מטרה">מטרה</h3>
+          <p id="caseModalGoal"></p>
+        </div>
+        <div>
+          <h3 data-en="Move" data-he="מהלך">מהלך</h3>
+          <p id="caseModalMove"></p>
+        </div>
+        <div>
+          <h3 data-en="Result" data-he="תוצאה">תוצאה</h3>
+          <p id="caseModalResult"></p>
+        </div>
+      </div>
+      <a class="mini-btn mini-btn--primary case-modal__link" id="caseModalLink" href="#" target="_blank" rel="noopener noreferrer"
+        data-en="Open project" data-he="פתח פרויקט">פתח פרויקט</a>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer class="footer" id="contact" style="position:relative;overflow:hidden;">
@@ -3769,9 +4788,9 @@
       const heroSection  = document.getElementById('home');
       const trailLayer   = document.getElementById('heroTrailLayer');
       const trailSrcs    = [
-        'assents/1.jpg', 'assents/2.jpg', 'assents/3.jpg',
-        'assents/4.jpg', 'assents/5.jpg', 'assents/6.jpg',
-        'assents/7.jpg', 'assents/8.jpg'
+        'assets/1.avif', 'assets/2.avif', 'assets/3.avif',
+        'assets/4.avif', 'assets/5.avif', 'assets/6.avif',
+        'assets/7.avif', 'assets/8.avif'
       ];
 
       if (!motionReduced()) {
@@ -4238,6 +5257,546 @@
         );
         ioSticky.observe(homeSection);
       }
+
+      // 13. Experience additions: wordsearch, quiz, estimator, cases, FAQ search, progress nav
+      const whatsAppBase = 'https://wa.me/972523393768?text=';
+      const activeLang = () => document.documentElement.lang === 'en' ? 'en' : 'he';
+      const langPick = obj => obj[activeLang()] || obj.he || '';
+      const waLink = message => whatsAppBase + encodeURIComponent(message);
+
+      function syncPlaceholders() {
+        document.querySelectorAll('[data-placeholder-en][data-placeholder-he]').forEach(el => {
+          el.setAttribute('placeholder', el.getAttribute(`data-placeholder-${activeLang()}`) || '');
+        });
+      }
+
+      // Wordsearch reveal
+      const wordsearchBoard = document.getElementById('wordsearchBoard');
+      const wordsearchGrid = document.getElementById('wordsearchGrid');
+      const wordsearchSvg = document.getElementById('wordsearchSvg');
+      const wordsearchPen = document.getElementById('wordsearchPen');
+      const wordsearchLabel = document.getElementById('wordsearchActiveLabel');
+      const wordCols = 12;
+      const wordRows = 8;
+      let wordCells = [];
+      let wordDefs = [];
+      let wordIndex = 0;
+      let wordTimer = null;
+      let activeWordCells = [];
+
+      const wordsearchSets = {
+        he: {
+          filler: Array.from('אבגדהוזחטיכלמנסעפצקרשת'),
+          words: [
+            { label: 'אתרים', word: 'אתרים', row: 1, col: 10, dx: -1, dy: 0 },
+            { label: 'עיצוב', word: 'עיצוב', row: 3, col: 9, dx: -1, dy: 0 },
+            { label: 'דפי נחיתה', word: 'נחיתה', row: 5, col: 10, dx: -1, dy: 0 },
+            { label: 'SEO', word: 'SEO', row: 0, col: 3, dx: 1, dy: 1 },
+            { label: 'אנימציה', word: 'אנימציה', row: 6, col: 10, dx: -1, dy: 0 },
+            { label: 'אסטרטגיה', word: 'אסטרטגיה', row: 7, col: 11, dx: -1, dy: 0 }
+          ]
+        },
+        en: {
+          filler: Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ'),
+          words: [
+            { label: 'Websites', word: 'WEBSITES', row: 1, col: 1, dx: 1, dy: 0 },
+            { label: 'Design', word: 'DESIGN', row: 3, col: 2, dx: 1, dy: 0 },
+            { label: 'Landing', word: 'LANDING', row: 5, col: 2, dx: 1, dy: 0 },
+            { label: 'SEO', word: 'SEO', row: 0, col: 8, dx: -1, dy: 1 },
+            { label: 'Motion', word: 'MOTION', row: 6, col: 1, dx: 1, dy: 0 },
+            { label: 'Strategy', word: 'STRATEGY', row: 7, col: 2, dx: 1, dy: 0 }
+          ]
+        }
+      };
+
+      function wordPathCells(def) {
+        return Array.from(def.word).map((_, i) => ({
+          row: def.row + def.dy * i,
+          col: def.col + def.dx * i
+        }));
+      }
+
+      function buildWordsearch() {
+        if (!wordsearchBoard || !wordsearchGrid || !wordsearchSvg || !wordsearchPen) return;
+        const set = wordsearchSets[activeLang()];
+        wordDefs = set.words;
+        wordCells = [];
+        activeWordCells = [];
+        wordsearchGrid.innerHTML = '';
+
+        const letters = Array.from({ length: wordRows }, () =>
+          Array.from({ length: wordCols }, (_, i) => set.filler[(i + Math.floor(Math.random() * set.filler.length)) % set.filler.length])
+        );
+
+        wordDefs.forEach(def => {
+          Array.from(def.word).forEach((ch, i) => {
+            const row = def.row + def.dy * i;
+            const col = def.col + def.dx * i;
+            if (letters[row] && typeof letters[row][col] !== 'undefined') letters[row][col] = ch;
+          });
+        });
+
+        for (let row = 0; row < wordRows; row++) {
+          for (let col = 0; col < wordCols; col++) {
+            const span = document.createElement('span');
+            span.className = 'wordsearch-letter';
+            span.textContent = letters[row][col];
+            span.dataset.row = String(row);
+            span.dataset.col = String(col);
+            wordsearchGrid.appendChild(span);
+            wordCells.push(span);
+          }
+        }
+
+        wordDefs.flatMap(wordPathCells).forEach(({ row, col }) => {
+          const cell = wordCells[row * wordCols + col];
+          if (cell) cell.classList.add('is-soft');
+        });
+
+        wordIndex = 0;
+        revealWordsearchWord(0, true);
+        clearInterval(wordTimer);
+        wordTimer = setInterval(() => {
+          if (motionReduced()) return;
+          revealWordsearchWord((wordIndex + 1) % wordDefs.length);
+        }, 3800);
+      }
+
+      function cellCenter(row, col) {
+        const gridStyle = getComputedStyle(wordsearchGrid);
+        const padL = parseFloat(gridStyle.paddingLeft) || 0;
+        const padR = parseFloat(gridStyle.paddingRight) || 0;
+        const padT = parseFloat(gridStyle.paddingTop) || 0;
+        const padB = parseFloat(gridStyle.paddingBottom) || 0;
+        const width = wordsearchGrid.clientWidth;
+        const height = wordsearchGrid.clientHeight;
+        const cellW = (width - padL - padR) / wordCols;
+        const cellH = (height - padT - padB) / wordRows;
+        return {
+          x: padL + (col + 0.5) * cellW,
+          y: padT + (row + 0.5) * cellH,
+          cellW,
+          cellH
+        };
+      }
+
+      function revealWordsearchWord(nextIndex, instant = false) {
+        if (!wordDefs.length || !wordsearchPen || !wordsearchSvg) return;
+        const def = wordDefs[nextIndex];
+        const path = wordPathCells(def);
+        activeWordCells.forEach(cell => {
+          cell.classList.remove('is-marked');
+          cell.classList.add('is-fading');
+          setTimeout(() => {
+            cell.classList.remove('is-fading');
+            cell.classList.add('is-soft');
+          }, 460);
+        });
+
+        const first = path[0];
+        const last = path[path.length - 1];
+        const a = cellCenter(first.row, first.col);
+        const b = cellCenter(last.row, last.col);
+        const extX = def.dx * a.cellW * 0.42;
+        const extY = def.dy * a.cellH * 0.42;
+        wordsearchSvg.setAttribute('viewBox', `0 0 ${wordsearchGrid.clientWidth} ${wordsearchGrid.clientHeight}`);
+        wordsearchPen.setAttribute('d', `M ${a.x - extX} ${a.y - extY} L ${b.x + extX} ${b.y + extY}`);
+        wordsearchPen.classList.remove('is-running', 'dir-forward', 'dir-back');
+        void wordsearchPen.getBoundingClientRect();
+        wordsearchPen.classList.add('is-running', def.dx < 0 || def.dy < 0 ? 'dir-back' : 'dir-forward');
+
+        activeWordCells = path.map(({ row, col }, i) => {
+          const cell = wordCells[row * wordCols + col];
+          if (!cell) return null;
+          cell.classList.remove('is-soft', 'is-fading');
+          cell.style.setProperty('--wordsearch-letter-delay', instant ? '0s' : `${0.18 + i * 0.075}s`);
+          cell.classList.add('is-marked');
+          return cell;
+        }).filter(Boolean);
+
+        if (wordsearchLabel) wordsearchLabel.textContent = def.label;
+        wordIndex = nextIndex;
+      }
+
+      buildWordsearch();
+      window.addEventListener('resize', () => revealWordsearchWord(wordIndex, true), { passive: true });
+
+      // Progress navigation
+      const progressLinks = [...document.querySelectorAll('#progressNav a[data-section]')];
+      const progressTargets = progressLinks
+        .map(link => document.getElementById(link.dataset.section))
+        .filter(Boolean);
+      if (progressTargets.length) {
+        const progressObserver = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            progressLinks.forEach(link => {
+              link.classList.toggle('is-active', link.dataset.section === entry.target.id);
+            });
+          });
+        }, { threshold: 0.32, rootMargin: '-20% 0px -45% 0px' });
+        progressTargets.forEach(section => progressObserver.observe(section));
+      }
+
+      // Project quiz
+      const quizQuestion = document.getElementById('quizQuestion');
+      const quizOptions = document.getElementById('quizOptions');
+      const quizResult = document.getElementById('quizResult');
+      const quizBack = document.getElementById('quizBack');
+      const quizRestart = document.getElementById('quizRestart');
+      const quizWhatsApp = document.getElementById('quizWhatsApp');
+      let quizStep = 0;
+      let quizAnswers = [];
+      let quizMatch = '';
+      const quizQuestions = [
+        {
+          he: 'מה האתר צריך לעשות הכי מהר?',
+          en: 'What should the site do first?',
+          options: [
+            { key: 'leads', he: 'להביא פניות', en: 'Bring leads' },
+            { key: 'sell', he: 'למכור אונליין', en: 'Sell online' },
+            { key: 'trust', he: 'לבנות אמון', en: 'Build trust' }
+          ]
+        },
+        {
+          he: 'כמה תוכן כבר יש לך?',
+          en: 'How much content is ready?',
+          options: [
+            { key: 'ready', he: 'יש הכל', en: 'Mostly ready' },
+            { key: 'some', he: 'חלקית', en: 'Partly ready' },
+            { key: 'none', he: 'צריך לבנות יחד', en: 'Need help' }
+          ]
+        },
+        {
+          he: 'איזו תחושה הכי מתאימה לעסק?',
+          en: 'Which feeling fits the business?',
+          options: [
+            { key: 'clean', he: 'נקי ומדויק', en: 'Clean and precise' },
+            { key: 'motion', he: 'חי ואנימטיבי', en: 'Alive with motion' },
+            { key: 'premium', he: 'פרימיום ובטוח', en: 'Premium and confident' }
+          ]
+        }
+      ];
+
+      function computeQuizMatch() {
+        const keys = quizAnswers.map(a => a.key);
+        if (keys.includes('sell')) return 'store';
+        if (keys.includes('leads') && keys.includes('motion')) return 'animatedLanding';
+        if (keys.includes('none')) return 'guidedSite';
+        if (keys.includes('trust') || keys.includes('premium')) return 'brandSite';
+        return 'landing';
+      }
+
+      const quizResults = {
+        landing: {
+          he: 'ההתאמה שלך: דף נחיתה חד ומהיר עם מסר אחד, CTA ברור וטעינה מהירה.',
+          en: 'Your match: a sharp landing page with one message, clear CTA, and fast loading.'
+        },
+        animatedLanding: {
+          he: 'ההתאמה שלך: דף נחיתה עם שכבת אנימציה שמושכת תשומת לב ומובילה לפנייה.',
+          en: 'Your match: an animated landing page that pulls attention and guides people to contact.'
+        },
+        guidedSite: {
+          he: 'ההתאמה שלך: אתר מלא בליווי תוכן, מבנה ועיצוב כדי להפוך רעיון לנוכחות ברורה.',
+          en: 'Your match: a full guided website with content, structure, and design support.'
+        },
+        brandSite: {
+          he: 'ההתאמה שלך: אתר תדמית פרימיום שבונה אמון לפני שהלקוח שולח הודעה.',
+          en: 'Your match: a premium brand website that builds trust before the first message.'
+        },
+        store: {
+          he: 'ההתאמה שלך: חנות או קטלוג עם מסלול רכישה ברור, אמון וקלות שימוש.',
+          en: 'Your match: a store or catalog with a clear buying path, trust, and ease of use.'
+        }
+      };
+
+      function renderQuiz() {
+        if (!quizQuestion || !quizOptions || !quizResult || !quizWhatsApp) return;
+        const done = quizStep >= quizQuestions.length;
+        quizOptions.innerHTML = '';
+        quizResult.hidden = !done;
+        quizWhatsApp.toggleAttribute('hidden', !done);
+        if (quizBack) quizBack.toggleAttribute('hidden', quizStep === 0 || done);
+        if (quizRestart) quizRestart.toggleAttribute('hidden', quizStep === 0 && !done);
+
+        if (!done) {
+          const q = quizQuestions[quizStep];
+          quizQuestion.textContent = langPick(q);
+          q.options.forEach(option => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.textContent = langPick(option);
+            btn.addEventListener('click', () => {
+              quizAnswers[quizStep] = option;
+              quizStep += 1;
+              renderQuiz();
+            });
+            quizOptions.appendChild(btn);
+          });
+          return;
+        }
+
+        quizMatch = computeQuizMatch();
+        quizQuestion.textContent = activeLang() === 'he' ? 'מצאתי התאמה.' : 'I found a match.';
+        quizResult.textContent = langPick(quizResults[quizMatch]);
+        const summary = quizAnswers.map(a => langPick(a)).join(' / ');
+        quizWhatsApp.href = waLink(activeLang() === 'he'
+          ? `היי אסף, עשיתי התאמת אתר באתר שלך. הבחירות שלי: ${summary}. התוצאה: ${langPick(quizResults[quizMatch])}`
+          : `Hi Assaf, I used the website matcher. My choices: ${summary}. Result: ${langPick(quizResults[quizMatch])}`);
+      }
+
+      quizBack?.addEventListener('click', () => {
+        quizStep = Math.max(0, quizStep - 1);
+        quizAnswers = quizAnswers.slice(0, quizStep);
+        renderQuiz();
+      });
+      quizRestart?.addEventListener('click', () => {
+        quizStep = 0;
+        quizAnswers = [];
+        renderQuiz();
+      });
+      renderQuiz();
+
+      // Estimate calculator
+      const pageCount = document.getElementById('pageCount');
+      const pageCountLabel = document.getElementById('pageCountLabel');
+      const estimateOutput = document.getElementById('estimateOutput');
+      const estimateWhatsApp = document.getElementById('estimateWhatsApp');
+      const estimateTypes = [...document.querySelectorAll('.estimate-type')];
+      const addonInputs = [...document.querySelectorAll('.estimate-addons input')];
+      let estimateType = 'landing';
+
+      function currency(value) {
+        return new Intl.NumberFormat(activeLang() === 'he' ? 'he-IL' : 'en-US', {
+          style: 'currency',
+          currency: 'ILS',
+          maximumFractionDigits: 0
+        }).format(value);
+      }
+
+      function updateEstimate() {
+        if (!pageCount || !pageCountLabel || !estimateOutput || !estimateWhatsApp) return;
+        const pages = parseInt(pageCount.value || '1', 10);
+        pageCountLabel.textContent = String(pages);
+        const bases = { landing: 3800, site: 5600, store: 8800 };
+        const pageAdds = { landing: 350, site: 650, store: 800 };
+        const addonCosts = { brand: 1200, motion: 1500, seo: 900, care: 700 };
+        let total = bases[estimateType] + Math.max(0, pages - 1) * pageAdds[estimateType];
+        const selected = [];
+        addonInputs.forEach(input => {
+          if (!input.checked) return;
+          total += addonCosts[input.value] || 0;
+          selected.push(input.closest('label')?.innerText.trim() || input.value);
+        });
+        const low = Math.round(total * 0.9 / 100) * 100;
+        const high = Math.round(total * 1.18 / 100) * 100;
+        estimateOutput.textContent = `${currency(low)} - ${currency(high)}`;
+        const typeLabel = estimateTypes.find(btn => btn.dataset.type === estimateType)?.innerText.trim() || estimateType;
+        estimateWhatsApp.href = waLink(activeLang() === 'he'
+          ? `היי אסף, בניתי אומדן באתר שלך: ${typeLabel}, ${pages} עמודים, תוספות: ${selected.join(', ') || 'ללא'}. טווח: ${estimateOutput.textContent}`
+          : `Hi Assaf, I built an estimate on your site: ${typeLabel}, ${pages} pages, add-ons: ${selected.join(', ') || 'none'}. Range: ${estimateOutput.textContent}`);
+      }
+
+      estimateTypes.forEach(btn => {
+        btn.addEventListener('click', () => {
+          estimateType = btn.dataset.type || 'landing';
+          estimateTypes.forEach(b => b.classList.toggle('is-active', b === btn));
+          updateEstimate();
+        });
+      });
+      pageCount?.addEventListener('input', updateEstimate);
+      addonInputs.forEach(input => input.addEventListener('change', updateEstimate));
+      updateEstimate();
+
+      // AI visual playground
+      const visualPreview = document.getElementById('visualPreview');
+      const visualTitle = document.getElementById('visualTitle');
+      const visualTags = document.getElementById('visualTags');
+      const visualTabs = [...document.querySelectorAll('.visual-tab')];
+      let activeVisual = 'cafe';
+      const visualData = {
+        cafe: {
+          title: { he: 'Cafe Ana', en: 'Cafe Ana' },
+          tags: { he: 'תפריט חם · הזמנה מהירה · סיפור מקומי', en: 'Warm menu · fast order · local story' }
+        },
+        clinic: {
+          title: { he: 'Clinic Care', en: 'Clinic Care' },
+          tags: { he: 'אמון · זמינות · קביעת תור', en: 'Trust · availability · booking' }
+        },
+        fitness: {
+          title: { he: 'Pulse Fit', en: 'Pulse Fit' },
+          tags: { he: 'אנרגיה · תוכניות · הרשמה', en: 'Energy · programs · signup' }
+        },
+        law: {
+          title: { he: 'Legal Desk', en: 'Legal Desk' },
+          tags: { he: 'סמכות · בהירות · פנייה דיסקרטית', en: 'Authority · clarity · discreet contact' }
+        }
+      };
+
+      function setVisual(key) {
+        activeVisual = key;
+        visualTabs.forEach(tab => tab.classList.toggle('is-active', tab.dataset.visual === key));
+        if (visualPreview) {
+          visualPreview.className = `visual-preview visual-preview--${key}`;
+        }
+        if (visualTitle) visualTitle.textContent = langPick(visualData[key].title);
+        if (visualTags) visualTags.textContent = langPick(visualData[key].tags);
+      }
+
+      visualTabs.forEach(tab => tab.addEventListener('click', () => setVisual(tab.dataset.visual || 'cafe')));
+      setVisual(activeVisual);
+
+      // Before / after slider
+      const beforeAfterFrame = document.getElementById('beforeAfterFrame');
+      const beforeAfterSlider = document.getElementById('beforeAfterSlider');
+      beforeAfterSlider?.addEventListener('input', () => {
+        beforeAfterFrame?.style.setProperty('--split', `${beforeAfterSlider.value}%`);
+      });
+
+      // Testimonial carousel
+      const testimonialCards = [...document.querySelectorAll('.testimonial-card')];
+      let testimonialIndex = 0;
+      function showTestimonial(next) {
+        if (!testimonialCards.length || next === testimonialIndex) return;
+        const current = testimonialCards[testimonialIndex];
+        const upcoming = testimonialCards[next];
+        current.classList.add('testi-fade-out');
+        upcoming.classList.add('is-active', 'testi-fade-in');
+        setTimeout(() => {
+          current.classList.remove('is-active', 'testi-fade-out');
+          upcoming.classList.remove('testi-fade-in');
+          testimonialIndex = next;
+        }, 520);
+      }
+      if (testimonialCards.length > 1) {
+        setInterval(() => {
+          if (motionReduced()) return;
+          showTestimonial((testimonialIndex + 1) % testimonialCards.length);
+        }, 5200);
+      }
+
+      // Case study modal
+      const caseModal = document.getElementById('caseModal');
+      const caseModalClose = document.getElementById('caseModalClose');
+      const caseModalKicker = document.getElementById('caseModalKicker');
+      const caseModalTitle = document.getElementById('caseModalTitle');
+      const caseModalGoal = document.getElementById('caseModalGoal');
+      const caseModalMove = document.getElementById('caseModalMove');
+      const caseModalResult = document.getElementById('caseModalResult');
+      const caseModalLink = document.getElementById('caseModalLink');
+      let activeCase = null;
+      const caseStudies = {
+        mochi: {
+          url: 'https://www.mochi-israel.com/',
+          kicker: { he: 'לוגו וזהות מותג', en: 'Logo and brand identity' },
+          title: { he: 'מוצ׳י', en: 'Mochi' },
+          goal: { he: 'ליצור מותג מתוק, נקי וזכיר שמרגיש מתאים לקהל צעיר.', en: 'Create a sweet, clean, memorable brand for a young audience.' },
+          move: { he: 'שפה רכה, צבע בולט, לוגו פשוט וחוויית מותג שקל לזהות.', en: 'Soft visual language, a bold color, simple logo, and an easy-to-recognize brand feel.' },
+          result: { he: 'זהות מוכנה לשימוש בדיגיטל, אריזה ורשתות חברתיות.', en: 'A brand identity ready for digital, packaging, and social channels.' }
+        },
+        ana: {
+          url: 'https://www.cafe-ana.com/',
+          kicker: { he: 'מיתוג בית קפה', en: 'Cafe branding' },
+          title: { he: 'קפה אנה', en: 'Coffee Ana' },
+          goal: { he: 'לתת לבית קפה שכונתי נוכחות חמה ומזמינה.', en: 'Give a neighborhood cafe a warm and inviting presence.' },
+          move: { he: 'מראה נעים, היררכיה ברורה ושפה שמתאימה להזמנה מהירה.', en: 'A pleasant look, clear hierarchy, and language suited for quick ordering.' },
+          result: { he: 'מותג שמרגיש מקומי, ברור ומוכן להופיע בכל נקודת מגע.', en: 'A brand that feels local, clear, and ready for every touchpoint.' }
+        },
+        next: {
+          url: '#contact',
+          kicker: { he: 'הפרויקט הבא', en: 'The next project' },
+          title: { he: 'העסק שלך', en: 'Your business' },
+          goal: { he: 'להבין מה האתר צריך לעשות כדי להביא תוצאה עסקית.', en: 'Understand what the site must do to create a business result.' },
+          move: { he: 'שיחת אפיון קצרה, כיוון עיצובי, אומדן ברור והתחלה מסודרת.', en: 'A short discovery call, visual direction, clear estimate, and organized start.' },
+          result: { he: 'אתר שמרגיש שלך ומוביל אנשים לפעולה הנכונה.', en: 'A site that feels like you and moves people toward the right action.' }
+        }
+      };
+
+      function fillCase(key) {
+        const data = caseStudies[key];
+        if (!data) return;
+        if (caseModalKicker) caseModalKicker.textContent = langPick(data.kicker);
+        if (caseModalTitle) caseModalTitle.textContent = langPick(data.title);
+        if (caseModalGoal) caseModalGoal.textContent = langPick(data.goal);
+        if (caseModalMove) caseModalMove.textContent = langPick(data.move);
+        if (caseModalResult) caseModalResult.textContent = langPick(data.result);
+        if (caseModalLink) {
+          caseModalLink.href = data.url;
+          caseModalLink.target = data.url.startsWith('#') ? '_self' : '_blank';
+        }
+      }
+
+      function openCase(key) {
+        activeCase = key;
+        fillCase(key);
+        if (!caseModal) return;
+        caseModal.hidden = false;
+        caseModal.inert = false;
+        caseModalClose?.focus();
+      }
+
+      function closeCase() {
+        if (!caseModal) return;
+        caseModal.hidden = true;
+        caseModal.inert = true;
+        activeCase = null;
+      }
+
+      document.querySelectorAll('[data-case]').forEach(btn => {
+        btn.addEventListener('click', () => openCase(btn.dataset.case));
+      });
+      caseModalClose?.addEventListener('click', closeCase);
+      caseModal?.querySelector('[data-close-case]')?.addEventListener('click', closeCase);
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && activeCase) closeCase();
+      });
+
+      // FAQ search
+      const faqSearch = document.getElementById('faqSearch');
+      const faqCount = document.getElementById('faqSearchCount');
+      const faqItems = [...document.querySelectorAll('.faq-item')];
+      function updateFaqSearch() {
+        const q = (faqSearch?.value || '').trim().toLowerCase();
+        let shown = 0;
+        faqItems.forEach(item => {
+          const haystack = item.innerText.toLowerCase();
+          const match = !q || haystack.includes(q);
+          item.classList.toggle('is-hidden', !match);
+          if (match) shown += 1;
+        });
+        if (faqCount) faqCount.textContent = `${shown}/${faqItems.length}`;
+      }
+      faqSearch?.addEventListener('input', updateFaqSearch);
+
+      // Magnetic footer CTA
+      const magneticCta = document.getElementById('footerWhatsAppCta');
+      if (magneticCta && !isTouchDevice) {
+        magneticCta.addEventListener('mousemove', e => {
+          if (motionReduced()) return;
+          const r = magneticCta.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          magneticCta.style.transform = `translate(${x * 18}px, ${y * 14}px)`;
+        });
+        magneticCta.addEventListener('mouseleave', () => {
+          magneticCta.style.transform = '';
+        });
+      }
+
+      function syncFeatureLanguage() {
+        syncPlaceholders();
+        buildWordsearch();
+        renderQuiz();
+        updateEstimate();
+        setVisual(activeVisual);
+        if (activeCase) fillCase(activeCase);
+        updateFaqSearch();
+      }
+
+      syncFeatureLanguage();
+      langToggle?.addEventListener('click', () => {
+        setTimeout(syncFeatureLanguage, 360);
+      });
 
     });
   </script>
