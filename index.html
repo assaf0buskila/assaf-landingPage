@@ -1289,7 +1289,7 @@
     .about-text {
       display: flex;
       flex-direction: column;
-      gap: 36px;
+      gap: 28px;
     }
 
     .about-block {
@@ -1298,27 +1298,50 @@
       gap: 12px;
     }
 
+    .about-block--lead {
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 4px;
+    }
+
+    .about-lead {
+      font-size: clamp(26px, 3.6vw, 46px);
+      line-height: 1.18;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: #fff;
+    }
+
+    .about-lead strong {
+      background: linear-gradient(120deg, #ffffff 0%, #b5b5ff 50%, #ffffff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+    }
+
     .about-subtitle {
       font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: rgba(255, 255, 255, 0.5);
       text-transform: uppercase;
     }
 
     html[data-a11y-font="1"] .about-desc {
-      font-size: clamp(17px, 1.7vw, 21px);
+      font-size: clamp(18px, 1.75vw, 22px);
     }
 
     html[data-a11y-font="2"] .about-desc {
-      font-size: clamp(18px, 1.85vw, 22px);
+      font-size: clamp(19px, 1.9vw, 23px);
     }
 
     .about-desc {
-      font-size: clamp(15px, 1.45vw, 18px);
-      line-height: 1.5;
-      letter-spacing: -0.01em;
-      color: var(--text);
+      font-size: clamp(16px, 1.55vw, 19px);
+      line-height: 1.55;
+      letter-spacing: -0.005em;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.85);
     }
 
     .about-image-container {
@@ -2738,58 +2761,46 @@
         margin-block: 16px 0;
       }
 
-      /* About mobile: photo beside 3rd block only, first 2 full width */
+      /* About mobile: photo beside last block, lead + content blocks full width */
       .about-grid {
         display: grid !important;
-        grid-template-columns: 1fr 100px !important;
-        grid-template-rows: auto auto auto !important;
+        grid-template-columns: 1fr 110px !important;
+        grid-template-rows: auto !important;
         gap: 24px 14px !important;
         align-items: start;
       }
 
-      /* Make about-text a transparent wrapper so its children become grid items */
       .about-text {
         display: contents !important;
       }
 
-      /* First two blocks: full width */
-      .about-block:nth-child(1) {
-        grid-column: 1 / -1;
-      }
-
-      .about-block:nth-child(2) {
-        grid-column: 1 / -1;
-      }
-
-      /* Third block: only first column */
+      /* Lead + content blocks full width */
+      .about-block--lead,
+      .about-block:nth-child(2),
       .about-block:nth-child(3) {
-        grid-column: 1;
-        grid-row: 3;
+        grid-column: 1 / -1;
       }
 
-      /* Photo: beside third block */
+      /* Last block (Who I work with): first column only */
+      .about-block:nth-child(4) {
+        grid-column: 1;
+      }
+
+      /* Photo: beside the 4th (last) block */
       .about-image-container {
         grid-column: 2 !important;
-        grid-row: 3 !important;
-        width: 100px !important;
-        max-width: 100px !important;
+        grid-row: 4 !important;
+        width: 110px !important;
+        max-width: 110px !important;
         aspect-ratio: 3 / 4 !important;
         border-radius: 14px;
         align-self: start;
       }
 
-      /* Restore tap hint inside smaller photo */
-      .about-tap-hint {
-        display: inline-flex;
-        font-size: 9px;
-        padding: 4px 5px;
-        inset-inline-end: 4px;
-        bottom: 4px;
-      }
-
-      .about-tap-hint__arrow {
-        width: 18px;
-        height: 18px;
+      /* Lead block typography scales for mobile */
+      .about-lead {
+        font-size: clamp(22px, 6.5vw, 30px);
+        line-height: 1.22;
       }
     }
 
@@ -3730,28 +3741,41 @@
 
     .before-layer {
       background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0)),
-        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 42px),
-        #141414;
-      color: rgba(255, 255, 255, 0.7);
+        linear-gradient(135deg, rgba(255, 90, 90, 0.22), rgba(255, 60, 60, 0.06)),
+        radial-gradient(circle at 78% 80%, rgba(255, 80, 80, 0.18), transparent 45%),
+        #1a0f0f;
+      color: rgba(255, 230, 230, 0.92);
     }
 
     .after-layer {
       clip-path: inset(0 calc(100% - var(--split, 52%)) 0 0);
       background:
-        linear-gradient(135deg, rgba(78, 255, 179, 0.24), rgba(0, 187, 255, 0.1)),
-        radial-gradient(circle at 22% 20%, rgba(255, 255, 255, 0.25), transparent 30%),
-        #101414;
+        linear-gradient(135deg, rgba(60, 220, 130, 0.26), rgba(40, 200, 110, 0.08)),
+        radial-gradient(circle at 22% 20%, rgba(120, 255, 180, 0.28), transparent 35%),
+        #0f1a14;
       color: #fff;
     }
 
     .before-after-layer span {
       width: max-content;
-      padding: 6px 10px;
+      padding: 6px 12px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.12);
       font-size: 12px;
       font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .before-layer span {
+      background: rgba(255, 80, 80, 0.22);
+      color: #ff9a9a;
+      border: 1px solid rgba(255, 110, 110, 0.4);
+    }
+
+    .after-layer span {
+      background: rgba(60, 220, 130, 0.22);
+      color: #b6ffd0;
+      border: 1px solid rgba(80, 220, 140, 0.4);
     }
 
     .before-after-layer h3 {
@@ -3774,8 +3798,8 @@
       left: var(--split, 52%);
       width: 2px;
       transform: translateX(-1px);
-      background: #fff;
-      box-shadow: 0 0 22px rgba(255, 255, 255, 0.55);
+      background: linear-gradient(180deg, #ff5a5a 0%, #ffffff 50%, #3cdc82 100%);
+      box-shadow: 0 0 22px rgba(255, 255, 255, 0.45);
       pointer-events: none;
     }
 
@@ -3789,14 +3813,13 @@
     }
 
     @keyframes testimonialFadeIn {
-      0% { opacity: 0; filter: blur(6px); }
-      60% { filter: blur(0); }
-      to { opacity: 1; filter: blur(0); }
+      0% { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes testimonialFadeOut {
-      from { opacity: 1; filter: blur(0); }
-      to { opacity: 0; filter: blur(6px); }
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(-8px); }
     }
 
     .testi-fade-in {
@@ -3829,9 +3852,10 @@
 
     .testimonial-card p {
       max-width: 980px;
-      font-size: clamp(34px, 5vw, 76px);
-      line-height: 1.03;
-      font-weight: 800;
+      font-size: clamp(28px, 3.8vw, 56px);
+      line-height: 1.22;
+      font-weight: 700;
+      letter-spacing: -0.02em;
       color: #fff;
     }
 
@@ -4155,7 +4179,7 @@
       <div class="screen-break-overlay__blob screen-break-overlay__blob--b"></div>
       <div class="screen-break-overlay__blob screen-break-overlay__blob--c"></div>
     </div>
-    <span class="screen-break-overlay__hint" id="breakTapHint">tap</span>
+    <span class="screen-break-overlay__hint" id="breakTapHint" data-en="tap" data-he="הקש">הקש</span>
   </div>
 
   <a href="#main-content" class="skip-link" data-en="Skip to main content" data-he="דלג לתוכן הראשי">דלג לתוכן הראשי</a>
@@ -4347,34 +4371,44 @@
 
     <!-- ABOUT ME -->
     <section class="section" id="about">
-      <h2 class="section-title reveal" data-en="So before we start, I’ll tell you a bit about myself"
-        data-he="אז לפני שמתחילים אספר לך קצת על עצמי">אז לפני שמתחילים אספר לך קצת על עצמי</h2>
+      <h2 class="section-title reveal"
+          data-en="Before we start, a moment on how I work"
+          data-he="לפני שמתחילים, רגע על איך אני עובד">לפני שמתחילים, רגע על איך אני עובד</h2>
 
       <div class="about-grid reveal">
 
         <div class="about-text">
-          <div class="about-block">
-            <h3 class="about-subtitle" data-en="SO WHAT DO I DO" data-he="אז מה אני עושה">אז מה אני עושה</h3>
-            <p class="about-desc"
-              data-en="I build websites that are clean, fast, and actually useful for businesses  not just visually impressive. I focus on making them perform and convert. All with personal guidance."
-              data-he="אני בונה אתרים שהם נקיים, מהירים ושימושיים לעסקים   לא רק מרשימים חזותית. אני מתמקד בכך שהם יהיו פרקטיים ויובילו להמרה מליד ללקוח. הכל בליווי אישי.">
-              אני בונה אתרים שהם נקיים, מהירים ושימושיים לעסקים   לא רק מרשימים חזותית. אני מתמקד בכך שהם יהיו פרקטיים ויובילו להמרה מליד ללקוח. הכל בליווי אישי.</p>
+
+          <!-- LEAD: connection with client (bigger, bolder, the main message) -->
+          <div class="about-block about-block--lead">
+            <p class="about-lead"
+               data-en="I'm not just building you a website. I sit with you, learn your business, and build something that feels yours from the first day."
+               data-he="אני לא רק בונה לך אתר. אני יושב איתך, לומד את העסק שלך, ובונה איתך משהו שמרגיש שלך כבר מהיום הראשון.">
+              אני לא רק בונה לך אתר. אני יושב איתך, לומד את העסק שלך, ובונה איתך משהו שמרגיש שלך כבר מהיום הראשון.</p>
           </div>
 
           <div class="about-block">
-            <h3 class="about-subtitle" data-en="BACKGROUND" data-he="הרקע שלי"> הרקע שלי</h3>
+            <h3 class="about-subtitle" data-en="How it looks with me" data-he="איך זה נראה אצלי">איך זה נראה אצלי</h3>
             <p class="about-desc"
-              data-en="Industrial management Engineering student with hands-on experience building AI-based systems for data analysis and automation. Former IDF combat officer discipline and responsibility are part of how I work."
-              data-he="סטודנט להנדסת תעשייה וניהול עם ניסיון מעשי בבניית מערכות מבוססות AI לניתוח נתונים ואוטומציה. קצין לחימה לשעבר בצה״ל משמעת ואחריות הם חלק מהאופן שבו אני עובד.">
-              סטודנט להנדסת תעשייה וניהול עם ניסיון מעשי בבניית מערכות מבוססות AI לניתוח נתונים ואוטומציה. קצין לחימה לשעבר בצה״ל   משמעת ואחריות הם חלק מהאופן שבו אני עובד.</p>
+               data-en="Clean, fast websites that are actually useful for the business behind them, not just visually impressive. Every step is one conversation with one person, all the way to launch."
+               data-he="אתרים נקיים ומהירים שמשרתים את העסק שמאחוריהם, לא רק רושמים רושם. כל שלב הוא שיחה אחת עם איש אחד, כל הדרך עד ההשקה.">
+              אתרים נקיים ומהירים שמשרתים את העסק שמאחוריהם, לא רק רושמים רושם. כל שלב הוא שיחה אחת עם איש אחד, כל הדרך עד ההשקה.</p>
           </div>
 
           <div class="about-block">
-            <h3 class="about-subtitle" data-en="FOCUS" data-he="מיקוד">מיקוד</h3>
+            <h3 class="about-subtitle" data-en="Background" data-he="הרקע שלי">הרקע שלי</h3>
             <p class="about-desc"
-              data-en="Currently helping small and growing businesses build a solid online presence with modern, efficient websites."
-              data-he="כיום אני רוצה לעזור לעסקים קטנים וצומחים לבנות נוכחות מקוונת חזקה עם אתרים מודרניים ויעילים.">
-              כיום אני רוצה לעזור לעסקים קטנים וצומחים לבנות נוכחות מקוונת חזקה עם אתרים מודרניים ויעילים.</p>
+               data-en="Industrial engineering student, hands-on with AI systems for data and automation. Former IDF combat officer, discipline and responsibility are how I run a project too."
+               data-he="סטודנט להנדסת תעשייה וניהול, ניסיון מעשי במערכות AI לניתוח ואוטומציה. קצין לחימה לשעבר בצה״ל, משמעת ואחריות הם גם איך שאני מנהל פרויקט.">
+              סטודנט להנדסת תעשייה וניהול, ניסיון מעשי במערכות AI לניתוח ואוטומציה. קצין לחימה לשעבר בצה״ל, משמעת ואחריות הם גם איך שאני מנהל פרויקט.</p>
+          </div>
+
+          <div class="about-block">
+            <h3 class="about-subtitle" data-en="Who I work with" data-he="עם מי אני עובד">עם מי אני עובד</h3>
+            <p class="about-desc"
+               data-en="Small and growing businesses in Israel that want a real online presence, not a template. Direct contact, no agency layers between us."
+               data-he="עסקים קטנים וצומחים בישראל שרוצים נוכחות אמיתית באינטרנט, לא תבנית. קשר ישיר, בלי שכבות סוכנות בינינו.">
+              עסקים קטנים וצומחים בישראל שרוצים נוכחות אמיתית באינטרנט, לא תבנית. קשר ישיר, בלי שכבות סוכנות בינינו.</p>
           </div>
         </div>
 
@@ -4735,14 +4769,14 @@
             <span data-en="Pages" data-he="עמודים">עמודים</span>
             <strong id="pageCountLabel">3</strong>
           </label>
-          <input type="range" min="1" max="8" value="3" id="pageCount" class="estimate-range" />
+          <input type="range" min="1" max="8" value="1" id="pageCount" class="estimate-range" />
           <div class="estimate-addons">
             <label><input type="checkbox" value="brand" /> <span data-en="Brand basics" data-he="מיתוג בסיסי">מיתוג בסיסי</span></label>
             <label><input type="checkbox" value="motion" /> <span data-en="Motion layer" data-he="שכבת אנימציה">שכבת אנימציה</span></label>
             <label><input type="checkbox" value="seo" /> <span data-en="SEO setup" data-he="הגדרת SEO">הגדרת SEO</span></label>
             <label><input type="checkbox" value="care" /> <span data-en="Care plan" data-he="ליווי חודשי">ליווי חודשי</span></label>
           </div>
-          <div class="estimate-output" id="estimateOutput">₪1,900 to ₪2,300</div>
+          <div class="estimate-output" id="estimateOutput">₪1,500 to ₪1,800</div>
           <a class="mini-btn mini-btn--primary estimate-send" id="estimateWhatsApp" href="#" target="_blank" rel="noopener noreferrer"
             data-en="Send estimate" data-he="שלח אומדן">שלח אומדן</a>
         </article>
@@ -4956,8 +4990,8 @@
     <div class="footer-bottom reveal">
       <span data-en="© 2026 Assaf Buskila" data-he="© 2026 אסף בוסקילה">© <time datetime="2026">2026</time> אסף בוסקילה</span>
       <div class="footer-links">
-        <a href="https://www.instagram.com/assaf_buskila/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.linkedin.com/in/assaf-buskila-11ab7a347/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/assaf_buskila/" target="_blank" rel="noopener" data-en="Instagram" data-he="Instagram">Instagram</a>
+        <a href="https://www.linkedin.com/in/assaf-buskila-11ab7a347/" target="_blank" rel="noopener" data-en="LinkedIn" data-he="LinkedIn">LinkedIn</a>
       </div>
     </div>
   </footer>
@@ -6224,6 +6258,11 @@
         btn.addEventListener('click', () => {
           estimateType = btn.dataset.type || 'landing';
           estimateTypes.forEach(b => b.classList.toggle('is-active', b === btn));
+          // Default page count per type matches the tier baseline
+          if (pageCount) {
+            const defaults = { landing: 1, site: 4, store: 4 };
+            pageCount.value = String(defaults[estimateType] ?? 1);
+          }
           updateEstimate();
         });
       });
