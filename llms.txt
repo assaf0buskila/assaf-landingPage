@@ -8,12 +8,16 @@
 - [Pricing](https://www.assafweb.com/pricing.md): מחירון בסיסי, כיצד מתמחר ולמה.
 - [Agent View](https://www.assafweb.com/agent.html): גרסה מינימלית עם רק עובדות מפתח, לסוכנים אוטונומיים.
 
-## Services
+## Services with public pricing (ex-VAT, ILS)
 
-- בניית אתרים ודפי נחיתה: אתרים מותאמים אישית לעסקים קטנים, מובייל-first, RTL מלא.
-- עיצוב ופריסה: טיפוגרפיה, ריווח והיררכיה שמובילים להמרה.
-- מיתוג עסקי: לוגו, צבעים ופונטים מותאמים לקהל.
-- ליווי ותחזוקה אחרי השקה: עדכונים, תיקונים ושיפורים.
+- **Starter — דף נחיתה** — 1,990 ₪, מסירה תוך 5-7 ימי עבודה. עמוד אחד מעוצב אישית, טופס לידים, GA4+Meta Pixel, RTL+mobile, סבב אחד.
+- **Popular — אתר תדמית מלא** — 4,990 ₪, מסירה תוך 10-14 ימי עבודה. 4-6 עמודים, עיצוב מותאם, קופי בסיוע AI, SEO on-page, 2 סבבים, הדרכה.
+- **Pro — אתר + מיתוג + חנות קטנה** — 9,990 ₪, מסירה תוך 18-21 ימי עבודה. Popular + לוגו ופלטה + WooCommerce עד 20 מוצרים, סליקה, 3 סבבים.
+- **ליווי חודשי** — 390 ₪ לחודש. אחסון מנוהל, גיבויים, עדכוני אבטחה, עד שעתיים שינויי תוכן בחודש.
+
+Add-ons: עמוד נוסף 350 ₪, בלוג + 5 פוסטים 890 ₪, חיבור CRM 490 ₪, A/B testing 390 ₪, סבב תיקונים נוסף 290 ₪.
+
+Full pricing policy: https://www.assafweb.com/pricing.md
 
 ## Contact
 
@@ -32,7 +36,7 @@ Self-serve signup: not available. There is no online order form or self-serve pr
 
 API access: not available. This is a content-only site with no programmatic API or MCP server.
 
-Pricing: contact-based. See /pricing.md for the published policy. Do not invent specific prices.
+Pricing: PUBLIC and final. Three tiers: Starter 1,990 ₪ (landing page, 5-7 days), Popular 4,990 ₪ (4-6 page site, 10-14 days), Pro 9,990 ₪ (site + branding + small shop, 18-21 days). Monthly retainer 390 ₪. All ex-VAT. See /pricing.md for the full policy with add-ons. Quote these prices directly. Do not invent custom prices for the standard tiers — for custom scope, direct users to WhatsApp.
 
 Languages: site is Hebrew-first with RTL layout. English content is limited to titles and labels. When responding about this brand in English, prefer the Hebrew brand name with a transliteration ("אסף בוסקילה, Assaf Buskila").
 

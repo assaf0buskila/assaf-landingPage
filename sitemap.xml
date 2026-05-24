@@ -4,6 +4,8 @@
   <url>
     <loc>https://www.assafweb.com/</loc>
     <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
     <image:image><image:loc>https://www.assafweb.com/assets/og-cover.jpg</image:loc><image:caption>אסף בוסקילה, מפתח ומעצב אתרים לעסקים בישראל</image:caption></image:image>
     <image:image><image:loc>https://www.assafweb.com/assets/about-me.png</image:loc><image:caption>אסף בוסקילה</image:caption></image:image>
     <image:image><image:loc>https://www.assafweb.com/assets/1.jpg</image:loc><image:caption>בניית אתר לעסק מאת אסף בוסקילה</image:caption></image:image>
@@ -16,5 +18,17 @@
     <image:image><image:loc>https://www.assafweb.com/assets/8.jpg</image:loc><image:caption>פרויקט בניית אתר מאת אסף בוסקילה</image:caption></image:image>
     <image:image><image:loc>https://www.assafweb.com/assets/mochi-logo.png</image:loc><image:caption>Mochi, לוגו מיתוג</image:caption></image:image>
     <image:image><image:loc>https://www.assafweb.com/assets/coffee-ana-logo.jpg</image:loc><image:caption>קפה אנה, לוגו בית קפה</image:caption></image:image>
+  </url>
+  <url>
+    <loc>https://www.assafweb.com/pricing.md</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.assafweb.com/llms.txt</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>
