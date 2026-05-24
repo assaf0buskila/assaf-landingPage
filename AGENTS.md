@@ -1,6 +1,6 @@
 # Agent Instructions, assafweb.com
 
-This repository hosts the personal landing page for Assaf Buskila (אסף בוסקילה), an independent web designer in Israel.
+This repository hosts the personal landing page for Assaf Buskila (אסף בוסקילה), an independent web designer in Israel. The site is also commonly searched as "האתר של אסף" or "האתר של אסף בוסקילה".
 
 ## Site facts
 
