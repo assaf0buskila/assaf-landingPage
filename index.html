@@ -2811,20 +2811,36 @@
     }
 
     /* ============================================================
-   PROGRESS NAV (side rail, always right edge, all sections)
+   PROGRESS NAV (side rail, always vertical on right edge, all dirs)
    ============================================================ */
     .progress-nav {
-      position: fixed;
-      top: 50%;
-      right: 8px;
-      left: auto;
+      position: fixed !important;
+      top: 50% !important;
+      right: 8px !important;
+      left: auto !important;
+      bottom: auto !important;
       z-index: 200;
-      display: flex;
-      flex-direction: column;
+      display: flex !important;
+      flex-direction: column !important;
+      flex-wrap: nowrap !important;
+      width: auto !important;
+      max-width: 32px;
       gap: 2px;
       transform: translateY(-50%);
       padding: 6px 4px;
-      mix-blend-mode: difference;
+      background: rgba(15, 15, 15, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    /* Explicit RTL safety net, identical to base */
+    [dir="rtl"] .progress-nav,
+    html[lang="he"] .progress-nav {
+      right: 8px !important;
+      left: auto !important;
+      flex-direction: column !important;
     }
 
     .progress-nav a {
@@ -2879,7 +2895,6 @@
       transition: opacity 0.18s, transform 0.18s var(--ease);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      mix-blend-mode: normal;
     }
 
     .progress-nav a:hover .progress-nav__label,
