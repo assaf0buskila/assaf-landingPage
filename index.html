@@ -4673,13 +4673,13 @@
 
   <nav class="progress-nav" id="progressNav" aria-label="ניווט התקדמות · Progress navigation">
     <a href="#home" data-section="home" aria-label="ראשי, Home"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="Home" data-he="ראשי">ראשי</span></a>
+    <a href="#estimate" data-section="estimate" aria-label="מעבדה, Project lab"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="Lab" data-he="מעבדה">מעבדה</span></a>
     <a href="#services" data-section="services" aria-label="שירותים, Services"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="Services" data-he="שירותים">שירותים</span></a>
-    <a href="#pricing" data-section="pricing" aria-label="מחירון, Pricing"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="Pricing" data-he="מחירון">מחירון</span></a>
     <a href="#works" data-section="works" aria-label="עבודות, Works"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="Works" data-he="עבודות">עבודות</span></a>
+    <a href="#pricing" data-section="pricing" aria-label="מחירון, Pricing"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="Pricing" data-he="מחירון">מחירון</span></a>
+    <a href="#about" data-section="about" aria-label="אודות, About"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="About" data-he="אודות">אודות</span></a>
     <a href="#testimonials" data-section="testimonials" aria-label="המלצות, Testimonials"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="Reviews" data-he="המלצות">המלצות</span></a>
     <a href="#process" data-section="process" aria-label="תהליך, Process"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="Process" data-he="תהליך">תהליך</span></a>
-    <a href="#about" data-section="about" aria-label="אודות, About"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="About" data-he="אודות">אודות</span></a>
-    <a href="#estimate" data-section="estimate" aria-label="מעבדה, Project lab"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="Lab" data-he="מעבדה">מעבדה</span></a>
     <a href="#faq" data-section="faq" aria-label="שאלות, FAQ"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="FAQ" data-he="שאלות">שאלות</span></a>
     <a href="#contact" data-section="contact" aria-label="צור קשר, Contact"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="Contact" data-he="צור קשר">צור קשר</span></a>
   </nav>
@@ -4688,13 +4688,13 @@
   <div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="תפריט ניווט" inert>
     <button type="button" class="menu-close" id="menuClose" data-en="Close" data-he="סגור">סגור</button>
     <a href="#home" class="menu-link" data-en="Home" data-he="ראשי">ראשי</a>
+    <a href="#estimate" class="menu-link" data-en="Project Lab" data-he="מעבדת פרויקט">מעבדת פרויקט</a>
     <a href="#services" class="menu-link" data-en="Services" data-he="שירותים">שירותים</a>
-    <a href="#pricing" class="menu-link" data-en="Pricing" data-he="מחירון">מחירון</a>
     <a href="#works" class="menu-link" data-en="Works" data-he="עבודות">עבודות</a>
+    <a href="#pricing" class="menu-link" data-en="Pricing" data-he="מחירון">מחירון</a>
+    <a href="#about" class="menu-link" data-en="About" data-he="אודות">אודות</a>
     <a href="#testimonials" class="menu-link" data-en="Testimonials" data-he="המלצות">המלצות</a>
     <a href="#process" class="menu-link" data-en="Process" data-he="תהליך">תהליך</a>
-    <a href="#about" class="menu-link" data-en="About" data-he="אודות">אודות</a>
-    <a href="#estimate" class="menu-link" data-en="Project Lab" data-he="מעבדת פרויקט">מעבדת פרויקט</a>
     <a href="#faq" class="menu-link" data-en="FAQ" data-he="שאלות נפוצות">שאלות נפוצות</a>
     <a href="#contact" class="menu-link" data-en="Contact" data-he="צור קשר">צור קשר</a>
   </div>
@@ -4837,6 +4837,100 @@
     </section>
 
     <!-- WORD SEARCH (own section, separated from hero gallery) -->
+    <section class="section project-lab" id="estimate">
+      <h2 class="section-title reveal" data-en="Project Lab" data-he="מעבדת פרויקט">מעבדת פרויקט</h2>
+
+      <div class="lab-grid">
+        <article class="lab-panel lab-panel--quiz reveal" id="quizPanel">
+          <div class="lab-panel__head">
+            <span class="lab-panel__eyebrow" data-en="Match" data-he="התאמה">התאמה</span>
+            <h3 data-en="Find the right website" data-he="מצא את סוג האתר הנכון">מצא את סוג האתר הנכון</h3>
+          </div>
+          <div class="quiz-body">
+            <p class="quiz-question" id="quizQuestion"></p>
+            <div class="quiz-options" id="quizOptions"></div>
+            <p class="quiz-result" id="quizResult" hidden></p>
+          </div>
+          <div class="quiz-actions">
+            <button type="button" class="mini-btn" id="quizBack" data-en="Back" data-he="חזור">חזור</button>
+            <button type="button" class="mini-btn" id="quizRestart" data-en="Restart" data-he="התחל מחדש">התחל מחדש</button>
+            <a class="mini-btn mini-btn--primary" id="quizWhatsApp" href="#" target="_blank" rel="noopener noreferrer"
+              data-en="Send match" data-he="שלח התאמה">שלח התאמה</a>
+          </div>
+        </article>
+
+        <article class="lab-panel lab-panel--estimate reveal">
+          <div class="lab-panel__head">
+            <span class="lab-panel__eyebrow" data-en="Estimate" data-he="אומדן">אומדן</span>
+            <h3 data-en="Live budget range" data-he="טווח תקציב חי">טווח תקציב חי</h3>
+          </div>
+          <div class="estimate-types" id="estimateTypes" role="group" aria-label="סוג אתר">
+            <button type="button" class="estimate-type is-active" data-type="landing" data-en="Landing" data-he="נחיתה">נחיתה</button>
+            <button type="button" class="estimate-type" data-type="site" data-en="Website" data-he="אתר">אתר</button>
+            <button type="button" class="estimate-type" data-type="store" data-en="Store" data-he="חנות">חנות</button>
+          </div>
+          <label class="range-control" for="pageCount">
+            <span data-en="Pages" data-he="עמודים">עמודים</span>
+            <strong id="pageCountLabel">3</strong>
+          </label>
+          <input type="range" min="1" max="8" value="1" id="pageCount" class="estimate-range" />
+          <div class="estimate-addons">
+            <label><input type="checkbox" value="brand" /> <span data-en="Brand basics" data-he="מיתוג בסיסי">מיתוג בסיסי</span></label>
+            <label><input type="checkbox" value="motion" /> <span data-en="Motion layer" data-he="שכבת אנימציה">שכבת אנימציה</span></label>
+            <label><input type="checkbox" value="seo" /> <span data-en="SEO setup" data-he="הגדרת SEO">הגדרת SEO</span></label>
+            <label><input type="checkbox" value="care" /> <span data-en="Care plan" data-he="ליווי חודשי">ליווי חודשי</span></label>
+          </div>
+          <div class="estimate-output" id="estimateOutput">₪1,500 to ₪1,800</div>
+          <a class="mini-btn mini-btn--primary estimate-send" id="estimateWhatsApp" href="#" target="_blank" rel="noopener noreferrer"
+            data-en="Send estimate" data-he="שלח אומדן">שלח אומדן</a>
+        </article>
+
+        <article class="lab-panel lab-panel--visual reveal">
+          <div class="lab-panel__head">
+            <span class="lab-panel__eyebrow" data-en="AI visuals" data-he="ויזואל AI">ויזואל AI</span>
+            <h3 data-en="Change the business mood" data-he="שנה את אופי העסק">שנה את אופי העסק</h3>
+          </div>
+          <div class="visual-tabs" id="visualTabs" role="group" aria-label="סוג עסק">
+            <button type="button" class="visual-tab is-active" data-visual="cafe" data-en="Cafe" data-he="קפה">קפה</button>
+            <button type="button" class="visual-tab" data-visual="clinic" data-en="Clinic" data-he="קליניקה">קליניקה</button>
+            <button type="button" class="visual-tab" data-visual="fitness" data-en="Fitness" data-he="כושר">כושר</button>
+            <button type="button" class="visual-tab" data-visual="law" data-en="Law" data-he="משפטי">משפטי</button>
+          </div>
+          <div class="visual-preview visual-preview--cafe" id="visualPreview" aria-live="polite">
+            <div class="visual-preview__nav"></div>
+            <div class="visual-preview__hero">
+              <span id="visualTitle">Cafe Ana</span>
+            </div>
+            <div class="visual-preview__rows">
+              <span></span><span></span><span></span>
+            </div>
+            <p id="visualTags">Warm menu, fast order, local story</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section before-after-section" id="before-after">
+      <h2 class="section-title reveal" data-en="Before and after" data-he="לפני ואחרי">לפני ואחרי</h2>
+      <div class="before-after-frame reveal" id="beforeAfterFrame" style="--split: 52%">
+        <div class="before-after-layer before-layer">
+          <span data-en="Before" data-he="לפני">לפני</span>
+          <h3 data-en="Template noise" data-he="רעש של תבנית">רעש של תבנית</h3>
+          <p data-en="Weak hierarchy, unclear offer, and no clear reason to contact."
+            data-he="היררכיה חלשה, הצעה לא ברורה וללא סיבה מיידית ליצור קשר.">היררכיה חלשה, הצעה לא ברורה וללא סיבה מיידית ליצור קשר.</p>
+        </div>
+        <div class="before-after-layer after-layer">
+          <span data-en="After" data-he="אחרי">אחרי</span>
+          <h3 data-en="Focused conversion" data-he="המרה ממוקדת">המרה ממוקדת</h3>
+          <p data-en="Clear path, visual confidence, fast pages, and a CTA that feels natural."
+            data-he="מסלול ברור, ביטחון חזותי, עמודים מהירים וקריאה לפעולה שמרגישה טבעית.">מסלול ברור, ביטחון חזותי, עמודים מהירים וקריאה לפעולה שמרגישה טבעית.</p>
+        </div>
+        <div class="before-after-divider" aria-hidden="true"></div>
+        <input type="range" min="0" max="100" value="50" id="beforeAfterSlider" class="before-after-slider"
+          aria-label="השוואת לפני ואחרי" />
+      </div>
+    </section>
+
     <section class="section wordsearch-section" id="wordsearch" aria-labelledby="wordsearchTitle">
       <div class="wordsearch-section__inner">
         <span class="wordsearch-section__kicker reveal"
@@ -4863,77 +4957,6 @@
     </section>
 
     <!-- ABOUT ME -->
-    <section class="section" id="about">
-      <h2 class="section-title reveal"
-          data-en="Before we start, a moment on how I work"
-          data-he="לפני שמתחילים, רגע על איך אני עובד">לפני שמתחילים, רגע על איך אני עובד</h2>
-
-      <div class="about-grid reveal">
-
-        <div class="about-text">
-
-          <!-- LEAD: connection with client (bigger, bolder, the main message) -->
-          <div class="about-block about-block--lead">
-            <p class="about-lead"
-               data-en="I'm not just building you a website. I sit with you, learn your business, and build something that feels yours from the first day."
-               data-he="אני לא רק בונה לך אתר. אני יושב איתך, לומד את העסק שלך, ובונה איתך משהו שמרגיש שלך כבר מהיום הראשון.">
-              אני לא רק בונה לך אתר. אני יושב איתך, לומד את העסק שלך, ובונה איתך משהו שמרגיש שלך כבר מהיום הראשון.</p>
-          </div>
-
-          <div class="about-block">
-            <h3 class="about-subtitle" data-en="How it looks with me" data-he="איך זה נראה אצלי">איך זה נראה אצלי</h3>
-            <p class="about-desc"
-               data-en="The goal isn't just a pretty site. It's that a visitor understands what you offer within seconds, feels confident, and leaves an inquiry. Every step is one conversation with one person, all the way to launch."
-               data-he="המטרה היא לא רק אתר יפה. המטרה היא שלקוח שנכנס יבין תוך שניות מה אתה מציע, ירגיש ביטחון וישאיר פנייה. כל שלב הוא שיחה אחת עם איש אחד, כל הדרך עד ההשקה.">
-              המטרה היא לא רק אתר יפה. המטרה היא שלקוח שנכנס יבין תוך שניות מה אתה מציע, ירגיש ביטחון וישאיר פנייה. כל שלב הוא שיחה אחת עם איש אחד, כל הדרך עד ההשקה.</p>
-          </div>
-
-          <div class="about-block">
-            <h3 class="about-subtitle" data-en="Background" data-he="הרקע שלי">הרקע שלי</h3>
-            <p class="about-desc"
-               data-en="Industrial engineering student, hands-on with AI systems for data and automation. Former IDF combat officer, discipline and responsibility are how I run a project too."
-               data-he="סטודנט להנדסת תעשייה וניהול, ניסיון מעשי במערכות AI לניתוח ואוטומציה. קצין לחימה לשעבר בצה״ל, משמעת ואחריות הם גם איך שאני מנהל פרויקט.">
-              סטודנט להנדסת תעשייה וניהול, ניסיון מעשי במערכות AI לניתוח ואוטומציה. קצין לחימה לשעבר בצה״ל, משמעת ואחריות הם גם איך שאני מנהל פרויקט.</p>
-          </div>
-
-          <div class="about-block">
-            <h3 class="about-subtitle" data-en="Who I work with" data-he="עם מי אני עובד">עם מי אני עובד</h3>
-            <p class="about-desc"
-               data-en="Small and growing businesses in Israel that want a real online presence, not a template. Direct contact, no agency layers between us."
-               data-he="עסקים קטנים וצומחים בישראל שרוצים נוכחות אמיתית באינטרנט, לא תבנית. קשר ישיר, בלי שכבות סוכנות בינינו.">
-              עסקים קטנים וצומחים בישראל שרוצים נוכחות אמיתית באינטרנט, לא תבנית. קשר ישיר, בלי שכבות סוכנות בינינו.</p>
-          </div>
-        </div>
-
-        <div class="about-image-container">
-          <img src="assets/about-me.avif" alt="אסף בוסקילה" class="about-photo" loading="lazy" decoding="async" width="800" height="1067" />
-        </div>
-
-      </div>
-    </section>
-
-    <section class="trust-strip reveal" id="trust" aria-label="סימני אמון · Trust markers">
-      <div class="trust-strip__inner">
-        <div class="trust-item">
-          <span class="trust-item__num">01</span>
-          <span data-en="Built personally by Assaf, no agency" data-he="נבנה אישית על ידי אסף, בלי סוכנות">נבנה אישית על ידי אסף, בלי סוכנות</span>
-        </div>
-        <div class="trust-item">
-          <span class="trust-item__num">02</span>
-          <span data-en="Price known up front" data-he="מחיר ידוע מראש">מחיר ידוע מראש</span>
-        </div>
-        <div class="trust-item">
-          <span class="trust-item__num">03</span>
-          <span data-en="The site stays yours" data-he="האתר נשאר שלך">האתר נשאר שלך</span>
-        </div>
-        <div class="trust-item">
-          <span class="trust-item__num">04</span>
-          <span data-en="GA4, Pixel & WhatsApp connected" data-he="מחובר ל-GA4, פיקסל ווואטסאפ">מחובר ל-GA4, פיקסל ווואטסאפ</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES (Bento) -->
     <section class="section" id="services">
       <h2 class="section-title reveal" data-en="Services" data-he="שירותים">שירותים</h2>
       <div class="services-grid">
@@ -4992,6 +5015,101 @@
     </section>
 
     <!-- PRICING (public floor prices, 3 tiers + monthly retainer) -->
+    <section class="section section--works-compact" id="works">
+      <h2 class="section-title reveal" data-en="Selected Works" data-he="עבודות נבחרות">עבודות נבחרות</h2>
+
+      <p class="works-intro reveal"
+         data-en="A few selected projects — the brief, what I built, and the result."
+         data-he="כמה פרויקטים נבחרים — מה היה צריך, מה בניתי ומה יצא.">כמה פרויקטים נבחרים — מה היה צריך, מה בניתי ומה יצא.</p>
+
+      <div class="works-grid works-grid--studies">
+
+        <article class="work-card work-card--study reveal">
+          <div class="work-tile">
+            <img src="assets/mochi-logo.avif" alt="Mochi   לוגו מיתוג ורוד" class="work-tile-img work-tile-img--contain" loading="lazy" decoding="async" />
+          </div>
+          <div class="work-info">
+            <div class="work-head">
+              <span class="work-name" data-en="Mochi" data-he="מוצ'י">מוצ'י</span>
+              <span class="work-cat" data-en="Logo &amp; brand identity" data-he="לוגו וזהות מותג">לוגו וזהות מותג</span>
+            </div>
+            <p class="work-result">
+              <span class="work-result__label" data-en="Result" data-he="תוצאה">תוצאה</span>
+              <span data-en="A brand identity ready for digital, packaging, and social channels."
+                    data-he="זהות מוכנה לשימוש בדיגיטל, אריזה ורשתות חברתיות.">זהות מוכנה לשימוש בדיגיטל, אריזה ורשתות חברתיות.</span>
+            </p>
+            <div class="work-actions">
+              <a class="work-action work-action--live" href="https://www.mochi-israel.com/" target="_blank" rel="noopener noreferrer"
+                 data-en="View live site" data-he="צפו באתר החי">צפו באתר החי</a>
+              <button type="button" class="work-action work-action--story" data-case="mochi"
+                 data-en="Project story" data-he="סיפור הפרויקט">סיפור הפרויקט</button>
+            </div>
+            <a class="work-cta work-cta-style" href="#contact"
+               data-wa-he="היי אסף, אהבתי את הפרויקט של מוצ'י ואשמח אתר בסגנון הזה לעסק שלי"
+               data-wa-en="Hi Assaf, I loved the Mochi project and I'd love a site in this style for my business"
+               target="_blank" rel="noopener noreferrer"
+               data-en="Want a site in this style?" data-he="רוצה אתר בסגנון הזה?">רוצה אתר בסגנון הזה?</a>
+          </div>
+        </article>
+
+        <article class="work-card work-card--study reveal">
+          <div class="work-tile">
+            <img src="assets/coffee-ana-logo.avif" alt="קפה אנה   לוגו בית קפה" class="work-tile-img work-tile-img--contain" loading="lazy" decoding="async" />
+          </div>
+          <div class="work-info">
+            <div class="work-head">
+              <span class="work-name" data-en="Coffee Ana" data-he="קפה אנה">קפה אנה</span>
+              <span class="work-cat" data-en="Neighborhood café branding" data-he="מיתוג לבית הקפה של השכונה">מיתוג לבית הקפה של השכונה</span>
+            </div>
+            <p class="work-result">
+              <span class="work-result__label" data-en="Result" data-he="תוצאה">תוצאה</span>
+              <span data-en="A brand that feels local, clear, and ready for every touchpoint."
+                    data-he="מותג שמרגיש מקומי, ברור ומוכן להופיע בכל נקודת מגע.">מותג שמרגיש מקומי, ברור ומוכן להופיע בכל נקודת מגע.</span>
+            </p>
+            <div class="work-actions">
+              <a class="work-action work-action--live" href="https://www.cafe-ana.com/" target="_blank" rel="noopener noreferrer"
+                 data-en="View live site" data-he="צפו באתר החי">צפו באתר החי</a>
+              <button type="button" class="work-action work-action--story" data-case="ana"
+                 data-en="Project story" data-he="סיפור הפרויקט">סיפור הפרויקט</button>
+            </div>
+            <a class="work-cta work-cta-style" href="#contact"
+               data-wa-he="היי אסף, אהבתי את הפרויקט של קפה אנה ואשמח אתר בסגנון הזה לעסק שלי"
+               data-wa-en="Hi Assaf, I loved the Coffee Ana project and I'd love a site in this style for my business"
+               target="_blank" rel="noopener noreferrer"
+               data-en="Want a site in this style?" data-he="רוצה אתר בסגנון הזה?">רוצה אתר בסגנון הזה?</a>
+          </div>
+        </article>
+
+        <article class="work-card work-card--next reveal">
+          <div class="work-tile">
+            <img src="assets/wanna-be-the-next.avif" alt="רוצים להיות הפרויקט הבא, צור קשר" class="work-tile-img work-tile-img--cover" loading="lazy" decoding="async" />
+          </div>
+          <div class="work-info">
+            <div class="work-head">
+              <span class="work-name" data-en="Wanna be the next?" data-he="רוצים להיות הבאים?">רוצים להיות הבאים?</span>
+              <span class="work-cat" data-en="Your business here" data-he="העסק שלך כאן">העסק שלך כאן</span>
+            </div>
+            <p class="work-result">
+              <span class="work-result__label" data-en="You" data-he="אתם">אתם</span>
+              <span data-en="A short discovery call, a clear direction, and a site that feels like you."
+                    data-he="שיחת היכרות קצרה, כיוון ברור ואתר שמרגיש שלך.">שיחת היכרות קצרה, כיוון ברור ואתר שמרגיש שלך.</span>
+            </p>
+            <div class="work-actions">
+              <button type="button" class="work-action work-action--story" data-case="next"
+                 data-en="Plan my project" data-he="תכנן את הפרויקט שלי">תכנן את הפרויקט שלי</button>
+            </div>
+            <a class="work-cta work-cta-style" href="#contact"
+               data-wa-he="היי אסף, אני רוצה להיות הפרויקט הבא. אשמח לתכנן איתך אתר לעסק שלי"
+               data-wa-en="Hi Assaf, I want to be the next project. I'd love to plan a site for my business with you"
+               target="_blank" rel="noopener noreferrer"
+               data-en="Let's start my project" data-he="בוא נתחיל את הפרויקט שלי">בוא נתחיל את הפרויקט שלי</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS (moved up: social proof right after the portfolio + price) -->
     <section class="section pricing-section" id="pricing" aria-labelledby="pricingTitle">
       <h2 class="section-title reveal" id="pricingTitle"
           data-en="Pricing, public and final"
@@ -5123,101 +5241,77 @@
     </section>
 
     <!-- SELECTED WORKS (moved up: trust-led flow after Pricing) -->
-    <section class="section section--works-compact" id="works">
-      <h2 class="section-title reveal" data-en="Selected Works" data-he="עבודות נבחרות">עבודות נבחרות</h2>
+    <section class="section" id="about">
+      <h2 class="section-title reveal"
+          data-en="Before we start, a moment on how I work"
+          data-he="לפני שמתחילים, רגע על איך אני עובד">לפני שמתחילים, רגע על איך אני עובד</h2>
 
-      <p class="works-intro reveal"
-         data-en="A few selected projects — the brief, what I built, and the result."
-         data-he="כמה פרויקטים נבחרים — מה היה צריך, מה בניתי ומה יצא.">כמה פרויקטים נבחרים — מה היה צריך, מה בניתי ומה יצא.</p>
+      <div class="about-grid reveal">
 
-      <div class="works-grid works-grid--studies">
+        <div class="about-text">
 
-        <article class="work-card work-card--study reveal">
-          <div class="work-tile">
-            <img src="assets/mochi-logo.avif" alt="Mochi   לוגו מיתוג ורוד" class="work-tile-img work-tile-img--contain" loading="lazy" decoding="async" />
+          <!-- LEAD: connection with client (bigger, bolder, the main message) -->
+          <div class="about-block about-block--lead">
+            <p class="about-lead"
+               data-en="I'm not just building you a website. I sit with you, learn your business, and build something that feels yours from the first day."
+               data-he="אני לא רק בונה לך אתר. אני יושב איתך, לומד את העסק שלך, ובונה איתך משהו שמרגיש שלך כבר מהיום הראשון.">
+              אני לא רק בונה לך אתר. אני יושב איתך, לומד את העסק שלך, ובונה איתך משהו שמרגיש שלך כבר מהיום הראשון.</p>
           </div>
-          <div class="work-info">
-            <div class="work-head">
-              <span class="work-name" data-en="Mochi" data-he="מוצ'י">מוצ'י</span>
-              <span class="work-cat" data-en="Logo &amp; brand identity" data-he="לוגו וזהות מותג">לוגו וזהות מותג</span>
-            </div>
-            <p class="work-result">
-              <span class="work-result__label" data-en="Result" data-he="תוצאה">תוצאה</span>
-              <span data-en="A brand identity ready for digital, packaging, and social channels."
-                    data-he="זהות מוכנה לשימוש בדיגיטל, אריזה ורשתות חברתיות.">זהות מוכנה לשימוש בדיגיטל, אריזה ורשתות חברתיות.</span>
-            </p>
-            <div class="work-actions">
-              <a class="work-action work-action--live" href="https://www.mochi-israel.com/" target="_blank" rel="noopener noreferrer"
-                 data-en="View live site" data-he="צפו באתר החי">צפו באתר החי</a>
-              <button type="button" class="work-action work-action--story" data-case="mochi"
-                 data-en="Project story" data-he="סיפור הפרויקט">סיפור הפרויקט</button>
-            </div>
-            <a class="work-cta work-cta-style" href="#contact"
-               data-wa-he="היי אסף, אהבתי את הפרויקט של מוצ'י ואשמח אתר בסגנון הזה לעסק שלי"
-               data-wa-en="Hi Assaf, I loved the Mochi project and I'd love a site in this style for my business"
-               target="_blank" rel="noopener noreferrer"
-               data-en="Want a site in this style?" data-he="רוצה אתר בסגנון הזה?">רוצה אתר בסגנון הזה?</a>
-          </div>
-        </article>
 
-        <article class="work-card work-card--study reveal">
-          <div class="work-tile">
-            <img src="assets/coffee-ana-logo.avif" alt="קפה אנה   לוגו בית קפה" class="work-tile-img work-tile-img--contain" loading="lazy" decoding="async" />
+          <div class="about-block">
+            <h3 class="about-subtitle" data-en="How it looks with me" data-he="איך זה נראה אצלי">איך זה נראה אצלי</h3>
+            <p class="about-desc"
+               data-en="The goal isn't just a pretty site. It's that a visitor understands what you offer within seconds, feels confident, and leaves an inquiry. Every step is one conversation with one person, all the way to launch."
+               data-he="המטרה היא לא רק אתר יפה. המטרה היא שלקוח שנכנס יבין תוך שניות מה אתה מציע, ירגיש ביטחון וישאיר פנייה. כל שלב הוא שיחה אחת עם איש אחד, כל הדרך עד ההשקה.">
+              המטרה היא לא רק אתר יפה. המטרה היא שלקוח שנכנס יבין תוך שניות מה אתה מציע, ירגיש ביטחון וישאיר פנייה. כל שלב הוא שיחה אחת עם איש אחד, כל הדרך עד ההשקה.</p>
           </div>
-          <div class="work-info">
-            <div class="work-head">
-              <span class="work-name" data-en="Coffee Ana" data-he="קפה אנה">קפה אנה</span>
-              <span class="work-cat" data-en="Neighborhood café branding" data-he="מיתוג לבית הקפה של השכונה">מיתוג לבית הקפה של השכונה</span>
-            </div>
-            <p class="work-result">
-              <span class="work-result__label" data-en="Result" data-he="תוצאה">תוצאה</span>
-              <span data-en="A brand that feels local, clear, and ready for every touchpoint."
-                    data-he="מותג שמרגיש מקומי, ברור ומוכן להופיע בכל נקודת מגע.">מותג שמרגיש מקומי, ברור ומוכן להופיע בכל נקודת מגע.</span>
-            </p>
-            <div class="work-actions">
-              <a class="work-action work-action--live" href="https://www.cafe-ana.com/" target="_blank" rel="noopener noreferrer"
-                 data-en="View live site" data-he="צפו באתר החי">צפו באתר החי</a>
-              <button type="button" class="work-action work-action--story" data-case="ana"
-                 data-en="Project story" data-he="סיפור הפרויקט">סיפור הפרויקט</button>
-            </div>
-            <a class="work-cta work-cta-style" href="#contact"
-               data-wa-he="היי אסף, אהבתי את הפרויקט של קפה אנה ואשמח אתר בסגנון הזה לעסק שלי"
-               data-wa-en="Hi Assaf, I loved the Coffee Ana project and I'd love a site in this style for my business"
-               target="_blank" rel="noopener noreferrer"
-               data-en="Want a site in this style?" data-he="רוצה אתר בסגנון הזה?">רוצה אתר בסגנון הזה?</a>
-          </div>
-        </article>
 
-        <article class="work-card work-card--next reveal">
-          <div class="work-tile">
-            <img src="assets/wanna-be-the-next.avif" alt="רוצים להיות הפרויקט הבא, צור קשר" class="work-tile-img work-tile-img--cover" loading="lazy" decoding="async" />
+          <div class="about-block">
+            <h3 class="about-subtitle" data-en="Background" data-he="הרקע שלי">הרקע שלי</h3>
+            <p class="about-desc"
+               data-en="Industrial engineering student, hands-on with AI systems for data and automation. Former IDF combat officer, discipline and responsibility are how I run a project too."
+               data-he="סטודנט להנדסת תעשייה וניהול, ניסיון מעשי במערכות AI לניתוח ואוטומציה. קצין לחימה לשעבר בצה״ל, משמעת ואחריות הם גם איך שאני מנהל פרויקט.">
+              סטודנט להנדסת תעשייה וניהול, ניסיון מעשי במערכות AI לניתוח ואוטומציה. קצין לחימה לשעבר בצה״ל, משמעת ואחריות הם גם איך שאני מנהל פרויקט.</p>
           </div>
-          <div class="work-info">
-            <div class="work-head">
-              <span class="work-name" data-en="Wanna be the next?" data-he="רוצים להיות הבאים?">רוצים להיות הבאים?</span>
-              <span class="work-cat" data-en="Your business here" data-he="העסק שלך כאן">העסק שלך כאן</span>
-            </div>
-            <p class="work-result">
-              <span class="work-result__label" data-en="You" data-he="אתם">אתם</span>
-              <span data-en="A short discovery call, a clear direction, and a site that feels like you."
-                    data-he="שיחת היכרות קצרה, כיוון ברור ואתר שמרגיש שלך.">שיחת היכרות קצרה, כיוון ברור ואתר שמרגיש שלך.</span>
-            </p>
-            <div class="work-actions">
-              <button type="button" class="work-action work-action--story" data-case="next"
-                 data-en="Plan my project" data-he="תכנן את הפרויקט שלי">תכנן את הפרויקט שלי</button>
-            </div>
-            <a class="work-cta work-cta-style" href="#contact"
-               data-wa-he="היי אסף, אני רוצה להיות הפרויקט הבא. אשמח לתכנן איתך אתר לעסק שלי"
-               data-wa-en="Hi Assaf, I want to be the next project. I'd love to plan a site for my business with you"
-               target="_blank" rel="noopener noreferrer"
-               data-en="Let's start my project" data-he="בוא נתחיל את הפרויקט שלי">בוא נתחיל את הפרויקט שלי</a>
+
+          <div class="about-block">
+            <h3 class="about-subtitle" data-en="Who I work with" data-he="עם מי אני עובד">עם מי אני עובד</h3>
+            <p class="about-desc"
+               data-en="Small and growing businesses in Israel that want a real online presence, not a template. Direct contact, no agency layers between us."
+               data-he="עסקים קטנים וצומחים בישראל שרוצים נוכחות אמיתית באינטרנט, לא תבנית. קשר ישיר, בלי שכבות סוכנות בינינו.">
+              עסקים קטנים וצומחים בישראל שרוצים נוכחות אמיתית באינטרנט, לא תבנית. קשר ישיר, בלי שכבות סוכנות בינינו.</p>
           </div>
-        </article>
+        </div>
+
+        <div class="about-image-container">
+          <img src="assets/about-me.avif" alt="אסף בוסקילה" class="about-photo" loading="lazy" decoding="async" width="800" height="1067" />
+        </div>
 
       </div>
     </section>
 
-    <!-- TESTIMONIALS (moved up: social proof right after the portfolio + price) -->
+    <section class="trust-strip reveal" id="trust" aria-label="סימני אמון · Trust markers">
+      <div class="trust-strip__inner">
+        <div class="trust-item">
+          <span class="trust-item__num">01</span>
+          <span data-en="Built personally by Assaf, no agency" data-he="נבנה אישית על ידי אסף, בלי סוכנות">נבנה אישית על ידי אסף, בלי סוכנות</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-item__num">02</span>
+          <span data-en="Price known up front" data-he="מחיר ידוע מראש">מחיר ידוע מראש</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-item__num">03</span>
+          <span data-en="The site stays yours" data-he="האתר נשאר שלך">האתר נשאר שלך</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-item__num">04</span>
+          <span data-en="GA4, Pixel & WhatsApp connected" data-he="מחובר ל-GA4, פיקסל ווואטסאפ">מחובר ל-GA4, פיקסל ווואטסאפ</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES (Bento) -->
     <section class="section testimonials-section" id="testimonials">
       <h2 class="section-title reveal" data-en="What clients feel" data-he="מה לקוחות מרגישים">מה לקוחות מרגישים</h2>
       <div class="testimonial-shell reveal" id="testimonialShell" aria-live="polite">
@@ -5271,100 +5365,6 @@
           <p data-en="Analytics, SEO basics, QA and a clear contact path go live. And I don't disappear after launch."
             data-he="אנליטיקות, בסיס SEO, בדיקות ומסלול פנייה ברור עולים לאוויר. ואני לא נעלם אחרי ההשקה.">אנליטיקות, בסיס SEO, בדיקות ומסלול פנייה ברור עולים לאוויר. ואני לא נעלם אחרי ההשקה.</p>
         </article>
-      </div>
-    </section>
-
-    <section class="section project-lab" id="estimate">
-      <h2 class="section-title reveal" data-en="Project Lab" data-he="מעבדת פרויקט">מעבדת פרויקט</h2>
-
-      <div class="lab-grid">
-        <article class="lab-panel lab-panel--quiz reveal" id="quizPanel">
-          <div class="lab-panel__head">
-            <span class="lab-panel__eyebrow" data-en="Match" data-he="התאמה">התאמה</span>
-            <h3 data-en="Find the right website" data-he="מצא את סוג האתר הנכון">מצא את סוג האתר הנכון</h3>
-          </div>
-          <div class="quiz-body">
-            <p class="quiz-question" id="quizQuestion"></p>
-            <div class="quiz-options" id="quizOptions"></div>
-            <p class="quiz-result" id="quizResult" hidden></p>
-          </div>
-          <div class="quiz-actions">
-            <button type="button" class="mini-btn" id="quizBack" data-en="Back" data-he="חזור">חזור</button>
-            <button type="button" class="mini-btn" id="quizRestart" data-en="Restart" data-he="התחל מחדש">התחל מחדש</button>
-            <a class="mini-btn mini-btn--primary" id="quizWhatsApp" href="#" target="_blank" rel="noopener noreferrer"
-              data-en="Send match" data-he="שלח התאמה">שלח התאמה</a>
-          </div>
-        </article>
-
-        <article class="lab-panel lab-panel--estimate reveal">
-          <div class="lab-panel__head">
-            <span class="lab-panel__eyebrow" data-en="Estimate" data-he="אומדן">אומדן</span>
-            <h3 data-en="Live budget range" data-he="טווח תקציב חי">טווח תקציב חי</h3>
-          </div>
-          <div class="estimate-types" id="estimateTypes" role="group" aria-label="סוג אתר">
-            <button type="button" class="estimate-type is-active" data-type="landing" data-en="Landing" data-he="נחיתה">נחיתה</button>
-            <button type="button" class="estimate-type" data-type="site" data-en="Website" data-he="אתר">אתר</button>
-            <button type="button" class="estimate-type" data-type="store" data-en="Store" data-he="חנות">חנות</button>
-          </div>
-          <label class="range-control" for="pageCount">
-            <span data-en="Pages" data-he="עמודים">עמודים</span>
-            <strong id="pageCountLabel">3</strong>
-          </label>
-          <input type="range" min="1" max="8" value="1" id="pageCount" class="estimate-range" />
-          <div class="estimate-addons">
-            <label><input type="checkbox" value="brand" /> <span data-en="Brand basics" data-he="מיתוג בסיסי">מיתוג בסיסי</span></label>
-            <label><input type="checkbox" value="motion" /> <span data-en="Motion layer" data-he="שכבת אנימציה">שכבת אנימציה</span></label>
-            <label><input type="checkbox" value="seo" /> <span data-en="SEO setup" data-he="הגדרת SEO">הגדרת SEO</span></label>
-            <label><input type="checkbox" value="care" /> <span data-en="Care plan" data-he="ליווי חודשי">ליווי חודשי</span></label>
-          </div>
-          <div class="estimate-output" id="estimateOutput">₪1,500 to ₪1,800</div>
-          <a class="mini-btn mini-btn--primary estimate-send" id="estimateWhatsApp" href="#" target="_blank" rel="noopener noreferrer"
-            data-en="Send estimate" data-he="שלח אומדן">שלח אומדן</a>
-        </article>
-
-        <article class="lab-panel lab-panel--visual reveal">
-          <div class="lab-panel__head">
-            <span class="lab-panel__eyebrow" data-en="AI visuals" data-he="ויזואל AI">ויזואל AI</span>
-            <h3 data-en="Change the business mood" data-he="שנה את אופי העסק">שנה את אופי העסק</h3>
-          </div>
-          <div class="visual-tabs" id="visualTabs" role="group" aria-label="סוג עסק">
-            <button type="button" class="visual-tab is-active" data-visual="cafe" data-en="Cafe" data-he="קפה">קפה</button>
-            <button type="button" class="visual-tab" data-visual="clinic" data-en="Clinic" data-he="קליניקה">קליניקה</button>
-            <button type="button" class="visual-tab" data-visual="fitness" data-en="Fitness" data-he="כושר">כושר</button>
-            <button type="button" class="visual-tab" data-visual="law" data-en="Law" data-he="משפטי">משפטי</button>
-          </div>
-          <div class="visual-preview visual-preview--cafe" id="visualPreview" aria-live="polite">
-            <div class="visual-preview__nav"></div>
-            <div class="visual-preview__hero">
-              <span id="visualTitle">Cafe Ana</span>
-            </div>
-            <div class="visual-preview__rows">
-              <span></span><span></span><span></span>
-            </div>
-            <p id="visualTags">Warm menu, fast order, local story</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section before-after-section" id="before-after">
-      <h2 class="section-title reveal" data-en="Before and after" data-he="לפני ואחרי">לפני ואחרי</h2>
-      <div class="before-after-frame reveal" id="beforeAfterFrame" style="--split: 52%">
-        <div class="before-after-layer before-layer">
-          <span data-en="Before" data-he="לפני">לפני</span>
-          <h3 data-en="Template noise" data-he="רעש של תבנית">רעש של תבנית</h3>
-          <p data-en="Weak hierarchy, unclear offer, and no clear reason to contact."
-            data-he="היררכיה חלשה, הצעה לא ברורה וללא סיבה מיידית ליצור קשר.">היררכיה חלשה, הצעה לא ברורה וללא סיבה מיידית ליצור קשר.</p>
-        </div>
-        <div class="before-after-layer after-layer">
-          <span data-en="After" data-he="אחרי">אחרי</span>
-          <h3 data-en="Focused conversion" data-he="המרה ממוקדת">המרה ממוקדת</h3>
-          <p data-en="Clear path, visual confidence, fast pages, and a CTA that feels natural."
-            data-he="מסלול ברור, ביטחון חזותי, עמודים מהירים וקריאה לפעולה שמרגישה טבעית.">מסלול ברור, ביטחון חזותי, עמודים מהירים וקריאה לפעולה שמרגישה טבעית.</p>
-        </div>
-        <div class="before-after-divider" aria-hidden="true"></div>
-        <input type="range" min="0" max="100" value="50" id="beforeAfterSlider" class="before-after-slider"
-          aria-label="השוואת לפני ואחרי" />
       </div>
     </section>
 
