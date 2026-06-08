@@ -3598,8 +3598,24 @@
 
     .trust-strip__inner {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       border-block: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .trust-item--integrations {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px 16px;
+      min-height: auto;
+      border-inline-end: 0;
+      border-block-start: 1px solid rgba(255, 255, 255, 0.14);
+      font-size: clamp(15px, 1.6vw, 19px);
+    }
+
+    .trust-item--integrations .trust-item__num {
+      margin-inline-end: 4px;
     }
 
     .trust-item {
@@ -3614,7 +3630,8 @@
       font-weight: 700;
     }
 
-    .trust-item:last-child {
+    .trust-item:last-child,
+    .trust-item:nth-child(3) {
       border-inline-end: 0;
     }
 
@@ -4867,8 +4884,8 @@
         </div>
 
         <a class="hero-partner-note" href="#process"
-           data-en="Not just a site — for a full month I'm part of your team →"
-           data-he="לא רק אתר — חודש שלם אני חלק מהצוות שלך ←">לא רק אתר — חודש שלם אני חלק מהצוות שלך ←</a>
+           data-en="Not just a site — I work side by side with you for a full month →"
+           data-he="לא רק אתר — עובד צמוד אליך חודש שלם ←">לא רק אתר — עובד צמוד אליך חודש שלם ←</a>
       </div>
     </section>
 
@@ -5350,9 +5367,9 @@
           <span class="trust-item__num">03</span>
           <span data-en="The site stays yours" data-he="האתר נשאר שלך">האתר נשאר שלך</span>
         </div>
-        <div class="trust-item">
+        <div class="trust-item trust-item--integrations">
           <span class="trust-item__num">04</span>
-          <span data-en="Integrates WhatsApp, Wolt, Calendar & email" data-he="מתחבר לוואטסאפ, וולט, יומן ומייל">מתחבר לוואטסאפ, וולט, יומן ומייל</span>
+          <span data-en="Integrates with the tools you already use: WhatsApp, Wolt, Google Calendar, Gmail, click-to-call & GA4" data-he="מתחבר לכלים שאתם כבר עובדים איתם: וואטסאפ, וולט, יומן גוגל, Gmail, חיוג ישיר ו-GA4">מתחבר לכלים שאתם כבר עובדים איתם: וואטסאפ, וולט, יומן גוגל, Gmail, חיוג ישיר ו-GA4</span>
         </div>
       </div>
     </section>
