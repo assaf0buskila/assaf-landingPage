@@ -741,6 +741,37 @@
       }
     }
 
+    .hero-partner-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-block-start: 18px;
+      padding: 8px 0;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: rgba(255, 255, 255, 0.82);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.32);
+      transition: color 0.25s, border-color 0.25s, transform 0.25s var(--ease);
+    }
+
+    .hero-partner-note:hover {
+      color: #fff;
+      border-color: #fff;
+      transform: translateX(-2px);
+    }
+
+    html[lang="en"] .hero-partner-note:hover {
+      transform: translateX(2px);
+    }
+
+    @media (max-width: 600px) {
+      .hero-partner-note {
+        font-size: 14px;
+      }
+    }
+
     /* Desktop-only: hint above hero image trail */
     .hero-mouse-hint {
       display: none;
@@ -4834,6 +4865,10 @@
              target="_blank" rel="noopener noreferrer"
              data-en="WhatsApp Assaf" data-he="שלח וואטסאפ לאסף">שלח וואטסאפ לאסף</a>
         </div>
+
+        <a class="hero-partner-note" href="#process"
+           data-en="Not just a site — for a full month I'm part of your team →"
+           data-he="לא רק אתר — חודש שלם אני חלק מהצוות שלך ←">לא רק אתר — חודש שלם אני חלק מהצוות שלך ←</a>
       </div>
     </section>
 
@@ -5317,7 +5352,7 @@
         </div>
         <div class="trust-item">
           <span class="trust-item__num">04</span>
-          <span data-en="GA4, Pixel & WhatsApp connected" data-he="מחובר ל-GA4, פיקסל ווואטסאפ">מחובר ל-GA4, פיקסל ווואטסאפ</span>
+          <span data-en="Integrates WhatsApp, Wolt, Calendar & email" data-he="מתחבר לוואטסאפ, וולט, יומן ומייל">מתחבר לוואטסאפ, וולט, יומן ומייל</span>
         </div>
       </div>
     </section>
