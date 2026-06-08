@@ -764,7 +764,7 @@
 
     @media (min-width: 801px) and (hover: hover) and (pointer: fine) {
       .hero-mouse-hint {
-        display: block;
+        display: none;
       }
     }
 
@@ -786,9 +786,10 @@
       width: 100%;
       flex: 1;
       min-height: 0;
-      max-height: 42vh;
+      max-height: 34vh;
       margin-block: 8px 4px;
       pointer-events: none;
+      opacity: 0.72;
     }
 
     .hero-orbit-scene {
@@ -4798,7 +4799,7 @@
 
       <div class="hero-content hero-stagger" id="heroContent" style="--stagger: 0">
         <h1 class="hero-title">
-          <span data-en="A website that brings your business more leads." data-he="אתר שמביא לעסק שלך יותר פניות.">אתר שמביא לעסק שלך יותר פניות.</span>
+          <span data-en="Not just a pretty site. A site that brings leads." data-he="לא עוד אתר יפה. אתר שמביא פניות.">לא עוד אתר יפה. אתר שמביא פניות.</span>
         </h1>
         <!-- Visually hidden: provides keyword context for search engines without affecting visual design -->
         <p class="seo-only">האתר של אסף בוסקילה, בניית אתרים ודפי נחיתה לעסקים קטנים וצומחים בישראל, מפתח אתרים ומעצב.</p>
@@ -4934,17 +4935,17 @@
     <section class="section wordsearch-section" id="wordsearch" aria-labelledby="wordsearchTitle">
       <div class="wordsearch-section__inner">
         <span class="wordsearch-section__kicker reveal"
-              data-en="Find the words"
-              data-he="מצא את המילים">מצא את המילים</span>
+              data-en="Find what's missing on your site"
+              data-he="מצא מה חסר באתר שלך">מצא מה חסר באתר שלך</span>
         <h2 class="section-title reveal" id="wordsearchTitle"
-            data-en="Assaf, landing page, is here"
-            data-he="אסף, דף נחיתה, כאן">אסף, דף נחיתה, כאן</h2>
+            data-en="Trust. Price. WhatsApp. All in place."
+            data-he="אמון. מחיר. וואטסאפ. הכל במקום.">אמון. מחיר. וואטסאפ. הכל במקום.</h2>
         <p class="wordsearch-section__lede reveal"
-           data-en="A puzzle that solves itself. Watch the pen find every service hidden in the grid."
-           data-he="פאזל שפותר את עצמו. תראו את העט מוצא כל שירות שמסתתר בלוח.">
-          פאזל שפותר את עצמו. תראו את העט מוצא כל שירות שמסתתר בלוח.</p>
+           data-en="These are what a good business site must have. Watch the pen find each one — and ask which your site has today."
+           data-he="אלה הדברים שאתר עסקי טוב חייב. תראו את העט מוצא כל אחד — ושאלו את עצמכם אילו מהם יש לכם היום.">
+          אלה הדברים שאתר עסקי טוב חייב. תראו את העט מוצא כל אחד — ושאלו את עצמכם אילו מהם יש לכם היום.</p>
 
-        <div class="wordsearch-hero reveal" id="wordsearchHero" aria-label="חיפוש שירותים, Service word search">
+        <div class="wordsearch-hero reveal" id="wordsearchHero" aria-label="אבחון אתר, Site checklist word search">
           <strong id="wordsearchActiveLabel" hidden aria-hidden="true">אסף</strong>
           <div class="wordsearch-board" id="wordsearchBoard" aria-hidden="true">
             <div class="wordsearch-grid" id="wordsearchGrid"></div>
@@ -5033,6 +5034,11 @@
               <span class="work-name" data-en="Mochi" data-he="מוצ'י">מוצ'י</span>
               <span class="work-cat" data-en="Logo &amp; brand identity" data-he="לוגו וזהות מותג">לוגו וזהות מותג</span>
             </div>
+            <p class="work-result work-problem">
+              <span class="work-result__label" data-en="Challenge" data-he="האתגר">האתגר</span>
+              <span data-en="A sweet brand for a young audience that had to look clean and memorable."
+                    data-he="מותג מתוק לקהל צעיר שצריך להיראות נקי וזכיר.">מותג מתוק לקהל צעיר שצריך להיראות נקי וזכיר.</span>
+            </p>
             <p class="work-result">
               <span class="work-result__label" data-en="Result" data-he="תוצאה">תוצאה</span>
               <span data-en="A brand identity ready for digital, packaging, and social channels."
@@ -5061,6 +5067,11 @@
               <span class="work-name" data-en="Coffee Ana" data-he="קפה אנה">קפה אנה</span>
               <span class="work-cat" data-en="Neighborhood café branding" data-he="מיתוג לבית הקפה של השכונה">מיתוג לבית הקפה של השכונה</span>
             </div>
+            <p class="work-result work-problem">
+              <span class="work-result__label" data-en="Challenge" data-he="האתגר">האתגר</span>
+              <span data-en="A neighborhood café that wanted a warm, inviting presence."
+                    data-he="בית קפה שכונתי שרצה נוכחות חמה ומזמינה.">בית קפה שכונתי שרצה נוכחות חמה ומזמינה.</span>
+            </p>
             <p class="work-result">
               <span class="work-result__label" data-en="Result" data-he="תוצאה">תוצאה</span>
               <span data-en="A brand that feels local, clear, and ready for every touchpoint."
@@ -5148,8 +5159,8 @@
                 data-he="סבב תיקונים אחד">סבב תיקונים אחד</li>
           </ul>
           <a class="pricing-cta" href="https://wa.me/972523393768?text=היי%20אסף%2C%20מעוניין%2Fת%20בחבילת%20Starter%2C%20%D7%93%D7%A3%20%D7%A0%D7%97%D7%99%D7%AA%D7%94%20%281%2C500%20%E2%82%AA%29" rel="noopener"
-             data-en="Start with Starter"
-             data-he="להתחיל עם Starter">להתחיל עם Starter</a>
+             data-en="This fits me — let's talk"
+             data-he="זה מתאים לי, דברו איתי">זה מתאים לי, דברו איתי</a>
         </article>
 
         <!-- Popular (featured) -->
@@ -5179,8 +5190,8 @@
                 data-he="2 סבבי תיקונים ושעת הדרכה אחרי השקה">2 סבבי תיקונים ושעת הדרכה אחרי השקה</li>
           </ul>
           <a class="pricing-cta" href="https://wa.me/972523393768?text=היי%20אסף%2C%20מעוניין%2Fת%20בחבילת%20Popular%2C%20%D7%90%D7%AA%D7%A8%20%D7%AA%D7%93%D7%9E%D7%99%D7%AA%20%282%2C500%20%D7%A2%D7%93%205%2C000%20%E2%82%AA%29" rel="noopener"
-             data-en="Pick Popular"
-             data-he="בחר Popular">בחר Popular</a>
+             data-en="This is the one — let's talk"
+             data-he="זה מה שחיפשתי, דברו איתי">זה מה שחיפשתי, דברו איתי</a>
         </article>
 
         <!-- Pro -->
@@ -5210,8 +5221,8 @@
                 data-he="אודיט SEO בעברית ו-3 סבבי תיקונים">אודיט SEO בעברית ו-3 סבבי תיקונים</li>
           </ul>
           <a class="pricing-cta" href="https://wa.me/972523393768?text=היי%20אסף%2C%20מעוניין%2Fת%20בחבילת%20Pro%2C%20%D7%90%D7%AA%D7%A8%20%D7%9E%D7%95%D7%AA%D7%90%D7%9D%20%D7%90%D7%99%D7%A9%D7%99%D7%AA%20%28%D7%9E%D7%97%D7%99%D7%A8%20%D7%9E-5%2C000%20%E2%82%AA%29" rel="noopener"
-             data-en="Go Pro"
-             data-he="לבחור Pro">לבחור Pro</a>
+             data-en="I want this — let's talk"
+             data-he="אני רוצה את זה, דברו איתי">אני רוצה את זה, דברו איתי</a>
         </article>
 
       </div>
@@ -5229,8 +5240,8 @@
         </div>
         <span class="pricing-retainer__price">290 ₪<small data-en="per month" data-he="לחודש">לחודש</small></span>
         <a class="pricing-retainer__cta" href="https://wa.me/972523393768?text=היי%20אסף%2C%20מעוניין%2Fת%20%D7%91%D7%9C%D7%99%D7%95%D7%95%D7%99%20%D7%97%D7%95%D7%93%D7%A9%D7%99%20%28290%20%E2%82%AA%29" rel="noopener"
-           data-en="Add retainer"
-           data-he="להוסיף ליווי">להוסיף ליווי</a>
+           data-en="I'd like monthly care"
+           data-he="אשמח לליווי חודשי">אשמח לליווי חודשי</a>
       </aside>
 
       <p class="pricing-footnote reveal"
@@ -6559,27 +6570,23 @@
         he: {
           filler: Array.from('אבגדהוזחטיכלמנסעפצקרשת'),
           words: [
-            { label: 'אסף', word: 'אסף', row: 0, col: 11, dx: -1, dy: 0 },
-            { label: 'דף', word: 'דף', row: 2, col: 11, dx: -1, dy: 0 },
-            { label: 'נחיתה', word: 'נחיתה', row: 2, col: 8, dx: -1, dy: 0 },
-            { label: 'כאן', word: 'כאן', row: 4, col: 11, dx: -1, dy: 0 },
-            { label: 'SEO', word: 'SEO', row: 1, col: 1, dx: 1, dy: 1 },
-            { label: 'עיצוב', word: 'עיצוב', row: 4, col: 7, dx: -1, dy: 0 },
-            { label: 'בניית', word: 'בניית', row: 6, col: 11, dx: -1, dy: 0 },
-            { label: 'אתרים', word: 'אתרים', row: 6, col: 5, dx: -1, dy: 0 }
+            { label: 'וואטסאפ', word: 'וואטסאפ', row: 0, col: 11, dx: -1, dy: 0 },
+            { label: 'SEO', word: 'SEO', row: 1, col: 1, dx: 1, dy: 0 },
+            { label: 'המלצות', word: 'המלצות', row: 2, col: 11, dx: -1, dy: 0 },
+            { label: 'מחיר', word: 'מחיר', row: 3, col: 11, dx: -1, dy: 0 },
+            { label: 'מובייל', word: 'מובייל', row: 4, col: 11, dx: -1, dy: 0 },
+            { label: 'אמון', word: 'אמון', row: 5, col: 11, dx: -1, dy: 0 }
           ]
         },
         en: {
           filler: Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ'),
           words: [
-            { label: 'Assaf', word: 'ASSAF', row: 0, col: 1, dx: 1, dy: 0 },
-            { label: 'Landing', word: 'LANDING', row: 2, col: 1, dx: 1, dy: 0 },
-            { label: 'Page', word: 'PAGE', row: 4, col: 1, dx: 1, dy: 0 },
-            { label: 'Is', word: 'IS', row: 4, col: 6, dx: 1, dy: 0 },
-            { label: 'Here', word: 'HERE', row: 4, col: 8, dx: 1, dy: 0 },
-            { label: 'SEO', word: 'SEO', row: 1, col: 9, dx: 1, dy: 1 },
-            { label: 'Design', word: 'DESIGN', row: 6, col: 1, dx: 1, dy: 0 },
-            { label: 'Build', word: 'BUILD', row: 6, col: 7, dx: 1, dy: 0 }
+            { label: 'WhatsApp', word: 'WHATSAPP', row: 0, col: 1, dx: 1, dy: 0 },
+            { label: 'SEO', word: 'SEO', row: 1, col: 1, dx: 1, dy: 0 },
+            { label: 'Reviews', word: 'REVIEWS', row: 2, col: 1, dx: 1, dy: 0 },
+            { label: 'Price', word: 'PRICE', row: 3, col: 1, dx: 1, dy: 0 },
+            { label: 'Mobile', word: 'MOBILE', row: 4, col: 1, dx: 1, dy: 0 },
+            { label: 'Trust', word: 'TRUST', row: 5, col: 1, dx: 1, dy: 0 }
           ]
         }
       };
