@@ -683,6 +683,64 @@
       }
     }
 
+    .hero-actions {
+      margin-block-start: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 26px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: transform 0.25s var(--ease), background 0.25s, border-color 0.25s, opacity 0.25s;
+    }
+
+    .hero-btn--primary {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .hero-btn--primary:hover {
+      transform: translateY(-2px);
+      opacity: 0.92;
+    }
+
+    .hero-btn--wa {
+      background: transparent;
+      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.28);
+    }
+
+    .hero-btn--wa:hover {
+      transform: translateY(-2px);
+      border-color: var(--text);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    @media (max-width: 600px) {
+      .hero-actions {
+        gap: 10px;
+        width: 100%;
+      }
+      .hero-btn {
+        flex: 1 1 auto;
+        padding: 13px 18px;
+        font-size: 14px;
+      }
+    }
+
     /* Desktop-only: hint above hero image trail */
     .hero-mouse-hint {
       display: none;
@@ -1084,6 +1142,348 @@
       padding: 0;
       box-sizing: border-box;
       filter: brightness(0.88);
+    }
+
+    /* ── Case-study works grid ── */
+    .works-intro {
+      max-width: 640px;
+      margin: -8px auto 36px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: clamp(15px, 1.5vw, 18px);
+      line-height: 1.5;
+    }
+
+    .works-grid--studies {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+      max-width: min(1100px, 94vw);
+      margin-inline: auto;
+      align-items: stretch;
+    }
+
+    .works-grid--studies .work-card:nth-child(even) {
+      margin-top: 0;
+    }
+
+    .work-card--study,
+    .work-card--next {
+      display: flex;
+      flex-direction: column;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0));
+      transition: border-color 0.3s, transform 0.3s var(--ease);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .work-card--study:hover,
+      .work-card--next:hover {
+        border-color: rgba(255, 255, 255, 0.28);
+        transform: translateY(-4px);
+      }
+    }
+
+    .works-grid--studies .work-info {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: 12px;
+      flex: 1;
+      text-align: start;
+    }
+
+    .work-head {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .works-grid--studies .work-name {
+      font-size: 20px;
+      text-transform: none;
+      letter-spacing: -0.02em;
+    }
+
+    .work-result {
+      font-size: 14px;
+      line-height: 1.45;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .work-result__label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      margin-inline-end: 6px;
+    }
+
+    .work-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: auto;
+    }
+
+    .work-action {
+      background: none;
+      border: 0;
+      padding: 0;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      cursor: pointer;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      transition: border-color 0.25s, opacity 0.25s;
+    }
+
+    .work-action:hover {
+      border-color: var(--text);
+      opacity: 0.9;
+    }
+
+    .work-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 4px;
+      padding: 11px 16px;
+      border-radius: 999px;
+      background: var(--text);
+      color: var(--bg);
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 0.25s var(--ease), opacity 0.25s;
+    }
+
+    .work-cta:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+
+    @media (max-width: 760px) {
+      .works-grid--studies {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+    }
+
+    /* ── Contact section (form + direct channels) ── */
+    .contact-kicker {
+      display: block;
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 12px;
+    }
+
+    .contact-sub {
+      max-width: 620px;
+      margin: 0 0 40px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: clamp(16px, 1.6vw, 20px);
+      line-height: 1.5;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .lead-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .lead-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .lead-field label {
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .lead-field input,
+    .lead-field textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px 15px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      font: inherit;
+      font-size: 15px;
+      transition: border-color 0.25s, background 0.25s;
+    }
+
+    .lead-field textarea {
+      resize: vertical;
+      min-height: 84px;
+    }
+
+    .lead-field input:focus,
+    .lead-field textarea:focus {
+      outline: none;
+      border-color: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .lead-submit {
+      margin-top: 4px;
+      padding: 14px 24px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--text);
+      color: var(--bg);
+      font: inherit;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.25s var(--ease), opacity 0.25s;
+    }
+
+    .lead-submit:hover {
+      transform: translateY(-2px);
+      opacity: 0.92;
+    }
+
+    .lead-form__note {
+      margin: 2px 0 0;
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--text-muted);
+    }
+
+    .contact-direct {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-option {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding: 16px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.25s, transform 0.25s var(--ease), background 0.25s;
+    }
+
+    .contact-option:hover {
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .contact-option--call {
+      border-color: rgba(255, 255, 255, 0.45);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .contact-option__title {
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .contact-option__desc {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 760px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+    }
+
+    /* ── Floating desktop contact button ── */
+    .float-contact {
+      display: none;
+    }
+
+    @media (min-width: 801px) {
+      .float-contact {
+        position: fixed;
+        z-index: 60;
+        bottom: 22px;
+        inset-inline-start: 22px;
+        display: inline-flex;
+        align-items: center;
+        gap: 0;
+        height: 56px;
+        padding: 0;
+        width: 56px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: var(--text);
+        color: var(--bg);
+        text-decoration: none;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+        transition: width 0.32s var(--ease), padding 0.32s var(--ease), transform 0.25s var(--ease);
+      }
+
+      .float-contact__icon {
+        flex: 0 0 auto;
+        width: 56px;
+        height: 56px;
+        padding: 16px;
+        box-sizing: border-box;
+      }
+
+      .float-contact__label {
+        white-space: nowrap;
+        font-size: 14px;
+        font-weight: 800;
+        opacity: 0;
+        max-width: 0;
+        transition: opacity 0.25s, max-width 0.32s var(--ease), padding 0.32s var(--ease);
+      }
+
+      .float-contact:hover,
+      .float-contact:focus-visible {
+        width: auto;
+        padding-inline-end: 22px;
+        transform: translateY(-2px);
+      }
+
+      .float-contact:hover .float-contact__label,
+      .float-contact:focus-visible .float-contact__label {
+        opacity: 1;
+        max-width: 220px;
+        padding-inline-start: 4px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .float-contact,
+      .float-contact__label {
+        transition: none;
+      }
     }
 
     @media (hover: hover) and (pointer: fine) {
@@ -3502,6 +3902,25 @@
         var(--bg);
     }
 
+    .process-kicker {
+      display: block;
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 14px;
+    }
+
+    .process-intro {
+      max-width: 720px;
+      margin: 0 0 38px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: clamp(16px, 1.7vw, 21px);
+      line-height: 1.5;
+    }
+
     .process-rail {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -4379,13 +4798,13 @@
 
       <div class="hero-content hero-stagger" id="heroContent" style="--stagger: 0">
         <h1 class="hero-title">
-          <span data-en="Hey, glad you're here!" data-he="היי, כיף שבאת!">היי, כיף שבאת!</span>
+          <span data-en="A website that brings your business more leads." data-he="אתר שמביא לעסק שלך יותר פניות.">אתר שמביא לעסק שלך יותר פניות.</span>
         </h1>
         <!-- Visually hidden: provides keyword context for search engines without affecting visual design -->
         <p class="seo-only">האתר של אסף בוסקילה, בניית אתרים ודפי נחיתה לעסקים קטנים וצומחים בישראל, מפתח אתרים ומעצב.</p>
         <p class="hero-sub"
-          data-en="Assaf Buskila, web designer and developer for small businesses in Israel"
-          data-he="אסף בוסקילה, מעצב ומפתח אתרים לעסקים בישראל">אסף בוסקילה, מעצב ומפתח אתרים לעסקים בישראל</p>
+          data-en="Landing pages & business websites in Israel — personal design, lead form, WhatsApp & SEO. Fast delivery, no big-studio hassle."
+          data-he="דפי נחיתה ואתרי תדמית לעסקים בישראל — עיצוב אישי, טופס לידים, וואטסאפ ו-SEO. מסירה מהירה, בלי סטודיו גדול.">דפי נחיתה ואתרי תדמית לעסקים בישראל — עיצוב אישי, טופס לידים, וואטסאפ ו-SEO. מסירה מהירה, בלי סטודיו גדול.</p>
 
         <div class="hero-promises" role="list" aria-label="הבטחות שירות · Service promises">
           <a class="hero-promise hero-promise--link" href="#pricing" role="listitem">
@@ -4404,6 +4823,15 @@
                   data-en="WhatsApp reply within an hour"
                   data-he="מענה בוואטסאפ תוך שעה">מענה בוואטסאפ תוך שעה</span>
           </span>
+        </div>
+
+        <div class="hero-actions">
+          <a class="hero-btn hero-btn--primary" href="#estimate"
+             data-en="Find the right site for me" data-he="בדוק איזה אתר מתאים לי">בדוק איזה אתר מתאים לי</a>
+          <a class="hero-btn hero-btn--wa" id="heroWhatsApp"
+             href="https://wa.me/972523393768?text=%D7%94%D7%99%D7%99%20%D7%90%D7%A1%D7%A3%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9C%20%D7%90%D7%AA%D7%A8%20%D7%9C%D7%A2%D7%A1%D7%A7%20%D7%A9%D7%9C%D7%99"
+             target="_blank" rel="noopener noreferrer"
+             data-en="WhatsApp Assaf" data-he="שלח וואטסאפ לאסף">שלח וואטסאפ לאסף</a>
         </div>
       </div>
     </section>
@@ -4455,9 +4883,9 @@
           <div class="about-block">
             <h3 class="about-subtitle" data-en="How it looks with me" data-he="איך זה נראה אצלי">איך זה נראה אצלי</h3>
             <p class="about-desc"
-               data-en="Clean, fast websites that are actually useful for the business behind them, not just visually impressive. Every step is one conversation with one person, all the way to launch."
-               data-he="אתרים נקיים ומהירים שמשרתים את העסק שמאחוריהם, לא רק רושמים רושם. כל שלב הוא שיחה אחת עם איש אחד, כל הדרך עד ההשקה.">
-              אתרים נקיים ומהירים שמשרתים את העסק שמאחוריהם, לא רק רושמים רושם. כל שלב הוא שיחה אחת עם איש אחד, כל הדרך עד ההשקה.</p>
+               data-en="The goal isn't just a pretty site. It's that a visitor understands what you offer within seconds, feels confident, and leaves an inquiry. Every step is one conversation with one person, all the way to launch."
+               data-he="המטרה היא לא רק אתר יפה. המטרה היא שלקוח שנכנס יבין תוך שניות מה אתה מציע, ירגיש ביטחון וישאיר פנייה. כל שלב הוא שיחה אחת עם איש אחד, כל הדרך עד ההשקה.">
+              המטרה היא לא רק אתר יפה. המטרה היא שלקוח שנכנס יבין תוך שניות מה אתה מציע, ירגיש ביטחון וישאיר פנייה. כל שלב הוא שיחה אחת עם איש אחד, כל הדרך עד ההשקה.</p>
           </div>
 
           <div class="about-block">
@@ -4488,19 +4916,19 @@
       <div class="trust-strip__inner">
         <div class="trust-item">
           <span class="trust-item__num">01</span>
-          <span data-en="Engineering mindset" data-he="חשיבה הנדסית">חשיבה הנדסית</span>
+          <span data-en="Built personally by Assaf, no agency" data-he="נבנה אישית על ידי אסף, בלי סוכנות">נבנה אישית על ידי אסף, בלי סוכנות</span>
         </div>
         <div class="trust-item">
           <span class="trust-item__num">02</span>
-          <span data-en="AI systems experience" data-he="ניסיון במערכות AI">ניסיון במערכות AI</span>
+          <span data-en="Price known up front" data-he="מחיר ידוע מראש">מחיר ידוע מראש</span>
         </div>
         <div class="trust-item">
           <span class="trust-item__num">03</span>
-          <span data-en="Officer-level discipline" data-he="משמעת של קצין">משמעת של קצין</span>
+          <span data-en="The site stays yours" data-he="האתר נשאר שלך">האתר נשאר שלך</span>
         </div>
         <div class="trust-item">
           <span class="trust-item__num">04</span>
-          <span data-en="Personal guidance" data-he="ליווי אישי">ליווי אישי</span>
+          <span data-en="GA4, Pixel & WhatsApp connected" data-he="מחובר ל-GA4, פיקסל ווואטסאפ">מחובר ל-GA4, פיקסל ווואטסאפ</span>
         </div>
       </div>
     </section>
@@ -4698,51 +5126,94 @@
     <section class="section section--works-compact" id="works">
       <h2 class="section-title reveal" data-en="Selected Works" data-he="עבודות נבחרות">עבודות נבחרות</h2>
 
-      <div class="works-grid works-grid--compact">
+      <p class="works-intro reveal"
+         data-en="A few selected projects — the brief, what I built, and the result."
+         data-he="כמה פרויקטים נבחרים — מה היה צריך, מה בניתי ומה יצא.">כמה פרויקטים נבחרים — מה היה צריך, מה בניתי ומה יצא.</p>
 
-        <a href="https://www.mochi-israel.com/" class="work-card reveal" target="_blank" rel="noopener noreferrer">
+      <div class="works-grid works-grid--studies">
+
+        <article class="work-card work-card--study reveal">
           <div class="work-tile">
             <img src="assets/mochi-logo.avif" alt="Mochi   לוגו מיתוג ורוד" class="work-tile-img work-tile-img--contain" loading="lazy" decoding="async" />
           </div>
           <div class="work-info">
-            <div>
-              <div class="work-name" data-en="Mochi" data-he="מוצ'י">מוצ'י</div>
-              <div class="work-cat" data-en="Logo &amp; brand identity" data-he="לוגו וזהות מותג">לוגו וזהות מותג</div>
+            <div class="work-head">
+              <span class="work-name" data-en="Mochi" data-he="מוצ'י">מוצ'י</span>
+              <span class="work-cat" data-en="Logo &amp; brand identity" data-he="לוגו וזהות מותג">לוגו וזהות מותג</span>
             </div>
+            <p class="work-result">
+              <span class="work-result__label" data-en="Result" data-he="תוצאה">תוצאה</span>
+              <span data-en="A brand identity ready for digital, packaging, and social channels."
+                    data-he="זהות מוכנה לשימוש בדיגיטל, אריזה ורשתות חברתיות.">זהות מוכנה לשימוש בדיגיטל, אריזה ורשתות חברתיות.</span>
+            </p>
+            <div class="work-actions">
+              <a class="work-action work-action--live" href="https://www.mochi-israel.com/" target="_blank" rel="noopener noreferrer"
+                 data-en="View live site" data-he="צפו באתר החי">צפו באתר החי</a>
+              <button type="button" class="work-action work-action--story" data-case="mochi"
+                 data-en="Project story" data-he="סיפור הפרויקט">סיפור הפרויקט</button>
+            </div>
+            <a class="work-cta work-cta-style" href="#contact"
+               data-wa-he="היי אסף, אהבתי את הפרויקט של מוצ'י ואשמח אתר בסגנון הזה לעסק שלי"
+               data-wa-en="Hi Assaf, I loved the Mochi project and I'd love a site in this style for my business"
+               target="_blank" rel="noopener noreferrer"
+               data-en="Want a site in this style?" data-he="רוצה אתר בסגנון הזה?">רוצה אתר בסגנון הזה?</a>
           </div>
-        </a>
+        </article>
 
-        <a href="https://www.cafe-ana.com/" class="work-card reveal" target="_blank" rel="noopener noreferrer">
+        <article class="work-card work-card--study reveal">
           <div class="work-tile">
             <img src="assets/coffee-ana-logo.avif" alt="קפה אנה   לוגו בית קפה" class="work-tile-img work-tile-img--contain" loading="lazy" decoding="async" />
           </div>
           <div class="work-info">
-            <div>
-              <div class="work-name" data-en="Coffee Ana" data-he="קפה אנה">קפה אנה</div>
-              <div class="work-cat" data-en="Neighborhood café branding" data-he="מיתוג לבית הקפה של השכונה">מיתוג לבית הקפה של השכונה</div>
+            <div class="work-head">
+              <span class="work-name" data-en="Coffee Ana" data-he="קפה אנה">קפה אנה</span>
+              <span class="work-cat" data-en="Neighborhood café branding" data-he="מיתוג לבית הקפה של השכונה">מיתוג לבית הקפה של השכונה</span>
             </div>
+            <p class="work-result">
+              <span class="work-result__label" data-en="Result" data-he="תוצאה">תוצאה</span>
+              <span data-en="A brand that feels local, clear, and ready for every touchpoint."
+                    data-he="מותג שמרגיש מקומי, ברור ומוכן להופיע בכל נקודת מגע.">מותג שמרגיש מקומי, ברור ומוכן להופיע בכל נקודת מגע.</span>
+            </p>
+            <div class="work-actions">
+              <a class="work-action work-action--live" href="https://www.cafe-ana.com/" target="_blank" rel="noopener noreferrer"
+                 data-en="View live site" data-he="צפו באתר החי">צפו באתר החי</a>
+              <button type="button" class="work-action work-action--story" data-case="ana"
+                 data-en="Project story" data-he="סיפור הפרויקט">סיפור הפרויקט</button>
+            </div>
+            <a class="work-cta work-cta-style" href="#contact"
+               data-wa-he="היי אסף, אהבתי את הפרויקט של קפה אנה ואשמח אתר בסגנון הזה לעסק שלי"
+               data-wa-en="Hi Assaf, I loved the Coffee Ana project and I'd love a site in this style for my business"
+               target="_blank" rel="noopener noreferrer"
+               data-en="Want a site in this style?" data-he="רוצה אתר בסגנון הזה?">רוצה אתר בסגנון הזה?</a>
           </div>
-        </a>
+        </article>
 
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=assaf.buskila10@gmail.com&su=Let%27s+work+together"
-          class="work-card reveal" target="_blank" rel="noopener noreferrer">
+        <article class="work-card work-card--next reveal">
           <div class="work-tile">
             <img src="assets/wanna-be-the-next.avif" alt="רוצים להיות הפרויקט הבא, צור קשר" class="work-tile-img work-tile-img--cover" loading="lazy" decoding="async" />
           </div>
           <div class="work-info">
-            <div>
-              <div class="work-name" data-en="Wanna Be the Next?" data-he="רוצים להיות הבאים?">רוצים להיות הבאים?</div>
-              <div class="work-cat" data-en="Email to start a project" data-he="מייל לפתיחת פרויקט">מייל לפתיחת פרויקט</div>
+            <div class="work-head">
+              <span class="work-name" data-en="Wanna be the next?" data-he="רוצים להיות הבאים?">רוצים להיות הבאים?</span>
+              <span class="work-cat" data-en="Your business here" data-he="העסק שלך כאן">העסק שלך כאן</span>
             </div>
+            <p class="work-result">
+              <span class="work-result__label" data-en="You" data-he="אתם">אתם</span>
+              <span data-en="A short discovery call, a clear direction, and a site that feels like you."
+                    data-he="שיחת היכרות קצרה, כיוון ברור ואתר שמרגיש שלך.">שיחת היכרות קצרה, כיוון ברור ואתר שמרגיש שלך.</span>
+            </p>
+            <div class="work-actions">
+              <button type="button" class="work-action work-action--story" data-case="next"
+                 data-en="Plan my project" data-he="תכנן את הפרויקט שלי">תכנן את הפרויקט שלי</button>
+            </div>
+            <a class="work-cta work-cta-style" href="#contact"
+               data-wa-he="היי אסף, אני רוצה להיות הפרויקט הבא. אשמח לתכנן איתך אתר לעסק שלי"
+               data-wa-en="Hi Assaf, I want to be the next project. I'd love to plan a site for my business with you"
+               target="_blank" rel="noopener noreferrer"
+               data-en="Let's start my project" data-he="בוא נתחיל את הפרויקט שלי">בוא נתחיל את הפרויקט שלי</a>
           </div>
-        </a>
+        </article>
 
-      </div>
-
-      <div class="case-study-actions reveal" aria-label="פתיחת סיפורי פרויקט">
-        <button type="button" class="case-study-btn" data-case="mochi" data-en="Mochi case study" data-he="סיפור פרויקט מוצ'י">סיפור פרויקט מוצ'י</button>
-        <button type="button" class="case-study-btn" data-case="ana" data-en="Coffee Ana case study" data-he="סיפור פרויקט קפה אנה">סיפור פרויקט קפה אנה</button>
-        <button type="button" class="case-study-btn" data-case="next" data-en="Plan my case" data-he="תכנן את הפרויקט שלי">תכנן את הפרויקט שלי</button>
       </div>
     </section>
 
@@ -4769,31 +5240,36 @@
     </section>
 
     <section class="section process-section" id="process">
-      <h2 class="section-title reveal" data-en="How the build moves" data-he="כך הפרויקט זז קדימה">כך הפרויקט זז קדימה</h2>
+      <span class="process-kicker reveal"
+            data-en="How we work together" data-he="ככה עובדים יחד">ככה עובדים יחד</span>
+      <h2 class="section-title reveal" data-en="Not a website vendor. A partner for a month." data-he="לא קבלן אתרים. שותף לחודש.">לא קבלן אתרים. שותף לחודש.</h2>
+      <p class="process-intro reveal"
+         data-en="For one month I'm part of your team. We meet, I get to know your product, your customers and your brand — then I build a site that speaks in your voice."
+         data-he="במשך חודש אני חלק מהצוות שלך. נפגשים, אני מכיר את המוצר, הלקוחות והמותג שלך — ואז בונה אתר שמדבר בקול שלך.">במשך חודש אני חלק מהצוות שלך. נפגשים, אני מכיר את המוצר, הלקוחות והמותג שלך — ואז בונה אתר שמדבר בקול שלך.</p>
       <div class="process-rail">
         <article class="process-step reveal">
           <span class="process-step__num">01</span>
-          <h3 data-en="Discovery" data-he="שיחת היכרות">שיחת היכרות</h3>
-          <p data-en="We map the business, audience, offer, and the one action the site must create."
-            data-he="ממפים את העסק, הקהל, ההצעה והפעולה שהאתר צריך לייצר.">ממפים את העסק, הקהל, ההצעה והפעולה שהאתר צריך לייצר.</p>
+          <h3 data-en="A month together" data-he="חודש ביחד">חודש ביחד</h3>
+          <p data-en="I join your business like a partner. We meet, and I learn the product, the customers, the brand and the voice in depth."
+            data-he="אני נכנס לעסק כמו שותף. נפגשים, ואני לומד את המוצר, הלקוחות, המותג והקול לעומק.">אני נכנס לעסק כמו שותף. נפגשים, ואני לומד את המוצר, הלקוחות, המותג והקול לעומק.</p>
         </article>
         <article class="process-step reveal">
           <span class="process-step__num">02</span>
-          <h3 data-en="Direction" data-he="כיוון עיצובי">כיוון עיצובי</h3>
-          <p data-en="Typography, visual language, page structure, and motion rules are chosen before code starts."
-            data-he="טיפוגרפיה, שפה חזותית, מבנה עמוד וכללי תנועה נבחרים לפני שמתחילים קוד.">טיפוגרפיה, שפה חזותית, מבנה עמוד וכללי תנועה נבחרים לפני שמתחילים קוד.</p>
+          <h3 data-en="Strategy & direction" data-he="אסטרטגיה וכיוון">אסטרטגיה וכיוון</h3>
+          <p data-en="I translate what I understood into structure, messaging and a visual language that speak in your voice."
+            data-he="מתרגם את מה שהבנתי למבנה, למסרים ולשפה חזותית שמדברים בקול שלך.">מתרגם את מה שהבנתי למבנה, למסרים ולשפה חזותית שמדברים בקול שלך.</p>
         </article>
         <article class="process-step reveal">
           <span class="process-step__num">03</span>
-          <h3 data-en="Build" data-he="פיתוח">פיתוח</h3>
-          <p data-en="The site becomes fast, responsive, accessible, and ready for real visitors."
-            data-he="האתר הופך למהיר, רספונסיבי, נגיש ומוכן למבקרים אמיתיים.">האתר הופך למהיר, רספונסיבי, נגיש ומוכן למבקרים אמיתיים.</p>
+          <h3 data-en="Build" data-he="בנייה">בנייה</h3>
+          <p data-en="A fast, responsive, accessible site, built from real understanding and not from a template."
+            data-he="אתר מהיר, רספונסיבי ונגיש, שנבנה מתוך הבנה אמיתית ולא מתבנית.">אתר מהיר, רספונסיבי ונגיש, שנבנה מתוך הבנה אמיתית ולא מתבנית.</p>
         </article>
         <article class="process-step reveal">
           <span class="process-step__num">04</span>
-          <h3 data-en="Launch" data-he="עלייה לאוויר">עלייה לאוויר</h3>
-          <p data-en="Analytics, SEO basics, QA, and the final WhatsApp-ready conversion path go live."
-            data-he="אנליטיקות, בסיס SEO, בדיקות ומסלול פנייה ברור בוואטסאפ עולים לאוויר.">אנליטיקות, בסיס SEO, בדיקות ומסלול פנייה ברור בוואטסאפ עולים לאוויר.</p>
+          <h3 data-en="Launch & care" data-he="עלייה לאוויר וליווי">עלייה לאוויר וליווי</h3>
+          <p data-en="Analytics, SEO basics, QA and a clear contact path go live. And I don't disappear after launch."
+            data-he="אנליטיקות, בסיס SEO, בדיקות ומסלול פנייה ברור עולים לאוויר. ואני לא נעלם אחרי ההשקה.">אנליטיקות, בסיס SEO, בדיקות ומסלול פנייה ברור עולים לאוויר. ואני לא נעלם אחרי ההשקה.</p>
         </article>
       </div>
     </section>
@@ -5004,6 +5480,65 @@
       </ul>
     </section>
 
+    <!-- CONTACT (form + booking + direct channels) -->
+    <section class="section contact-section" id="contact" aria-labelledby="contactTitle">
+      <span class="contact-kicker reveal" data-en="Let's start" data-he="בואו נתחיל">בואו נתחיל</span>
+      <h2 class="section-title reveal" id="contactTitle"
+          data-en="Let's talk about your site" data-he="בואו נדבר על האתר שלך">בואו נדבר על האתר שלך</h2>
+      <p class="contact-sub reveal"
+         data-en="Leave your details and I'll get back to you with a direction for your site — or reach me directly, whatever's easiest for you."
+         data-he="השאירו פרטים ואחזור אליכם עם כיוון לאתר — או דברו איתי ישירות, איך שנוח לכם.">השאירו פרטים ואחזור אליכם עם כיוון לאתר — או דברו איתי ישירות, איך שנוח לכם.</p>
+
+      <div class="contact-grid reveal">
+        <form class="lead-form" id="leadForm" novalidate>
+          <div class="lead-field">
+            <label for="lf-name" data-en="Name" data-he="שם">שם</label>
+            <input id="lf-name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="lead-field">
+            <label for="lf-phone" data-en="Phone" data-he="טלפון">טלפון</label>
+            <input id="lf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required />
+          </div>
+          <div class="lead-field">
+            <label for="lf-biz" data-en="What's your business?" data-he="איזה עסק יש לך?">איזה עסק יש לך?</label>
+            <input id="lf-biz" name="business" type="text" autocomplete="organization" />
+          </div>
+          <div class="lead-field">
+            <label for="lf-need" data-en="What do you need?" data-he="מה אתם צריכים?">מה אתם צריכים?</label>
+            <textarea id="lf-need" name="need" rows="3"></textarea>
+          </div>
+          <button type="submit" class="lead-submit"
+                  data-en="Get back to me with a direction" data-he="חזרו אליי עם כיוון לאתר">חזרו אליי עם כיוון לאתר</button>
+          <p class="lead-form__note" id="leadFormNote" aria-live="polite"
+             data-en="Opens your email with the details filled in. Prefer WhatsApp? Use the buttons on the right."
+             data-he="נפתח לכם מייל עם הפרטים מוכנים. מעדיפים וואטסאפ? השתמשו בכפתורים שבצד.">נפתח לכם מייל עם הפרטים מוכנים. מעדיפים וואטסאפ? השתמשו בכפתורים שבצד.</p>
+        </form>
+
+        <aside class="contact-direct" aria-label="ערוצי קשר ישירים">
+          <!-- TODO(Assaf): replace href with your real Calendly / Google Calendar scheduling link.
+               Until then this opens WhatsApp with a "book a call" message so it still works. -->
+          <a class="contact-option contact-option--call" id="bookCallCta"
+             href="#" data-wa-he="היי אסף, אשמח לקבוע שיחת היכרות של 15 דקות על אתר לעסק שלי"
+             data-wa-en="Hi Assaf, I'd love to book a 15-minute intro call about a site for my business"
+             target="_blank" rel="noopener noreferrer">
+            <span class="contact-option__title" data-en="Book a 15-min intro call" data-he="קבעו שיחת היכרות 15 דק'">קבעו שיחת היכרות 15 דק'</span>
+            <span class="contact-option__desc" data-en="Zoom or phone, no commitment" data-he="בזום או בטלפון, בלי התחייבות">בזום או בטלפון, בלי התחייבות</span>
+          </a>
+          <a class="contact-option contact-option--wa"
+             href="#" data-wa-he="היי אסף, הגעתי מהאתר ואשמח לדבר על אתר לעסק שלי"
+             data-wa-en="Hi Assaf, I came from your site and I'd love to talk about a website for my business"
+             target="_blank" rel="noopener noreferrer">
+            <span class="contact-option__title" data-en="WhatsApp" data-he="וואטסאפ">וואטסאפ</span>
+            <span class="contact-option__desc" data-en="Reply within an hour" data-he="מענה תוך שעה">מענה תוך שעה</span>
+          </a>
+          <a class="contact-option contact-option--mail" href="mailto:assaf.buskila10@gmail.com">
+            <span class="contact-option__title" data-en="Email" data-he="מייל">מייל</span>
+            <span class="contact-option__desc">assaf.buskila10@gmail.com</span>
+          </a>
+        </aside>
+      </div>
+    </section>
+
   </main>
 
   <div class="case-modal" id="caseModal" role="dialog" aria-modal="true" aria-labelledby="caseModalTitle" hidden inert>
@@ -5032,7 +5567,7 @@
   </div>
 
   <!-- FOOTER -->
-  <footer class="footer" id="contact" style="position:relative;overflow:hidden;">
+  <footer class="footer" id="site-footer" style="position:relative;overflow:hidden;">
     <div class="neon-bg-layer" aria-hidden="true"></div>
     <div class="footer-mobile-head">
       <a href="https://wa.me/972523393768?text=%D7%94%D7%99%D7%99%20%D7%9E%D7%94%20%D7%A7%D7%95%D7%A8%D7%94%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%D7%9A%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%95%D7%A2%20%D7%90%D7%99%D7%AA%D7%9A%20%D7%A4%D7%92%D7%99%D7%A9%D7%94"
@@ -5066,6 +5601,18 @@
     <a href="#contact" class="sticky-cta__link"
       data-en="Start a project" data-he="בואו נדבר על האתר">בואו נדבר על האתר</a>
   </div>
+
+  <!-- Desktop floating contact (mobile uses the sticky bar above) -->
+  <a class="float-contact" id="floatContact"
+     href="#" data-wa-he="היי אסף, הגעתי מהאתר ואשמח לדבר על אתר לעסק שלי"
+     data-wa-en="Hi Assaf, I came from your site and I'd love to talk about a website for my business"
+     target="_blank" rel="noopener noreferrer"
+     aria-label="צור קשר בוואטסאפ">
+    <svg class="float-contact__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.883 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+    </svg>
+    <span class="float-contact__label" data-en="Chat on WhatsApp" data-he="דברו איתי בוואטסאפ">דברו איתי בוואטסאפ</span>
+  </a>
 
   <button type="button" class="a11y-fab" id="a11yOpenBtn" aria-expanded="false" aria-controls="a11yPanel"
     aria-label="פתח תפריט נגישות">
@@ -5186,6 +5733,10 @@
           const a11yUp = document.getElementById('a11yFontUp');
           if (a11yDown) a11yDown.setAttribute('aria-label', isHe ? 'הקטנת טקסט' : 'Decrease text size');
           if (a11yUp) a11yUp.setAttribute('aria-label', isHe ? 'הגדלת טקסט' : 'Increase text size');
+          document.querySelectorAll('[data-wa-he]').forEach(el => {
+            const msg = el.getAttribute('data-wa-' + lang) || el.getAttribute('data-wa-he');
+            if (msg) el.href = 'https://wa.me/972523393768?text=' + encodeURIComponent(msg);
+          });
           localStorage.setItem('preferredLang', lang);
         }
 
@@ -5228,6 +5779,13 @@
       if (savedLang && savedLang !== 'he') {
         applyLang(savedLang, false);
       }
+
+      // Populate WhatsApp deep-links at init (applyLang's swap doesn't run on default Hebrew load)
+      document.querySelectorAll('[data-wa-he]').forEach(el => {
+        const lang = document.documentElement.lang === 'en' ? 'en' : 'he';
+        const msg = el.getAttribute('data-wa-' + lang) || el.getAttribute('data-wa-he');
+        if (msg) el.href = 'https://wa.me/972523393768?text=' + encodeURIComponent(msg);
+      });
 
       // 3. MENU OVERLAY (focus trap, Escape, inert, aria-expanded)
       const menuBtn = document.getElementById('menuBtn');
@@ -6507,6 +7065,42 @@
         if (faqCount) faqCount.textContent = `${shown}/${faqItems.length}`;
       }
       faqSearch?.addEventListener('input', updateFaqSearch);
+
+      // Lead form → opens email client with details prefilled (no backend needed).
+      // To capture leads directly in an inbox without opening a mail client,
+      // swap this for a POST to Web3Forms/Formspree or an AWS Lambda endpoint.
+      const leadForm = document.getElementById('leadForm');
+      const leadFormNote = document.getElementById('leadFormNote');
+      if (leadForm) {
+        leadForm.addEventListener('submit', e => {
+          e.preventDefault();
+          const isHe = activeLang() === 'he';
+          const get = id => (document.getElementById(id)?.value || '').trim();
+          const name = get('lf-name');
+          const phone = get('lf-phone');
+          const biz = get('lf-biz');
+          const need = get('lf-need');
+          if (!name || !phone) {
+            if (leadFormNote) leadFormNote.textContent = isHe
+              ? 'נא למלא לפחות שם וטלפון.'
+              : 'Please fill in at least name and phone.';
+            (document.getElementById(!name ? 'lf-name' : 'lf-phone'))?.focus();
+            return;
+          }
+          const subject = isHe
+            ? `פנייה חדשה מהאתר — ${name}`
+            : `New website lead — ${name}`;
+          const lines = isHe
+            ? [`שם: ${name}`, `טלפון: ${phone}`, biz && `עסק: ${biz}`, need && `צורך: ${need}`]
+            : [`Name: ${name}`, `Phone: ${phone}`, biz && `Business: ${biz}`, need && `Need: ${need}`];
+          const body = lines.filter(Boolean).join('\n');
+          window.location.href =
+            `mailto:assaf.buskila10@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          if (leadFormNote) leadFormNote.textContent = isHe
+            ? 'נפתח לכם מייל מוכן לשליחה. אם לא נפתח — אפשר לפנות בוואטסאפ בצד.'
+            : 'Your email opened ready to send. If it didn\'t, use WhatsApp on the side.';
+        });
+      }
 
       // Magnetic footer CTA
       const magneticCta = document.getElementById('footerWhatsAppCta');
