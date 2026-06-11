@@ -13,4 +13,11 @@
     <image:image><image:loc>https://www.assafweb.com/assets/mochi-logo.png</image:loc><image:caption>Mochi, לוגו מיתוג</image:caption></image:image>
     <image:image><image:loc>https://www.assafweb.com/assets/coffee-ana-logo.jpg</image:loc><image:caption>קפה אנה, לוגו בית קפה</image:caption></image:image>
   </url>
+  <url>
+    <loc>https://www.assafweb.com/candy/</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://www.assafweb.com/assets/candy-hero.png</image:loc><image:caption>מנגינת ממתקים, פרויקט קונספט למותג ממתקים בוטיק מאת אסף בוסקילה</image:caption></image:image>
+  </url>
 </urlset>

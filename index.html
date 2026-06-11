@@ -1318,7 +1318,8 @@
 
     .works-grid--studies {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      /* four cards: 2x2 keeps the grid balanced and the cards substantial */
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 28px;
       max-width: min(1100px, 94vw);
       margin-inline: auto;
@@ -4730,6 +4731,39 @@
           </div>
         </article>
 
+        <article class="work-card work-card--study reveal">
+          <div class="work-tile">
+            <img src="assets/candy-hero.avif" alt="מנגינת ממתקים   ממתקים צבעוניים מרחפים על רקע קרם" class="work-tile-img work-tile-img--cover" style="object-position: 12% 50%;" loading="lazy" decoding="async" />
+          </div>
+          <div class="work-info">
+            <div class="work-head">
+              <span class="work-name" data-en="Melody Candy" data-he="מנגינת ממתקים">מנגינת ממתקים</span>
+              <span class="work-cat" data-en="Concept project · Brand &amp; site" data-he="פרויקט קונספט · מותג ואתר">פרויקט קונספט · מותג ואתר</span>
+            </div>
+            <p class="work-result work-problem">
+              <span class="work-result__label" data-en="Challenge" data-he="האתגר">האתגר</span>
+              <span data-en="Show what a boutique candy brand looks like when design, color and motion play together."
+                    data-he="להראות איך נראה מותג ממתקים בוטיק כשעיצוב, צבע ואנימציה מנגנים יחד.">להראות איך נראה מותג ממתקים בוטיק כשעיצוב, צבע ואנימציה מנגנים יחד.</span>
+            </p>
+            <p class="work-result">
+              <span class="work-result__label" data-en="Result" data-he="תוצאה">תוצאה</span>
+              <span data-en="A live RTL brand site: big typography, AI product photography, and a playable flavor experience."
+                    data-he="אתר מותג חי באוויר: טיפוגרפיה גדולה, צילום מוצר ב-AI ואינטראקציה שמנגנת טעמים.">אתר מותג חי באוויר: טיפוגרפיה גדולה, צילום מוצר ב-AI ואינטראקציה שמנגנת טעמים.</span>
+            </p>
+            <div class="work-actions">
+              <a class="work-action work-action--live" href="/candy/" target="_blank" rel="noopener noreferrer"
+                 data-en="View live site" data-he="צפו באתר החי">צפו באתר החי</a>
+              <button type="button" class="work-action work-action--story" data-case="candy"
+                 data-en="Project story" data-he="סיפור הפרויקט">סיפור הפרויקט</button>
+            </div>
+            <a class="work-cta work-cta-style" href="#contact"
+               data-wa-he="היי אסף, אהבתי את מנגינת ממתקים ואשמח אתר בסגנון הזה לעסק שלי"
+               data-wa-en="Hi Assaf, I loved Melody Candy and I'd love a site in this style for my business"
+               target="_blank" rel="noopener noreferrer"
+               data-en="Want a site in this style?" data-he="רוצה אתר בסגנון הזה?">רוצה אתר בסגנון הזה?</a>
+          </div>
+        </article>
+
         <article class="work-card work-card--next reveal">
           <div class="work-tile">
             <img src="assets/wanna-be-the-next.avif" alt="רוצים להיות הפרויקט הבא, צור קשר" class="work-tile-img work-tile-img--cover" loading="lazy" decoding="async" />
@@ -6608,6 +6642,14 @@
           goal: { he: 'לתת לבית קפה שכונתי נוכחות חמה ומזמינה.', en: 'Give a neighborhood cafe a warm and inviting presence.' },
           move: { he: 'מראה נעים, היררכיה ברורה ושפה שמתאימה להזמנה מהירה.', en: 'A pleasant look, clear hierarchy, and language suited for quick ordering.' },
           result: { he: 'מותג שמרגיש מקומי, ברור ומוכן להופיע בכל נקודת מגע.', en: 'A brand that feels local, clear, and ready for every touchpoint.' }
+        },
+        candy: {
+          url: '/candy/',
+          kicker: { he: 'פרויקט קונספט, מותג ואתר', en: 'Concept project, brand and site' },
+          title: { he: 'מנגינת ממתקים', en: 'Melody Candy' },
+          goal: { he: 'להדגים, בפרויקט סטודיו ללא לקוח, איך מותג ממתקים בוטיק יכול להיראות ולהרגיש אונליין.', en: 'A studio project with no client: show how a boutique candy brand can look and feel online.' },
+          move: { he: 'זהות צבעונית בהשראת מוזיקה, צילום מוצר ב-AI, טיפוגרפיה גדולה ואינטראקציית "נגנו את הטעם".', en: 'A music-inspired colorful identity, AI product photography, big typography, and a "play the flavor" interaction.' },
+          result: { he: 'אתר RTL חי ונושם שמדגים מיתוג, עיצוב, אנימציה וכתיבה מקצה לקצה.', en: 'A living RTL site that demonstrates branding, design, motion, and copy end to end.' }
         },
         next: {
           url: '#contact',

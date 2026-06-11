@@ -7,6 +7,7 @@
 - [Homepage](https://www.assafweb.com/): כל השירותים, הפורטפוליו, על אסף, FAQ וצור קשר במקום אחד.
 - [Pricing](https://www.assafweb.com/pricing.md): מחירון בסיסי, כיצד מתמחר ולמה.
 - [Agent View](https://www.assafweb.com/agent.html): גרסה מינימלית עם רק עובדות מפתח, לסוכנים אוטונומיים.
+- [Melody Candy concept](https://www.assafweb.com/candy/): פרויקט קונספט (לא לקוח אמיתי) שמדגים מיתוג, עיצוב RTL ואנימציה למותג ממתקים בוטיק.
 
 ## Services with public pricing (final prices, no VAT added, ILS)
 
