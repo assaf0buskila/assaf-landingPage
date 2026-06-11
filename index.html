@@ -18,7 +18,7 @@
 
   <title>האתר של אסף, בניית אתרים מ-1,500 ₪ | אסף בוסקילה, מסירה תוך 5 ימים</title>
   <meta name="description"
-    content="האתר של אסף בוסקילה, בניית אתרים ודפי נחיתה לעסקים בישראל. דף נחיתה מ-1,500 ₪ במסירה תוך 5 ימים, אתר תדמית 2,500 עד 5,000 ₪, אתר מותאם מ-5,000 ₪. מחירים פומביים, ליווי אישי, RTL מלא." />
+    content="האתר של אסף בוסקילה, בניית אתרים ודפי נחיתה שמביאים פניות לעסקים בישראל. דף נחיתה מ-1,500 ₪ במסירה תוך 5 ימים, אתר תדמית 2,500 עד 5,000 ₪, אתר מותאם מ-5,000 ₪. מחירון פומבי וסופי בלי הפתעות, ליווי אישי, RTL מלא." />
   <meta name="author" content="אסף בוסקילה" />
 
   <link rel="canonical" href="https://www.assafweb.com/" />
@@ -211,6 +211,14 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "כן. אני מציע ליווי אחרי ההשקה: עדכונים, תיקונים ושיפורים כדי שהאתר ימשיך לשרת אותך נכון כשהעסק שלך גדל. בפגישת היכרות אני אסביר איך זה עובד אצלי."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "למה לא פשוט לבנות לבד בוויקס?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "אפשר, ולחלק מהעסקים זה מספיק. ההבדל הוא בתוצאה: אתר שאני בונה מעוצב אישית סביב מטרה אחת ברורה, נטען מהר, בנוי נכון לעברית ול-RTL, עולה מסודר בגוגל ומגיע עם טופס לידים וכפתור וואטסאפ שמכוונים לפעולה. במקום לשרוף ערבים על תבנית, מקבלים תוך ימים אתר שעובד בשבילכם, ואני נשאר זמין גם אחרי ההשקה."
             }
           },
           {
@@ -2109,6 +2117,29 @@
       line-height: 1.75;
       padding-bottom: 24px;
       max-width: 680px;
+    }
+
+    /* Soft next-step links that close the FAQ and process sections */
+    .faq-cta,
+    .section-next-cta {
+      margin-block-start: 34px;
+      font-size: clamp(0.95rem, 1.9vw, 1.05rem);
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .faq-cta a,
+    .section-next-cta a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+      padding-bottom: 2px;
+      transition: border-color 0.25s, color 0.25s;
+    }
+
+    .faq-cta a:hover,
+    .section-next-cta a:hover {
+      border-color: #fff;
     }
 
     @media (max-width: 768px) {
@@ -4762,6 +4793,12 @@
             data-he="אנליטיקות, בסיס SEO, בדיקות ומסלול פנייה ברור עולים לאוויר. ואני לא נעלם אחרי ההשקה.">אנליטיקות, בסיס SEO, בדיקות ומסלול פנייה ברור עולים לאוויר. ואני לא נעלם אחרי ההשקה.</p>
         </article>
       </div>
+
+      <p class="section-next-cta reveal">
+        <a href="#contact"
+           data-en="Want a partner like this for a month? Let's talk ←"
+           data-he="רוצים שותף כזה לחודש? בואו נדבר ←">רוצים שותף כזה לחודש? בואו נדבר ←</a>
+      </p>
     </section>
 
     <!-- BEFORE / AFTER (template noise vs focused conversion) -->
@@ -5221,6 +5258,22 @@
           <details>
             <summary>
               <span
+                    data-en="Why not just build it myself on Wix?"
+                    data-he="למה לא פשוט לבנות לבד בוויקס?">למה לא פשוט לבנות לבד בוויקס?</span>
+              <span class="faq-item__icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-item__answer">
+              <p
+                 data-en="You can, and for some businesses that's enough. The difference is the result: a site I build is designed around one clear goal, loads fast, is built properly for Hebrew and RTL, ranks cleanly on Google, and ships with a lead form and WhatsApp button that drive action. Instead of burning evenings on a template, you get a working site within days, and I stay available after launch."
+                 data-he="אפשר, ולחלק מהעסקים זה מספיק. ההבדל הוא בתוצאה: אתר שאני בונה מעוצב אישית סביב מטרה אחת ברורה, נטען מהר, בנוי נכון לעברית ול-RTL, עולה מסודר בגוגל ומגיע עם טופס לידים וכפתור וואטסאפ שמכוונים לפעולה. במקום לשרוף ערבים על תבנית, מקבלים תוך ימים אתר שעובד בשבילכם, ואני נשאר זמין גם אחרי ההשקה.">אפשר, ולחלק מהעסקים זה מספיק. ההבדל הוא בתוצאה: אתר שאני בונה מעוצב אישית סביב מטרה אחת ברורה, נטען מהר, בנוי נכון לעברית ול-RTL, עולה מסודר בגוגל ומגיע עם טופס לידים וכפתור וואטסאפ שמכוונים לפעולה. במקום לשרוף ערבים על תבנית, מקבלים תוך ימים אתר שעובד בשבילכם, ואני נשאר זמין גם אחרי ההשקה.</p>
+            </div>
+          </details>
+        </li>
+
+        <li class="faq-item">
+          <details>
+            <summary>
+              <span
                     data-en="How do we start a website project together?"
                     data-he="איך מתחילים איתי פרויקט בניית אתר?">איך מתחילים איתי פרויקט בניית אתר?</span>
               <span class="faq-item__icon" aria-hidden="true">+</span>
@@ -5234,6 +5287,16 @@
         </li>
 
       </ul>
+
+      <p class="faq-cta reveal">
+        <span data-en="Didn't find your answer?" data-he="לא מצאתם תשובה?">לא מצאתם תשובה?</span>
+        <a href="#"
+           data-wa-he="היי אסף, יש לי שאלה על בניית אתר לעסק שלי"
+           data-wa-en="Hi Assaf, I have a question about building a site for my business"
+           target="_blank" rel="noopener noreferrer"
+           data-en="Ask me on WhatsApp" data-he="שאלו אותי בוואטסאפ">שאלו אותי בוואטסאפ</a>
+        <span data-en="and I'll reply within the hour." data-he="ואענה תוך שעה.">ואענה תוך שעה.</span>
+      </p>
     </section>
 
     <!-- CONTACT (form + booking + direct channels) -->
