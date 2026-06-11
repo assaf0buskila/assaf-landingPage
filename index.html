@@ -522,7 +522,7 @@
       padding: 0 50px 100px;
       position: relative;
       text-align: start;
-      background-color: var(--bg);
+      /* transparent so the fixed ambient glow shows through; body paints var(--bg) */
     }
 
     /* Subtle motion on coarse pointers (replaces cursor trail feel) */
@@ -770,6 +770,96 @@
       .hero-partner-note {
         font-size: 14px;
       }
+    }
+
+    /* ──────────────────────────────────────────────────
+       AMBIENT AURORA GLOW — soft colorful light balls on the
+       page sides so the dark theme breathes. Colors are local
+       to this component; the :root monochrome palette is
+       untouched. Sits at z-index -1: above the body canvas,
+       below every piece of content.
+    ────────────────────────────────────────────────── */
+    .ambient-glow {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .ambient-glow__orb {
+      position: absolute;
+      display: block;
+      width: 56vmin;
+      height: 56vmin;
+      border-radius: 50%;
+      will-change: transform;
+      animation: ambientGlowDrift 70s ease-in-out infinite alternate;
+    }
+
+    .ambient-glow__orb--blue {
+      inset-block-start: 4%;
+      inset-inline-start: -18vmin;
+      background: radial-gradient(closest-side, rgba(79, 124, 255, 0.2), rgba(79, 124, 255, 0) 70%);
+    }
+
+    .ambient-glow__orb--violet {
+      inset-block-start: 38%;
+      inset-inline-end: -20vmin;
+      width: 64vmin;
+      height: 64vmin;
+      background: radial-gradient(closest-side, rgba(139, 92, 246, 0.18), rgba(139, 92, 246, 0) 70%);
+      animation-duration: 90s;
+      animation-delay: -30s;
+    }
+
+    .ambient-glow__orb--teal {
+      inset-block-end: -14vmin;
+      inset-inline-start: -12vmin;
+      background: radial-gradient(closest-side, rgba(45, 212, 191, 0.16), rgba(45, 212, 191, 0) 70%);
+      animation-duration: 80s;
+      animation-delay: -55s;
+    }
+
+    @keyframes ambientGlowDrift {
+      0% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate3d(6vmin, -8vmin, 0) scale(1.12);
+      }
+
+      100% {
+        transform: translate3d(-4vmin, 6vmin, 0) scale(0.94);
+      }
+    }
+
+    @media (max-width: 800px) {
+      .ambient-glow__orb {
+        width: 72vmin;
+        height: 72vmin;
+        opacity: 0.85;
+      }
+
+      .ambient-glow__orb--violet {
+        width: 80vmin;
+        height: 80vmin;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ambient-glow__orb {
+        animation: none !important;
+      }
+    }
+
+    html.a11y-reduce-motion .ambient-glow__orb {
+      animation: none !important;
+    }
+
+    html.a11y-high-contrast .ambient-glow {
+      display: none;
     }
 
     /* ──────────────────────────────────────────────────
@@ -3199,7 +3289,6 @@
     .trust-strip {
       /* sits directly under the hero, needs its own top spacing */
       padding: 56px clamp(20px, 5vw, 50px) 70px;
-      background: var(--bg);
     }
 
     .trust-strip__inner {
@@ -3253,7 +3342,6 @@
     .pricing-section {
       padding-block: clamp(80px, 12vh, 120px);
       padding-inline: clamp(20px, 5vw, 50px);
-      background: var(--bg);
     }
 
     .pricing-section .section-title {
@@ -4295,6 +4383,13 @@
   </div>
 
   <a href="#main-content" class="skip-link" data-en="Skip to main content" data-he="דלג לתוכן הראשי">דלג לתוכן הראשי</a>
+
+  <!-- Ambient aurora glow: colorful light balls behind all content -->
+  <div class="ambient-glow" aria-hidden="true">
+    <span class="ambient-glow__orb ambient-glow__orb--blue"></span>
+    <span class="ambient-glow__orb ambient-glow__orb--violet"></span>
+    <span class="ambient-glow__orb ambient-glow__orb--teal"></span>
+  </div>
 
   <!-- Custom cursor -->
   <div class="cursor-dot" id="cursorDot"></div>
