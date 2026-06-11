@@ -5577,11 +5577,13 @@
             <label for="lf-need" data-en="What do you need?" data-he="מה אתם צריכים?">מה אתם צריכים?</label>
             <textarea id="lf-need" name="need" rows="3"></textarea>
           </div>
+          <input type="text" id="lf-honey" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true"
+                 style="position:absolute; inset-inline-start:-9999px; width:1px; height:1px; opacity:0;" />
           <button type="submit" class="lead-submit"
                   data-en="Get back to me with a direction" data-he="חזרו אליי עם כיוון לאתר">חזרו אליי עם כיוון לאתר</button>
           <p class="lead-form__note" id="leadFormNote" aria-live="polite"
-             data-en="Opens your email with the details filled in. Prefer WhatsApp? Use the buttons on the right."
-             data-he="נפתח לכם מייל עם הפרטים מוכנים. מעדיפים וואטסאפ? השתמשו בכפתורים שבצד.">נפתח לכם מייל עם הפרטים מוכנים. מעדיפים וואטסאפ? השתמשו בכפתורים שבצד.</p>
+             data-en="The details go straight to me and I'll get back to you. Prefer WhatsApp? Use the buttons on the side."
+             data-he="הפרטים נשלחים ישירות אליי ואחזור אליכם. מעדיפים וואטסאפ? השתמשו בכפתורים שבצד.">הפרטים נשלחים ישירות אליי ואחזור אליכם. מעדיפים וואטסאפ? השתמשו בכפתורים שבצד.</p>
         </form>
 
         <aside class="contact-direct" aria-label="ערוצי קשר ישירים">
@@ -7133,13 +7135,13 @@
       }
       faqSearch?.addEventListener('input', updateFaqSearch);
 
-      // Lead form → opens email client with details prefilled (no backend needed).
-      // To capture leads directly in an inbox without opening a mail client,
-      // swap this for a POST to Web3Forms/Formspree or an AWS Lambda endpoint.
+      // Lead form → AJAX POST to FormSubmit (lands in the inbox directly).
+      // First-ever submission triggers FormSubmit's one-time activation email.
+      // On network failure, falls back to opening the visitor's email client.
       const leadForm = document.getElementById('leadForm');
       const leadFormNote = document.getElementById('leadFormNote');
       if (leadForm) {
-        leadForm.addEventListener('submit', e => {
+        leadForm.addEventListener('submit', async e => {
           e.preventDefault();
           const isHe = activeLang() === 'he';
           const get = id => (document.getElementById(id)?.value || '').trim();
@@ -7157,15 +7159,46 @@
           const subject = isHe
             ? `פנייה חדשה מהאתר: ${name}`
             : `New website lead: ${name}`;
-          const lines = isHe
-            ? [`שם: ${name}`, `טלפון: ${phone}`, biz && `עסק: ${biz}`, need && `צורך: ${need}`]
-            : [`Name: ${name}`, `Phone: ${phone}`, biz && `Business: ${biz}`, need && `Need: ${need}`];
-          const body = lines.filter(Boolean).join('\n');
-          window.location.href =
-            `mailto:assaf.buskila10@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-          if (leadFormNote) leadFormNote.textContent = isHe
-            ? 'נפתח לכם מייל מוכן לשליחה. אם לא נפתח, אפשר לפנות בוואטסאפ בצד.'
-            : 'Your email opened ready to send. If it didn\'t, use WhatsApp on the side.';
+          const submitBtn = leadForm.querySelector('.lead-submit');
+          const btnIdle = submitBtn ? submitBtn.textContent : '';
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = isHe ? 'שולח...' : 'Sending...';
+          }
+          try {
+            const res = await fetch('https://formsubmit.co/ajax/assaf.buskila10@gmail.com', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+              body: JSON.stringify({
+                name, phone, business: biz, need,
+                _subject: subject,
+                _template: 'table',
+                _captcha: 'false',
+                _honey: get('lf-honey')
+              })
+            });
+            if (!res.ok) throw new Error(`FormSubmit responded ${res.status}`);
+            leadForm.reset();
+            if (leadFormNote) leadFormNote.textContent = isHe
+              ? 'הפרטים נשלחו, אחזור אליכם בקרוב.'
+              : 'Sent. I\'ll get back to you soon.';
+          } catch (err) {
+            // Fallback: open the visitor's email client with everything prefilled.
+            const lines = isHe
+              ? [`שם: ${name}`, `טלפון: ${phone}`, biz && `עסק: ${biz}`, need && `צורך: ${need}`]
+              : [`Name: ${name}`, `Phone: ${phone}`, biz && `Business: ${biz}`, need && `Need: ${need}`];
+            const body = lines.filter(Boolean).join('\n');
+            window.location.href =
+              `mailto:assaf.buskila10@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            if (leadFormNote) leadFormNote.textContent = isHe
+              ? 'נפתח לכם מייל מוכן לשליחה. אם לא נפתח, אפשר לפנות בוואטסאפ בצד.'
+              : 'Your email opened ready to send. If it didn\'t, use WhatsApp on the side.';
+          } finally {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = btnIdle;
+            }
+          }
         });
       }
 
