@@ -773,11 +773,16 @@
     }
 
     /* ──────────────────────────────────────────────────
-       AMBIENT AURORA GLOW — soft colorful light balls on the
-       page sides so the dark theme breathes. Colors are local
-       to this component; the :root monochrome palette is
-       untouched. Sits at z-index -1: above the body canvas,
-       below every piece of content.
+       AMBIENT ATMOSPHERE — cinematic dark-luxury ground.
+       Two large anchored light lobes in the site's own accent
+       hues (violet + ice, same as the featured-CTA gradient),
+       plus film grain and a soft vignette. Few large shapes,
+       one idiom, no third color. Colors are local to this
+       component; the :root monochrome palette is untouched.
+       z-index -1: above the body canvas, below all content.
+       The [data-depth] wrappers are moved by the scroll-depth
+       JS (transform only); the lobes inside carry the slow
+       breathing animation so the two never fight.
     ────────────────────────────────────────────────── */
     .ambient-glow {
       position: fixed;
@@ -787,74 +792,115 @@
       overflow: hidden;
     }
 
-    .ambient-glow__orb {
+    .ambient-glow__layer {
+      position: absolute;
+      inset: 0;
+      display: block;
+      will-change: transform;
+    }
+
+    .ambient-glow__lobe {
       position: absolute;
       display: block;
-      width: 56vmin;
-      height: 56vmin;
       border-radius: 50%;
-      will-change: transform;
-      animation: ambientGlowDrift 70s ease-in-out infinite alternate;
+      will-change: transform, opacity;
+      animation: ambientLobeBreathe 26s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate;
     }
 
-    .ambient-glow__orb--blue {
-      inset-block-start: 4%;
-      inset-inline-start: -18vmin;
-      background: radial-gradient(closest-side, rgba(79, 124, 255, 0.2), rgba(79, 124, 255, 0) 70%);
+    /* Key light: violet, anchored high on the inline-end */
+    .ambient-glow__lobe--key {
+      inset-block-start: -20vmin;
+      inset-inline-end: -24vmin;
+      width: 96vmin;
+      height: 96vmin;
+      background: radial-gradient(closest-side,
+          rgba(181, 141, 255, 0.17) 0%,
+          rgba(181, 141, 255, 0.08) 36%,
+          rgba(124, 86, 220, 0.035) 60%,
+          rgba(181, 141, 255, 0) 78%);
     }
 
-    .ambient-glow__orb--violet {
-      inset-block-start: 38%;
-      inset-inline-end: -20vmin;
-      width: 64vmin;
-      height: 64vmin;
-      background: radial-gradient(closest-side, rgba(139, 92, 246, 0.18), rgba(139, 92, 246, 0) 70%);
-      animation-duration: 90s;
-      animation-delay: -30s;
+    /* Fill light: ice blue, low on the inline-start */
+    .ambient-glow__lobe--fill {
+      inset-block-end: -30vmin;
+      inset-inline-start: -26vmin;
+      width: 112vmin;
+      height: 112vmin;
+      background: radial-gradient(closest-side,
+          rgba(108, 217, 255, 0.12) 0%,
+          rgba(108, 217, 255, 0.05) 44%,
+          rgba(108, 217, 255, 0) 76%);
+      animation-duration: 34s;
+      animation-delay: -13s;
     }
 
-    .ambient-glow__orb--teal {
-      inset-block-end: -14vmin;
-      inset-inline-start: -12vmin;
-      background: radial-gradient(closest-side, rgba(45, 212, 191, 0.16), rgba(45, 212, 191, 0) 70%);
-      animation-duration: 80s;
-      animation-delay: -55s;
-    }
-
-    @keyframes ambientGlowDrift {
-      0% {
+    @keyframes ambientLobeBreathe {
+      from {
         transform: translate3d(0, 0, 0) scale(1);
+        opacity: 0.82;
       }
 
-      50% {
-        transform: translate3d(6vmin, -8vmin, 0) scale(1.12);
+      to {
+        transform: translate3d(-3vmin, 4vmin, 0) scale(1.07);
+        opacity: 1;
       }
+    }
 
-      100% {
-        transform: translate3d(-4vmin, 6vmin, 0) scale(0.94);
-      }
+    /* Soft vignette grades the ground, not the content (content sits above) */
+    .ambient-glow__vignette {
+      position: absolute;
+      inset: 0;
+      display: block;
+      background: radial-gradient(ellipse 120% 90% at 50% 38%,
+          rgba(0, 0, 0, 0) 52%,
+          rgba(0, 0, 0, 0.3) 100%);
+    }
+
+    /* Fine film grain: kills gradient banding, adds physical texture */
+    .ambient-glow__grain {
+      position: absolute;
+      inset: -50%;
+      display: block;
+      width: 200%;
+      height: 200%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+      background-size: 160px 160px;
+      opacity: 0.05;
+      mix-blend-mode: overlay;
+      animation: ambientGrainShift 7s steps(6) infinite;
+    }
+
+    @keyframes ambientGrainShift {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(80px, -56px, 0); }
     }
 
     @media (max-width: 800px) {
-      .ambient-glow__orb {
-        width: 72vmin;
-        height: 72vmin;
-        opacity: 0.85;
+      .ambient-glow__lobe--key {
+        width: 120vmin;
+        height: 120vmin;
       }
 
-      .ambient-glow__orb--violet {
-        width: 80vmin;
-        height: 80vmin;
+      .ambient-glow__lobe--fill {
+        width: 130vmin;
+        height: 130vmin;
+      }
+
+      /* steps() grain loop off on phones: texture stays, battery cost goes */
+      .ambient-glow__grain {
+        animation: none;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .ambient-glow__orb {
+      .ambient-glow__lobe,
+      .ambient-glow__grain {
         animation: none !important;
       }
     }
 
-    html.a11y-reduce-motion .ambient-glow__orb {
+    html.a11y-reduce-motion .ambient-glow__lobe,
+    html.a11y-reduce-motion .ambient-glow__grain {
       animation: none !important;
     }
 
@@ -878,47 +924,74 @@
     }
 
     .hero-showcase-card {
+      position: relative;
       display: block;
       text-decoration: none;
       color: inherit;
       border-radius: 14px;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: rgba(20, 20, 20, 0.85);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
-      transition: transform 0.35s var(--ease), border-color 0.35s, box-shadow 0.35s;
-      animation: heroContentIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(20, 20, 20, 0.78);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      /* rim light + contact shadow + ambient lift: physically raised, not flat */
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.09),
+        0 2px 10px rgba(0, 0, 0, 0.5),
+        0 30px 70px rgba(0, 0, 0, 0.42);
+      transition:
+        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.4s,
+        box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      /* backwards (not both): once the entrance ends the fill releases the
+         transform channel, so the JS pointer-tilt can take over */
+      animation: heroContentIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.15s backwards;
     }
 
     .hero-showcase-card:nth-child(2) {
-      animation-delay: 0.3s;
+      animation-delay: 0.32s;
+    }
+
+    /* Specular sheen: sweeps once across the card on hover */
+    .hero-showcase-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, transparent 42%, rgba(255, 255, 255, 0.07) 50%, transparent 58%);
+      transform: translateX(-160%);
+      pointer-events: none;
+    }
+
+    .hero-showcase-card:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.7);
+      outline-offset: 3px;
     }
 
     .hero-showcase-bar {
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 8px 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(255, 255, 255, 0.04);
+      padding: 7px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      background: rgba(255, 255, 255, 0.03);
     }
 
     .hero-showcase-dots {
       display: inline-flex;
-      gap: 4px;
+      gap: 5px;
     }
 
     .hero-showcase-dots i {
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.18);
     }
 
     .hero-showcase-url {
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 600;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.1em;
       color: var(--text-muted);
     }
 
@@ -951,10 +1024,19 @@
     }
 
     @media (hover: hover) and (pointer: fine) {
+      /* transform is owned by the JS pointer-tilt; hover handles light + depth */
       .hero-showcase-card:hover {
-        transform: translateY(-5px) rotate(0deg);
-        border-color: rgba(255, 255, 255, 0.3);
-        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+        border-color: rgba(255, 255, 255, 0.26);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.12),
+          0 4px 14px rgba(0, 0, 0, 0.5),
+          0 42px 90px rgba(0, 0, 0, 0.5);
+      }
+
+      /* one-way sweep: animates in on hover, snaps back silently on leave */
+      .hero-showcase-card:hover::after {
+        transform: translateX(160%);
+        transition: transform 0.9s cubic-bezier(0.33, 1, 0.68, 1);
       }
     }
 
@@ -971,13 +1053,6 @@
         margin: 0;
       }
 
-      .hero-showcase-card {
-        transform: rotate(-1.2deg);
-      }
-
-      .hero-showcase-card:nth-child(2) {
-        transform: rotate(1.4deg);
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -2179,13 +2254,20 @@
    ============================================================ */
     .reveal {
       opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+      transform: translateY(28px);
+      filter: blur(7px);
+      transition:
+        opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      /* siblings settle in reading order; --reveal-i is set by the reveal JS */
+      transition-delay: calc(var(--reveal-i, 0) * 90ms);
     }
 
     .reveal.in {
       opacity: 1;
       transform: none;
+      filter: none;
     }
 
     /* ============================================================
@@ -2527,6 +2609,13 @@
       .hero-bg {
         animation: none !important;
       }
+
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+      }
     }
 
     html.a11y-reduce-motion body {
@@ -2551,6 +2640,8 @@
     html.a11y-reduce-motion .reveal {
       opacity: 1 !important;
       transform: none !important;
+      filter: none !important;
+      transition: none !important;
     }
 
     html.a11y-high-contrast {
@@ -4384,11 +4475,12 @@
 
   <a href="#main-content" class="skip-link" data-en="Skip to main content" data-he="דלג לתוכן הראשי">דלג לתוכן הראשי</a>
 
-  <!-- Ambient aurora glow: colorful light balls behind all content -->
+  <!-- Ambient atmosphere: anchored light lobes + vignette + film grain behind all content -->
   <div class="ambient-glow" aria-hidden="true">
-    <span class="ambient-glow__orb ambient-glow__orb--blue"></span>
-    <span class="ambient-glow__orb ambient-glow__orb--violet"></span>
-    <span class="ambient-glow__orb ambient-glow__orb--teal"></span>
+    <span class="ambient-glow__layer" data-depth="0.05"><span class="ambient-glow__lobe ambient-glow__lobe--key"></span></span>
+    <span class="ambient-glow__layer" data-depth="-0.035"><span class="ambient-glow__lobe ambient-glow__lobe--fill"></span></span>
+    <span class="ambient-glow__vignette"></span>
+    <span class="ambient-glow__grain"></span>
   </div>
 
   <!-- Custom cursor -->
@@ -5722,8 +5814,64 @@
         }
       }, { passive: true });
 
+      // 5. AMBIENT DEPTH — scroll parallax for the atmosphere lobes and the
+      //    desktop hero showcase, lerp-smoothed in one rAF loop that sleeps
+      //    when settled. Transform only, never layout.
+      const depthTargets = [...document.querySelectorAll('.ambient-glow__layer[data-depth]')]
+        .map(el => ({ el, depth: parseFloat(el.dataset.depth) || 0, cur: 0 }));
+      const showcaseEl = document.querySelector('.hero-showcase');
+      if (showcaseEl && window.matchMedia('(min-width: 1101px)').matches) {
+        depthTargets.push({ el: showcaseEl, depth: 0.08, cur: 0 });
+      }
+      let depthRaf = null;
+      function depthTick() {
+        const y = window.scrollY;
+        let settled = true;
+        depthTargets.forEach(t => {
+          const goal = y * t.depth;
+          t.cur += (goal - t.cur) * 0.1;
+          if (Math.abs(goal - t.cur) > 0.15) settled = false;
+          else t.cur = goal;
+          t.el.style.transform = `translate3d(0, ${t.cur.toFixed(2)}px, 0)`;
+        });
+        depthRaf = settled ? null : requestAnimationFrame(depthTick);
+      }
+      if (depthTargets.length) {
+        window.addEventListener('scroll', () => {
+          if (motionReduced()) return;
+          if (depthRaf === null) depthRaf = requestAnimationFrame(depthTick);
+        }, { passive: true });
+      }
+
+      // Pointer micro-tilt on the showcase cards; the card's transform
+      // transition damps the motion so it glides instead of tracking 1:1.
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        document.querySelectorAll('.hero-showcase-card').forEach(card => {
+          card.addEventListener('pointermove', e => {
+            if (motionReduced()) return;
+            const r = card.getBoundingClientRect();
+            const px = (e.clientX - r.left) / r.width - 0.5;
+            const py = (e.clientY - r.top) / r.height - 0.5;
+            card.style.transform =
+              `perspective(720px) translateY(-4px) rotateX(${(-py * 2.4).toFixed(2)}deg) rotateY(${(px * 2.4).toFixed(2)}deg)`;
+          });
+          card.addEventListener('pointerleave', () => {
+            card.style.transform = '';
+          });
+        });
+      }
+
       // 6. SCROLL REVEAL (Intersection Observer)
       const revealEls = document.querySelectorAll('.reveal');
+      // Stagger siblings: each .reveal gets its index among its parent's
+      // .reveal children, consumed by the CSS transition-delay.
+      revealEls.forEach(el => {
+        const sibs = el.parentElement
+          ? [...el.parentElement.children].filter(c => c.classList.contains('reveal'))
+          : [el];
+        const i = sibs.indexOf(el);
+        if (i > 0) el.style.setProperty('--reveal-i', i);
+      });
       const revealObs = new IntersectionObserver((entries, obs) => {
         entries.forEach(e => {
           if (e.isIntersecting) {
