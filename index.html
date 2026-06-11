@@ -3403,201 +3403,6 @@
       }
     }
 
-    @keyframes assafWordsearchDrawForward {
-      from { stroke-dashoffset: 1000px; }
-      to { stroke-dashoffset: 0; }
-    }
-
-    @keyframes assafWordsearchDrawBack {
-      from { stroke-dashoffset: -1000px; }
-      to { stroke-dashoffset: 0; }
-    }
-
-    @keyframes assafWordsearchLetterIn {
-      from {
-        color: rgba(255, 255, 255, 0.22);
-        text-shadow: 0 1px rgba(255, 255, 255, 0.08), 0 -1px rgba(0, 0, 0, 0.4);
-      }
-      to {
-        color: rgba(255, 255, 255, 0.96);
-        text-shadow: 0 0 18px rgba(78, 255, 179, 0.2), 0 1px rgba(255, 255, 255, 0.16);
-      }
-    }
-
-    @keyframes assafWordsearchLetterOut {
-      to {
-        color: rgba(255, 255, 255, 0.22);
-        text-shadow: none;
-      }
-    }
-
-    /* ============================================================
-   WORD SEARCH SECTION (standalone, separate from hero gallery)
-   ============================================================ */
-    .wordsearch-section {
-      padding-block: clamp(80px, 14vh, 140px);
-      padding-inline: clamp(20px, 5vw, 50px);
-      background:
-        radial-gradient(120% 80% at 50% 0%, rgba(108, 217, 255, 0.06), transparent 60%),
-        radial-gradient(120% 80% at 50% 100%, rgba(181, 141, 255, 0.06), transparent 60%),
-        var(--bg);
-      position: relative;
-    }
-
-    .wordsearch-section::before {
-      content: '';
-      position: absolute;
-      inset-inline: 0;
-      inset-block-start: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
-    }
-
-    .wordsearch-section__inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .wordsearch-section__kicker {
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.55);
-      margin-bottom: 14px;
-    }
-
-    .wordsearch-section .section-title {
-      text-align: center;
-      margin-bottom: 14px;
-    }
-
-    .wordsearch-section__lede {
-      max-width: 560px;
-      margin: 0 auto 48px;
-      font-size: clamp(15px, 1.4vw, 18px);
-      color: rgba(255, 255, 255, 0.7);
-      line-height: 1.55;
-    }
-
-    .wordsearch-hero {
-      width: min(100%, 760px);
-      pointer-events: none;
-    }
-
-    .wordsearch-copy {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 18px;
-      margin-bottom: 16px;
-      font-family: var(--font-he);
-    }
-
-    .wordsearch-kicker {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.55);
-    }
-
-    .wordsearch-copy strong {
-      font-size: clamp(22px, 3vw, 38px);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      color: #fff;
-    }
-
-    .wordsearch-board {
-      position: relative;
-      aspect-ratio: 12 / 8;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 18px;
-      background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
-        rgba(14, 14, 14, 0.92);
-      box-shadow:
-        inset 0 1px rgba(255, 255, 255, 0.12),
-        0 28px 80px rgba(0, 0, 0, 0.55);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      direction: ltr;
-    }
-
-    .wordsearch-grid {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: repeat(8, 1fr);
-      padding: clamp(14px, 2vw, 22px);
-    }
-
-    .wordsearch-letter {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 0;
-      min-height: 0;
-      font-family: var(--font-he);
-      font-size: clamp(20px, 2.6vw, 36px);
-      font-weight: 800;
-      line-height: 1;
-      color: rgba(255, 255, 255, 0.2);
-      text-align: center;
-      transition: color 0.18s;
-      user-select: none;
-    }
-
-    .wordsearch-letter.is-marked {
-      animation: assafWordsearchLetterIn var(--wordsearch-letter-ms, 0.55s) cubic-bezier(0.4, 0, 0.2, 1) both;
-      animation-delay: var(--wordsearch-letter-delay, 0s);
-    }
-
-    .wordsearch-letter.is-soft {
-      color: rgba(255, 255, 255, 0.5);
-    }
-
-    .wordsearch-letter.is-fading {
-      animation: assafWordsearchLetterOut 0.42s cubic-bezier(0.4, 0, 0.6, 1) both;
-    }
-
-    .wordsearch-svg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      overflow: visible;
-      pointer-events: none;
-    }
-
-    .wordsearch-pen {
-      fill: none;
-      stroke: rgba(255, 255, 255, 0.97);
-      stroke-width: clamp(8px, 1.6vw, 16px);
-      stroke-linecap: butt;
-      stroke-linejoin: miter;
-      stroke-miterlimit: 3;
-      stroke-dasharray: 1000;
-      stroke-dashoffset: 1000;
-      vector-effect: non-scaling-stroke;
-      filter: drop-shadow(0 0 18px rgba(181, 141, 255, 0.38)) drop-shadow(0 0 6px rgba(108, 217, 255, 0.5));
-    }
-
-    .wordsearch-pen.is-running.dir-forward {
-      animation: assafWordsearchDrawForward var(--wordsearch-draw-ms, 1.05s) cubic-bezier(0.45, 0.05, 0.25, 1) both;
-    }
-
-    .wordsearch-pen.is-running.dir-back {
-      animation: assafWordsearchDrawBack var(--wordsearch-draw-ms, 1.05s) cubic-bezier(0.45, 0.05, 0.25, 1) both;
-    }
-
     .trust-strip {
       padding: 0 clamp(20px, 5vw, 50px) 70px;
       background: var(--bg);
@@ -4561,22 +4366,6 @@
         animation-delay: calc(0.08s + var(--stagger, 0) * 0.12s);
       }
 
-      .wordsearch-section {
-        padding-block: clamp(60px, 9vh, 90px);
-      }
-
-      .wordsearch-hero {
-        width: 100%;
-      }
-
-      .wordsearch-letter {
-        font-size: clamp(13px, 4.4vw, 22px);
-      }
-
-      .wordsearch-copy strong {
-        font-size: clamp(18px, 6vw, 24px);
-      }
-
       .trust-strip {
         padding: 0 20px 46px;
       }
@@ -4646,8 +4435,6 @@
 
     @media (prefers-reduced-motion: reduce) {
       .hero-stagger,
-      .wordsearch-letter,
-      .wordsearch-pen,
       .testi-fade-in,
       .testi-fade-out {
         animation: none !important;
@@ -4660,8 +4447,6 @@
     }
 
     html.a11y-reduce-motion .hero-stagger,
-    html.a11y-reduce-motion .wordsearch-letter,
-    html.a11y-reduce-motion .wordsearch-pen,
     html.a11y-reduce-motion .testi-fade-in,
     html.a11y-reduce-motion .testi-fade-out {
       animation: none !important;
@@ -4896,7 +4681,7 @@
       </div>
     </section>
 
-    <!-- WORD SEARCH (own section, separated from hero gallery) -->
+    <!-- PROJECT LAB (quiz, estimator, visual mood) -->
     <section class="section project-lab" id="estimate">
       <h2 class="section-title reveal" data-en="Project Lab" data-he="מעבדת פרויקט">מעבדת פרויקט</h2>
 
@@ -4991,32 +4776,7 @@
       </div>
     </section>
 
-    <section class="section wordsearch-section" id="wordsearch" aria-labelledby="wordsearchTitle">
-      <div class="wordsearch-section__inner">
-        <span class="wordsearch-section__kicker reveal"
-              data-en="Find what's missing on your site"
-              data-he="מצא מה חסר באתר שלך">מצא מה חסר באתר שלך</span>
-        <h2 class="section-title reveal" id="wordsearchTitle"
-            data-en="Trust. Price. WhatsApp. All in place."
-            data-he="אמון. מחיר. וואטסאפ. הכל במקום.">אמון. מחיר. וואטסאפ. הכל במקום.</h2>
-        <p class="wordsearch-section__lede reveal"
-           data-en="These are what a good business site must have. Watch the pen find each one, and ask which your site has today."
-           data-he="אלה הדברים שאתר עסקי טוב חייב. תראו את העט מוצא כל אחד, ושאלו את עצמכם אילו מהם יש לכם היום.">
-          אלה הדברים שאתר עסקי טוב חייב. תראו את העט מוצא כל אחד, ושאלו את עצמכם אילו מהם יש לכם היום.</p>
-
-        <div class="wordsearch-hero reveal" id="wordsearchHero" aria-label="אבחון אתר, Site checklist word search">
-          <strong id="wordsearchActiveLabel" hidden aria-hidden="true">אסף</strong>
-          <div class="wordsearch-board" id="wordsearchBoard" aria-hidden="true">
-            <div class="wordsearch-grid" id="wordsearchGrid"></div>
-            <svg class="wordsearch-svg" id="wordsearchSvg" aria-hidden="true">
-              <path class="wordsearch-pen" id="wordsearchPen"></path>
-            </svg>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT ME -->
+    <!-- SERVICES -->
     <section class="section" id="services">
       <h2 class="section-title reveal" data-en="Services" data-he="שירותים">שירותים</h2>
       <div class="services-grid">
@@ -6605,7 +6365,7 @@
         ioSticky.observe(homeSection);
       }
 
-      // 13. Experience additions: wordsearch, quiz, estimator, cases, FAQ search, progress nav
+      // 13. Experience additions: quiz, estimator, cases, FAQ search, progress nav
       const whatsAppBase = 'https://wa.me/972523393768?text=';
       const activeLang = () => document.documentElement.lang === 'en' ? 'en' : 'he';
       const langPick = obj => obj[activeLang()] || obj.he || '';
@@ -6616,157 +6376,6 @@
           el.setAttribute('placeholder', el.getAttribute(`data-placeholder-${activeLang()}`) || '');
         });
       }
-
-      // Wordsearch reveal
-      const wordsearchBoard = document.getElementById('wordsearchBoard');
-      const wordsearchGrid = document.getElementById('wordsearchGrid');
-      const wordsearchSvg = document.getElementById('wordsearchSvg');
-      const wordsearchPen = document.getElementById('wordsearchPen');
-      const wordsearchLabel = document.getElementById('wordsearchActiveLabel');
-      const wordCols = 12;
-      const wordRows = 8;
-      let wordCells = [];
-      let wordDefs = [];
-      let wordIndex = 0;
-      let wordTimer = null;
-      let activeWordCells = [];
-
-      const wordsearchSets = {
-        he: {
-          filler: Array.from('אבגדהוזחטיכלמנסעפצקרשת'),
-          words: [
-            { label: 'וואטסאפ', word: 'וואטסאפ', row: 0, col: 11, dx: -1, dy: 0 },
-            { label: 'SEO', word: 'SEO', row: 1, col: 1, dx: 1, dy: 0 },
-            { label: 'המלצות', word: 'המלצות', row: 2, col: 11, dx: -1, dy: 0 },
-            { label: 'מחיר', word: 'מחיר', row: 3, col: 11, dx: -1, dy: 0 },
-            { label: 'מובייל', word: 'מובייל', row: 4, col: 11, dx: -1, dy: 0 },
-            { label: 'אמון', word: 'אמון', row: 5, col: 11, dx: -1, dy: 0 }
-          ]
-        },
-        en: {
-          filler: Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ'),
-          words: [
-            { label: 'WhatsApp', word: 'WHATSAPP', row: 0, col: 1, dx: 1, dy: 0 },
-            { label: 'SEO', word: 'SEO', row: 1, col: 1, dx: 1, dy: 0 },
-            { label: 'Reviews', word: 'REVIEWS', row: 2, col: 1, dx: 1, dy: 0 },
-            { label: 'Price', word: 'PRICE', row: 3, col: 1, dx: 1, dy: 0 },
-            { label: 'Mobile', word: 'MOBILE', row: 4, col: 1, dx: 1, dy: 0 },
-            { label: 'Trust', word: 'TRUST', row: 5, col: 1, dx: 1, dy: 0 }
-          ]
-        }
-      };
-
-      function wordPathCells(def) {
-        return Array.from(def.word).map((_, i) => ({
-          row: def.row + def.dy * i,
-          col: def.col + def.dx * i
-        }));
-      }
-
-      function buildWordsearch() {
-        if (!wordsearchBoard || !wordsearchGrid || !wordsearchSvg || !wordsearchPen) return;
-        const set = wordsearchSets[activeLang()];
-        wordDefs = set.words;
-        wordCells = [];
-        activeWordCells = [];
-        wordsearchGrid.innerHTML = '';
-
-        const letters = Array.from({ length: wordRows }, () =>
-          Array.from({ length: wordCols }, (_, i) => set.filler[(i + Math.floor(Math.random() * set.filler.length)) % set.filler.length])
-        );
-
-        wordDefs.forEach(def => {
-          Array.from(def.word).forEach((ch, i) => {
-            const row = def.row + def.dy * i;
-            const col = def.col + def.dx * i;
-            if (letters[row] && typeof letters[row][col] !== 'undefined') letters[row][col] = ch;
-          });
-        });
-
-        for (let row = 0; row < wordRows; row++) {
-          for (let col = 0; col < wordCols; col++) {
-            const span = document.createElement('span');
-            span.className = 'wordsearch-letter';
-            span.textContent = letters[row][col];
-            span.dataset.row = String(row);
-            span.dataset.col = String(col);
-            wordsearchGrid.appendChild(span);
-            wordCells.push(span);
-          }
-        }
-
-        wordDefs.flatMap(wordPathCells).forEach(({ row, col }) => {
-          const cell = wordCells[row * wordCols + col];
-          if (cell) cell.classList.add('is-soft');
-        });
-
-        wordIndex = 0;
-        revealWordsearchWord(0, true);
-        clearInterval(wordTimer);
-        wordTimer = setInterval(() => {
-          if (motionReduced()) return;
-          revealWordsearchWord((wordIndex + 1) % wordDefs.length);
-        }, 3800);
-      }
-
-      function cellCenter(row, col) {
-        const gridStyle = getComputedStyle(wordsearchGrid);
-        const padL = parseFloat(gridStyle.paddingLeft) || 0;
-        const padR = parseFloat(gridStyle.paddingRight) || 0;
-        const padT = parseFloat(gridStyle.paddingTop) || 0;
-        const padB = parseFloat(gridStyle.paddingBottom) || 0;
-        const width = wordsearchGrid.clientWidth;
-        const height = wordsearchGrid.clientHeight;
-        const cellW = (width - padL - padR) / wordCols;
-        const cellH = (height - padT - padB) / wordRows;
-        return {
-          x: padL + (col + 0.5) * cellW,
-          y: padT + (row + 0.5) * cellH,
-          cellW,
-          cellH
-        };
-      }
-
-      function revealWordsearchWord(nextIndex, instant = false) {
-        if (!wordDefs.length || !wordsearchPen || !wordsearchSvg) return;
-        const def = wordDefs[nextIndex];
-        const path = wordPathCells(def);
-        activeWordCells.forEach(cell => {
-          cell.classList.remove('is-marked');
-          cell.classList.add('is-fading');
-          setTimeout(() => {
-            cell.classList.remove('is-fading');
-            cell.classList.add('is-soft');
-          }, 460);
-        });
-
-        const first = path[0];
-        const last = path[path.length - 1];
-        const a = cellCenter(first.row, first.col);
-        const b = cellCenter(last.row, last.col);
-        const extX = def.dx * a.cellW * 0.42;
-        const extY = def.dy * a.cellH * 0.42;
-        wordsearchSvg.setAttribute('viewBox', `0 0 ${wordsearchGrid.clientWidth} ${wordsearchGrid.clientHeight}`);
-        wordsearchPen.setAttribute('d', `M ${a.x - extX} ${a.y - extY} L ${b.x + extX} ${b.y + extY}`);
-        wordsearchPen.classList.remove('is-running', 'dir-forward', 'dir-back');
-        void wordsearchPen.getBoundingClientRect();
-        wordsearchPen.classList.add('is-running', def.dx < 0 || def.dy < 0 ? 'dir-back' : 'dir-forward');
-
-        activeWordCells = path.map(({ row, col }, i) => {
-          const cell = wordCells[row * wordCols + col];
-          if (!cell) return null;
-          cell.classList.remove('is-soft', 'is-fading');
-          cell.style.setProperty('--wordsearch-letter-delay', instant ? '0s' : `${0.18 + i * 0.075}s`);
-          cell.classList.add('is-marked');
-          return cell;
-        }).filter(Boolean);
-
-        if (wordsearchLabel) wordsearchLabel.textContent = def.label;
-        wordIndex = nextIndex;
-      }
-
-      buildWordsearch();
-      window.addEventListener('resize', () => revealWordsearchWord(wordIndex, true), { passive: true });
 
       // Progress navigation
       const progressLinks = [...document.querySelectorAll('#progressNav a[data-section]')];
@@ -7219,7 +6828,6 @@
 
       function syncFeatureLanguage() {
         syncPlaceholders();
-        buildWordsearch();
         renderQuiz();
         updateEstimate();
         setVisual(activeVisual);
