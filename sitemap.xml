@@ -3,19 +3,13 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.assafweb.com/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image><image:loc>https://www.assafweb.com/assets/og-cover.jpg</image:loc><image:caption>אסף בוסקילה, מפתח ומעצב אתרים לעסקים בישראל</image:caption></image:image>
     <image:image><image:loc>https://www.assafweb.com/assets/about-me.png</image:loc><image:caption>אסף בוסקילה</image:caption></image:image>
-    <image:image><image:loc>https://www.assafweb.com/assets/1.jpg</image:loc><image:caption>בניית אתר לעסק מאת אסף בוסקילה</image:caption></image:image>
-    <image:image><image:loc>https://www.assafweb.com/assets/2.jpg</image:loc><image:caption>עיצוב ופיתוח אתר מאת אסף בוסקילה</image:caption></image:image>
-    <image:image><image:loc>https://www.assafweb.com/assets/3.jpg</image:loc><image:caption>דף נחיתה לעסק מאת אסף בוסקילה</image:caption></image:image>
-    <image:image><image:loc>https://www.assafweb.com/assets/4.jpg</image:loc><image:caption>פרויקט אתר אינטרנט מאת אסף בוסקילה</image:caption></image:image>
-    <image:image><image:loc>https://www.assafweb.com/assets/5.jpg</image:loc><image:caption>בניית אתר לעסק קטן מאת אסף בוסקילה</image:caption></image:image>
-    <image:image><image:loc>https://www.assafweb.com/assets/6.jpg</image:loc><image:caption>עיצוב אתר מודרני מאת אסף בוסקילה</image:caption></image:image>
-    <image:image><image:loc>https://www.assafweb.com/assets/7.jpg</image:loc><image:caption>מיתוג ועיצוב אתר מאת אסף בוסקילה</image:caption></image:image>
-    <image:image><image:loc>https://www.assafweb.com/assets/8.jpg</image:loc><image:caption>פרויקט בניית אתר מאת אסף בוסקילה</image:caption></image:image>
+    <image:image><image:loc>https://www.assafweb.com/assets/showcase-mochi.png</image:loc><image:caption>האתר של מותג Mochi, נבנה על ידי אסף בוסקילה</image:caption></image:image>
+    <image:image><image:loc>https://www.assafweb.com/assets/showcase-ana.png</image:loc><image:caption>האתר של קפה אנה, נבנה על ידי אסף בוסקילה</image:caption></image:image>
     <image:image><image:loc>https://www.assafweb.com/assets/mochi-logo.png</image:loc><image:caption>Mochi, לוגו מיתוג</image:caption></image:image>
     <image:image><image:loc>https://www.assafweb.com/assets/coffee-ana-logo.jpg</image:loc><image:caption>קפה אנה, לוגו בית קפה</image:caption></image:image>
   </url>

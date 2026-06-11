@@ -243,7 +243,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
-  <link rel="preload" as="image" href="/assets/1.avif" type="image/avif" fetchpriority="high" />
+  <link rel="preload" as="image" href="/assets/showcase-mochi.avif" type="image/avif" fetchpriority="high" />
   <link
     href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
     rel="stylesheet" />
@@ -772,175 +772,132 @@
       }
     }
 
-    /* Desktop-only: hint above hero image trail */
-    .hero-mouse-hint {
-      display: none;
-      position: absolute;
-      left: 50%;
-      top: 42%;
-      transform: translate(-50%, -50%);
-      z-index: 4;
-      pointer-events: none;
-      margin: 0;
-      padding: 0 20px;
-      max-width: min(420px, 88vw);
-      text-align: center;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      opacity: 0.88;
-    }
-
-    @media (min-width: 801px) and (hover: hover) and (pointer: fine) {
-      .hero-mouse-hint {
-        display: none;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .hero-mouse-hint {
-        display: none !important;
-      }
-    }
-
-    html.a11y-reduce-motion .hero-mouse-hint {
-      display: none !important;
-    }
-
-    /* Mobile-only: 3D orbital gallery (Saturn-style ring, ~30° tilt) */
-    .hero-orbit {
-      display: none;
+    /* ──────────────────────────────────────────────────
+       HERO SHOWCASE — real client sites in browser frames,
+       clickable proof instead of the old decorative gallery.
+    ────────────────────────────────────────────────── */
+    .hero-showcase {
       position: relative;
       z-index: 2;
       width: 100%;
-      flex: 1;
-      min-height: 0;
-      max-height: 34vh;
-      margin-block: 8px 4px;
-      pointer-events: none;
-      opacity: 0.72;
+      max-width: 960px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-block-end: 26px;
     }
 
-    .hero-orbit-scene {
-      width: 100%;
-      height: 100%;
-      min-height: 200px;
+    .hero-showcase-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(20, 20, 20, 0.85);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+      transition: transform 0.35s var(--ease), border-color 0.35s, box-shadow 0.35s;
+      animation: heroContentIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+    }
+
+    .hero-showcase-card:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+
+    .hero-showcase-bar {
       display: flex;
       align-items: center;
-      justify-content: center;
-      perspective: 1000px;
-      perspective-origin: 50% 42%;
-      overflow: hidden;
+      gap: 10px;
+      padding: 8px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.04);
     }
 
-    .hero-orbit-tilt {
-      width: min(78vw, 300px);
-      height: min(78vw, 300px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transform-style: preserve-3d;
-      transform: rotateX(30deg);
+    .hero-showcase-dots {
+      display: inline-flex;
+      gap: 4px;
     }
 
-    .hero-orbit-ring {
-      position: relative;
+    .hero-showcase-dots i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .hero-showcase-url {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    .hero-showcase-card img {
       width: 100%;
-      height: 100%;
-      transform-style: preserve-3d;
-      animation: heroOrbitSpin 26s linear infinite;
-    }
-
-    @keyframes heroOrbitSpin {
-      from {
-        transform: rotateY(0deg);
-      }
-
-      to {
-        transform: rotateY(360deg);
-      }
-    }
-
-    .hero-orbit figure {
-      margin: 0;
-      padding: 0;
-    }
-
-    .hero-orbit-card {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 68px;
-      height: 68px;
-      margin: -34px 0 0 -34px;
-      transform-style: preserve-3d;
-      transform: rotateY(calc(var(--orbit-i) * 45deg)) translateZ(158px);
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow:
-        0 6px 20px rgba(0, 0, 0, 0.55),
-        0 0 0 1px rgba(255, 255, 255, 0.12);
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-    }
-
-    .hero-orbit-card-face {
-      width: 100%;
-      height: 100%;
-      border-radius: inherit;
-      overflow: hidden;
-      transform-style: preserve-3d;
-    }
-
-    .hero-orbit-card img {
-      width: 100%;
-      height: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
       object-fit: cover;
       display: block;
     }
 
-    /* ──────────────────────────────────────────────────
-       CURSOR-TRIGGERED IMAGE TRAIL  (Flash-Reveal Gallery)
-       Images spawn at cursor, flicker in/out at low opacity
-       behind the main typography   the "peek-a-boo" effect.
-    ────────────────────────────────────────────────── */
-    .hero-trail-layer {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      overflow: hidden;
+    .hero-showcase-caption {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 14px 12px;
     }
 
-    .trail-img {
-      position: absolute;
-      width: clamp(160px, 18vw, 260px);
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      border-radius: 3px;
-      opacity: 0;
-      pointer-events: none;
-      transform: translate(-50%, -50%) scale(0.88) rotate(var(--rot, 0deg));
-      transition:
-        opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-        transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      will-change: opacity, transform;
-      filter: grayscale(20%) brightness(0.9);
+    .hero-showcase-caption strong {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: #fff;
     }
 
-    .trail-img.flash-in {
-      opacity: 0.32;
-      transform: translate(-50%, -50%) scale(1) rotate(var(--rot, 0deg));
+    .hero-showcase-caption span {
+      font-size: 12.5px;
+      color: var(--text-muted);
     }
 
-    .trail-img.flash-out {
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(0.95) rotate(var(--rot, 0deg));
-      transition:
-        opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-        transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    @media (hover: hover) and (pointer: fine) {
+      .hero-showcase-card:hover {
+        transform: translateY(-5px) rotate(0deg);
+        border-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+      }
+    }
+
+    /* Wide desktop: float as a stacked column in the hero's empty side */
+    @media (min-width: 1101px) {
+      .hero-showcase {
+        position: absolute;
+        inset-block-end: 110px;
+        inset-inline-end: 50px;
+        width: min(26vw, 390px);
+        max-width: none;
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin: 0;
+      }
+
+      .hero-showcase-card {
+        transform: rotate(-1.2deg);
+      }
+
+      .hero-showcase-card:nth-child(2) {
+        transform: rotate(1.4deg);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-showcase-card {
+        animation: none;
+      }
+    }
+
+    html.a11y-reduce-motion .hero-showcase-card {
+      animation: none;
     }
 
     /* ============================================================
@@ -2232,53 +2189,24 @@
         overflow-x: clip;
       }
 
-      .hero-orbit {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex: 0 0 auto;
-        max-height: min(52vh, 440px);
-        min-height: 0;
-        margin-block: 0;
-      }
-
-      .hero-orbit-scene {
-        perspective: 1300px;
-        perspective-origin: 50% 40%;
-        min-height: 0;
-        height: auto;
-      }
-
-      .hero-orbit-tilt {
-        --orbit-box: min(96vw, 460px, min(50vh, 400px));
-        width: var(--orbit-box);
-        height: var(--orbit-box);
-        transform: rotateX(9deg);
-      }
-
-      /* 3:4 tiles, wide translateZ so frames orbit separately (no stacked pile) */
-      .hero-orbit-card {
-        width: 110px;
-        height: 147px;
-        margin: -73.5px 0 0 -55px;
-        transform: rotateY(calc(var(--orbit-i) * 45deg)) translateZ(min(52vw, 252px));
-        border-radius: 16px;
-      }
-
-      .hero-orbit-card-face {
-        transform: rotateX(-16deg);
-      }
-
       .hero-content {
         flex-shrink: 0;
         margin-top: 0;
         padding-top: 4px;
       }
 
-      /* Intro copy lives in the open-screen video, hide duplicate hero lines on mobile */
-      .hero .hero-title,
-      .hero .hero-sub {
-        display: none !important;
+      .hero-showcase {
+        gap: 10px;
+        margin-block: 10px 18px;
+      }
+
+      .hero-showcase-caption {
+        padding: 8px 10px 10px;
+      }
+
+      .hero-showcase-url {
+        font-size: 10px;
+        letter-spacing: 0.03em;
       }
 
       .section {
@@ -2506,21 +2434,7 @@
         filter: none;
       }
 
-      .trail-img,
-      .trail-img.flash-in,
-      .trail-img.flash-out {
-        transition-duration: 0.01ms;
-      }
-
-      .hero-trail-layer {
-        display: none !important;
-      }
-
       .hero-bg {
-        animation: none !important;
-      }
-
-      .hero-orbit-ring {
         animation: none !important;
       }
     }
@@ -2542,20 +2456,6 @@
 
     html.a11y-reduce-motion .hero-bg {
       animation: none !important;
-    }
-
-    html.a11y-reduce-motion .hero-orbit-ring {
-      animation: none !important;
-    }
-
-    html.a11y-reduce-motion .trail-img,
-    html.a11y-reduce-motion .trail-img.flash-in,
-    html.a11y-reduce-motion .trail-img.flash-out {
-      transition-duration: 0.01ms !important;
-    }
-
-    html.a11y-reduce-motion .hero-trail-layer {
-      display: none !important;
     }
 
     html.a11y-reduce-motion .reveal {
@@ -3113,115 +3013,8 @@
     /* (intro helpers removed) */
     /* (gif + legacy overlay media queries removed) */
 
-    /* ============================================================
-       MOBILE GALLERY (scroll-snap, Apple/Linear style)
-       ============================================================ */
-    .phone-carousel {
-      display: none;
-    }
-
-    .phone-carousel-track {
-      display: flex;
-      gap: 14px;
-      padding-inline: 18vw;
-      padding-block: 12px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-      overscroll-behavior-x: contain;
-    }
-
-    .phone-carousel-track::-webkit-scrollbar {
-      display: none;
-    }
-
-    .phone-card {
-      flex: 0 0 64vw;
-      max-width: 320px;
-      aspect-ratio: 9 / 16;
-      border-radius: 22px;
-      overflow: hidden;
-      background: #111;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 16px 44px rgba(0, 0, 0, 0.5);
-      scroll-snap-align: center;
-      scroll-snap-stop: always;
-      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s;
-      transform: scale(0.9);
-      opacity: 0.65;
-      will-change: transform, opacity;
-    }
-
-    .phone-card.is-active {
-      transform: scale(1);
-      opacity: 1;
-    }
-
-    .phone-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .phone-carousel-dots {
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-      margin-top: 18px;
-    }
-
-    .phone-carousel-dot {
-      width: 32px;
-      height: 32px;
-      padding: 0;
-      border: 0;
-      background: transparent;
-      cursor: pointer;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .phone-carousel-dot::after {
-      content: '';
-      display: block;
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.28);
-      transition: background 0.25s, transform 0.25s, width 0.25s;
-    }
-
-    .phone-carousel-dot.is-active::after {
-      background: #fff;
-      width: 22px;
-    }
-
-    .phone-carousel-caption {
-      text-align: center;
-      margin-top: 14px;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      color: rgba(255, 255, 255, 0.6);
-    }
-
-    /* Mobile overrides for gallery + about layout */
+    /* Mobile overrides for about layout */
     @media (max-width: 800px) {
-      .hero-orbit { display: none !important; }
-
-      .phone-carousel {
-        display: block;
-        width: 100vw;
-        max-width: 100vw;
-        margin-inline: calc(50% - 50vw);
-        margin-block: 16px 0;
-      }
-
       /* About mobile: photo beside last block, lead + content blocks full width */
       .about-grid {
         display: grid !important;
@@ -4461,18 +4254,11 @@
     /* Reduced motion: disable new animations */
     @media (prefers-reduced-motion: reduce) {
       .neon-bg-layer::after { animation: none; }
-      .phone-carousel-pointer__arrow { animation: none; }
       .screen-break-overlay__hint { animation: none; opacity: 0.5; }
-      .phone-carousel-caption { animation: none; }
-      .phone-carousel-viewport { animation: none !important; }
-      .phone-frame[data-pos="center"] { animation: none !important; }
     }
 
     html.a11y-reduce-motion .neon-bg-layer::after { animation: none !important; }
-    html.a11y-reduce-motion .phone-carousel-pointer__arrow { animation: none !important; }
     html.a11y-reduce-motion .screen-break-overlay__hint { animation: none !important; }
-    html.a11y-reduce-motion .phone-carousel-viewport { animation: none !important; }
-    html.a11y-reduce-motion .phone-frame[data-pos="center"] { animation: none !important; }
   </style>
 </head>
 
@@ -4558,84 +4344,30 @@
     <!-- HERO -->
     <section class="hero" id="home">
       <div class="hero-bg" aria-hidden="true"></div>
-      <div class="hero-trail-layer" id="heroTrailLayer" aria-hidden="true"></div>
-
-      <p class="hero-mouse-hint" aria-hidden="true" data-en="Move your mouse" data-he="הזז את העכבר">הזז את העכבר</p>
-
-      <div class="hero-orbit" aria-hidden="true">
-        <div class="hero-orbit-scene">
-          <div class="hero-orbit-tilt">
-            <div class="hero-orbit-ring">
-              <figure class="hero-orbit-card" style="--orbit-i: 0">
-                <div class="hero-orbit-card-face">
-                  <img src="assets/1.avif" alt="עבודה 1, בניית אתר לעסק מאת אסף בוסקילה" width="110" height="147" loading="eager" fetchpriority="high" decoding="async" />
-                </div>
-              </figure>
-              <figure class="hero-orbit-card" style="--orbit-i: 1">
-                <div class="hero-orbit-card-face">
-                  <img src="assets/2.avif" alt="עבודה 2, עיצוב ופיתוח אתר מאת אסף בוסקילה" width="110" height="147" loading="eager" decoding="async" />
-                </div>
-              </figure>
-              <figure class="hero-orbit-card" style="--orbit-i: 2">
-                <div class="hero-orbit-card-face">
-                  <img src="assets/3.avif" alt="עבודה 3, דף נחיתה לעסק מאת אסף בוסקילה" width="110" height="147" loading="lazy" decoding="async" />
-                </div>
-              </figure>
-              <figure class="hero-orbit-card" style="--orbit-i: 3">
-                <div class="hero-orbit-card-face">
-                  <img src="assets/4.avif" alt="עבודה 4, פרויקט אתר אינטרנט מאת אסף בוסקילה" width="110" height="147" loading="lazy" decoding="async" />
-                </div>
-              </figure>
-              <figure class="hero-orbit-card" style="--orbit-i: 4">
-                <div class="hero-orbit-card-face">
-                  <img src="assets/5.avif" alt="עבודה 5, בניית אתר לעסק קטן מאת אסף בוסקילה" width="110" height="147" loading="lazy" decoding="async" />
-                </div>
-              </figure>
-              <figure class="hero-orbit-card" style="--orbit-i: 5">
-                <div class="hero-orbit-card-face">
-                  <img src="assets/6.avif" alt="עבודה 6, עיצוב אתר מודרני מאת אסף בוסקילה" width="110" height="147" loading="lazy" decoding="async" />
-                </div>
-              </figure>
-              <figure class="hero-orbit-card" style="--orbit-i: 6">
-                <div class="hero-orbit-card-face">
-                  <img src="assets/7.avif" alt="עבודה 7, מיתוג ועיצוב אתר מאת אסף בוסקילה" width="110" height="147" loading="lazy" decoding="async" />
-                </div>
-              </figure>
-              <figure class="hero-orbit-card" style="--orbit-i: 7">
-                <div class="hero-orbit-card-face">
-                  <img src="assets/8.avif" alt="עבודה 8, פרויקט בניית אתר מאת אסף בוסקילה" width="110" height="147" loading="lazy" decoding="async" />
-                </div>
-              </figure>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- MOBILE GALLERY (scroll-snap, replaces orbit on mobile) -->
-      <div class="phone-carousel" aria-label="גלריית עבודות, swipe to browse">
-        <div class="phone-carousel-track" id="phoneViewport" role="region" aria-roledescription="גלריית עבודות נגללת">
-          <article class="phone-card" data-idx="0"><img src="assets/1.avif" alt="עבודה 1, בניית אתר לעסק מאת אסף בוסקילה" loading="eager" fetchpriority="high" decoding="async" /></article>
-          <article class="phone-card" data-idx="1"><img src="assets/2.avif" alt="עבודה 2, עיצוב ופיתוח אתר מאת אסף בוסקילה" loading="lazy" decoding="async" /></article>
-          <article class="phone-card" data-idx="2"><img src="assets/3.avif" alt="עבודה 3, דף נחיתה לעסק מאת אסף בוסקילה" loading="lazy" decoding="async" /></article>
-          <article class="phone-card" data-idx="3"><img src="assets/4.avif" alt="עבודה 4, פרויקט אתר אינטרנט מאת אסף בוסקילה" loading="lazy" decoding="async" /></article>
-          <article class="phone-card" data-idx="4"><img src="assets/5.avif" alt="עבודה 5, בניית אתר לעסק קטן מאת אסף בוסקילה" loading="lazy" decoding="async" /></article>
-          <article class="phone-card" data-idx="5"><img src="assets/6.avif" alt="עבודה 6, עיצוב אתר מודרני מאת אסף בוסקילה" loading="lazy" decoding="async" /></article>
-          <article class="phone-card" data-idx="6"><img src="assets/7.avif" alt="עבודה 7, מיתוג ועיצוב אתר מאת אסף בוסקילה" loading="lazy" decoding="async" /></article>
-          <article class="phone-card" data-idx="7"><img src="assets/8.avif" alt="עבודה 8, פרויקט בניית אתר מאת אסף בוסקילה" loading="lazy" decoding="async" /></article>
-        </div>
-        <div class="phone-carousel-dots" id="phoneCarouselDots" role="tablist" aria-label="מעבר לעבודה">
-          <button type="button" class="phone-carousel-dot is-active" data-go="0" aria-label="עבודה 1"></button>
-          <button type="button" class="phone-carousel-dot" data-go="1" aria-label="עבודה 2"></button>
-          <button type="button" class="phone-carousel-dot" data-go="2" aria-label="עבודה 3"></button>
-          <button type="button" class="phone-carousel-dot" data-go="3" aria-label="עבודה 4"></button>
-          <button type="button" class="phone-carousel-dot" data-go="4" aria-label="עבודה 5"></button>
-          <button type="button" class="phone-carousel-dot" data-go="5" aria-label="עבודה 6"></button>
-          <button type="button" class="phone-carousel-dot" data-go="6" aria-label="עבודה 7"></button>
-          <button type="button" class="phone-carousel-dot" data-go="7" aria-label="עבודה 8"></button>
-        </div>
-        <p class="phone-carousel-caption"
-           data-en="Swipe to see what you can create"
-           data-he="החליקו לראות מה אפשר ליצור">החליקו לראות מה אפשר ליצור</p>
+      <!-- HERO SHOWCASE: real client sites, clickable proof -->
+      <div class="hero-showcase" aria-label="עבודות נבחרות באוויר · Selected live work">
+        <a class="hero-showcase-card" href="#works">
+          <span class="hero-showcase-bar" aria-hidden="true">
+            <span class="hero-showcase-dots"><i></i><i></i><i></i></span>
+            <span class="hero-showcase-url" dir="ltr">mochi-israel.com</span>
+          </span>
+          <img src="assets/showcase-mochi.avif" alt="האתר של מותג Mochi, באוויר, נבנה על ידי אסף בוסקילה" width="960" height="540" loading="eager" fetchpriority="high" decoding="async" />
+          <span class="hero-showcase-caption">
+            <strong>Mochi</strong>
+            <span data-en="Brand & site, live" data-he="מיתוג ואתר, באוויר">מיתוג ואתר, באוויר</span>
+          </span>
+        </a>
+        <a class="hero-showcase-card" href="#works">
+          <span class="hero-showcase-bar" aria-hidden="true">
+            <span class="hero-showcase-dots"><i></i><i></i><i></i></span>
+            <span class="hero-showcase-url" dir="ltr">cafe-ana.com</span>
+          </span>
+          <img src="assets/showcase-ana.avif" alt="האתר של קפה אנה, באוויר, נבנה על ידי אסף בוסקילה" width="960" height="540" loading="eager" decoding="async" />
+          <span class="hero-showcase-caption">
+            <strong data-en="Coffee Ana" data-he="קפה אנה">קפה אנה</strong>
+            <span data-en="Café brand, live" data-he="מיתוג לבית קפה, באוויר">מיתוג לבית קפה, באוויר</span>
+          </span>
+        </a>
       </div>
 
       <div class="hero-content hero-stagger" id="heroContent" style="--stagger: 0">
@@ -5895,78 +5627,6 @@
         }
       }, { passive: true });
 
-      // 5. CURSOR-TRIGGERED IMAGE TRAIL   Flash-Reveal Gallery
-      //    Images flicker behind typography as the cursor moves over the hero.
-      const heroSection  = document.getElementById('home');
-      const trailLayer   = document.getElementById('heroTrailLayer');
-      const trailSrcs    = [
-        'assets/1.avif', 'assets/2.avif', 'assets/3.avif',
-        'assets/4.avif', 'assets/5.avif', 'assets/6.avif',
-        'assets/7.avif', 'assets/8.avif'
-      ];
-
-      if (!motionReduced()) {
-        trailSrcs.forEach(src => { const i = new Image(); i.src = src; });
-      }
-
-      let trailIdx       = 0;
-      let lastTrailTime  = 0;
-      let lastTrailX     = 0;
-      let lastTrailY     = 0;
-      const MIN_INTERVAL = 110;   // ms   min time between new images
-      const MIN_DIST     = 55;    // px   min movement before new image spawns
-      const LIFE_MS      = 700;   // ms image stays fully visible
-      const MAX_ALIVE    = 6;     // cap simultaneous images for perf
-
-      function spawnTrailImage(clientX, clientY) {
-        if (!trailLayer) return;
-        if (trailLayer.querySelectorAll('.trail-img').length >= MAX_ALIVE) return;
-
-        const rot  = (Math.random() * 16 - 8).toFixed(1);
-        // Add slight jitter so images don't stack perfectly on top of each other
-        const jX   = clientX + (Math.random() * 40 - 20);
-        const jY   = clientY + window.scrollY + (Math.random() * 40 - 20);
-
-        const img = document.createElement('img');
-        img.src = trailSrcs[trailIdx % trailSrcs.length];
-        img.className = 'trail-img';
-        img.alt = '';
-        img.setAttribute('aria-hidden', 'true');
-        img.decoding = 'async';
-        img.style.setProperty('--rot', rot + 'deg');
-        img.style.left = jX + 'px';
-        img.style.top  = jY + 'px';
-        trailLayer.appendChild(img);
-        trailIdx++;
-
-        // Flash in on next paint
-        requestAnimationFrame(() => img.classList.add('flash-in'));
-
-        // Flash out after life span
-        setTimeout(() => {
-          img.classList.remove('flash-in');
-          img.classList.add('flash-out');
-          setTimeout(() => img.remove(), 320);
-        }, LIFE_MS);
-      }
-
-      if (heroSection && trailLayer && !isTouchDevice) {
-        document.addEventListener('mousemove', e => {
-          if (motionReduced()) return;
-          // Only active while in hero viewport
-          if (window.scrollY > window.innerHeight * 0.85) return;
-          const now  = Date.now();
-          const dx   = e.clientX - lastTrailX;
-          const dy   = e.clientY - lastTrailY;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (now - lastTrailTime < MIN_INTERVAL || dist < MIN_DIST) return;
-          lastTrailTime = now;
-          lastTrailX    = e.clientX;
-          lastTrailY    = e.clientY;
-          spawnTrailImage(e.clientX, e.clientY);
-        }, { passive: true });
-      }
-
       // 6. SCROLL REVEAL (Intersection Observer)
       const revealEls = document.querySelectorAll('.reveal');
       const revealObs = new IntersectionObserver((entries, obs) => {
@@ -6155,48 +5815,6 @@
           if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); bumpTapHint(); finishSplash(); }
         });
       })();
-
-      // 10. MOBILE GALLERY, scroll-snap track + dot sync via IntersectionObserver
-      const phoneViewport = document.getElementById('phoneViewport');
-      const phoneCarouselDots = document.getElementById('phoneCarouselDots');
-      if (phoneViewport && isMobile) {
-        const cards = [...phoneViewport.querySelectorAll('.phone-card')];
-        const dots = phoneCarouselDots ? [...phoneCarouselDots.querySelectorAll('.phone-carousel-dot')] : [];
-
-        function setActive(idx) {
-          cards.forEach((c, i) => c.classList.toggle('is-active', i === idx));
-          dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
-        }
-
-        // IO tracks which card is most centered (using viewport center as anchor)
-        const ioGallery = new IntersectionObserver(entries => {
-          // Pick the entry with highest intersection ratio that is centered enough
-          let best = { idx: -1, ratio: 0 };
-          entries.forEach(entry => {
-            const idx = Number(entry.target.dataset.idx);
-            if (entry.intersectionRatio > best.ratio) best = { idx, ratio: entry.intersectionRatio };
-          });
-          if (best.idx >= 0) setActive(best.idx);
-        }, {
-          root: phoneViewport,
-          threshold: [0.5, 0.75, 0.9, 1]
-        });
-        cards.forEach(c => ioGallery.observe(c));
-
-        // Dot clicks scroll the chosen card into center
-        dots.forEach(dot => {
-          dot.addEventListener('click', () => {
-            const target = cards[Number(dot.dataset.go)];
-            if (target) target.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-          });
-        });
-
-        // Start at the 4th card so the user sees content in the middle, not the first edge
-        requestAnimationFrame(() => {
-          const start = cards[3];
-          if (start) start.scrollIntoView({ inline: 'center', block: 'nearest' });
-        });
-      }
 
       // 11. About plasma shader removed (per user request, 2026-05-24).
       //     Kept as no-op so other modules numbered 12+ stay aligned.
