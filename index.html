@@ -3404,7 +3404,8 @@
     }
 
     .trust-strip {
-      padding: 0 clamp(20px, 5vw, 50px) 70px;
+      /* sits directly under the hero, needs its own top spacing */
+      padding: 56px clamp(20px, 5vw, 50px) 70px;
       background: var(--bg);
     }
 
@@ -4367,7 +4368,7 @@
       }
 
       .trust-strip {
-        padding: 0 20px 46px;
+        padding: 36px 20px 46px;
       }
 
       .trust-strip__inner,
@@ -4514,13 +4515,13 @@
 
   <nav class="progress-nav" id="progressNav" aria-label="ניווט התקדמות · Progress navigation">
     <a href="#home" data-section="home" aria-label="ראשי, Home"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="Home" data-he="ראשי">ראשי</span></a>
-    <a href="#estimate" data-section="estimate" aria-label="מעבדה, Project lab"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="Lab" data-he="מעבדה">מעבדה</span></a>
-    <a href="#services" data-section="services" aria-label="שירותים, Services"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="Services" data-he="שירותים">שירותים</span></a>
     <a href="#works" data-section="works" aria-label="עבודות, Works"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="Works" data-he="עבודות">עבודות</span></a>
-    <a href="#pricing" data-section="pricing" aria-label="מחירון, Pricing"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="Pricing" data-he="מחירון">מחירון</span></a>
-    <a href="#about" data-section="about" aria-label="אודות, About"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="About" data-he="אודות">אודות</span></a>
-    <a href="#testimonials" data-section="testimonials" aria-label="המלצות, Testimonials"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="Reviews" data-he="המלצות">המלצות</span></a>
     <a href="#process" data-section="process" aria-label="תהליך, Process"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="Process" data-he="תהליך">תהליך</span></a>
+    <a href="#services" data-section="services" aria-label="שירותים, Services"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="Services" data-he="שירותים">שירותים</span></a>
+    <a href="#testimonials" data-section="testimonials" aria-label="המלצות, Testimonials"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="Reviews" data-he="המלצות">המלצות</span></a>
+    <a href="#pricing" data-section="pricing" aria-label="מחירון, Pricing"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="Pricing" data-he="מחירון">מחירון</span></a>
+    <a href="#estimate" data-section="estimate" aria-label="מעבדה, Project lab"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="Lab" data-he="מעבדה">מעבדה</span></a>
+    <a href="#about" data-section="about" aria-label="אודות, About"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="About" data-he="אודות">אודות</span></a>
     <a href="#faq" data-section="faq" aria-label="שאלות, FAQ"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="FAQ" data-he="שאלות">שאלות</span></a>
     <a href="#contact" data-section="contact" aria-label="צור קשר, Contact"><span class="progress-nav__dot"></span><span class="progress-nav__label" data-en="Contact" data-he="צור קשר">צור קשר</span></a>
   </nav>
@@ -4529,13 +4530,13 @@
   <div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="תפריט ניווט" inert>
     <button type="button" class="menu-close" id="menuClose" data-en="Close" data-he="סגור">סגור</button>
     <a href="#home" class="menu-link" data-en="Home" data-he="ראשי">ראשי</a>
-    <a href="#estimate" class="menu-link" data-en="Project Lab" data-he="מעבדת פרויקט">מעבדת פרויקט</a>
-    <a href="#services" class="menu-link" data-en="Services" data-he="שירותים">שירותים</a>
     <a href="#works" class="menu-link" data-en="Works" data-he="עבודות">עבודות</a>
-    <a href="#pricing" class="menu-link" data-en="Pricing" data-he="מחירון">מחירון</a>
-    <a href="#about" class="menu-link" data-en="About" data-he="אודות">אודות</a>
-    <a href="#testimonials" class="menu-link" data-en="Testimonials" data-he="המלצות">המלצות</a>
     <a href="#process" class="menu-link" data-en="Process" data-he="תהליך">תהליך</a>
+    <a href="#services" class="menu-link" data-en="Services" data-he="שירותים">שירותים</a>
+    <a href="#testimonials" class="menu-link" data-en="Testimonials" data-he="המלצות">המלצות</a>
+    <a href="#pricing" class="menu-link" data-en="Pricing" data-he="מחירון">מחירון</a>
+    <a href="#estimate" class="menu-link" data-en="Project Lab" data-he="מעבדת פרויקט">מעבדת פרויקט</a>
+    <a href="#about" class="menu-link" data-en="About" data-he="אודות">אודות</a>
     <a href="#faq" class="menu-link" data-en="FAQ" data-he="שאלות נפוצות">שאלות נפוצות</a>
     <a href="#contact" class="menu-link" data-en="Contact" data-he="צור קשר">צור קשר</a>
   </div>
@@ -4667,8 +4668,8 @@
         </div>
 
         <div class="hero-actions">
-          <a class="hero-btn hero-btn--primary" href="#estimate"
-             data-en="Find the right site for me" data-he="בדוק איזה אתר מתאים לי">בדוק איזה אתר מתאים לי</a>
+          <a class="hero-btn hero-btn--primary" href="#works"
+             data-en="See real client work" data-he="תראו עבודות אמיתיות">תראו עבודות אמיתיות</a>
           <a class="hero-btn hero-btn--wa" id="heroWhatsApp"
              href="https://wa.me/972523393768?text=%D7%94%D7%99%D7%99%20%D7%90%D7%A1%D7%A3%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9C%20%D7%90%D7%AA%D7%A8%20%D7%9C%D7%A2%D7%A1%D7%A7%20%D7%A9%D7%9C%D7%99"
              target="_blank" rel="noopener noreferrer"
@@ -4681,160 +4682,29 @@
       </div>
     </section>
 
-    <!-- PROJECT LAB (quiz, estimator, visual mood) -->
-    <section class="section project-lab" id="estimate">
-      <h2 class="section-title reveal" data-en="Project Lab" data-he="מעבדת פרויקט">מעבדת פרויקט</h2>
-
-      <div class="lab-grid">
-        <article class="lab-panel lab-panel--quiz reveal" id="quizPanel">
-          <div class="lab-panel__head">
-            <span class="lab-panel__eyebrow" data-en="Match" data-he="התאמה">התאמה</span>
-            <h3 data-en="Find the right website" data-he="מצא את סוג האתר הנכון">מצא את סוג האתר הנכון</h3>
-          </div>
-          <div class="quiz-body">
-            <p class="quiz-question" id="quizQuestion"></p>
-            <div class="quiz-options" id="quizOptions"></div>
-            <p class="quiz-result" id="quizResult" hidden></p>
-          </div>
-          <div class="quiz-actions">
-            <button type="button" class="mini-btn" id="quizBack" data-en="Back" data-he="חזור">חזור</button>
-            <button type="button" class="mini-btn" id="quizRestart" data-en="Restart" data-he="התחל מחדש">התחל מחדש</button>
-            <a class="mini-btn mini-btn--primary" id="quizWhatsApp" href="#" target="_blank" rel="noopener noreferrer"
-              data-en="Send match" data-he="שלח התאמה">שלח התאמה</a>
-          </div>
-        </article>
-
-        <article class="lab-panel lab-panel--estimate reveal">
-          <div class="lab-panel__head">
-            <span class="lab-panel__eyebrow" data-en="Estimate" data-he="אומדן">אומדן</span>
-            <h3 data-en="Live budget range" data-he="טווח תקציב חי">טווח תקציב חי</h3>
-          </div>
-          <div class="estimate-types" id="estimateTypes" role="group" aria-label="סוג אתר">
-            <button type="button" class="estimate-type is-active" data-type="landing" data-en="Landing" data-he="נחיתה">נחיתה</button>
-            <button type="button" class="estimate-type" data-type="site" data-en="Website" data-he="אתר">אתר</button>
-            <button type="button" class="estimate-type" data-type="store" data-en="Store" data-he="חנות">חנות</button>
-          </div>
-          <label class="range-control" for="pageCount">
-            <span data-en="Pages" data-he="עמודים">עמודים</span>
-            <strong id="pageCountLabel">3</strong>
-          </label>
-          <input type="range" min="1" max="8" value="1" id="pageCount" class="estimate-range" />
-          <div class="estimate-addons">
-            <label><input type="checkbox" value="brand" /> <span data-en="Brand basics" data-he="מיתוג בסיסי">מיתוג בסיסי</span></label>
-            <label><input type="checkbox" value="motion" /> <span data-en="Motion layer" data-he="שכבת אנימציה">שכבת אנימציה</span></label>
-            <label><input type="checkbox" value="seo" /> <span data-en="SEO setup" data-he="הגדרת SEO">הגדרת SEO</span></label>
-            <label><input type="checkbox" value="care" /> <span data-en="Care plan" data-he="ליווי חודשי">ליווי חודשי</span></label>
-          </div>
-          <div class="estimate-output" id="estimateOutput">₪1,500 to ₪1,800</div>
-          <a class="mini-btn mini-btn--primary estimate-send" id="estimateWhatsApp" href="#" target="_blank" rel="noopener noreferrer"
-            data-en="Send estimate" data-he="שלח אומדן">שלח אומדן</a>
-        </article>
-
-        <article class="lab-panel lab-panel--visual reveal">
-          <div class="lab-panel__head">
-            <span class="lab-panel__eyebrow" data-en="AI visuals" data-he="ויזואל AI">ויזואל AI</span>
-            <h3 data-en="Change the business mood" data-he="שנה את אופי העסק">שנה את אופי העסק</h3>
-          </div>
-          <div class="visual-tabs" id="visualTabs" role="group" aria-label="סוג עסק">
-            <button type="button" class="visual-tab is-active" data-visual="cafe" data-en="Cafe" data-he="קפה">קפה</button>
-            <button type="button" class="visual-tab" data-visual="clinic" data-en="Clinic" data-he="קליניקה">קליניקה</button>
-            <button type="button" class="visual-tab" data-visual="fitness" data-en="Fitness" data-he="כושר">כושר</button>
-            <button type="button" class="visual-tab" data-visual="law" data-en="Law" data-he="משפטי">משפטי</button>
-          </div>
-          <div class="visual-preview visual-preview--cafe" id="visualPreview" aria-live="polite">
-            <div class="visual-preview__nav"></div>
-            <div class="visual-preview__hero">
-              <span id="visualTitle">Cafe Ana</span>
-            </div>
-            <div class="visual-preview__rows">
-              <span></span><span></span><span></span>
-            </div>
-            <p id="visualTags">Warm menu, fast order, local story</p>
-          </div>
-        </article>
+    <!-- TRUST STRIP (buyer reassurance, right under the hero) -->
+    <section class="trust-strip reveal" id="trust" aria-label="סימני אמון · Trust markers">
+      <div class="trust-strip__inner">
+        <div class="trust-item">
+          <span class="trust-item__num">01</span>
+          <span data-en="Built personally by Assaf, no agency" data-he="נבנה אישית על ידי אסף, בלי סוכנות">נבנה אישית על ידי אסף, בלי סוכנות</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-item__num">02</span>
+          <span data-en="Price known up front" data-he="מחיר ידוע מראש">מחיר ידוע מראש</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-item__num">03</span>
+          <span data-en="The site stays yours" data-he="האתר נשאר שלך">האתר נשאר שלך</span>
+        </div>
+        <div class="trust-item trust-item--integrations">
+          <span class="trust-item__num">04</span>
+          <span data-en="Integrates with the tools you already use: WhatsApp, Wolt, Google Calendar, Gmail, click-to-call & GA4" data-he="מתחבר לכלים שאתם כבר עובדים איתם: וואטסאפ, וולט, יומן גוגל, Gmail, חיוג ישיר ו-GA4">מתחבר לכלים שאתם כבר עובדים איתם: וואטסאפ, וולט, יומן גוגל, Gmail, חיוג ישיר ו-GA4</span>
+        </div>
       </div>
     </section>
 
-    <section class="section before-after-section" id="before-after">
-      <h2 class="section-title reveal" data-en="Before and after" data-he="לפני ואחרי">לפני ואחרי</h2>
-      <div class="before-after-frame reveal" id="beforeAfterFrame" style="--split: 52%">
-        <div class="before-after-layer before-layer">
-          <span data-en="Before" data-he="לפני">לפני</span>
-          <h3 data-en="Template noise" data-he="רעש של תבנית">רעש של תבנית</h3>
-          <p data-en="Weak hierarchy, unclear offer, and no clear reason to contact."
-            data-he="היררכיה חלשה, הצעה לא ברורה וללא סיבה מיידית ליצור קשר.">היררכיה חלשה, הצעה לא ברורה וללא סיבה מיידית ליצור קשר.</p>
-        </div>
-        <div class="before-after-layer after-layer">
-          <span data-en="After" data-he="אחרי">אחרי</span>
-          <h3 data-en="Focused conversion" data-he="המרה ממוקדת">המרה ממוקדת</h3>
-          <p data-en="Clear path, visual confidence, fast pages, and a CTA that feels natural."
-            data-he="מסלול ברור, ביטחון חזותי, עמודים מהירים וקריאה לפעולה שמרגישה טבעית.">מסלול ברור, ביטחון חזותי, עמודים מהירים וקריאה לפעולה שמרגישה טבעית.</p>
-        </div>
-        <div class="before-after-divider" aria-hidden="true"></div>
-        <input type="range" min="0" max="100" value="50" id="beforeAfterSlider" class="before-after-slider"
-          aria-label="השוואת לפני ואחרי" />
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section class="section" id="services">
-      <h2 class="section-title reveal" data-en="Services" data-he="שירותים">שירותים</h2>
-      <div class="services-grid">
-
-        <div class="service-card reveal">
-          <img src="assets/websites-and-landing-pages.avif" alt="" class="service-bg" loading="lazy" decoding="async" role="presentation" />
-          <div class="service-content">
-            <h3 class="service-name" data-en="Websites & landing pages" data-he="אתרים ודפי נחיתה">אתרים ודפי נחיתה</h3>
-            <span class="service-icon">+</span>
-          </div>
-          <p class="service-desc"
-            data-en="Clear structure, fast load, and layouts that work across mobile, tablet, and desktop, so visitors actually stay."
-            data-he="מבנה ברור, טעינה מהירה והתאמה נכונה למובייל, טאבלט ומחשב   כדי שמבקרים באמת יישארו.">מבנה ברור, טעינה מהירה והתאמה נכונה למובייל, טאבלט ומחשב   כדי שמבקרים באמת יישארו.</p>
-        </div>
-
-        <div class="service-card reveal">
-          <img src="assets/design-and-layout.avif" alt="" class="service-bg" loading="lazy" decoding="async" role="presentation" />
-          <div class="service-content">
-            <h3 class="service-name" data-en="Design & layout" data-he="עיצוב ופריסה">עיצוב ופריסה</h3>
-            <span class="service-icon">+</span>
-          </div>
-          <p class="service-desc"
-            data-en="Typography, spacing, and hierarchy that guide people to contact you or buy."
-            data-he="טיפוגרפיה, ריווח והיררכיה שמובילים לפנייה או לרכישה.">טיפוגרפיה, ריווח והיררכיה שמובילים לפנייה או לרכישה.</p>
-        </div>
-
-        <div class="service-card reveal">
-          <img src="assets/brand-basics.avif" alt="" class="service-bg" loading="lazy" decoding="async" role="presentation" />
-          <div class="service-content">
-            <h3 class="service-name" data-en="Brand basics" data-he="מיתוג">יסודות</h3>
-            <span class="service-icon">+</span>
-          </div>
-          <p class="service-desc"
-            data-en="Logo direction, colors, and fonts that fit your site and your audience."
-            data-he="כיוון ללוגו, צבעים ופונטים שמתאימים לאתר ולקהל שלך.">כיוון ללוגו, צבעים ופונטים שמתאימים לאתר ולקהל שלך.</p>
-        </div>
-
-        <div class="service-card reveal">
-          <img src="assets/care-after-launch.avif" alt="" class="service-bg" loading="lazy" decoding="async" role="presentation" />
-          <div class="service-content">
-            <h3 class="service-name" data-en="Care after launch" data-he="ליווי אחרי העלייה לאוויר">ליווי אחרי העלייה לאוויר</h3>
-            <span class="service-icon">+</span>
-          </div>
-          <p class="service-desc"
-            data-en="Small updates, fixes, and tweaks so your site keeps working as your business grows."
-            data-he="עדכונים קטנים, תיקונים ושיפורים   כדי שהאתר ימשיך לשרת אותך כשהעסק גדל.">עדכונים קטנים, תיקונים ושיפורים   כדי שהאתר ימשיך לשרת אותך כשהעסק גדל.</p>
-        </div>
-
-      </div>
-
-      <p class="services-footnote reveal"
-        data-en="You can also create AI-powered content for your site, animations, images, and videos."
-        data-he="ניתן גם ליצור תוכן בעזרת בינה מלאכותית עבור האתר אנימציות, תמונות וסרטונים.">
-        ניתן גם ליצור תוכן בעזרת בינה מלאכותית עבור האתר אנימציות, תמונות וסרטונים.
-      </p>
-    </section>
-
-    <!-- PRICING (public floor prices, 3 tiers + monthly retainer) -->
+    <!-- SELECTED WORKS (proof first: real clients, real outcomes) -->
     <section class="section section--works-compact" id="works">
       <h2 class="section-title reveal" data-en="Selected Works" data-he="עבודות נבחרות">עבודות נבחרות</h2>
 
@@ -4939,7 +4809,145 @@
       </div>
     </section>
 
-    <!-- TESTIMONIALS (moved up: social proof right after the portfolio + price) -->
+    <!-- PROCESS (the differentiator: a partner for a month) -->
+    <section class="section process-section" id="process">
+      <span class="process-kicker reveal"
+            data-en="How we work together" data-he="ככה עובדים יחד">ככה עובדים יחד</span>
+      <h2 class="section-title reveal" data-en="Not a website vendor. A partner for a month." data-he="לא קבלן אתרים. שותף לחודש.">לא קבלן אתרים. שותף לחודש.</h2>
+      <p class="process-intro reveal"
+         data-en="For one month I'm part of your team. We meet, I get to know your product, your customers and your brand, then I build a site that speaks in your voice."
+         data-he="במשך חודש אני חלק מהצוות שלך. נפגשים, אני מכיר את המוצר, הלקוחות והמותג שלך, ואז בונה אתר שמדבר בקול שלך.">במשך חודש אני חלק מהצוות שלך. נפגשים, אני מכיר את המוצר, הלקוחות והמותג שלך, ואז בונה אתר שמדבר בקול שלך.</p>
+      <div class="process-rail">
+        <article class="process-step reveal">
+          <span class="process-step__num">01</span>
+          <h3 data-en="A month together" data-he="חודש ביחד">חודש ביחד</h3>
+          <p data-en="I join your business like a partner. We meet, and I learn the product, the customers, the brand and the voice in depth."
+            data-he="אני נכנס לעסק כמו שותף. נפגשים, ואני לומד את המוצר, הלקוחות, המותג והקול לעומק.">אני נכנס לעסק כמו שותף. נפגשים, ואני לומד את המוצר, הלקוחות, המותג והקול לעומק.</p>
+        </article>
+        <article class="process-step reveal">
+          <span class="process-step__num">02</span>
+          <h3 data-en="Strategy & direction" data-he="אסטרטגיה וכיוון">אסטרטגיה וכיוון</h3>
+          <p data-en="I translate what I understood into structure, messaging and a visual language that speak in your voice."
+            data-he="מתרגם את מה שהבנתי למבנה, למסרים ולשפה חזותית שמדברים בקול שלך.">מתרגם את מה שהבנתי למבנה, למסרים ולשפה חזותית שמדברים בקול שלך.</p>
+        </article>
+        <article class="process-step reveal">
+          <span class="process-step__num">03</span>
+          <h3 data-en="Build" data-he="בנייה">בנייה</h3>
+          <p data-en="A fast, responsive, accessible site, built from real understanding and not from a template."
+            data-he="אתר מהיר, רספונסיבי ונגיש, שנבנה מתוך הבנה אמיתית ולא מתבנית.">אתר מהיר, רספונסיבי ונגיש, שנבנה מתוך הבנה אמיתית ולא מתבנית.</p>
+        </article>
+        <article class="process-step reveal">
+          <span class="process-step__num">04</span>
+          <h3 data-en="Launch & care" data-he="עלייה לאוויר וליווי">עלייה לאוויר וליווי</h3>
+          <p data-en="Analytics, SEO basics, QA and a clear contact path go live. And I don't disappear after launch."
+            data-he="אנליטיקות, בסיס SEO, בדיקות ומסלול פנייה ברור עולים לאוויר. ואני לא נעלם אחרי ההשקה.">אנליטיקות, בסיס SEO, בדיקות ומסלול פנייה ברור עולים לאוויר. ואני לא נעלם אחרי ההשקה.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- BEFORE / AFTER (template noise vs focused conversion) -->
+    <section class="section before-after-section" id="before-after">
+      <h2 class="section-title reveal" data-en="Before and after" data-he="לפני ואחרי">לפני ואחרי</h2>
+      <div class="before-after-frame reveal" id="beforeAfterFrame" style="--split: 52%">
+        <div class="before-after-layer before-layer">
+          <span data-en="Before" data-he="לפני">לפני</span>
+          <h3 data-en="Template noise" data-he="רעש של תבנית">רעש של תבנית</h3>
+          <p data-en="Weak hierarchy, unclear offer, and no clear reason to contact."
+            data-he="היררכיה חלשה, הצעה לא ברורה וללא סיבה מיידית ליצור קשר.">היררכיה חלשה, הצעה לא ברורה וללא סיבה מיידית ליצור קשר.</p>
+        </div>
+        <div class="before-after-layer after-layer">
+          <span data-en="After" data-he="אחרי">אחרי</span>
+          <h3 data-en="Focused conversion" data-he="המרה ממוקדת">המרה ממוקדת</h3>
+          <p data-en="Clear path, visual confidence, fast pages, and a CTA that feels natural."
+            data-he="מסלול ברור, ביטחון חזותי, עמודים מהירים וקריאה לפעולה שמרגישה טבעית.">מסלול ברור, ביטחון חזותי, עמודים מהירים וקריאה לפעולה שמרגישה טבעית.</p>
+        </div>
+        <div class="before-after-divider" aria-hidden="true"></div>
+        <input type="range" min="0" max="100" value="50" id="beforeAfterSlider" class="before-after-slider"
+          aria-label="השוואת לפני ואחרי" />
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section" id="services">
+      <h2 class="section-title reveal" data-en="Services" data-he="שירותים">שירותים</h2>
+      <div class="services-grid">
+
+        <div class="service-card reveal">
+          <img src="assets/websites-and-landing-pages.avif" alt="" class="service-bg" loading="lazy" decoding="async" role="presentation" />
+          <div class="service-content">
+            <h3 class="service-name" data-en="Websites & landing pages" data-he="אתרים ודפי נחיתה">אתרים ודפי נחיתה</h3>
+            <span class="service-icon">+</span>
+          </div>
+          <p class="service-desc"
+            data-en="Clear structure, fast load, and layouts that work across mobile, tablet, and desktop, so visitors actually stay."
+            data-he="מבנה ברור, טעינה מהירה והתאמה נכונה למובייל, טאבלט ומחשב   כדי שמבקרים באמת יישארו.">מבנה ברור, טעינה מהירה והתאמה נכונה למובייל, טאבלט ומחשב   כדי שמבקרים באמת יישארו.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <img src="assets/design-and-layout.avif" alt="" class="service-bg" loading="lazy" decoding="async" role="presentation" />
+          <div class="service-content">
+            <h3 class="service-name" data-en="Design & layout" data-he="עיצוב ופריסה">עיצוב ופריסה</h3>
+            <span class="service-icon">+</span>
+          </div>
+          <p class="service-desc"
+            data-en="Typography, spacing, and hierarchy that guide people to contact you or buy."
+            data-he="טיפוגרפיה, ריווח והיררכיה שמובילים לפנייה או לרכישה.">טיפוגרפיה, ריווח והיררכיה שמובילים לפנייה או לרכישה.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <img src="assets/brand-basics.avif" alt="" class="service-bg" loading="lazy" decoding="async" role="presentation" />
+          <div class="service-content">
+            <h3 class="service-name" data-en="Brand basics" data-he="מיתוג">יסודות</h3>
+            <span class="service-icon">+</span>
+          </div>
+          <p class="service-desc"
+            data-en="Logo direction, colors, and fonts that fit your site and your audience."
+            data-he="כיוון ללוגו, צבעים ופונטים שמתאימים לאתר ולקהל שלך.">כיוון ללוגו, צבעים ופונטים שמתאימים לאתר ולקהל שלך.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <img src="assets/care-after-launch.avif" alt="" class="service-bg" loading="lazy" decoding="async" role="presentation" />
+          <div class="service-content">
+            <h3 class="service-name" data-en="Care after launch" data-he="ליווי אחרי העלייה לאוויר">ליווי אחרי העלייה לאוויר</h3>
+            <span class="service-icon">+</span>
+          </div>
+          <p class="service-desc"
+            data-en="Small updates, fixes, and tweaks so your site keeps working as your business grows."
+            data-he="עדכונים קטנים, תיקונים ושיפורים   כדי שהאתר ימשיך לשרת אותך כשהעסק גדל.">עדכונים קטנים, תיקונים ושיפורים   כדי שהאתר ימשיך לשרת אותך כשהעסק גדל.</p>
+        </div>
+
+      </div>
+
+      <p class="services-footnote reveal"
+        data-en="You can also create AI-powered content for your site, animations, images, and videos."
+        data-he="ניתן גם ליצור תוכן בעזרת בינה מלאכותית עבור האתר אנימציות, תמונות וסרטונים.">
+        ניתן גם ליצור תוכן בעזרת בינה מלאכותית עבור האתר אנימציות, תמונות וסרטונים.
+      </p>
+    </section>
+
+    <!-- TESTIMONIALS (social proof right before pricing) -->
+    <section class="section testimonials-section" id="testimonials">
+      <h2 class="section-title reveal" data-en="What clients feel" data-he="מה לקוחות מרגישים">מה לקוחות מרגישים</h2>
+      <div class="testimonial-shell reveal" id="testimonialShell" aria-live="polite">
+        <article class="testimonial-card is-active" data-testimonial="0">
+          <p data-en="Assaf took a messy idea and turned it into a clear site people understand immediately."
+            data-he="אסף לקח רעיון מבולגן והפך אותו לאתר ברור שאנשים מבינים מיד.">אסף לקח רעיון מבולגן והפך אותו לאתר ברור שאנשים מבינים מיד.</p>
+          <span data-en="Small business owner" data-he="בעל עסק קטן">בעל עסק קטן</span>
+        </article>
+        <article class="testimonial-card" data-testimonial="1">
+          <p data-en="The process was fast, direct, and much more personal than working with a big studio."
+            data-he="התהליך היה מהיר, ישיר והרבה יותר אישי מעבודה מול סטודיו גדול.">התהליך היה מהיר, ישיר והרבה יותר אישי מעבודה מול סטודיו גדול.</p>
+          <span data-en="Local brand founder" data-he="מייסדת מותג מקומי">מייסדת מותג מקומי</span>
+        </article>
+        <article class="testimonial-card" data-testimonial="2">
+          <p data-en="The site finally explains what we do without a long phone call first."
+            data-he="האתר סוף סוף מסביר מה אנחנו עושים בלי שיחת טלפון ארוכה לפני.">האתר סוף סוף מסביר מה אנחנו עושים בלי שיחת טלפון ארוכה לפני.</p>
+          <span data-en="Service provider" data-he="נותן שירות">נותן שירות</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- PRICING (public floor prices, 3 tiers + monthly retainer) -->
     <section class="section pricing-section" id="pricing" aria-labelledby="pricingTitle">
       <h2 class="section-title reveal" id="pricingTitle"
           data-en="Pricing, public and final"
@@ -5070,7 +5078,84 @@
       </p>
     </section>
 
-    <!-- SELECTED WORKS (moved up: trust-led flow after Pricing) -->
+    <!-- PROJECT LAB (helper tools for the undecided: quiz, estimator, visual mood) -->
+    <section class="section project-lab" id="estimate">
+      <h2 class="section-title reveal" data-en="Project Lab" data-he="מעבדת פרויקט">מעבדת פרויקט</h2>
+      <p class="works-intro reveal"
+         data-en="Not sure yet which package fits? Three quick tools to help you decide."
+         data-he="עדיין לא בטוחים מה מתאים? שלושה כלים קטנים שיעזרו לכם להחליט.">עדיין לא בטוחים מה מתאים? שלושה כלים קטנים שיעזרו לכם להחליט.</p>
+
+      <div class="lab-grid">
+        <article class="lab-panel lab-panel--quiz reveal" id="quizPanel">
+          <div class="lab-panel__head">
+            <span class="lab-panel__eyebrow" data-en="Match" data-he="התאמה">התאמה</span>
+            <h3 data-en="Find the right website" data-he="מצא את סוג האתר הנכון">מצא את סוג האתר הנכון</h3>
+          </div>
+          <div class="quiz-body">
+            <p class="quiz-question" id="quizQuestion"></p>
+            <div class="quiz-options" id="quizOptions"></div>
+            <p class="quiz-result" id="quizResult" hidden></p>
+          </div>
+          <div class="quiz-actions">
+            <button type="button" class="mini-btn" id="quizBack" data-en="Back" data-he="חזור">חזור</button>
+            <button type="button" class="mini-btn" id="quizRestart" data-en="Restart" data-he="התחל מחדש">התחל מחדש</button>
+            <a class="mini-btn mini-btn--primary" id="quizWhatsApp" href="#" target="_blank" rel="noopener noreferrer"
+              data-en="Send match" data-he="שלח התאמה">שלח התאמה</a>
+          </div>
+        </article>
+
+        <article class="lab-panel lab-panel--estimate reveal">
+          <div class="lab-panel__head">
+            <span class="lab-panel__eyebrow" data-en="Estimate" data-he="אומדן">אומדן</span>
+            <h3 data-en="Live budget range" data-he="טווח תקציב חי">טווח תקציב חי</h3>
+          </div>
+          <div class="estimate-types" id="estimateTypes" role="group" aria-label="סוג אתר">
+            <button type="button" class="estimate-type is-active" data-type="landing" data-en="Landing" data-he="נחיתה">נחיתה</button>
+            <button type="button" class="estimate-type" data-type="site" data-en="Website" data-he="אתר">אתר</button>
+            <button type="button" class="estimate-type" data-type="store" data-en="Store" data-he="חנות">חנות</button>
+          </div>
+          <label class="range-control" for="pageCount">
+            <span data-en="Pages" data-he="עמודים">עמודים</span>
+            <strong id="pageCountLabel">3</strong>
+          </label>
+          <input type="range" min="1" max="8" value="1" id="pageCount" class="estimate-range" />
+          <div class="estimate-addons">
+            <label><input type="checkbox" value="brand" /> <span data-en="Brand basics" data-he="מיתוג בסיסי">מיתוג בסיסי</span></label>
+            <label><input type="checkbox" value="motion" /> <span data-en="Motion layer" data-he="שכבת אנימציה">שכבת אנימציה</span></label>
+            <label><input type="checkbox" value="seo" /> <span data-en="SEO setup" data-he="הגדרת SEO">הגדרת SEO</span></label>
+            <label><input type="checkbox" value="care" /> <span data-en="Care plan" data-he="ליווי חודשי">ליווי חודשי</span></label>
+          </div>
+          <div class="estimate-output" id="estimateOutput">₪1,500 to ₪1,800</div>
+          <a class="mini-btn mini-btn--primary estimate-send" id="estimateWhatsApp" href="#" target="_blank" rel="noopener noreferrer"
+            data-en="Send estimate" data-he="שלח אומדן">שלח אומדן</a>
+        </article>
+
+        <article class="lab-panel lab-panel--visual reveal">
+          <div class="lab-panel__head">
+            <span class="lab-panel__eyebrow" data-en="AI visuals" data-he="ויזואל AI">ויזואל AI</span>
+            <h3 data-en="Change the business mood" data-he="שנה את אופי העסק">שנה את אופי העסק</h3>
+          </div>
+          <div class="visual-tabs" id="visualTabs" role="group" aria-label="סוג עסק">
+            <button type="button" class="visual-tab is-active" data-visual="cafe" data-en="Cafe" data-he="קפה">קפה</button>
+            <button type="button" class="visual-tab" data-visual="clinic" data-en="Clinic" data-he="קליניקה">קליניקה</button>
+            <button type="button" class="visual-tab" data-visual="fitness" data-en="Fitness" data-he="כושר">כושר</button>
+            <button type="button" class="visual-tab" data-visual="law" data-en="Law" data-he="משפטי">משפטי</button>
+          </div>
+          <div class="visual-preview visual-preview--cafe" id="visualPreview" aria-live="polite">
+            <div class="visual-preview__nav"></div>
+            <div class="visual-preview__hero">
+              <span id="visualTitle">Cafe Ana</span>
+            </div>
+            <div class="visual-preview__rows">
+              <span></span><span></span><span></span>
+            </div>
+            <p id="visualTags">Warm menu, fast order, local story</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ABOUT (how I work) -->
     <section class="section" id="about">
       <h2 class="section-title reveal"
           data-en="Before we start, a moment on how I work"
@@ -5117,84 +5202,6 @@
           <img src="assets/about-me.avif" alt="אסף בוסקילה" class="about-photo" loading="lazy" decoding="async" width="800" height="1067" />
         </div>
 
-      </div>
-    </section>
-
-    <section class="trust-strip reveal" id="trust" aria-label="סימני אמון · Trust markers">
-      <div class="trust-strip__inner">
-        <div class="trust-item">
-          <span class="trust-item__num">01</span>
-          <span data-en="Built personally by Assaf, no agency" data-he="נבנה אישית על ידי אסף, בלי סוכנות">נבנה אישית על ידי אסף, בלי סוכנות</span>
-        </div>
-        <div class="trust-item">
-          <span class="trust-item__num">02</span>
-          <span data-en="Price known up front" data-he="מחיר ידוע מראש">מחיר ידוע מראש</span>
-        </div>
-        <div class="trust-item">
-          <span class="trust-item__num">03</span>
-          <span data-en="The site stays yours" data-he="האתר נשאר שלך">האתר נשאר שלך</span>
-        </div>
-        <div class="trust-item trust-item--integrations">
-          <span class="trust-item__num">04</span>
-          <span data-en="Integrates with the tools you already use: WhatsApp, Wolt, Google Calendar, Gmail, click-to-call & GA4" data-he="מתחבר לכלים שאתם כבר עובדים איתם: וואטסאפ, וולט, יומן גוגל, Gmail, חיוג ישיר ו-GA4">מתחבר לכלים שאתם כבר עובדים איתם: וואטסאפ, וולט, יומן גוגל, Gmail, חיוג ישיר ו-GA4</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES (Bento) -->
-    <section class="section testimonials-section" id="testimonials">
-      <h2 class="section-title reveal" data-en="What clients feel" data-he="מה לקוחות מרגישים">מה לקוחות מרגישים</h2>
-      <div class="testimonial-shell reveal" id="testimonialShell" aria-live="polite">
-        <article class="testimonial-card is-active" data-testimonial="0">
-          <p data-en="Assaf took a messy idea and turned it into a clear site people understand immediately."
-            data-he="אסף לקח רעיון מבולגן והפך אותו לאתר ברור שאנשים מבינים מיד.">אסף לקח רעיון מבולגן והפך אותו לאתר ברור שאנשים מבינים מיד.</p>
-          <span data-en="Small business owner" data-he="בעל עסק קטן">בעל עסק קטן</span>
-        </article>
-        <article class="testimonial-card" data-testimonial="1">
-          <p data-en="The process was fast, direct, and much more personal than working with a big studio."
-            data-he="התהליך היה מהיר, ישיר והרבה יותר אישי מעבודה מול סטודיו גדול.">התהליך היה מהיר, ישיר והרבה יותר אישי מעבודה מול סטודיו גדול.</p>
-          <span data-en="Local brand founder" data-he="מייסדת מותג מקומי">מייסדת מותג מקומי</span>
-        </article>
-        <article class="testimonial-card" data-testimonial="2">
-          <p data-en="The site finally explains what we do without a long phone call first."
-            data-he="האתר סוף סוף מסביר מה אנחנו עושים בלי שיחת טלפון ארוכה לפני.">האתר סוף סוף מסביר מה אנחנו עושים בלי שיחת טלפון ארוכה לפני.</p>
-          <span data-en="Service provider" data-he="נותן שירות">נותן שירות</span>
-        </article>
-      </div>
-    </section>
-
-    <section class="section process-section" id="process">
-      <span class="process-kicker reveal"
-            data-en="How we work together" data-he="ככה עובדים יחד">ככה עובדים יחד</span>
-      <h2 class="section-title reveal" data-en="Not a website vendor. A partner for a month." data-he="לא קבלן אתרים. שותף לחודש.">לא קבלן אתרים. שותף לחודש.</h2>
-      <p class="process-intro reveal"
-         data-en="For one month I'm part of your team. We meet, I get to know your product, your customers and your brand, then I build a site that speaks in your voice."
-         data-he="במשך חודש אני חלק מהצוות שלך. נפגשים, אני מכיר את המוצר, הלקוחות והמותג שלך, ואז בונה אתר שמדבר בקול שלך.">במשך חודש אני חלק מהצוות שלך. נפגשים, אני מכיר את המוצר, הלקוחות והמותג שלך, ואז בונה אתר שמדבר בקול שלך.</p>
-      <div class="process-rail">
-        <article class="process-step reveal">
-          <span class="process-step__num">01</span>
-          <h3 data-en="A month together" data-he="חודש ביחד">חודש ביחד</h3>
-          <p data-en="I join your business like a partner. We meet, and I learn the product, the customers, the brand and the voice in depth."
-            data-he="אני נכנס לעסק כמו שותף. נפגשים, ואני לומד את המוצר, הלקוחות, המותג והקול לעומק.">אני נכנס לעסק כמו שותף. נפגשים, ואני לומד את המוצר, הלקוחות, המותג והקול לעומק.</p>
-        </article>
-        <article class="process-step reveal">
-          <span class="process-step__num">02</span>
-          <h3 data-en="Strategy & direction" data-he="אסטרטגיה וכיוון">אסטרטגיה וכיוון</h3>
-          <p data-en="I translate what I understood into structure, messaging and a visual language that speak in your voice."
-            data-he="מתרגם את מה שהבנתי למבנה, למסרים ולשפה חזותית שמדברים בקול שלך.">מתרגם את מה שהבנתי למבנה, למסרים ולשפה חזותית שמדברים בקול שלך.</p>
-        </article>
-        <article class="process-step reveal">
-          <span class="process-step__num">03</span>
-          <h3 data-en="Build" data-he="בנייה">בנייה</h3>
-          <p data-en="A fast, responsive, accessible site, built from real understanding and not from a template."
-            data-he="אתר מהיר, רספונסיבי ונגיש, שנבנה מתוך הבנה אמיתית ולא מתבנית.">אתר מהיר, רספונסיבי ונגיש, שנבנה מתוך הבנה אמיתית ולא מתבנית.</p>
-        </article>
-        <article class="process-step reveal">
-          <span class="process-step__num">04</span>
-          <h3 data-en="Launch & care" data-he="עלייה לאוויר וליווי">עלייה לאוויר וליווי</h3>
-          <p data-en="Analytics, SEO basics, QA and a clear contact path go live. And I don't disappear after launch."
-            data-he="אנליטיקות, בסיס SEO, בדיקות ומסלול פנייה ברור עולים לאוויר. ואני לא נעלם אחרי ההשקה.">אנליטיקות, בסיס SEO, בדיקות ומסלול פנייה ברור עולים לאוויר. ואני לא נעלם אחרי ההשקה.</p>
-        </article>
       </div>
     </section>
 
