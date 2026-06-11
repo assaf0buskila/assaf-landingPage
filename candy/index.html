@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>מנגינת ממתקים · ממתקים בוטיק בעבודת יד</title>
+  <title>מנגינת ממתקים · ממתקי בוטיק בעבודת יד</title>
   <meta name="description"
-    content="מנגינת ממתקים, מותג בוטיק צבעוני לממתקים בעבודת יד. קולקציות טעמים, מארזי מתנה וחוויה מתוקה עם קצב. פרויקט קונספט מאת אסף בוסקילה." />
+    content="מנגינת ממתקים, מותג בוטיק צבעוני לממתקי עבודת יד. קולקציות טעמים, מארזי מתנה וחוויה מתוקה עם קצב. פרויקט קונספט מאת אסף בוסקילה." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.assafweb.com/candy/" />
   <meta property="og:title" content="מנגינת ממתקים · ממתקים עם קצב" />
-  <meta property="og:description" content="מותג בוטיק צבעוני לממתקים בעבודת יד, עם טעמים שמרגישים כמו מנגינה." />
+  <meta property="og:description" content="מותג בוטיק צבעוני לממתקי עבודת יד, עם טעמים שמרגישים כמו מנגינה קטנה בפה." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.assafweb.com/candy/" />
   <meta property="og:image" content="https://www.assafweb.com/assets/candy-hero.png" />
@@ -166,14 +166,18 @@
     .header-cta {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
       background: var(--ink);
       color: var(--cream);
       text-decoration: none;
       font-weight: 700;
       font-size: 14.5px;
+      min-height: 44px;
       padding: 10px 20px;
       border-radius: 999px;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
       transition: transform 0.4s var(--ease-spring), background 0.25s;
     }
 
@@ -270,12 +274,16 @@
     .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
       text-decoration: none;
       font-weight: 700;
       font-size: 16px;
+      min-height: 50px;
       padding: 16px 30px;
       border-radius: 999px;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
       transition: transform 0.45s var(--ease-spring), box-shadow 0.45s var(--ease-out), background 0.3s, color 0.3s;
     }
 
@@ -521,6 +529,8 @@
       text-decoration: none;
       color: var(--ink);
       overflow: hidden;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
       transition: transform 0.55s var(--ease-spring), box-shadow 0.55s var(--ease-out);
       box-shadow: 0 6px 0 rgba(0, 0, 0, 0.12);
     }
@@ -929,12 +939,15 @@
       background: rgba(244, 237, 224, 0.06);
       border: 1px solid rgba(244, 237, 224, 0.16);
       border-radius: 16px;
+      min-height: 84px;
       padding: 16px 12px;
       cursor: pointer;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 8px;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
       transition: transform 0.4s var(--ease-spring), border-color 0.3s, background 0.3s;
     }
 
@@ -1147,6 +1160,26 @@
         gap: 8px;
       }
 
+      .site-header {
+        gap: 12px;
+      }
+
+      .brand {
+        font-size: 19px;
+      }
+
+      .header-cta {
+        padding-inline: 16px;
+      }
+
+      .hero-actions {
+        width: 100%;
+      }
+
+      .hero-actions .btn {
+        flex: 1 1 100%;
+      }
+
       .hero-visual {
         order: -1;
       }
@@ -1163,12 +1196,90 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
+      .flavor-btn {
+        min-height: 76px;
+      }
+
       .collections-grid {
         grid-template-columns: 1fr;
       }
 
       .collection-card {
         min-height: 300px;
+      }
+
+      .footer-nav a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .site-header {
+        padding-inline: 14px;
+        gap: 10px;
+      }
+
+      .brand {
+        font-size: 18px;
+      }
+
+      .header-cta {
+        padding-inline: 12px;
+        font-size: 13.5px;
+        white-space: nowrap;
+      }
+
+      .section {
+        padding-inline: 16px;
+      }
+
+      .hero-title {
+        font-size: clamp(48px, 18vw, 68px);
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+        white-space: normal;
+      }
+
+      .collections-grid,
+      .flavor-row {
+        grid-template-columns: 1fr;
+      }
+
+      .collection-card {
+        min-height: 260px;
+        padding: 22px 20px 24px;
+      }
+
+      .player {
+        padding: 24px 18px;
+        border-radius: 22px;
+      }
+
+      .flavor-btn {
+        min-height: 68px;
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .final-cta {
+        border-radius: 24px;
+      }
+
+      .final-cta h2 {
+        font-size: clamp(32px, 13vw, 48px);
+      }
+
+      .footer-nav {
+        gap: 12px 18px;
+      }
+
+      .footer-credit {
+        font-size: 13px;
       }
     }
 
@@ -1237,12 +1348,12 @@
       <span class="float-note float-note--3" style="inset-block-start: 28%; inset-inline-end: 8%;" aria-hidden="true">♩</span>
 
       <div class="hero-copy rv">
-        <span class="hero-kicker">ממתקים בוטיק בעבודת יד</span>
+        <span class="hero-kicker">ממתקי בוטיק בעבודת יד</span>
         <h1 class="hero-title">ממתקים<br />עם <em>קצב</em></h1>
-        <p class="hero-sub">מותג בוטיק צבעוני לממתקים בעבודת יד, עם טעמים שמרגישים כמו מנגינה.</p>
+        <p class="hero-sub">ממתקי בוטיק בעבודת יד, בטעמים צבעוניים שמרגישים כמו מנגינה קטנה בפה.</p>
         <div class="hero-actions">
-          <a class="btn btn--ink" href="#collections">קולקציות מתוקות <span class="arr" aria-hidden="true">←</span></a>
-          <a class="btn btn--ghost" href="#story">לגלות את הסיפור</a>
+          <a class="btn btn--ink" href="#collections">ראו את הקולקציות <span class="arr" aria-hidden="true">←</span></a>
+          <a class="btn btn--ghost" href="#story">הסיפור שלנו</a>
         </div>
       </div>
 
@@ -1279,32 +1390,32 @@
           <span class="section-kicker">הקולקציות שלנו</span>
           <h2 class="section-title" id="collectionsTitle">קולקציות החתימה</h2>
         </div>
-        <p class="section-lede rv" style="--rv-i: 1">ממתקי אומן בטעמים ייחודיים, שכל אחד מהם פוגע בדיוק בתו הנכון.</p>
+        <p class="section-lede rv" style="--rv-i: 1">ממתקי אומן בטעמים ייחודיים, כל אחד עם אופי וקצב משלו.</p>
       </div>
 
       <div class="collections-grid">
         <a class="collection-card collection-card--berry rv" href="#contact">
           <span class="arr" aria-hidden="true">←</span>
           <h3>הרמוניית פירות יער</h3>
-          <p class="flavor-line">עסיסי. מתוק. נוסטלגי.</p>
+          <p class="flavor-line">עסיסי, מתוק ונוסטלגי.</p>
           <span class="candy-art candy-art--berry" aria-hidden="true"></span>
         </a>
         <a class="collection-card collection-card--citrus rv" style="--rv-i: 1" href="#contact">
           <span class="arr" aria-hidden="true">←</span>
           <h3>קצב הדרים</h3>
-          <p class="flavor-line">חמצמץ. רענן. מרים את המצב רוח.</p>
+          <p class="flavor-line">חמצמץ, רענן ומרים מצב רוח.</p>
           <span class="candy-art candy-art--citrus" aria-hidden="true"></span>
         </a>
         <a class="collection-card collection-card--mango rv" style="--rv-i: 2" href="#contact">
           <span class="arr" aria-hidden="true">←</span>
           <h3>טרופי שמח</h3>
-          <p class="flavor-line">מתוק. אקזוטי. שטוף שמש.</p>
+          <p class="flavor-line">מתוק, אקזוטי ושטוף שמש.</p>
           <span class="candy-art candy-art--mango" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
         </a>
         <a class="collection-card collection-card--mint rv" style="--rv-i: 3" href="#contact">
           <span class="arr" aria-hidden="true">←</span>
           <h3>מנטה מרעננת</h3>
-          <p class="flavor-line">קריר. נקי. מרענן.</p>
+          <p class="flavor-line">קריר, נקי ומרענן.</p>
           <span class="candy-art candy-art--mint" aria-hidden="true"></span>
         </a>
       </div>
@@ -1324,16 +1435,16 @@
         </div>
         <div class="gift-copy rv" style="--rv-i: 1">
           <span class="section-kicker">מארזי מתנה</span>
-          <h2 class="section-title" id="giftTitle">מארזים עם נוכחות</h2>
-          <p class="gift-quote">"מארזים שנראים טוב, מרגישים אישי, וטועמים בלתי נשכח."</p>
-          <p class="gift-desc">כל מארז נארז ביד, עם בחירת טעמים אישית, פתק ברכה בכתב שלכם וסרט שחור שסוגר את העניין באלגנטיות. מתאים לימי הולדת, אירועים, משרדים ולכל מי שמגיע לו רגע מתוק.</p>
+          <h2 class="section-title" id="giftTitle">מארזים שנראים כמו מתנה</h2>
+          <p class="gift-quote">"מארזים שנראים טוב, מרגישים אישיים ונשארים בזיכרון."</p>
+          <p class="gift-desc">כל מארז נארז ביד, עם בחירת טעמים אישית, פתק ברכה במילים שלכם וסרט שחור שנותן סגירה אלגנטית. מתאים לימי הולדת, אירועים, משרדים ולכל מי שמגיע לו רגע מתוק.</p>
           <ul class="gift-tags">
             <li>ימי הולדת</li>
             <li>אירועים</li>
             <li>מתנות למשרד</li>
             <li>רגעים קטנים</li>
           </ul>
-          <a class="btn btn--cream" href="#contact">להרכבת מארז <span class="arr" aria-hidden="true">←</span></a>
+          <a class="btn btn--cream" href="#contact">להרכיב מארז <span class="arr" aria-hidden="true">←</span></a>
         </div>
       </div>
     </section>
@@ -1343,7 +1454,7 @@
       <div class="story rv">
         <span class="note-mark" aria-hidden="true">♬</span>
         <h2 id="storyTitle">מנגינת ממתקים נולדה מהרצון להפוך רגע קטן <mark>לחוויה צבעונית, טעימה ושמחה.</mark></h2>
-        <p>התחלנו במטבח ביתי עם סיר אחד, הרבה סבלנות ופלייליסט טוב. היום כל אצווה עדיין נרקחת ביד, בקטן, מחומרי גלם אמיתיים, ועדיין עם אותו פלייליסט. כי ממתק טוב, כמו שיר טוב, מרגישים אותו מהשנייה הראשונה.</p>
+        <p>הכול התחיל במטבח ביתי, עם סיר אחד, הרבה סבלנות ופלייליסט טוב. גם היום כל אצווה נרקחת ביד ובכמות קטנה, מחומרי גלם אמיתיים ועם אותו קצב. כי ממתק טוב, כמו שיר טוב, מרגישים מהשנייה הראשונה.</p>
       </div>
     </section>
 
@@ -1355,13 +1466,13 @@
             <span class="section-kicker">חוויה מתוקה</span>
             <h3 id="experienceTitle">נגנו את הטעם</h3>
           </div>
-          <p>לכל טעם יש תו משלו. לחצו ותשמעו.</p>
+          <p>לכל טעם יש תו משלו. לחצו על טעם ותשמעו.</p>
         </div>
 
         <div class="flavor-row" role="group" aria-label="בחירת טעם להשמעה">
           <button class="flavor-btn" type="button" data-note="523.25" data-color="#e94f7e" data-name="הרמוניית פירות יער" data-line="מתוק ועמוק, כמו תו פתיחה." aria-pressed="false" style="--fl: #e94f7e;"><i aria-hidden="true"></i>פירות יער</button>
           <button class="flavor-btn" type="button" data-note="659.25" data-color="#ef8722" data-name="קצב הדרים" data-line="חמצמץ וקופצני, הביט של המארז." aria-pressed="false" style="--fl: #ef8722;"><i aria-hidden="true"></i>הדרים</button>
-          <button class="flavor-btn" type="button" data-note="783.99" data-color="#f2bc1b" data-name="טרופי שמח" data-line="שמש בקול גבוה, בלי דאחקות." aria-pressed="false" style="--fl: #f2bc1b;"><i aria-hidden="true"></i>טרופי</button>
+          <button class="flavor-btn" type="button" data-note="783.99" data-color="#f2bc1b" data-name="טרופי שמח" data-line="שמש בקול גבוה, בלי להתאמץ." aria-pressed="false" style="--fl: #f2bc1b;"><i aria-hidden="true"></i>טרופי</button>
           <button class="flavor-btn" type="button" data-note="987.77" data-color="#a4c93f" data-name="מנטה מרעננת" data-line="צליל קריר שנשאר אחרי הסיום." aria-pressed="false" style="--fl: #a4c93f;"><i aria-hidden="true"></i>מנטה</button>
         </div>
 
@@ -1379,7 +1490,7 @@
         <span class="candy-dot candy-dot--1" aria-hidden="true"></span>
         <span class="candy-dot candy-dot--2" aria-hidden="true"></span>
         <h2 id="ctaTitle">להכניס קצת קצב<br />למתוק שלכם</h2>
-        <p>מרכיבים מארז אישי, עונים מהר, ואורזים הכל ביד.</p>
+        <p>מרכיבים מארז אישי, עונים מהר ואורזים הכל ביד.</p>
         <div class="hero-actions" style="justify-content: center;">
           <a class="btn btn--ink" href="#" onclick="return false;" aria-disabled="true">להזמנת מארז <span class="arr" aria-hidden="true">←</span></a>
           <a class="btn btn--ghost" style="color: #fff; border-color: rgba(255,255,255,0.55);" href="#" onclick="return false;" aria-disabled="true">צור קשר</a>
