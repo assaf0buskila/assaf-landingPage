@@ -579,7 +579,7 @@
 
     @media (pointer: coarse) and (prefers-reduced-motion: no-preference) {
       html:not(.a11y-reduce-motion) .hero-bg {
-        animation: heroBgFloat 10s ease-in-out infinite;
+        animation: heroBgFloat 10s cubic-bezier(0.37, 0, 0.63, 1) infinite;
       }
     }
 
@@ -593,6 +593,22 @@
       to {
         opacity: 1;
         transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+
+    /* Showcase entrance: rise + fade + blur clear + a slight scale settle.
+       The final frame matches the card's resting transform (perspective + 0deg
+       tilt) so the JS pointer-tilt picks up seamlessly when the fill releases. */
+    @keyframes showcaseCardIn {
+      from {
+        opacity: 0;
+        transform: perspective(900px) translateY(2rem) scale(0.965);
+        filter: blur(12px);
+      }
+      to {
+        opacity: 1;
+        transform: perspective(900px) rotateX(0deg) rotateY(0deg) scale(1);
         filter: blur(0);
       }
     }
@@ -954,32 +970,64 @@
         inset 0 0 0 1px rgba(0, 0, 0, 0.28),
         0 2px 12px rgba(0, 0, 0, 0.55),
         0 30px 70px rgba(0, 0, 0, 0.46);
+      /* pointer-tilt channel: JS sets --rx/--ry (deg) and --mx/--my (spotlight %).
+         transform-style preserve-3d keeps the perspective crisp; will-change is
+         only hinted on hover (added below) so idle cards stay cheap. */
+      --rx: 0deg;
+      --ry: 0deg;
+      --mx: 50%;
+      --my: 50%;
+      transform-style: preserve-3d;
+      transform:
+        perspective(900px)
+        rotateX(var(--rx))
+        rotateY(var(--ry));
       transition:
-        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-        border-color 0.4s,
-        box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-      /* backwards (not both): once the entrance ends the fill releases the
-         transform channel, so the JS pointer-tilt can take over */
-      animation: heroContentIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.15s backwards;
+        transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.4s var(--ease),
+        box-shadow 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      /* Cinematic entrance: rise + fade + slight scale, staggered via --i.
+         backwards = once it ends the fill releases the transform channel so the
+         JS pointer-tilt takes over. transform-origin keeps the 3D rotation centered. */
+      transform-origin: center center;
+      animation: showcaseCardIn 1.15s cubic-bezier(0.22, 1, 0.36, 1) calc(0.15s + var(--i, 0) * 0.14s) backwards;
     }
 
-    .hero-showcase-card:nth-child(2) {
-      animation-delay: 0.32s;
-    }
+    /* index fallback if JS hasn't set --i yet (matches the old hard-coded stagger) */
+    .hero-showcase-card:nth-child(2) { --i: 1; }
+    .hero-showcase-card:nth-child(3) { --i: 2; }
 
-    .hero-showcase-card:nth-child(3) {
-      animation-delay: 0.46s;
-    }
-
-    /* Specular sheen: sweeps once across the card on hover */
+    /* Specular sheen: sweeps once across the card on hover (one-way streak) */
     .hero-showcase-card::after {
       content: '';
       position: absolute;
       inset: 0;
+      z-index: 3;
       background:
         linear-gradient(115deg, transparent 42%, rgba(255, 255, 255, 0.075) 50%, transparent 58%),
         radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.12), transparent 32%);
       transform: translateX(-160%);
+      pointer-events: none;
+    }
+
+    /* Cursor-following spotlight: a soft radial bloom that tracks --mx/--my and
+       fades in on hover. Reuses the card's white-alpha glow aesthetic; sits above
+       the image but below the sheen streak. soft-light lifts highlights, not flat white.
+       ellipse + % sizing is card-relative (circle radius can't take %). */
+    .hero-showcase-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: radial-gradient(
+        ellipse 65% 60% at var(--mx) var(--my),
+        rgba(255, 255, 255, 0.16),
+        rgba(255, 255, 255, 0.05) 42%,
+        transparent 68%
+      );
+      mix-blend-mode: soft-light;
+      opacity: 0;
+      transition: opacity 0.4s var(--ease);
       pointer-events: none;
     }
 
@@ -1078,13 +1126,20 @@
     }
 
     @media (hover: hover) and (pointer: fine) {
-      /* transform is owned by the JS pointer-tilt; hover handles light + depth */
+      /* transform is owned by the JS pointer-tilt; hover handles light + depth.
+         will-change is scoped to hover so idle/touch cards never pay for a layer. */
       .hero-showcase-card:hover {
-        border-color: rgba(255, 255, 255, 0.26);
+        border-color: rgba(255, 255, 255, 0.30);
         box-shadow:
-          inset 0 1px 0 rgba(255, 255, 255, 0.12),
-          0 4px 14px rgba(0, 0, 0, 0.5),
-          0 42px 90px rgba(0, 0, 0, 0.5);
+          inset 0 1px 0 rgba(255, 255, 255, 0.14),
+          0 6px 18px rgba(0, 0, 0, 0.55),
+          0 52px 104px rgba(0, 0, 0, 0.55);
+        will-change: transform;
+      }
+
+      /* spotlight blooms in while the pointer is over the card */
+      .hero-showcase-card:hover::before {
+        opacity: 1;
       }
 
       /* one-way sweep: animates in on hover, snaps back silently on leave */
@@ -1119,11 +1174,20 @@
     @media (prefers-reduced-motion: reduce) {
       .hero-showcase-card {
         animation: none;
+        transform: none;
+      }
+      .hero-showcase-card::before {
+        display: none;
       }
     }
 
     html.a11y-reduce-motion .hero-showcase-card {
       animation: none;
+      transform: none;
+    }
+
+    html.a11y-reduce-motion .hero-showcase-card::before {
+      display: none;
     }
 
     /* ============================================================
@@ -2128,7 +2192,7 @@
     .about-tap-hint__arrow-wrap {
       display: inline-flex;
       flex-shrink: 0;
-      animation: aboutHintNudgeUp 1.35s ease-in-out infinite;
+      animation: aboutHintNudgeUp 1.35s cubic-bezier(0.45, 0, 0.55, 1) infinite;
     }
 
     .about-tap-hint__arrow {
@@ -3421,7 +3485,43 @@
       font-weight: 600;
       user-select: none;
       color: rgba(255, 255, 255, 0.88);
-      animation: hintPulse 2.8s ease-in-out infinite;
+      animation: hintPulse 2.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    /* Obvious, tappable skip control (>=44px touch target, RTL-safe).
+       Replaces the implicit "tap" hint with a real focusable button. */
+    .screen-break-overlay__skip {
+      position: relative;
+      z-index: 3;
+      margin-top: 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      min-height: 44px;
+      padding: 11px 26px;
+      font-family: inherit;
+      font-size: clamp(13px, 3.4vw, 16px);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      user-select: none;
+      border-radius: 999px;
+      border: 1px solid rgba(223, 122, 254, 0.45);
+      background: rgba(129, 74, 200, 0.16);
+      color: rgba(255, 255, 255, 0.92);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .screen-break-overlay__skip:hover {
+      background: rgba(129, 74, 200, 0.28);
+      border-color: rgba(223, 122, 254, 0.7);
+    }
+    .screen-break-overlay__skip:active {
+      transform: scale(0.97);
+    }
+    .screen-break-overlay__skip:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(223, 122, 254, 0.55);
     }
 
     @supports ((-webkit-background-clip: text) or (background-clip: text)) {
@@ -4828,14 +4928,76 @@
 
     html.a11y-reduce-motion .neon-bg-layer::after { animation: none !important; }
     html.a11y-reduce-motion .screen-break-overlay__hint { animation: none !important; }
+
+    /* ============================================================
+       CONSOLIDATED REDUCED-MOTION — calm, static experience.
+       Catch-all; complements the scattered per-component rules above.
+       Genuinely-new coverage here: the 3 infinite aurora splash blobs.
+       ============================================================ */
+    @media (prefers-reduced-motion: reduce) {
+      /* Infinite / looping decorative animations -> off */
+      .hero-bg,
+      .ambient-glow__lobe,
+      .ambient-glow__grain,
+      .about-tap-hint__arrow-wrap,
+      .screen-break-overlay__blob--a,
+      .screen-break-overlay__blob--b,
+      .screen-break-overlay__blob--c,
+      .screen-break-overlay__hint {
+        animation: none !important;
+      }
+      /* One-shot intros / feedback -> settle instantly, no transform */
+      .hero-content,
+      .hero-showcase-card,
+      .hero-stagger,
+      .testi-fade-in,
+      .testi-fade-out,
+      .screen-break-overlay__hint--bump {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+      }
+      /* Scroll-reveal -> appear in final state, near-instant, no travel */
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0ms !important;
+      }
+      /* Gooey morph: drop the SVG filter so text is crisp & static */
+      .screen-break-goo-text {
+        filter: none !important;
+      }
+      /* Hover/scroll micro-motion damping transitions -> instant */
+      .float-contact,
+      .float-contact__label,
+      .sticky-cta,
+      .work-img,
+      .about-photo {
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
+  <script>
+    // No-FOUC splash skip: returning visitors (same session) and reduced-motion
+    // users never see the entry overlay - reveal the site before first paint by
+    // reusing the existing .site-revealed class (which display:none's the overlay).
+    try {
+      var splashSkip =
+        sessionStorage.getItem('assafSplashSeen') === '1' ||
+        (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) ||
+        localStorage.getItem('a11yReduceMotion') === '1';
+      if (splashSkip) document.documentElement.classList.add('site-revealed');
+    } catch (e) {}
+  </script>
 </head>
 
 <body>
 
   <!-- ENTRY OVERLAY, Tubes WebGL + Gooey "assaf web is here" morph · single tap to enter -->
-  <div class="screen-break-overlay" id="screenBreak" role="button" tabindex="0"
-    aria-label="Tap to enter the site">
+  <div class="screen-break-overlay" id="screenBreak">
     <!-- Tubes WebGL canvas (JS fills this) -->
     <canvas id="tubesCanvas" class="screen-break-overlay__canvas" aria-hidden="true"></canvas>
     <!-- SVG goo filter (hidden, referenced by CSS filter: url(#goo-morph)) -->
@@ -4860,7 +5022,8 @@
       <div class="screen-break-overlay__blob screen-break-overlay__blob--b"></div>
       <div class="screen-break-overlay__blob screen-break-overlay__blob--c"></div>
     </div>
-    <span class="screen-break-overlay__hint" id="breakTapHint" data-en="tap" data-he="הקש">הקש</span>
+    <button type="button" class="screen-break-overlay__skip" id="breakTapHint"
+      data-en="Enter" data-he="כניסה לאתר">כניסה לאתר</button>
   </div>
 
   <a href="#main-content" class="skip-link" data-en="Skip to main content" data-he="דלג לתוכן הראשי">דלג לתוכן הראשי</a>
@@ -6321,20 +6484,46 @@
         }, { passive: true });
       }
 
-      // Pointer micro-tilt on the showcase cards; the card's transform
-      // transition damps the motion so it glides instead of tracking 1:1.
-      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      // Pointer-driven 3D tilt + cursor spotlight on the showcase cards.
+      // Writes CSS custom props (--rx/--ry/--mx/--my) instead of a transform
+      // string, so the CSS owns the transform and the entrance/reset transitions
+      // damp the motion. rAF-throttled: one frame's worth of pointer math max.
+      // Gated to fine-hover pointers AND not-reduced-motion, so touch and
+      // reduced-motion users get the clean static card.
+      if (
+        window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
+        !motionReduced()
+      ) {
+        const MAX_TILT = 6.5; // deg — premium, not gimmicky
         document.querySelectorAll('.hero-showcase-card').forEach(card => {
+          let raf = null;
+          let nx = 0, ny = 0; // normalised pointer, -0.5..0.5
+
+          const apply = () => {
+            raf = null;
+            // rotateX follows vertical (inverted), rotateY follows horizontal.
+            // Direction-agnostic pixel math => RTL-safe.
+            card.style.setProperty('--rx', (-ny * MAX_TILT).toFixed(2) + 'deg');
+            card.style.setProperty('--ry', (nx * MAX_TILT).toFixed(2) + 'deg');
+            card.style.setProperty('--mx', ((nx + 0.5) * 100).toFixed(1) + '%');
+            card.style.setProperty('--my', ((ny + 0.5) * 100).toFixed(1) + '%');
+          };
+
           card.addEventListener('pointermove', e => {
-            if (motionReduced()) return;
+            if (motionReduced()) return; // honor a runtime a11y toggle
             const r = card.getBoundingClientRect();
-            const px = (e.clientX - r.left) / r.width - 0.5;
-            const py = (e.clientY - r.top) / r.height - 0.5;
-            card.style.transform =
-              `perspective(720px) translateY(-4px) rotateX(${(-py * 2.4).toFixed(2)}deg) rotateY(${(px * 2.4).toFixed(2)}deg)`;
-          });
+            nx = (e.clientX - r.left) / r.width - 0.5;
+            ny = (e.clientY - r.top) / r.height - 0.5;
+            if (raf === null) raf = requestAnimationFrame(apply);
+          }, { passive: true });
+
           card.addEventListener('pointerleave', () => {
-            card.style.transform = '';
+            if (raf !== null) { cancelAnimationFrame(raf); raf = null; }
+            // Reset to rest; the transform transition glides it back.
+            card.style.setProperty('--rx', '0deg');
+            card.style.setProperty('--ry', '0deg');
+            card.style.setProperty('--mx', '50%');
+            card.style.setProperty('--my', '50%');
           });
         });
       }
@@ -6399,8 +6588,27 @@
         const breakTapHint = document.getElementById('breakTapHint');
         if (!breakOverlay) return;
 
+        // Soften the gate: skip entirely for reduced-motion users and returning
+        // visitors (same session), so the splash never taxes LCP / conversion
+        // after the first-visit wow. The pre-paint head script already set
+        // .site-revealed in these cases (no FOUC); here we finish the job.
+        const SPLASH_SEEN_KEY = 'assafSplashSeen';
+        let splashSeen = false;
+        try { splashSeen = sessionStorage.getItem(SPLASH_SEEN_KEY) === '1'; } catch (e) {}
+
+        if (motionReduced() || splashSeen) {
+          // Never lock the site, never import Three.js - reveal immediately.
+          document.documentElement.classList.add('site-revealed');
+          breakOverlay.remove();
+          return;
+        }
+
+        // First qualifying visit: mark seen so the next navigation skips the gate.
+        try { sessionStorage.setItem(SPLASH_SEEN_KEY, '1'); } catch (e) {}
+
         document.documentElement.classList.add('site-locked');
         let dismissed = false;
+        let autoDismissTimer = null;
 
         // ── Gooey text morph ──────────────────────────────────────────
         const TEXTS = ['ASSAF WEB', 'IS', 'HERE'];
@@ -6508,6 +6716,7 @@
         function finishSplash() {
           if (dismissed) return;
           dismissed = true;
+          if (autoDismissTimer) { clearTimeout(autoDismissTimer); autoDismissTimer = null; }
           if (gooRaf) cancelAnimationFrame(gooRaf);
           breakOverlay.classList.add('shattered');
           document.documentElement.classList.remove('site-locked');
@@ -6535,6 +6744,18 @@
         breakOverlay.addEventListener('keydown', e => {
           if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); bumpTapHint(); finishSplash(); }
         });
+
+        // Safety net: never trap a visitor behind the gate (esp. mobile, where the
+        // tap target may be missed). Auto-reveal after 6s; cleared on manual dismiss.
+        autoDismissTimer = setTimeout(finishSplash, 6000);
+
+        // The skip button is the primary, auto-focused affordance for keyboard / SR.
+        if (breakTapHint) {
+          breakTapHint.addEventListener('click', e => { e.stopPropagation(); bumpTapHint(); finishSplash(); });
+          requestAnimationFrame(() => {
+            try { breakTapHint.focus({ preventScroll: true }); } catch (e) { breakTapHint.focus(); }
+          });
+        }
       })();
 
       // 11. About plasma shader removed (per user request, 2026-05-24).
