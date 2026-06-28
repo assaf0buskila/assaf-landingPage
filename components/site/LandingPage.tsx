@@ -262,8 +262,13 @@ function TiltProjectCard({
           target={project.siteUrl.startsWith("http") ? "_blank" : undefined}
           rel={project.siteUrl.startsWith("http") ? "noreferrer" : undefined}
           aria-label={`כניסה לאתר ${project.title}`}
+          title={`כניסה לאתר ${project.title}`}
           className="project-phone-hit"
-        />
+        >
+          <span className="project-open-cue" aria-hidden="true">
+            <ArrowUpLeft size={17} strokeWidth={2.35} />
+          </span>
+        </a>
       </div>
 
     </motion.article>
@@ -420,7 +425,7 @@ export function LandingPage() {
       <main id="top" className="site-flow relative overflow-hidden pb-28">
         <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-6 md:pt-5">
           <div className="mx-auto flex w-full max-w-6xl items-center justify-between rounded-full border border-white/80 bg-white/80 px-3 py-2 shadow-soft backdrop-blur-2xl md:px-4">
-            <a href="#top" className="flex items-center gap-3">
+            <a href="#top" className="site-brand flex items-center gap-3">
               <span className="grid h-10 w-10 place-items-center rounded-full bg-navy text-sm font-black text-white">
                 אב
               </span>

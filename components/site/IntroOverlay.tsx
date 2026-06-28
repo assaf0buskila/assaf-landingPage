@@ -46,11 +46,11 @@ export function IntroOverlay() {
 
       <div className="intro-overlay__wash" />
       <div className="intro-overlay__content">
-        <h1 className="intro-overlay__title" aria-label="assaf web is here">
+        <p className="intro-overlay__title" aria-label="assaf web is here">
           <span>assaf web</span>
           <span>is here</span>
-        </h1>
-        <button type="button" className="intro-overlay__button">
+        </p>
+        <button type="button" className="intro-overlay__button" aria-label="כניסה לאתר של אסף">
           כניסה לאתר
         </button>
       </div>

@@ -33,6 +33,17 @@
     </image:image>
   </url>
   <url>
+    <loc>https://www.assafweb.com/candy/</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.assafweb.com/assets/candy-hero.png</image:loc>
+      <image:title>מנגינת ממתקים</image:title>
+      <image:caption>אתר קונספט למותג ממתקים בוטיק</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://www.assafweb.com/pricing.md</loc>
     <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>

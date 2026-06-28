@@ -593,10 +593,42 @@ textarea {
   top: 50%;
   right: 50%;
   z-index: 5;
+  display: grid;
   width: min(74vw, 310px);
   aspect-ratio: 9 / 18.7;
   border-radius: 42px;
+  place-items: end center;
+  padding: 0 0 1.35rem;
   transform: translate(50%, -50%);
+}
+
+.project-phone-hit:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.34);
+  outline-offset: 8px;
+}
+
+.project-open-cue {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--navy);
+  box-shadow: 0 14px 34px rgba(47, 95, 147, 0.16);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 180ms ease, transform 180ms ease, background 180ms ease;
+  backdrop-filter: blur(16px);
+}
+
+.project-phone-hit:hover .project-open-cue,
+.project-phone-hit:focus-visible .project-open-cue {
+  background: rgba(255, 255, 255, 0.9);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .project-phone-screen {
@@ -889,6 +921,8 @@ textarea {
 .btn-secondary:focus-visible,
 .dock-link:focus-visible,
 .nav-link:focus-visible,
+.site-brand:focus-visible,
+.contact-call:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
   outline: 3px solid rgba(37, 99, 235, 0.26);
@@ -1574,6 +1608,11 @@ textarea:focus-visible {
     animation: mobile-blue-bloom 3.6s ease-in-out infinite;
   }
 
+  .project-open-cue {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   .story-pin {
     padding-top: 6.5rem;
   }
@@ -1593,6 +1632,10 @@ textarea:focus-visible {
 }
 
 @media (max-width: 640px) {
+  .contact-section {
+    padding-bottom: 9.5rem;
+  }
+
   .capability-grid {
     grid-template-columns: 1fr;
   }

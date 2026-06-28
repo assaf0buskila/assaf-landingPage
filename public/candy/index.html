@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>מנגינת ממתקים · ממתקי בוטיק בעבודת יד</title>
+  <meta name="description"
+    content="מנגינת ממתקים, מותג בוטיק צבעוני לממתקי עבודת יד. קולקציות טעמים, מארזי מתנה וחוויה מתוקה עם קצב. פרויקט קונספט מאת אסף בוסקילה." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.assafweb.com/candy/" />
+  <meta property="og:title" content="מנגינת ממתקים · ממתקים עם קצב" />
+  <meta property="og:description" content="מותג בוטיק צבעוני לממתקי עבודת יד, עם טעמים שמרגישים כמו מנגינה קטנה בפה." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.assafweb.com/candy/" />
+  <meta property="og:image" content="https://www.assafweb.com/assets/candy-hero.png" />
+  <meta property="og:locale" content="he_IL" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="image" href="/assets/candy-hero.avif" type="image/avif" fetchpriority="high" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800;900&family=Assistant:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      /* matched to the hero photo's background so the image blends seamlessly */
+      --cream: #f1e1cb;
+      --cream-2: #e8d4b6;
+      --ink: #141110;
+      --ink-2: #232020;
+      --berry: #e94f7e;
+      --berry-soft: #f6c9d4;
+      --citrus: #ef8722;
+      --citrus-soft: #f7b066;
+      --mango: #f2bc1b;
+      --mint: #a4c93f;
+      --mint-deep: #6f9c2e;
+      --text-on-cream: #1a1614;
+      --muted-on-cream: rgba(26, 22, 20, 0.64);
+      --text-on-ink: #f4ede0;
+      --muted-on-ink: rgba(244, 237, 224, 0.62);
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --font-display: "Rubik", "Assistant", sans-serif;
+      --font-body: "Assistant", "Rubik", sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--text-on-cream);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: clip;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--berry);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      inset-inline-start: -9999px;
+      top: 12px;
+      z-index: 300;
+      background: var(--ink);
+      color: var(--cream);
+      padding: 10px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .skip-link:focus {
+      inset-inline-start: 12px;
+    }
+
+    /* ── Reveal system ─────────────────────────── */
+    .rv {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out);
+      transition-delay: calc(var(--rv-i, 0) * 90ms);
+    }
+
+    .rv.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── Header ─────────────────────────── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px clamp(20px, 4vw, 56px);
+      background: color-mix(in srgb, var(--cream) 86%, transparent);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(20, 17, 16, 0.08);
+    }
+
+    .brand {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 21px;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      line-height: 1.05;
+    }
+
+    .brand .note {
+      color: var(--berry);
+      font-size: 24px;
+      transform: rotate(12deg);
+    }
+
+    .main-nav {
+      display: flex;
+      gap: clamp(14px, 2.4vw, 34px);
+    }
+
+    .main-nav a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15.5px;
+      color: var(--muted-on-cream);
+      transition: color 0.25s;
+    }
+
+    .main-nav a:hover {
+      color: var(--text-on-cream);
+    }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--ink);
+      color: var(--cream);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14.5px;
+      min-height: 44px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.4s var(--ease-spring), background 0.25s;
+    }
+
+    .header-cta:hover {
+      transform: translateY(-2px);
+      background: var(--berry);
+    }
+
+    /* ── Hero ─────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: min(92vh, 860px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(20px, 4vw, 60px);
+      padding: clamp(28px, 5vh, 64px) clamp(20px, 4vw, 56px) clamp(48px, 8vh, 96px);
+      overflow: clip;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 3;
+      max-width: 640px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      color: var(--muted-on-cream);
+      margin-block-end: 22px;
+    }
+
+    .hero-kicker::before {
+      content: '';
+      width: 34px;
+      height: 2px;
+      background: var(--berry);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(54px, 9.5vw, 128px);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      margin-block-end: 26px;
+    }
+
+    .hero-title em {
+      font-style: normal;
+      color: var(--berry);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-title em::after {
+      content: '';
+      position: absolute;
+      inset-inline: 2%;
+      bottom: 0.04em;
+      height: 0.12em;
+      background: var(--mango);
+      z-index: -1;
+      border-radius: 999px;
+      transform: scaleX(0);
+      transform-origin: 100% 50%;
+      transition: transform 0.9s var(--ease-out) 0.7s;
+    }
+
+    .rv.in .hero-title em::after {
+      transform: scaleX(1);
+    }
+
+    .hero-sub {
+      font-size: clamp(17px, 1.8vw, 21px);
+      color: var(--muted-on-cream);
+      max-width: 46ch;
+      margin-block-end: 34px;
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      min-height: 50px;
+      padding: 16px 30px;
+      border-radius: 999px;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.45s var(--ease-spring), box-shadow 0.45s var(--ease-out), background 0.3s, color 0.3s;
+    }
+
+    .btn--ink {
+      background: var(--ink);
+      color: var(--cream);
+      box-shadow: 0 14px 30px rgba(20, 17, 16, 0.18);
+    }
+
+    .btn--ink:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px rgba(20, 17, 16, 0.24);
+    }
+
+    .btn--ghost {
+      color: var(--text-on-cream);
+      padding-inline: 8px;
+      border-radius: 0;
+      border-bottom: 2px solid rgba(20, 17, 16, 0.3);
+      padding-block: 6px;
+    }
+
+    .btn--ghost:hover {
+      border-color: var(--ink);
+    }
+
+    .btn .arr {
+      transition: transform 0.35s var(--ease-out);
+    }
+
+    .btn:hover .arr {
+      transform: translateX(-5px);
+    }
+
+    .hero-stamp {
+      position: absolute;
+      z-index: 3;
+      inset-block-end: clamp(20px, 5vh, 48px);
+      inset-inline-start: clamp(20px, 4vw, 56px);
+      width: 104px;
+      height: 104px;
+      display: grid;
+      place-items: center;
+      color: var(--berry);
+      animation: stampSpin 22s linear infinite;
+    }
+
+    .hero-stamp svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    @keyframes stampSpin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* hero visual */
+    .hero-visual {
+      position: relative;
+      z-index: 2;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+    }
+
+    /* the photo's cream matches the page cream, so the candies float
+       directly on the page with no visible frame */
+    .hero-visual img {
+      width: 100%;
+      height: auto;
+      animation: heroFloat 9s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroFloat {
+      from {
+        transform: translateY(-8px);
+      }
+
+      to {
+        transform: translateY(10px);
+      }
+    }
+
+    /* musical wave behind hero */
+    .hero-wave {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    .hero-wave path {
+      fill: none;
+      stroke: rgba(20, 17, 16, 0.1);
+      stroke-width: 1.6;
+      stroke-dasharray: 6 10;
+      animation: waveDash 30s linear infinite;
+    }
+
+    @keyframes waveDash {
+      to {
+        stroke-dashoffset: -640;
+      }
+    }
+
+    .float-note {
+      position: absolute;
+      z-index: 1;
+      font-size: clamp(18px, 2.4vw, 30px);
+      color: var(--berry);
+      opacity: 0.5;
+      animation: noteDrift 8s ease-in-out infinite alternate;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .float-note--2 {
+      color: var(--citrus);
+      animation-duration: 11s;
+      animation-delay: -4s;
+    }
+
+    .float-note--3 {
+      color: var(--mint-deep);
+      animation-duration: 9.5s;
+      animation-delay: -7s;
+    }
+
+    @keyframes noteDrift {
+      from {
+        transform: translateY(-12px) rotate(-8deg);
+      }
+
+      to {
+        transform: translateY(14px) rotate(10deg);
+      }
+    }
+
+    /* ── Marquee ─────────────────────────── */
+    .marquee {
+      background: var(--ink);
+      color: var(--cream);
+      overflow: hidden;
+      padding-block: 14px;
+      border-block: 1px solid var(--ink);
+    }
+
+    .marquee__track {
+      display: flex;
+      gap: 48px;
+      width: max-content;
+      animation: marqueeMove 26s linear infinite;
+    }
+
+    .marquee__track span {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .marquee__track .dot {
+      color: var(--berry);
+    }
+
+    @keyframes marqueeMove {
+      to {
+        transform: translateX(50%);
+      }
+    }
+
+    /* ── Sections shared ─────────────────────────── */
+    .section {
+      padding: clamp(64px, 11vh, 130px) clamp(20px, 4vw, 56px);
+    }
+
+    .section--ink {
+      background: var(--ink);
+      color: var(--text-on-ink);
+    }
+
+    .section-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      max-width: 1320px;
+      margin: 0 auto clamp(34px, 6vh, 64px);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(34px, 5.4vw, 68px);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      max-width: 14ch;
+    }
+
+    .section-kicker {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--berry);
+      margin-block-end: 14px;
+    }
+
+    .section-lede {
+      max-width: 36ch;
+      color: var(--muted-on-ink);
+      font-weight: 600;
+    }
+
+    .section--cream .section-lede {
+      color: var(--muted-on-cream);
+    }
+
+    /* ── Collections ─────────────────────────── */
+    .collections-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(14px, 1.8vw, 24px);
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+
+    .collection-card {
+      position: relative;
+      border-radius: 22px;
+      padding: 26px 24px 28px;
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: var(--ink);
+      overflow: hidden;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.55s var(--ease-spring), box-shadow 0.55s var(--ease-out);
+      box-shadow: 0 6px 0 rgba(0, 0, 0, 0.12);
+    }
+
+    .collection-card:hover {
+      transform: translateY(-8px) rotate(-0.6deg);
+      box-shadow: 0 26px 44px rgba(0, 0, 0, 0.32);
+    }
+
+    .collection-card--berry {
+      background: var(--berry-soft);
+    }
+
+    .collection-card--citrus {
+      background: var(--citrus);
+    }
+
+    .collection-card--mango {
+      background: var(--mango);
+    }
+
+    .collection-card--mint {
+      background: var(--mint);
+    }
+
+    .collection-card h3 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(20px, 1.8vw, 26px);
+      line-height: 1.1;
+      margin-block-end: 8px;
+    }
+
+    .collection-card .flavor-line {
+      font-weight: 700;
+      font-size: 14px;
+      opacity: 0.74;
+    }
+
+    .collection-card .arr {
+      position: absolute;
+      inset-block-start: 22px;
+      inset-inline-end: 20px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(20, 17, 16, 0.12);
+      font-size: 18px;
+      transition: transform 0.4s var(--ease-spring), background 0.3s;
+    }
+
+    .collection-card:hover .arr {
+      background: var(--ink);
+      color: var(--cream);
+      transform: translateX(-4px);
+    }
+
+    /* CSS candy art */
+    .candy-art {
+      margin-block-start: auto;
+      align-self: center;
+      width: min(72%, 190px);
+      aspect-ratio: 1;
+      position: relative;
+      filter: drop-shadow(0 18px 22px rgba(0, 0, 0, 0.22));
+      transition: transform 0.6s var(--ease-spring);
+    }
+
+    .collection-card:hover .candy-art {
+      transform: rotate(8deg) scale(1.06);
+    }
+
+    /* berry: stacked striped bonbon */
+    .candy-art--berry::before {
+      content: '';
+      position: absolute;
+      inset: 8%;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.85) 0 9%, transparent 11%),
+        repeating-linear-gradient(48deg, #e94f7e 0 14px, #fff0f3 14px 28px);
+    }
+
+    .candy-art--berry::after {
+      content: '';
+      position: absolute;
+      width: 44%;
+      height: 44%;
+      inset-inline-end: -6%;
+      inset-block-end: -2%;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.8) 0 10%, transparent 12%),
+        repeating-linear-gradient(-40deg, #d13c6c 0 9px, #ffd9e2 9px 18px);
+    }
+
+    /* citrus: orange slice */
+    .candy-art--citrus::before {
+      content: '';
+      position: absolute;
+      inset: 6%;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.55) 0 7%, transparent 9%),
+        radial-gradient(circle, #ffd9a8 0 14%, transparent 14.5%),
+        repeating-conic-gradient(from 8deg, #ff9c33 0deg 36deg, #ffe3bd 36deg 45deg),
+        #fff3e0;
+      border: 10px solid #f47b14;
+      box-sizing: border-box;
+    }
+
+    /* mango: gummy cubes */
+    .candy-art--mango {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10%;
+      padding: 6%;
+    }
+
+    .candy-art--mango i {
+      border-radius: 22%;
+      background:
+        radial-gradient(circle at 30% 24%, rgba(255, 255, 255, 0.7) 0 16%, transparent 20%),
+        linear-gradient(145deg, #ffd24d, #f59c0b);
+    }
+
+    .candy-art--mango i:nth-child(2) {
+      transform: rotate(10deg) scale(0.92);
+    }
+
+    .candy-art--mango i:nth-child(3) {
+      transform: rotate(-8deg) scale(0.95);
+    }
+
+    .candy-art--mango i:nth-child(4) {
+      transform: rotate(4deg) scale(0.88);
+    }
+
+    /* mint: striped swirl sphere */
+    .candy-art--mint::before {
+      content: '';
+      position: absolute;
+      inset: 8%;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.9) 0 9%, transparent 11%),
+        repeating-conic-gradient(from 0deg at 50% 50%, #2e7d4f 0deg 24deg, #f2fff5 24deg 48deg);
+    }
+
+    .candy-art--mint::after {
+      content: '';
+      position: absolute;
+      inset: 8%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 50% 50%, transparent 58%, rgba(0, 0, 0, 0.08) 100%);
+    }
+
+    /* ── Gift boxes ─────────────────────────── */
+    .gift {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(28px, 5vw, 80px);
+      align-items: center;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+
+    .gift-visual {
+      position: relative;
+      aspect-ratio: 4 / 3.4;
+      display: grid;
+      place-items: center;
+    }
+
+    .gift-box {
+      position: relative;
+      width: min(76%, 380px);
+      aspect-ratio: 1.25;
+      background: linear-gradient(160deg, #fbf6ea, #ece2cf);
+      border-radius: 14px;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        0 30px 60px rgba(0, 0, 0, 0.5);
+      transform: rotate(-4deg);
+      transition: transform 0.6s var(--ease-spring);
+    }
+
+    .gift-visual:hover .gift-box {
+      transform: rotate(-1deg) translateY(-6px);
+    }
+
+    .gift-box::before {
+      content: '';
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: calc(50% - 7%);
+      width: 14%;
+      background: var(--ink);
+      opacity: 0.92;
+    }
+
+    .gift-box::after {
+      content: '';
+      position: absolute;
+      inset-inline: 0;
+      inset-block-start: calc(38% - 7%);
+      height: 14%;
+      background: var(--ink);
+      opacity: 0.92;
+    }
+
+    .gift-box .bow {
+      position: absolute;
+      inset-inline-start: 50%;
+      inset-block-start: 38%;
+      transform: translate(50%, -50%) rotate(-4deg);
+      font-size: 44px;
+      z-index: 2;
+      filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.35));
+    }
+
+    .gift-box .label {
+      position: absolute;
+      inset-inline-end: 9%;
+      inset-block-end: 10%;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(15px, 1.5vw, 19px);
+      color: var(--ink);
+      transform: rotate(-4deg);
+      line-height: 1.1;
+      text-align: center;
+    }
+
+    .gift-candy {
+      position: absolute;
+      border-radius: 50%;
+      filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.4));
+      animation: noteDrift 9s ease-in-out infinite alternate;
+    }
+
+    .gift-candy--1 {
+      width: 64px;
+      height: 64px;
+      inset-block-start: 6%;
+      inset-inline-start: 8%;
+      background:
+        radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.85) 0 10%, transparent 12%),
+        repeating-conic-gradient(#e94f7e 0deg 28deg, #fff0f3 28deg 56deg);
+    }
+
+    .gift-candy--2 {
+      width: 44px;
+      height: 44px;
+      inset-block-end: 10%;
+      inset-inline-end: 6%;
+      animation-delay: -5s;
+      background:
+        radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.85) 0 10%, transparent 12%),
+        linear-gradient(145deg, #ffd24d, #f59c0b);
+    }
+
+    .gift-candy--3 {
+      width: 34px;
+      height: 34px;
+      inset-block-start: 18%;
+      inset-inline-end: 16%;
+      animation-delay: -2.5s;
+      background:
+        radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.9) 0 12%, transparent 14%),
+        repeating-conic-gradient(#2e7d4f 0deg 30deg, #f2fff5 30deg 60deg);
+    }
+
+    .gift-copy .section-title {
+      margin-block-end: 18px;
+    }
+
+    .gift-quote {
+      font-size: clamp(18px, 2vw, 23px);
+      font-weight: 700;
+      color: var(--text-on-ink);
+      margin-block-end: 14px;
+      max-width: 30ch;
+    }
+
+    .gift-desc {
+      color: var(--muted-on-ink);
+      font-weight: 600;
+      max-width: 44ch;
+      margin-block-end: 30px;
+    }
+
+    .gift-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-block-end: 32px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .gift-tags li {
+      border: 1px solid rgba(244, 237, 224, 0.3);
+      border-radius: 999px;
+      padding: 7px 16px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--muted-on-ink);
+    }
+
+    .btn--cream {
+      background: var(--cream);
+      color: var(--ink);
+    }
+
+    .btn--cream:hover {
+      transform: translateY(-3px);
+      background: var(--berry);
+      color: #fff;
+    }
+
+    /* ── Story ─────────────────────────── */
+    .story {
+      text-align: center;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .story .note-mark {
+      font-size: 34px;
+      color: var(--berry);
+      display: inline-block;
+      margin-block-end: 18px;
+      animation: noteDrift 7s ease-in-out infinite alternate;
+    }
+
+    .story h2 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(26px, 4vw, 46px);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+
+    .story h2 mark {
+      background: linear-gradient(0deg, var(--berry-soft) 42%, transparent 42%);
+      color: inherit;
+      padding-inline: 2px;
+    }
+
+    .story p {
+      margin-block-start: 22px;
+      color: var(--muted-on-cream);
+      font-weight: 600;
+      max-width: 56ch;
+      margin-inline: auto;
+    }
+
+    /* ── Experience: play the flavor ─────────────────────────── */
+    .player {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: var(--ink-2);
+      border: 1px solid rgba(244, 237, 224, 0.1);
+      border-radius: 28px;
+      padding: clamp(28px, 4vw, 56px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 40px 80px rgba(0, 0, 0, 0.4);
+    }
+
+    .player-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-block-end: 30px;
+    }
+
+    .player-head h3 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(22px, 2.6vw, 32px);
+    }
+
+    .player-head p {
+      color: var(--muted-on-ink);
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .flavor-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-block-end: 30px;
+    }
+
+    .flavor-btn {
+      --fl: var(--berry);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 15.5px;
+      color: var(--text-on-ink);
+      background: rgba(244, 237, 224, 0.06);
+      border: 1px solid rgba(244, 237, 224, 0.16);
+      border-radius: 16px;
+      min-height: 84px;
+      padding: 16px 12px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.4s var(--ease-spring), border-color 0.3s, background 0.3s;
+    }
+
+    .flavor-btn i {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--fl);
+    }
+
+    .flavor-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .flavor-btn[aria-pressed="true"] {
+      border-color: var(--fl);
+      background: color-mix(in srgb, var(--fl) 16%, transparent);
+      transform: translateY(-3px);
+    }
+
+    .eq {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 6px;
+      height: 110px;
+      margin-block-end: 18px;
+    }
+
+    .eq i {
+      width: clamp(8px, 1.6vw, 16px);
+      height: 100%;
+      border-radius: 6px 6px 0 0;
+      background: var(--eq-color, var(--berry));
+      transform-origin: bottom;
+      transform: scaleY(0.12);
+      transition: background 0.4s;
+    }
+
+    .eq.playing i {
+      animation: eqBounce 0.85s ease-in-out infinite alternate;
+      animation-delay: calc(var(--i) * -0.11s);
+    }
+
+    @keyframes eqBounce {
+      from {
+        transform: scaleY(0.14);
+      }
+
+      to {
+        transform: scaleY(var(--amp, 0.9));
+      }
+    }
+
+    .player-caption {
+      text-align: center;
+      color: var(--muted-on-ink);
+      font-weight: 600;
+      min-height: 1.6em;
+    }
+
+    .player-caption strong {
+      color: var(--text-on-ink);
+    }
+
+    /* ── Final CTA ─────────────────────────── */
+    .final-cta {
+      position: relative;
+      background:
+        radial-gradient(120% 140% at 85% 0%, rgba(242, 188, 27, 0.35), transparent 52%),
+        radial-gradient(130% 150% at 12% 100%, rgba(164, 201, 63, 0.3), transparent 55%),
+        linear-gradient(140deg, #e94f7e, #d13c6c);
+      color: #fff;
+      text-align: center;
+      border-radius: 34px;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: clamp(56px, 9vh, 110px) clamp(22px, 4vw, 60px);
+      overflow: hidden;
+    }
+
+    .final-cta h2 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(32px, 5.6vw, 72px);
+      line-height: 1.04;
+      letter-spacing: -0.02em;
+      margin-block-end: 18px;
+    }
+
+    .final-cta p {
+      font-weight: 600;
+      opacity: 0.92;
+      margin-block-end: 36px;
+    }
+
+    .final-cta .btn--ink:hover {
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .final-cta .candy-dot {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: noteDrift 8s ease-in-out infinite alternate;
+    }
+
+    .final-cta .candy-dot--1 {
+      width: 70px;
+      height: 70px;
+      inset-block-start: 14%;
+      inset-inline-start: 8%;
+      background:
+        radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.9) 0 10%, transparent 12%),
+        repeating-conic-gradient(#f2bc1b 0deg 30deg, #fff7df 30deg 60deg);
+    }
+
+    .final-cta .candy-dot--2 {
+      width: 44px;
+      height: 44px;
+      inset-block-end: 16%;
+      inset-inline-end: 10%;
+      animation-delay: -4s;
+      background:
+        radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.9) 0 12%, transparent 14%),
+        repeating-conic-gradient(#a4c93f 0deg 28deg, #f3ffe0 28deg 56deg);
+    }
+
+    /* ── Footer ─────────────────────────── */
+    .site-footer {
+      background: var(--ink);
+      color: var(--muted-on-ink);
+      padding: clamp(40px, 7vh, 72px) clamp(20px, 4vw, 56px) 28px;
+    }
+
+    .footer-grid {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 26px;
+      align-items: flex-start;
+      padding-block-end: 30px;
+      border-bottom: 1px solid rgba(244, 237, 224, 0.12);
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 24px;
+      color: var(--text-on-ink);
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-nav a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14.5px;
+      transition: color 0.25s;
+    }
+
+    .footer-nav a:hover {
+      color: var(--text-on-ink);
+    }
+
+    .footer-credit {
+      max-width: 1320px;
+      margin: 22px auto 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13.5px;
+    }
+
+    .footer-credit a {
+      color: var(--text-on-ink);
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(244, 237, 224, 0.35);
+    }
+
+    .footer-credit a:hover {
+      border-color: var(--cream);
+    }
+
+    /* ── Responsive ─────────────────────────── */
+    @media (max-width: 1020px) {
+      .collections-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .main-nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: 0;
+        padding-block-start: 18px;
+        gap: 8px;
+      }
+
+      .site-header {
+        gap: 12px;
+      }
+
+      .brand {
+        font-size: 19px;
+      }
+
+      .header-cta {
+        padding-inline: 16px;
+      }
+
+      .hero-actions {
+        width: 100%;
+      }
+
+      .hero-actions .btn {
+        flex: 1 1 100%;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .hero-stamp {
+        display: none;
+      }
+
+      .gift {
+        grid-template-columns: 1fr;
+      }
+
+      .flavor-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .flavor-btn {
+        min-height: 76px;
+      }
+
+      .collections-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .collection-card {
+        min-height: 300px;
+      }
+
+      .footer-nav a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .site-header {
+        padding-inline: 14px;
+        gap: 10px;
+      }
+
+      .brand {
+        font-size: 18px;
+      }
+
+      .header-cta {
+        padding-inline: 12px;
+        font-size: 13.5px;
+        white-space: nowrap;
+      }
+
+      .section {
+        padding-inline: 16px;
+      }
+
+      .hero-title {
+        font-size: clamp(48px, 18vw, 68px);
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+        white-space: normal;
+      }
+
+      .collections-grid,
+      .flavor-row {
+        grid-template-columns: 1fr;
+      }
+
+      .collection-card {
+        min-height: 260px;
+        padding: 22px 20px 24px;
+      }
+
+      .player {
+        padding: 24px 18px;
+        border-radius: 22px;
+      }
+
+      .flavor-btn {
+        min-height: 68px;
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .final-cta {
+        border-radius: 24px;
+      }
+
+      .final-cta h2 {
+        font-size: clamp(32px, 13vw, 48px);
+      }
+
+      .footer-nav {
+        gap: 12px 18px;
+      }
+
+      .footer-credit {
+        font-size: 13px;
+      }
+    }
+
+    /* ── Reduced motion ─────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+
+      .rv,
+      .hero-title em::after {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+
+      .hero-visual img,
+      .float-note,
+      .gift-candy,
+      .candy-dot,
+      .story .note-mark,
+      .hero-stamp,
+      .marquee__track,
+      .hero-wave path,
+      .eq.playing i {
+        animation: none !important;
+      }
+
+      .eq i {
+        transform: scaleY(0.5);
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">דלגו לתוכן</a>
+
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="מנגינת ממתקים, דף הבית">
+      <span class="note" aria-hidden="true">♪</span>
+      מנגינת<br />ממתקים
+    </a>
+    <nav class="main-nav" aria-label="ניווט ראשי">
+      <a href="#collections">קולקציות</a>
+      <a href="#gift">מארזים</a>
+      <a href="#story">הסיפור שלנו</a>
+      <a href="#experience">חוויה מתוקה</a>
+      <a href="#contact">צור קשר</a>
+    </nav>
+    <a class="header-cta" href="#contact">להזמנת מארז</a>
+  </header>
+
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="hero" aria-label="פתיח">
+      <svg class="hero-wave" viewBox="0 0 1440 800" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M-40,210 C 240,140 420,330 720,260 S 1180,120 1480,230" />
+        <path d="M-40,560 C 280,470 520,640 820,560 S 1240,430 1480,540" />
+      </svg>
+
+      <span class="float-note" style="inset-block-start: 16%; inset-inline-start: 44%;" aria-hidden="true">♪</span>
+      <span class="float-note float-note--2" style="inset-block-start: 64%; inset-inline-start: 52%;" aria-hidden="true">♫</span>
+      <span class="float-note float-note--3" style="inset-block-start: 28%; inset-inline-end: 8%;" aria-hidden="true">♩</span>
+
+      <div class="hero-copy rv">
+        <span class="hero-kicker">ממתקי בוטיק בעבודת יד</span>
+        <h1 class="hero-title">ממתקים<br />עם <em>קצב</em></h1>
+        <p class="hero-sub">ממתקי בוטיק בעבודת יד, בטעמים צבעוניים שמרגישים כמו מנגינה קטנה בפה.</p>
+        <div class="hero-actions">
+          <a class="btn btn--ink" href="#collections">ראו את הקולקציות <span class="arr" aria-hidden="true">←</span></a>
+          <a class="btn btn--ghost" href="#story">הסיפור שלנו</a>
+        </div>
+      </div>
+
+      <div class="hero-visual rv" style="--rv-i: 1">
+        <img src="/assets/candy-hero.avif" alt="קומפוזיציה של ממתקים צבעוניים בעבודת יד מרחפים באוויר: כדור ממתק מפוספס בוורוד פטל, סוכריות לימון ולַיים וסרט ממתק מסתלסל"
+          width="1280" height="720" fetchpriority="high" decoding="async" />
+      </div>
+
+      <div class="hero-stamp" aria-hidden="true">
+        <svg viewBox="0 0 104 104">
+          <defs>
+            <path id="stampCircle" d="M52,52 m-40,0 a40,40 0 1,1 80,0 a40,40 0 1,1 -80,0" />
+          </defs>
+          <text style="font-family: Assistant, sans-serif; font-size: 11.5px; font-weight: 700; letter-spacing: 2.5px; fill: currentColor;">
+            <textPath href="#stampCircle">בעבודת יד · אצווה קטנה · בעבודת יד · אצווה קטנה ·</textPath>
+          </text>
+          <text x="52" y="60" text-anchor="middle" style="font-size: 26px; fill: currentColor;">♪</text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>בעבודת יד <b class="dot">●</b> טעמים שמנגנים <b class="dot">●</b> אצוות קטנות <b class="dot">●</b> מארזים לאירועים <b class="dot">●</b> צבע, קצב, סוכר <b class="dot">●</b></span>
+        <span>בעבודת יד <b class="dot">●</b> טעמים שמנגנים <b class="dot">●</b> אצוות קטנות <b class="dot">●</b> מארזים לאירועים <b class="dot">●</b> צבע, קצב, סוכר <b class="dot">●</b></span>
+      </div>
+    </div>
+
+    <!-- COLLECTIONS -->
+    <section class="section section--ink" id="collections" aria-labelledby="collectionsTitle">
+      <div class="section-head">
+        <div class="rv">
+          <span class="section-kicker">הקולקציות שלנו</span>
+          <h2 class="section-title" id="collectionsTitle">קולקציות החתימה</h2>
+        </div>
+        <p class="section-lede rv" style="--rv-i: 1">ממתקי אומן בטעמים ייחודיים, כל אחד עם אופי וקצב משלו.</p>
+      </div>
+
+      <div class="collections-grid">
+        <a class="collection-card collection-card--berry rv" href="#contact">
+          <span class="arr" aria-hidden="true">←</span>
+          <h3>הרמוניית פירות יער</h3>
+          <p class="flavor-line">עסיסי, מתוק ונוסטלגי.</p>
+          <span class="candy-art candy-art--berry" aria-hidden="true"></span>
+        </a>
+        <a class="collection-card collection-card--citrus rv" style="--rv-i: 1" href="#contact">
+          <span class="arr" aria-hidden="true">←</span>
+          <h3>קצב הדרים</h3>
+          <p class="flavor-line">חמצמץ, רענן ומרים מצב רוח.</p>
+          <span class="candy-art candy-art--citrus" aria-hidden="true"></span>
+        </a>
+        <a class="collection-card collection-card--mango rv" style="--rv-i: 2" href="#contact">
+          <span class="arr" aria-hidden="true">←</span>
+          <h3>טרופי שמח</h3>
+          <p class="flavor-line">מתוק, אקזוטי ושטוף שמש.</p>
+          <span class="candy-art candy-art--mango" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        </a>
+        <a class="collection-card collection-card--mint rv" style="--rv-i: 3" href="#contact">
+          <span class="arr" aria-hidden="true">←</span>
+          <h3>מנטה מרעננת</h3>
+          <p class="flavor-line">קריר, נקי ומרענן.</p>
+          <span class="candy-art candy-art--mint" aria-hidden="true"></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- GIFT BOXES -->
+    <section class="section section--ink" id="gift" aria-labelledby="giftTitle" style="padding-block-start: 0;">
+      <div class="gift">
+        <div class="gift-visual rv" aria-hidden="true">
+          <div class="gift-box">
+            <span class="bow">🎀</span>
+            <span class="label">מנגינת<br />ממתקים</span>
+          </div>
+          <span class="gift-candy gift-candy--1"></span>
+          <span class="gift-candy gift-candy--2"></span>
+          <span class="gift-candy gift-candy--3"></span>
+        </div>
+        <div class="gift-copy rv" style="--rv-i: 1">
+          <span class="section-kicker">מארזי מתנה</span>
+          <h2 class="section-title" id="giftTitle">מארזים שנראים כמו מתנה</h2>
+          <p class="gift-quote">"מארזים שנראים טוב, מרגישים אישיים ונשארים בזיכרון."</p>
+          <p class="gift-desc">כל מארז נארז ביד, עם בחירת טעמים אישית, פתק ברכה במילים שלכם וסרט שחור שנותן סגירה אלגנטית. מתאים לימי הולדת, אירועים, משרדים ולכל מי שמגיע לו רגע מתוק.</p>
+          <ul class="gift-tags">
+            <li>ימי הולדת</li>
+            <li>אירועים</li>
+            <li>מתנות למשרד</li>
+            <li>רגעים קטנים</li>
+          </ul>
+          <a class="btn btn--cream" href="#contact">להרכיב מארז <span class="arr" aria-hidden="true">←</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="section section--cream" id="story" aria-labelledby="storyTitle">
+      <div class="story rv">
+        <span class="note-mark" aria-hidden="true">♬</span>
+        <h2 id="storyTitle">מנגינת ממתקים נולדה מהרצון להפוך רגע קטן <mark>לחוויה צבעונית, טעימה ושמחה.</mark></h2>
+        <p>הכול התחיל במטבח ביתי, עם סיר אחד, הרבה סבלנות ופלייליסט טוב. גם היום כל אצווה נרקחת ביד ובכמות קטנה, מחומרי גלם אמיתיים ועם אותו קצב. כי ממתק טוב, כמו שיר טוב, מרגישים מהשנייה הראשונה.</p>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section section--ink" id="experience" aria-labelledby="experienceTitle">
+      <div class="player rv">
+        <div class="player-head">
+          <div>
+            <span class="section-kicker">חוויה מתוקה</span>
+            <h3 id="experienceTitle">נגנו את הטעם</h3>
+          </div>
+          <p>לכל טעם יש תו משלו. לחצו על טעם ותשמעו.</p>
+        </div>
+
+        <div class="flavor-row" role="group" aria-label="בחירת טעם להשמעה">
+          <button class="flavor-btn" type="button" data-note="523.25" data-color="#e94f7e" data-name="הרמוניית פירות יער" data-line="מתוק ועמוק, כמו תו פתיחה." aria-pressed="false" style="--fl: #e94f7e;"><i aria-hidden="true"></i>פירות יער</button>
+          <button class="flavor-btn" type="button" data-note="659.25" data-color="#ef8722" data-name="קצב הדרים" data-line="חמצמץ וקופצני, הביט של המארז." aria-pressed="false" style="--fl: #ef8722;"><i aria-hidden="true"></i>הדרים</button>
+          <button class="flavor-btn" type="button" data-note="783.99" data-color="#f2bc1b" data-name="טרופי שמח" data-line="שמש בקול גבוה, בלי להתאמץ." aria-pressed="false" style="--fl: #f2bc1b;"><i aria-hidden="true"></i>טרופי</button>
+          <button class="flavor-btn" type="button" data-note="987.77" data-color="#a4c93f" data-name="מנטה מרעננת" data-line="צליל קריר שנשאר אחרי הסיום." aria-pressed="false" style="--fl: #a4c93f;"><i aria-hidden="true"></i>מנטה</button>
+        </div>
+
+        <div class="eq" id="eq" aria-hidden="true">
+          <i style="--i: 0; --amp: 0.55"></i><i style="--i: 1; --amp: 0.8"></i><i style="--i: 2; --amp: 1"></i><i style="--i: 3; --amp: 0.7"></i><i style="--i: 4; --amp: 0.95"></i><i style="--i: 5; --amp: 0.6"></i><i style="--i: 6; --amp: 0.85"></i><i style="--i: 7; --amp: 0.5"></i><i style="--i: 8; --amp: 0.9"></i><i style="--i: 9; --amp: 0.65"></i>
+        </div>
+
+        <p class="player-caption" id="playerCaption" aria-live="polite">בחרו טעם כדי לשמוע את התו שלו.</p>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section section--ink" id="contact" aria-labelledby="ctaTitle" style="padding-block-start: 0;">
+      <div class="final-cta rv">
+        <span class="candy-dot candy-dot--1" aria-hidden="true"></span>
+        <span class="candy-dot candy-dot--2" aria-hidden="true"></span>
+        <h2 id="ctaTitle">להכניס קצת קצב<br />למתוק שלכם</h2>
+        <p>מרכיבים מארז אישי, עונים מהר ואורזים הכל ביד.</p>
+        <div class="hero-actions" style="justify-content: center;">
+          <a class="btn btn--ink" href="#" onclick="return false;" aria-disabled="true">להזמנת מארז <span class="arr" aria-hidden="true">←</span></a>
+          <a class="btn btn--ghost" style="color: #fff; border-color: rgba(255,255,255,0.55);" href="#" onclick="return false;" aria-disabled="true">צור קשר</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">מנגינת ממתקים <span style="color: var(--berry);">♪</span></div>
+        <p style="font-size: 14px; max-width: 30ch; margin-block-start: 8px;">ממתקים בעבודת יד, באצוות קטנות, עם הרבה צבע והרבה קצב.</p>
+      </div>
+      <nav class="footer-nav" aria-label="ניווט תחתון">
+        <a href="#collections">קולקציות</a>
+        <a href="#gift">מארזים</a>
+        <a href="#story">הסיפור שלנו</a>
+        <a href="#experience">חוויה מתוקה</a>
+      </nav>
+    </div>
+    <div class="footer-credit">
+      <span>פרויקט קונספט להדגמת מיתוג, עיצוב ופיתוח. המותג אינו חנות פעילה.</span>
+      <span>עיצוב ופיתוח: <a href="https://www.assafweb.com/" rel="noopener">אסף בוסקילה · assafweb.com</a></span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      const motionReduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Scroll reveals with per-sibling stagger
+      const rvEls = document.querySelectorAll('.rv');
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      rvEls.forEach(el => io.observe(el));
+
+      // "Play the flavor": one soft synth pluck per flavor + equalizer
+      const eq = document.getElementById('eq');
+      const caption = document.getElementById('playerCaption');
+      const buttons = [...document.querySelectorAll('.flavor-btn')];
+      let audioCtx = null;
+      let stopTimer = null;
+
+      function playNote(freq) {
+        try {
+          audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+          if (audioCtx.state === 'suspended') audioCtx.resume();
+          const now = audioCtx.currentTime;
+          // two detuned triangles through a soft envelope = warm music-box pluck
+          [0, 5].forEach(detune => {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.value = freq;
+            osc.detune.value = detune;
+            gain.gain.setValueAtTime(0.0001, now);
+            gain.gain.exponentialRampToValueAtTime(0.18, now + 0.02);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.4);
+            osc.connect(gain).connect(audioCtx.destination);
+            osc.start(now);
+            osc.stop(now + 1.5);
+          });
+        } catch (e) { /* audio unavailable: the visual still plays */ }
+      }
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+          eq.style.setProperty('--eq-color', btn.dataset.color);
+          if (!motionReduced()) {
+            eq.classList.remove('playing');
+            void eq.offsetWidth;
+            eq.classList.add('playing');
+          }
+          playNote(parseFloat(btn.dataset.note));
+          caption.innerHTML = '<strong>' + btn.dataset.name + '</strong> · ' + btn.dataset.line;
+          clearTimeout(stopTimer);
+          stopTimer = setTimeout(() => eq.classList.remove('playing'), 2600);
+        });
+      });
+    })();
+  </script>
+</body>
+
+</html>
