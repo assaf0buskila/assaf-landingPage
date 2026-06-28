@@ -1,4 +1,8 @@
 node_modules/
+.next/
+*.tsbuildinfo
 .claude/
 .DS_Store
 *.log
+.firecrawl/
+.tmp/
