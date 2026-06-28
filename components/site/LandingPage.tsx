@@ -578,10 +578,22 @@ export function LandingPage() {
         </section>
 
         <section id="story" className="story-section relative overflow-hidden text-white">
+          <BackgroundShader className="story-background-shader" />
           <div className="story-blue-blur-bg" />
           <div className="story-pin">
-          <div className="section-shell">
-            <div className="gsap-reveal mb-10 max-w-3xl space-y-5">
+          <div className="section-shell story-intro-row">
+            <div className="story-portrait-chip" aria-hidden="true">
+              <Image
+                src="/assets/about-me.png"
+                alt=""
+                width={433}
+                height={577}
+                sizes="92px"
+                className="story-portrait-image"
+              />
+            </div>
+
+            <div className="story-intro-copy">
               <p className="max-w-md text-lg font-semibold leading-8 text-white/70">
                 אתר טוב לא אמור לגרום לאנשים להתאמץ להבין. הוא צריך לקחת את הסיפור
                 שלכם, לסדר אותו נכון, ולהפוך אותו לחוויה שמרגישה מקצועית כבר בגלילה הראשונה.

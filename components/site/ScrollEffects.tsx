@@ -173,11 +173,19 @@ export function ScrollEffects() {
       const storyPin = document.querySelector<HTMLElement>(".story-pin");
       const storyLines = gsap.utils.toArray<HTMLElement>(".story-line");
       const storyResult = document.querySelector<HTMLElement>(".story-result-panel");
+      const storyPortrait = document.querySelector<HTMLElement>(".story-portrait-chip");
+      const storyIntro = document.querySelector<HTMLElement>(".story-intro-copy");
 
       if (storySection && storyPin && storyLines.length > 0) {
         gsap.set(storyLines, { opacity: 0.52, y: 22, filter: "blur(0px)" });
         if (storyResult) {
           gsap.set(storyResult, { opacity: 0, y: 34 });
+        }
+        if (storyPortrait) {
+          gsap.set(storyPortrait, { opacity: 0, y: 20, scale: 0.82, filter: "blur(8px)" });
+        }
+        if (storyIntro) {
+          gsap.set(storyIntro, { opacity: 0, y: 18, filter: "blur(6px)" });
         }
 
         const storyTimeline = gsap.timeline({
@@ -191,6 +199,35 @@ export function ScrollEffects() {
           },
         });
 
+        if (storyPortrait) {
+          storyTimeline.to(
+            storyPortrait,
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              filter: "blur(0px)",
+              duration: 0.55,
+              ease: "power3.out",
+            },
+            0
+          );
+        }
+
+        if (storyIntro) {
+          storyTimeline.to(
+            storyIntro,
+            {
+              opacity: 1,
+              y: 0,
+              filter: "blur(0px)",
+              duration: 0.65,
+              ease: "power3.out",
+            },
+            0.08
+          );
+        }
+
         storyLines.forEach((line, index) => {
           storyTimeline.to(
             line,
@@ -201,7 +238,7 @@ export function ScrollEffects() {
               duration: 0.7,
               ease: "power2.out",
             },
-            index * 0.42
+            0.36 + index * 0.42
           );
 
           if (index > 0) {
@@ -213,7 +250,7 @@ export function ScrollEffects() {
                 duration: 0.6,
                 ease: "power2.out",
               },
-              index * 0.42
+              0.36 + index * 0.42
             );
           }
         });
@@ -227,7 +264,7 @@ export function ScrollEffects() {
               duration: 0.8,
               ease: "power2.out",
             },
-            storyLines.length * 0.42
+            0.36 + storyLines.length * 0.42
           );
         }
       }

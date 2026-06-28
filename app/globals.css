@@ -1183,11 +1183,19 @@ textarea:focus-visible {
 
 .story-section {
   min-height: auto;
+  isolation: isolate;
   background:
     radial-gradient(ellipse at 16% 24%, rgba(217, 238, 255, 0.56), transparent 36%),
     radial-gradient(ellipse at 86% 46%, rgba(124, 173, 218, 0.46), transparent 44%),
     radial-gradient(ellipse at 48% 72%, rgba(78, 138, 191, 0.38), transparent 50%),
     linear-gradient(180deg, #eef8ff 0%, #d9ecfb 16%, #85b9e0 42%, #4f88bd 72%, #eaf6ff 100%);
+}
+
+.story-background-shader {
+  inset: -12% -10%;
+  opacity: 0.8;
+  filter: saturate(1.08) contrast(1.02);
+  mix-blend-mode: soft-light;
 }
 
 .story-blue-blur-bg {
@@ -1240,6 +1248,55 @@ textarea:focus-visible {
   padding: clamp(7rem, 11vw, 9rem) 0 clamp(5rem, 9vw, 8rem);
 }
 
+.story-intro-row {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(0.9rem, 2vw, 1.4rem);
+  margin-bottom: clamp(2.8rem, 6vw, 5.6rem);
+}
+
+.story-portrait-chip {
+  position: relative;
+  display: grid;
+  width: clamp(64px, 7vw, 92px);
+  aspect-ratio: 1;
+  flex: 0 0 auto;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 48% 28%, rgba(255, 255, 255, 0.88), rgba(217, 238, 255, 0.36) 54%, rgba(47, 95, 147, 0.28)),
+    rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.62),
+    0 18px 52px rgba(5, 38, 89, 0.2),
+    0 0 44px rgba(217, 238, 255, 0.5);
+}
+
+.story-portrait-chip::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.38), transparent 42%);
+}
+
+.story-portrait-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.story-intro-copy {
+  max-width: 42rem;
+  margin-bottom: 0;
+}
+
 .story-wide-flow {
   position: relative;
   z-index: 2;
@@ -1251,6 +1308,7 @@ textarea:focus-visible {
 .story-scroll-copy {
   max-width: 980px;
   margin-inline: auto;
+  text-shadow: 0 18px 54px rgba(2, 16, 36, 0.22);
 }
 
 .story-result-panel {
@@ -1423,6 +1481,16 @@ textarea:focus-visible {
   opacity: 0;
   transform: translateY(12px);
   animation: intro-button-enter 0.72s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards;
+}
+
+.background-shader-fallback {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(217, 238, 255, 0.92), transparent 32%),
+    radial-gradient(circle at 78% 22%, rgba(168, 209, 240, 0.72), transparent 34%),
+    radial-gradient(circle at 46% 78%, rgba(47, 95, 147, 0.4), transparent 42%),
+    linear-gradient(135deg, #f8fbff 0%, #d9eeff 36%, #8fbee2 66%, #eef8ff 100%);
 }
 
 .background-shader {
@@ -1617,6 +1685,15 @@ textarea:focus-visible {
     padding-top: 6.5rem;
   }
 
+  .story-intro-row {
+    align-items: flex-start;
+    margin-bottom: clamp(2rem, 8vw, 3.25rem);
+  }
+
+  .story-portrait-chip {
+    width: clamp(58px, 14vw, 76px);
+  }
+
   .contact-road-signs {
     top: 0;
     left: 0;
@@ -1646,6 +1723,15 @@ textarea:focus-visible {
 
   .story-scroll-copy {
     max-width: 100%;
+  }
+
+  .story-intro-row {
+    gap: 0.8rem;
+  }
+
+  .story-intro-copy p {
+    font-size: 1rem;
+    line-height: 1.8;
   }
 }
 
