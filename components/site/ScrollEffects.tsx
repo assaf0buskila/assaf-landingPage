@@ -13,20 +13,27 @@ export function ScrollEffects() {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const lenis = new Lenis({
-      duration: 0.9,
-      smoothWheel: true,
-      wheelMultiplier: 1,
-    });
+    const isTouchScroll =
+      ScrollTrigger.isTouch === 1 || window.matchMedia("(pointer: coarse)").matches;
 
     let rafId = 0;
-    const raf = (time: number) => {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    };
+    let lenis: Lenis | null = null;
 
-    rafId = requestAnimationFrame(raf);
-    lenis.on("scroll", ScrollTrigger.update);
+    if (!isTouchScroll) {
+      lenis = new Lenis({
+        duration: 0.9,
+        smoothWheel: true,
+        wheelMultiplier: 1,
+      });
+
+      const raf = (time: number) => {
+        lenis?.raf(time);
+        rafId = requestAnimationFrame(raf);
+      };
+
+      rafId = requestAnimationFrame(raf);
+      lenis.on("scroll", ScrollTrigger.update);
+    }
 
     const ctx = gsap.context(() => {
       gsap.fromTo(
@@ -177,23 +184,43 @@ export function ScrollEffects() {
       const storyIntro = document.querySelector<HTMLElement>(".story-intro-copy");
 
       if (storySection && storyPin && storyLines.length > 0) {
-        gsap.set(storyLines, { opacity: 0.52, y: 22, filter: "blur(0px)" });
+        const isMobile = window.matchMedia("(max-width: 640px)").matches;
+        const storyStep = isMobile ? 0.54 : 0.44;
+        const introOffset = isMobile ? 0.26 : 0.34;
+        const dimOpacity = isMobile ? 0.24 : 0.34;
+
+        gsap.set(storyLines, {
+          opacity: isMobile ? 0.18 : 0.36,
+          y: isMobile ? 16 : 22,
+          filter: "blur(0px)",
+        });
         if (storyResult) {
-          gsap.set(storyResult, { opacity: 0, y: 34 });
+          gsap.set(storyResult, { opacity: 0, y: isMobile ? 22 : 34 });
         }
         if (storyPortrait) {
-          gsap.set(storyPortrait, { opacity: 0, y: 20, scale: 0.82, filter: "blur(8px)" });
+          gsap.set(storyPortrait, {
+            opacity: 0,
+            y: isMobile ? 12 : 20,
+            scale: 0.88,
+            filter: isMobile ? "blur(0px)" : "blur(8px)",
+          });
         }
         if (storyIntro) {
-          gsap.set(storyIntro, { opacity: 0, y: 18, filter: "blur(6px)" });
+          gsap.set(storyIntro, {
+            opacity: 0,
+            y: isMobile ? 12 : 18,
+            filter: isMobile ? "blur(0px)" : "blur(6px)",
+          });
         }
 
         const storyTimeline = gsap.timeline({
           scrollTrigger: {
             trigger: storySection,
-            start: "top 12%",
-            end: () => `+=${window.innerHeight * 1.3}`,
-            scrub: 0.5,
+            start: isMobile ? "top top" : "top 8%",
+            end: () => `+=${window.innerHeight * (isMobile ? 2.55 : 1.9)}`,
+            scrub: isMobile ? 0.7 : 0.5,
+            pin: storyPin,
+            pinSpacing: true,
             anticipatePin: 1,
             invalidateOnRefresh: true,
           },
@@ -207,7 +234,7 @@ export function ScrollEffects() {
               y: 0,
               scale: 1,
               filter: "blur(0px)",
-              duration: 0.55,
+              duration: isMobile ? 0.45 : 0.55,
               ease: "power3.out",
             },
             0
@@ -221,7 +248,7 @@ export function ScrollEffects() {
               opacity: 1,
               y: 0,
               filter: "blur(0px)",
-              duration: 0.65,
+              duration: isMobile ? 0.5 : 0.65,
               ease: "power3.out",
             },
             0.08
@@ -238,19 +265,19 @@ export function ScrollEffects() {
               duration: 0.7,
               ease: "power2.out",
             },
-            0.36 + index * 0.42
+            introOffset + index * storyStep
           );
 
           if (index > 0) {
             storyTimeline.to(
               storyLines[index - 1],
               {
-                opacity: 0.62,
-                y: -8,
+                opacity: dimOpacity,
+                y: isMobile ? -5 : -8,
                 duration: 0.6,
                 ease: "power2.out",
               },
-              0.36 + index * 0.42
+              introOffset + index * storyStep
             );
           }
         });
@@ -264,7 +291,7 @@ export function ScrollEffects() {
               duration: 0.8,
               ease: "power2.out",
             },
-            0.36 + storyLines.length * 0.42
+            introOffset + storyLines.length * storyStep
           );
         }
       }
@@ -301,10 +328,12 @@ export function ScrollEffects() {
 
     return () => {
       window.clearTimeout(refreshId);
-      cancelAnimationFrame(rafId);
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
       ctx.revert();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      lenis.destroy();
+      lenis?.destroy();
     };
   }, []);
 
