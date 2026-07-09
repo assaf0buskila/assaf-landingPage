@@ -26,7 +26,7 @@ const heroMessages: HeroMessage[] = [
   {
     id: 2,
     role: "assaf",
-    label: "אסף AI",
+    label: "אסף",
     text: "מעולה. קודם נסדר את המסר: למה לבוא דווקא אליכם, איפה רואים תפריט, ואיך מזמינים בלי להסתבך.",
     pauseAfter: 500,
   },
@@ -40,14 +40,14 @@ const heroMessages: HeroMessage[] = [
   {
     id: 4,
     role: "assaf",
-    label: "אסף AI",
+    label: "אסף",
     text: "אז הכיוון ברור: דף פתיחה חזק, תפריט דיגיטלי, כפתור וואטסאפ קבוע, תמונות שמרגישות אמיתיות, ועוזר AI קטן לשאלות חוזרות.",
     pauseAfter: 520,
   },
   {
     id: 5,
     role: "assaf",
-    label: "אסף AI",
+    label: "אסף",
     text: "זה לא רק אתר. זה מסלול קצר מעניין לפנייה.",
     pauseAfter: 0,
   },
@@ -152,7 +152,7 @@ export function AiHeroChat({ onComplete }: { onComplete?: () => void }) {
           </span>
           <span>
             <strong>סטודיו האתר של אסף</strong>
-            <small>אפיון חכם בזמן אמת</small>
+            <small>ככה נראית שיחת אפיון</small>
           </span>
         </div>
         <span className="ai-hero-chat__status">

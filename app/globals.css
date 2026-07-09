@@ -215,20 +215,6 @@ textarea {
   grid-template-columns: minmax(320px, 0.96fr) minmax(0, 1.04fr);
 }
 
-.hero-ai-grid--copy-only {
-  grid-template-columns: minmax(0, 1fr);
-}
-
-.hero-ai-grid--copy-only .hero-copy {
-  justify-self: center;
-  text-align: center;
-}
-
-.hero-ai-grid--copy-only .hero-kicker,
-.hero-ai-grid--copy-only .hero-cta-row {
-  margin-inline: auto;
-}
-
 .hero-demo-shell,
 .hero-copy {
   direction: rtl;
@@ -258,19 +244,8 @@ textarea {
   backdrop-filter: blur(18px);
 }
 
-.hero-conclusion {
-  opacity: 0.9;
-  transform: translateY(8px);
-  transition: opacity 420ms ease, transform 420ms ease;
-}
-
-.hero-conclusion--ready {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.hero-conclusion--ready h1 {
-  text-shadow: 0 22px 72px rgba(37, 99, 235, 0.14);
+.hero-demo-shell .ai-hero-chat__messages {
+  min-height: clamp(260px, 36vh, 350px);
 }
 
 .hero-cta-row {
@@ -939,7 +914,6 @@ textarea {
 
 .btn-primary:focus-visible,
 .btn-secondary:focus-visible,
-.dock-link:focus-visible,
 .nav-link:focus-visible,
 .site-brand:focus-visible,
 .contact-call:focus-visible,
@@ -1336,7 +1310,6 @@ textarea:focus-visible {
   gap: clamp(0.58rem, 1.25vw, 1rem);
   max-width: 980px;
   margin-inline: auto;
-  text-shadow: 0 18px 54px rgba(2, 16, 36, 0.22);
 }
 
 .story-result-panel {
@@ -1344,17 +1317,17 @@ textarea:focus-visible {
   max-width: 560px;
   gap: 0.42rem;
   margin: clamp(2rem, 5vw, 4rem) auto 0;
-  border: 1px solid rgba(217, 238, 255, 0.42);
+  border: 1px solid rgba(47, 95, 147, 0.18);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.82);
   padding: 1.1rem 1.25rem;
-  color: #ffffff;
+  color: var(--ink);
   box-shadow: 0 24px 80px rgba(47, 95, 147, 0.22);
   backdrop-filter: blur(18px);
 }
 
 .story-result-panel span {
-  color: rgba(238, 247, 255, 0.9);
+  color: var(--navy);
   font-size: 0.9rem;
   font-weight: 900;
 }
@@ -1455,187 +1428,6 @@ textarea:focus-visible {
 }
 
 /* ============================================================
-   FLOATING DOCK NAV  (unchanged)
-   ============================================================ */
-
-.dock-link {
-  position: relative;
-}
-
-.dock-link::after {
-  position: absolute;
-  right: 50%;
-  bottom: -8px;
-  width: 4px;
-  height: 4px;
-  border-radius: 999px;
-  content: "";
-  background: var(--action);
-  opacity: 0;
-  transform: translateX(50%) scale(0.4);
-  transition: opacity 180ms ease, transform 180ms ease;
-}
-
-.dock-link:hover::after {
-  opacity: 1;
-  transform: translateX(50%) scale(1);
-}
-
-/* ============================================================
-   INTRO OVERLAY
-   ============================================================ */
-
-.intro-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: grid;
-  place-items: center;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding: clamp(0.9rem, 2.4vw, 1.5rem);
-  background: #f8fbff;
-  opacity: 1;
-  touch-action: manipulation;
-  overscroll-behavior: contain;
-  transition: opacity 460ms ease, transform 460ms ease;
-}
-
-.intro-overlay--exit {
-  opacity: 0;
-  transform: scale(1.015);
-}
-
-.intro-overlay__video {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: saturate(0.96) contrast(0.98) brightness(1.08);
-  opacity: 0.2;
-  transform: scale(1.04);
-  animation: intro-video 4.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.intro-overlay__wash {
-  position: fixed;
-  z-index: 1;
-  inset: 0;
-  background:
-    radial-gradient(circle at 18% 18%, rgba(217, 238, 255, 0.82), transparent 31%),
-    radial-gradient(circle at 78% 20%, rgba(168, 209, 240, 0.55), transparent 34%),
-    linear-gradient(180deg, rgba(248, 251, 255, 0.9), rgba(239, 247, 255, 0.86));
-}
-
-.intro-overlay__content {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  width: min(980px, 100%);
-  min-height: min(820px, calc(100dvh - 2rem));
-  align-content: center;
-  gap: clamp(0.85rem, 2vh, 1.2rem);
-  color: var(--ink);
-}
-
-.intro-overlay__header {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: center;
-  gap: 0.95rem;
-  width: min(680px, 100%);
-  margin-inline: auto;
-  border: 1px solid rgba(5, 38, 89, 0.1);
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.72);
-  padding: 0.78rem;
-  box-shadow: 0 20px 60px rgba(5, 38, 89, 0.1);
-  backdrop-filter: blur(20px);
-}
-
-.intro-overlay__avatar {
-  width: clamp(48px, 7vw, 72px);
-  height: clamp(48px, 7vw, 72px);
-  border: 3px solid rgba(255, 255, 255, 0.92);
-  border-radius: 999px;
-  object-fit: cover;
-  object-position: center top;
-  box-shadow: 0 14px 34px rgba(37, 99, 235, 0.18);
-}
-
-.intro-overlay__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.36rem;
-  color: var(--action);
-  font-size: 0.78rem;
-  font-weight: 950;
-}
-
-.intro-overlay__title {
-  margin-top: 0.08rem;
-  color: var(--ink);
-  font-size: clamp(1.55rem, 3vw, 2.45rem);
-  font-weight: 950;
-  line-height: 1;
-}
-
-.intro-overlay__sub {
-  margin-top: 0.32rem;
-  color: var(--muted);
-  font-size: clamp(0.9rem, 1.4vw, 1rem);
-  font-weight: 800;
-  line-height: 1.45;
-}
-
-.intro-overlay__chat {
-  width: min(760px, 100%);
-  margin-inline: auto;
-}
-
-.intro-overlay__chat .ai-hero-chat {
-  border-radius: 26px;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.95),
-    0 30px 90px rgba(5, 38, 89, 0.16);
-}
-
-.intro-overlay__chat .ai-hero-chat__messages {
-  min-height: clamp(270px, 38vh, 360px);
-}
-
-.intro-overlay__button {
-  position: sticky;
-  bottom: max(1rem, env(safe-area-inset-bottom));
-  z-index: 3;
-  display: inline-flex;
-  min-height: 52px;
-  align-items: center;
-  justify-content: center;
-  gap: 0.42rem;
-  justify-self: center;
-  border: 1px solid rgba(37, 99, 235, 0.22);
-  border-radius: 999px;
-  background: linear-gradient(135deg, var(--navy), var(--action));
-  padding: 0.82rem 1.22rem;
-  color: white;
-  font-family: Inter, Assistant, sans-serif;
-  font-weight: 950;
-  letter-spacing: 0;
-  box-shadow: 0 18px 48px rgba(37, 99, 235, 0.26);
-  opacity: 0;
-  transform: translateY(12px);
-  animation: intro-button-enter 0.72s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards;
-  transition: opacity 220ms ease, transform 220ms ease, filter 220ms ease;
-}
-
-.intro-overlay__button:hover {
-  transform: translateY(-2px);
-}
-
-/* ============================================================
    BACKGROUND SHADER  (do not touch — preserved verbatim)
    ============================================================ */
 
@@ -1708,24 +1500,6 @@ textarea:focus-visible {
    KEYFRAMES
    ============================================================ */
 
-@keyframes intro-title-word {
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes intro-button-enter {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes intro-video {
-  to { transform: scale(1); }
-}
-
 @keyframes shader-roll {
   0%   { transform: translate3d(-4%, 3%, 0) rotate(0deg) scale(1); }
   50%  { transform: translate3d(8%, -6%, 0) rotate(18deg) scale(1.12); }
@@ -1741,6 +1515,162 @@ textarea:focus-visible {
     opacity: 0.9;
     transform: translate(-52%, -52%) scale(1.08);
   }
+}
+
+/* ============================================================
+   WORKS — live-site proof cards
+   ============================================================ */
+
+.works-section {
+  background:
+    radial-gradient(circle at 84% 20%, rgba(217, 238, 255, 0.4), transparent 30%),
+    linear-gradient(180deg, rgba(248, 251, 255, 0.5), rgba(255, 255, 255, 0.42) 40%, rgba(244, 250, 255, 0.46) 100%);
+}
+
+.work-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(5, 38, 89, 0.1);
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(6, 27, 53, 0.08);
+  transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
+}
+
+.work-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(37, 99, 235, 0.3);
+  box-shadow: 0 24px 54px rgba(6, 27, 53, 0.13);
+}
+
+.work-card__frame {
+  position: relative;
+  overflow: hidden;
+  /* crop the tall phone screenshots to a consistent window */
+  aspect-ratio: 5 / 4;
+  border-bottom: 1px solid rgba(5, 38, 89, 0.08);
+  background: #eef7ff;
+}
+
+.work-card__shot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.work-card:hover .work-card__shot {
+  transform: translateY(-3.5%) scale(1.02);
+}
+
+.work-card__meta {
+  display: grid;
+  gap: 0.55rem;
+  padding: 1.1rem 1.15rem 1.2rem;
+}
+
+.work-card__tag {
+  flex: 0 0 auto;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: 999px;
+  background: rgba(217, 238, 255, 0.55);
+  padding: 0.24rem 0.62rem;
+  color: var(--navy);
+  font-size: 0.74rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.work-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.2rem;
+  color: var(--action);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.work-card__cta svg {
+  transition: transform 200ms ease;
+}
+
+.work-card:hover .work-card__cta svg {
+  transform: translate(-2px, -2px);
+}
+
+/* ============================================================
+   FAQ — native details/summary accordion
+   ============================================================ */
+
+.faq-item {
+  overflow: hidden;
+  border: 1px solid rgba(5, 38, 89, 0.1);
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(6, 27, 53, 0.06);
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.15rem;
+  color: var(--ink);
+  font-size: 1.05rem;
+  font-weight: 800;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item__chevron {
+  flex: 0 0 auto;
+  color: var(--action);
+  transition: transform 220ms ease;
+}
+
+.faq-item[open] .faq-item__chevron {
+  transform: rotate(-90deg);
+}
+
+.faq-item > p {
+  padding: 0 1.15rem 1.15rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.75;
+}
+
+/* ============================================================
+   WHATSAPP FAB (mobile only — desktop has the header CTA)
+   ============================================================ */
+
+.whatsapp-fab {
+  position: fixed;
+  bottom: max(1.1rem, env(safe-area-inset-bottom));
+  left: 1.1rem;
+  z-index: 60;
+  display: grid;
+  width: 56px;
+  height: 56px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--navy), var(--action));
+  color: #ffffff;
+  box-shadow: 0 18px 44px rgba(37, 99, 235, 0.35);
+  transition: transform 160ms ease;
+}
+
+.whatsapp-fab:active {
+  transform: scale(0.95);
 }
 
 /* ============================================================
@@ -1761,8 +1691,14 @@ textarea:focus-visible {
     justify-self: center;
   }
 
+  /* single column: headline first, chat demo after */
   .hero-copy {
+    order: 1;
     text-align: right;
+  }
+
+  .hero-demo-shell {
+    order: 2;
   }
 
   .hero-kicker {
@@ -1850,36 +1786,8 @@ textarea:focus-visible {
 }
 
 @media (max-width: 640px) {
-  .intro-overlay {
-    align-items: start;
-    padding: 0.75rem;
-  }
-
-  .intro-overlay__content {
-    min-height: calc(100dvh - 1.5rem);
-    align-content: start;
-    padding-block: 0.2rem 1rem;
-  }
-
-  .intro-overlay__header {
-    gap: 0.72rem;
-    border-radius: 18px;
-  }
-
-  .intro-overlay__sub {
-    display: none;
-  }
-
-  .intro-overlay__chat .ai-hero-chat__messages {
-    min-height: min(300px, 48vh);
-  }
-
-  .intro-overlay__button {
-    width: min(100%, 320px);
-  }
-
   .contact-section {
-    padding-bottom: 9.5rem;
+    padding-bottom: 6rem;
   }
 
   .hero-section {
@@ -1992,11 +1900,9 @@ textarea:focus-visible {
   .eyebrow,
   .premium-panel,
   .blue-glass,
-  .intro-overlay__header,
   .contact-form-card,
   .contact-call,
   .btn-secondary,
-  .floating-dock-shell,
   .ai-hero-chat,
   .ai-hero-chat__topbar,
   .ai-hero-insight,
@@ -2035,15 +1941,10 @@ textarea:focus-visible {
   .story-word,
   .hero-scroll-cue__line,
   .hero-word-animated,
-  .intro-overlay__header,
-  .intro-overlay__chat,
-  .intro-overlay__button {
+  .hero-kicker {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
   }
 
-  .intro-overlay__video {
-    animation-duration: 0.01ms !important;
-  }
 }
