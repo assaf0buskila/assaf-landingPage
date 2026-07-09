@@ -184,24 +184,24 @@ function AnimatedNumber({
   if (cleanSuffix === "%") {
     return (
       <span className="stat-value" dir="ltr">
-        {value}%
+        <bdi className="count-target" data-countup={value}>{value}</bdi>%
       </span>
     );
   }
 
   if (cleanSuffix === "שותף") {
     return (
-      <span className="stat-value stat-value--word-first" dir="rtl">
+      <span className="stat-value" dir="rtl" style={{ direction: "rtl" }}>
+        <bdi className="count-target" data-countup={value}>{value}</bdi>
         <span dir="rtl">שותף</span>
-        <bdi>{value}</bdi>
       </span>
     );
   }
 
   if (cleanSuffix === "יום") {
     return (
-      <span className="stat-value" dir="ltr">
-        <bdi>{value}</bdi>
+      <span className="stat-value" dir="rtl" style={{ direction: "rtl" }}>
+        <bdi className="count-target" data-countup={value}>{value}</bdi>
         <span dir="rtl">ימים</span>
       </span>
     );
@@ -210,7 +210,7 @@ function AnimatedNumber({
   return (
     <span className="stat-value" dir="ltr">
       <span dir="rtl">{cleanSuffix}</span>
-      <bdi>{value}</bdi>
+      <bdi className="count-target" data-countup={value}>{value}</bdi>
     </span>
   );
 }
@@ -271,6 +271,28 @@ function TiltProjectCard({
         </a>
       </div>
 
+      <div className="project-info gsap-reveal">
+        <div className="project-tags">
+          {project.tags.map((tag) => (
+            <span key={tag}>{tag}</span>
+          ))}
+        </div>
+        <h3>{project.title}</h3>
+        <p>{project.subtitle}</p>
+        <p className="project-result">{project.result}</p>
+        <div className="project-links">
+          <a
+            href={project.siteUrl}
+            target={project.siteUrl.startsWith("http") ? "_blank" : undefined}
+            rel={project.siteUrl.startsWith("http") ? "noreferrer" : undefined}
+            className="project-live-link"
+          >
+            צפו באתר החי
+            <ArrowUpLeft size={16} />
+          </a>
+          <span className="project-domain" dir="ltr">{project.domain}</span>
+        </div>
+      </div>
     </motion.article>
   );
 }
@@ -379,7 +401,7 @@ function ContactForm() {
         />
       </label>
 
-      <button type="submit" className="btn-primary w-full">
+      <button type="submit" className="btn-primary magnetic w-full">
         שליחה לוואטסאפ
         <Send size={18} />
       </button>
@@ -423,8 +445,10 @@ export function LandingPage() {
       />
 
       <main id="top" className="site-flow relative overflow-hidden pb-28">
+        <div className="bg-morph" aria-hidden="true" />
         <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-6 md:pt-5">
-          <div className="mx-auto flex w-full max-w-6xl items-center justify-between rounded-full border border-white/80 bg-white/80 px-3 py-2 shadow-soft backdrop-blur-2xl md:px-4">
+          <div className="relative mx-auto flex w-full max-w-6xl items-center justify-between rounded-full border border-white/80 bg-white/80 px-3 py-2 shadow-soft backdrop-blur-2xl md:px-4">
+            <span className="nav-progress" aria-hidden="true" />
             <a href="#top" className="site-brand flex items-center gap-3">
               <span className="grid h-10 w-10 place-items-center rounded-full bg-navy text-sm font-black text-white">
                 אב
@@ -454,7 +478,7 @@ export function LandingPage() {
           </div>
         </header>
 
-        <section className="hero-section relative min-h-screen overflow-hidden pt-28 md:pt-32">
+        <section data-bg="#ffffff" className="hero-section relative min-h-screen overflow-hidden pt-28 md:pt-32">
           <BackgroundShader className="hero-background-shader" />
           <div className="hero-aura-layer" />
           <div className="hero-holo-layer" />
@@ -482,11 +506,11 @@ export function LandingPage() {
               </p>
 
               <div className="flex flex-col gap-3 sm:flex-row">
-                <a href="#contact" className="btn-primary">
+                <a href="#contact" className="btn-primary magnetic">
                   בואו נסגור כיוון
                   <MessageCircle size={19} />
                 </a>
-                <a href="#projects" className="btn-secondary">
+                <a href="#projects" className="btn-secondary magnetic">
                   לראות עבודות
                   <ArrowUpLeft size={19} />
                 </a>
@@ -515,9 +539,14 @@ export function LandingPage() {
               </div>
             </div>
           </div>
+
+          <a href="#capabilities" className="hero-scroll-cue" aria-label="גללו למטה">
+            <span className="hero-scroll-cue__line" aria-hidden="true" />
+            <span>גללו</span>
+          </a>
         </section>
 
-        <section className="capability-section relative overflow-hidden py-16 md:py-20">
+        <section id="capabilities" data-bg="#eef7ff" className="capability-section relative overflow-hidden py-16 md:py-20">
           <div className="capability-belt-glow" />
           <div className="section-shell capability-stack">
             <div className="capability-head gsap-reveal">
@@ -549,7 +578,7 @@ export function LandingPage() {
           </div>
         </section>
 
-        <section className="stats-section relative py-20 md:py-28">
+        <section data-bg="#f8fbff" className="stats-section relative py-20 md:py-28">
           <div className="texture-soft" />
           <div className="section-shell grid gap-5 md:grid-cols-3">
             {stats.map((stat) => {
@@ -569,15 +598,24 @@ export function LandingPage() {
           </div>
         </section>
 
-        <section id="projects" className="projects-section relative overflow-hidden py-16 md:py-24">
-          <div className="section-shell grid gap-6 lg:grid-cols-3 lg:items-center">
+        <section id="projects" data-bg="#e8f2fe" className="projects-section relative overflow-hidden py-16 md:py-24">
+          <div className="section-shell mb-12 max-w-3xl space-y-4">
+            <span className="eyebrow gsap-reveal">עבודות נבחרות</span>
+            <h2 className="gsap-reveal text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
+              אתרים שכבר עובדים בשטח
+            </h2>
+            <p className="gsap-reveal text-lg font-semibold leading-8 text-muted">
+              כל פרויקט נבנה סביב מסר אחד ברור ופעולה אחת שרוצים שהמבקר יעשה.
+            </p>
+          </div>
+          <div className="section-shell grid gap-10 lg:grid-cols-3 lg:items-start">
             {projects.map((project) => (
               <TiltProjectCard key={project.title} project={project} />
             ))}
           </div>
         </section>
 
-        <section id="story" className="story-section relative overflow-hidden text-white">
+        <section id="story" data-bg="#052659" className="story-section relative overflow-hidden text-white">
           <BackgroundShader className="story-background-shader" />
           <div className="story-blue-blur-bg" />
           <div className="story-pin">
@@ -605,7 +643,11 @@ export function LandingPage() {
             <div className="story-scroll-copy text-[clamp(1.75rem,3.8vw,4.2rem)] font-black leading-[1.12] tracking-normal">
               {storyLines.map((line) => (
                 <span key={line} className="story-line text-balance">
-                  {line}
+                  {line.split(" ").map((word, wordIndex) => (
+                    <span key={`${word}-${wordIndex}`} className="story-word">
+                      {word}
+                    </span>
+                  ))}
                 </span>
               ))}
             </div>
@@ -617,7 +659,7 @@ export function LandingPage() {
           </div>
         </section>
 
-        <section id="about" className="about-section relative py-20 md:py-28">
+        <section id="about" data-bg="#f8fbff" className="about-section relative py-20 md:py-28">
           <div className="texture-soft opacity-70" />
           <div className="section-shell about-layout grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
             <AboutProfile />
@@ -663,7 +705,7 @@ export function LandingPage() {
           </div>
         </section>
 
-        <section id="process" className="relative overflow-hidden py-20 md:py-28">
+        <section id="process" data-bg="#ffffff" className="process-section relative overflow-hidden py-20 md:py-28">
           <div className="texture-soft opacity-80" />
           <div className="section-shell">
             <div className="mb-12 max-w-3xl space-y-4">
@@ -689,7 +731,7 @@ export function LandingPage() {
           </div>
         </section>
 
-        <section className="section-shell py-20 md:py-28">
+        <section data-bg="#f2f8ff" className="testimonials-section section-shell py-20 md:py-28">
           <div className="mb-10 grid gap-5 md:grid-cols-[0.8fr_1.2fr] md:items-end">
             <div className="space-y-4">
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
@@ -721,7 +763,7 @@ export function LandingPage() {
           </div>
         </section>
 
-        <section id="contact" className="contact-section relative overflow-hidden py-20 md:py-28">
+        <section id="contact" data-bg="#eef7ff" className="contact-section relative overflow-hidden py-20 md:py-28">
           <div className="contact-lume contact-lume--side" />
           <div className="contact-lume contact-lume--floor" />
           <div className="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
@@ -776,7 +818,7 @@ export function LandingPage() {
         </section>
       </main>
 
-      <footer className="relative overflow-hidden bg-ink px-4 py-14 text-white">
+      <footer className="site-footer relative overflow-hidden bg-ink px-4 py-14 text-white">
         <div className="texture-holo opacity-20" />
         <div className="section-shell relative z-10 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div>

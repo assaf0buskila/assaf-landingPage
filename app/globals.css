@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+
 :root {
   color-scheme: light;
   --paper: #f8fbff;
@@ -17,6 +21,10 @@
   --panel: rgba(255, 255, 255, 0.78);
 }
 
+/* ============================================================
+   GLOBAL RESET & BASE
+   ============================================================ */
+
 * {
   box-sizing: border-box;
 }
@@ -28,22 +36,33 @@ html {
   scroll-padding-top: 96px;
 }
 
+/* Body keeps a flat base — bg-morph paints colour on top of it */
 body {
   min-height: 100vh;
   overflow-x: hidden;
-  background:
-    linear-gradient(180deg, rgba(248, 251, 255, 0.96), #ffffff 34%, #f8fbff 100%),
-    var(--paper);
+  background: var(--paper);
   color: var(--ink);
   font-family: Assistant, Inter, Arial, system-ui, sans-serif;
   letter-spacing: 0;
 }
 
-.site-flow {
-  background:
-    linear-gradient(180deg, #ffffff 0%, #f4fbff 16%, #ffffff 32%, #eef8ff 48%, #dcedfb 64%, #f2f9ff 80%, #ffffff 100%),
-    var(--paper);
+/* ============================================================
+   FULL-VIEWPORT COLOUR UNDERLAY  (z -3, behind the grid)
+   GSAP tweens backgroundColor per section via data-bg attrs.
+   ============================================================ */
+
+.bg-morph {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  background: #ffffff;
+  will-change: background-color;
+  pointer-events: none;
 }
+
+/* ============================================================
+   GRID OVERLAY  (z -2 — sits ABOVE .bg-morph so it stays visible)
+   ============================================================ */
 
 body::before {
   position: fixed;
@@ -57,6 +76,18 @@ body::before {
   background-size: 72px 72px;
   mask-image: linear-gradient(180deg, transparent 0%, black 16%, black 74%, transparent 100%);
 }
+
+/* ============================================================
+   SITE FLOW — transparent so bg-morph bleeds through
+   ============================================================ */
+
+.site-flow {
+  background: transparent;
+}
+
+/* ============================================================
+   GLOBAL UTILITIES
+   ============================================================ */
 
 a {
   color: inherit;
@@ -114,12 +145,48 @@ textarea {
   backdrop-filter: blur(22px);
 }
 
+/* ============================================================
+   NAV PROGRESS BAR  (inside header pill — GSAP scrubs scaleX)
+   RTL: origin at inline-end so it fills from right to left
+   ============================================================ */
+
+.nav-progress {
+  position: absolute;
+  inset-block-end: 4px;
+  inset-inline: 18px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--navy), var(--action));
+  transform: scaleX(0);
+  transform-origin: 100% 50%; /* RTL: fill from right */
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* Active nav link state (toggled by GSAP) */
+.nav-link--active {
+  background: rgba(193, 232, 255, 0.55);
+  color: var(--navy);
+}
+
+/* ============================================================
+   MAGNETIC BUTTONS  (GSAP moves these; GPU hint only)
+   ============================================================ */
+
+.magnetic {
+  will-change: transform;
+}
+
+/* ============================================================
+   HERO SECTION — translucent wash; morph shows beneath
+   ============================================================ */
+
 .hero-section {
   position: relative;
   background:
-    radial-gradient(circle at 18% 18%, rgba(217, 238, 255, 0.92), transparent 28%),
-    radial-gradient(circle at 86% 36%, rgba(125, 174, 219, 0.2), transparent 34%),
-    linear-gradient(180deg, #ffffff 0%, #f9fcff 48%, #edf7ff 78%, #e2f1fc 100%);
+    radial-gradient(circle at 18% 18%, rgba(217, 238, 255, 0.45), transparent 28%),
+    radial-gradient(circle at 86% 36%, rgba(125, 174, 219, 0.12), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(249, 252, 255, 0.45) 48%, rgba(237, 247, 255, 0.42) 78%, rgba(226, 241, 252, 0.38) 100%);
 }
 
 .hero-background-shader {
@@ -129,6 +196,7 @@ textarea {
   mix-blend-mode: multiply;
 }
 
+/* Softened bottom fade — alpha ≤ 0.55 */
 .hero-section::after {
   position: absolute;
   right: 0;
@@ -138,9 +206,46 @@ textarea {
   pointer-events: none;
   content: "";
   background:
-    radial-gradient(ellipse at 50% 100%, rgba(217, 238, 255, 0.92), transparent 58%),
-    linear-gradient(180deg, rgba(226, 241, 252, 0), rgba(242, 249, 255, 0.92) 70%, rgba(248, 251, 255, 0.98));
+    radial-gradient(ellipse at 50% 100%, rgba(217, 238, 255, 0.52), transparent 58%),
+    linear-gradient(180deg, rgba(226, 241, 252, 0), rgba(242, 249, 255, 0.52) 70%, rgba(248, 251, 255, 0.55));
 }
+
+/* ============================================================
+   HERO SCROLL CUE
+   ============================================================ */
+
+.hero-scroll-cue {
+  position: absolute;
+  inset-block-end: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  z-index: 10;
+  text-decoration: none;
+}
+
+.hero-scroll-cue__line {
+  width: 2px;
+  height: 46px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, transparent, var(--action));
+  animation: scroll-cue-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-cue-pulse {
+  0%, 100% { transform: translateY(0); opacity: 0.55; }
+  50%       { transform: translateY(7px); opacity: 1; }
+}
+
+/* ============================================================
+   HERO VISUAL LAYERS  (unchanged)
+   ============================================================ */
 
 .hero-aura-layer,
 .hero-holo-layer,
@@ -284,6 +389,10 @@ textarea {
   left: 3%;
 }
 
+/* ============================================================
+   SOFT MEDIA
+   ============================================================ */
+
 .soft-media {
   position: relative;
   overflow: hidden;
@@ -299,12 +408,15 @@ textarea {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(2, 16, 36, 0.06));
 }
 
+/* ============================================================
+   ABOUT SECTION — translucent wash
+   ============================================================ */
+
 .about-section {
   overflow: hidden;
   background:
-    radial-gradient(circle at 16% 40%, rgba(193, 232, 255, 0.48), transparent 24%),
-    linear-gradient(180deg, rgba(248, 251, 255, 0.98), #ffffff 30%, rgba(248, 251, 255, 0.92) 100%),
-    var(--paper);
+    radial-gradient(circle at 16% 40%, rgba(193, 232, 255, 0.28), transparent 24%),
+    linear-gradient(180deg, rgba(248, 251, 255, 0.42), rgba(255, 255, 255, 0.38) 30%, rgba(248, 251, 255, 0.35) 100%);
 }
 
 .about-layout {
@@ -483,6 +595,10 @@ textarea {
   font-weight: 900;
   box-shadow: 0 14px 38px rgba(5, 38, 89, 0.08);
 }
+
+/* ============================================================
+   PROJECT PHONE CARDS  (unchanged)
+   ============================================================ */
 
 .project-phone-stage {
   position: relative;
@@ -699,6 +815,10 @@ textarea {
   height: 64px;
 }
 
+/* ============================================================
+   PROJECT LIVE LINK / DOMAIN  (existing — preserved)
+   ============================================================ */
+
 .project-live-link,
 .project-domain {
   display: inline-flex;
@@ -730,11 +850,83 @@ textarea {
   color: rgba(5, 38, 89, 0.66);
 }
 
+/* ============================================================
+   PROJECT INFO CARD  (glass card under each phone)
+   ============================================================ */
+
+.project-info {
+  display: grid;
+  gap: 0.5rem;
+  border: 1px solid rgba(5, 38, 89, 0.1);
+  border-radius: 14px;
+  background:
+    linear-gradient(150deg, rgba(255, 255, 255, 0.94), rgba(239, 247, 255, 0.68)),
+    rgba(255, 255, 255, 0.86);
+  padding: 1.1rem;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 18px 52px rgba(5, 38, 89, 0.09);
+  backdrop-filter: blur(20px);
+}
+
+.project-info h3 {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1.2;
+}
+
+.project-info p {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.project-result {
+  font-weight: 900;
+  color: var(--action);
+}
+
+.project-result::before {
+  content: "✓";
+  margin-inline-end: 0.35em;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.project-tags span {
+  display: inline-block;
+  border: 1px solid rgba(5, 38, 89, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.18rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.project-links {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-block-start: 0.3rem;
+}
+
+/* ============================================================
+   CONTACT SECTION — translucent wash
+   ============================================================ */
+
 .contact-section {
   background:
-    radial-gradient(circle at 88% 34%, rgba(37, 99, 235, 0.16), transparent 28%),
-    radial-gradient(circle at 8% 78%, rgba(193, 232, 255, 0.64), transparent 24%),
-    linear-gradient(180deg, #ffffff 0%, #f8fbff 18%, #eef7ff 54%, #ffffff 100%);
+    radial-gradient(circle at 88% 34%, rgba(37, 99, 235, 0.09), transparent 28%),
+    radial-gradient(circle at 8% 78%, rgba(193, 232, 255, 0.35), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.42) 0%, rgba(248, 251, 255, 0.38) 18%, rgba(238, 247, 255, 0.45) 54%, rgba(255, 255, 255, 0.38) 100%);
 }
 
 .contact-lume {
@@ -862,6 +1054,10 @@ textarea {
   color: var(--muted);
 }
 
+/* ============================================================
+   FORM CONTROLS  (unchanged)
+   ============================================================ */
+
 .form-control {
   width: 100%;
   border: 1px solid rgba(5, 38, 89, 0.11);
@@ -883,6 +1079,10 @@ textarea {
     0 14px 34px rgba(37, 99, 235, 0.12);
   transform: translateY(-1px);
 }
+
+/* ============================================================
+   BUTTONS  (unchanged)
+   ============================================================ */
 
 .btn-primary,
 .btn-secondary {
@@ -929,6 +1129,10 @@ textarea:focus-visible {
   outline-offset: 3px;
 }
 
+/* ============================================================
+   HERO WORD ANIMATION
+   ============================================================ */
+
 .hero-word {
   display: inline-block;
   white-space: nowrap;
@@ -954,6 +1158,10 @@ textarea:focus-visible {
   }
 }
 
+/* ============================================================
+   MARQUEE
+   ============================================================ */
+
 .marquee-mask {
   mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
 }
@@ -964,11 +1172,24 @@ textarea:focus-visible {
   animation: marquee 28s linear infinite;
 }
 
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(50%); }
+}
+
+/* ============================================================
+   CAPABILITY SECTION — translucent wash (orb ::before kept)
+   ============================================================ */
+
 .capability-section {
   background:
-    radial-gradient(circle at 16% 18%, rgba(217, 238, 255, 0.76), transparent 32%),
-    radial-gradient(circle at 88% 58%, rgba(125, 174, 219, 0.15), transparent 34%),
-    linear-gradient(180deg, rgba(242, 249, 255, 0.98), rgba(248, 251, 255, 0.98) 30%, rgba(255, 255, 255, 0.98) 70%, rgba(244, 250, 255, 0.96));
+    radial-gradient(circle at 16% 18%, rgba(217, 238, 255, 0.44), transparent 32%),
+    radial-gradient(circle at 88% 58%, rgba(125, 174, 219, 0.1), transparent 34%),
+    linear-gradient(180deg, rgba(242, 249, 255, 0.48), rgba(248, 251, 255, 0.42) 30%, rgba(255, 255, 255, 0.38) 70%, rgba(244, 250, 255, 0.44));
   box-shadow: 0 36px 90px rgba(5, 38, 89, 0.05);
 }
 
@@ -983,48 +1204,6 @@ textarea:focus-visible {
   background: linear-gradient(135deg, rgba(193, 232, 255, 0.74), rgba(37, 99, 235, 0.14));
   filter: blur(10px);
   opacity: 0.5;
-}
-
-.stats-section {
-  background:
-    radial-gradient(circle at 80% 18%, rgba(217, 238, 255, 0.52), transparent 30%),
-    linear-gradient(180deg, rgba(244, 250, 255, 0.94), #ffffff 42%, rgba(239, 247, 255, 0.94) 100%);
-}
-
-.stat-value {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.18em;
-  direction: ltr;
-  unicode-bidi: isolate;
-}
-
-.stat-value--word-first {
-  direction: ltr;
-  flex-direction: row;
-}
-
-.projects-section {
-  background:
-    radial-gradient(circle at 14% 42%, rgba(125, 174, 219, 0.13), transparent 26%),
-    radial-gradient(circle at 84% 72%, rgba(217, 238, 255, 0.64), transparent 30%),
-    linear-gradient(180deg, rgba(239, 247, 255, 0.94), #ffffff 32%, #f4fbff 62%, #e5f3fd 100%);
-}
-
-.projects-section::after {
-  position: absolute;
-  right: -8%;
-  bottom: -120px;
-  left: -8%;
-  z-index: 0;
-  height: 260px;
-  border-radius: 0 0 50% 50%;
-  pointer-events: none;
-  content: "";
-  background:
-    radial-gradient(ellipse at 50% 100%, rgba(168, 209, 240, 0.48), transparent 58%),
-    linear-gradient(180deg, rgba(229, 243, 253, 0), rgba(229, 243, 253, 0.92));
-  filter: blur(10px);
 }
 
 .capability-belt-glow {
@@ -1155,31 +1334,61 @@ textarea:focus-visible {
   line-height: 1.45;
 }
 
-.marquee-track:hover {
-  animation-play-state: paused;
+/* ============================================================
+   STATS SECTION — translucent wash
+   ============================================================ */
+
+.stats-section {
+  background:
+    radial-gradient(circle at 80% 18%, rgba(217, 238, 255, 0.32), transparent 30%),
+    linear-gradient(180deg, rgba(244, 250, 255, 0.44), rgba(255, 255, 255, 0.38) 42%, rgba(239, 247, 255, 0.42) 100%);
 }
 
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(50%);
-  }
+.stat-value {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.18em;
+  direction: ltr;
+  unicode-bidi: isolate;
 }
 
-.gsap-reveal {
-  opacity: 0;
-  transform: translateY(32px);
+.stat-value--word-first {
+  direction: ltr;
+  flex-direction: row;
 }
 
-.story-line {
-  display: block;
-  opacity: 0.58;
-  transform: translateY(24px);
-  will-change: opacity, transform, filter;
+/* ============================================================
+   PROJECTS SECTION — translucent; keep bottom navy hint low-alpha
+   ============================================================ */
+
+.projects-section {
+  background:
+    radial-gradient(circle at 14% 42%, rgba(125, 174, 219, 0.1), transparent 26%),
+    radial-gradient(circle at 84% 72%, rgba(217, 238, 255, 0.38), transparent 30%),
+    linear-gradient(180deg, rgba(239, 247, 255, 0.45), rgba(255, 255, 255, 0.38) 32%, rgba(244, 251, 255, 0.42) 62%, rgba(229, 243, 253, 0.28) 100%);
 }
+
+.projects-section::after {
+  position: absolute;
+  right: -8%;
+  bottom: -120px;
+  left: -8%;
+  z-index: 0;
+  height: 260px;
+  border-radius: 0 0 50% 50%;
+  pointer-events: none;
+  content: "";
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(168, 209, 240, 0.25), transparent 58%),
+    linear-gradient(180deg, rgba(229, 243, 253, 0), rgba(229, 243, 253, 0.38));
+  filter: blur(10px);
+}
+
+/* ============================================================
+   STORY SECTION — stays opaque dark navy (intentional dark act)
+   morph tweens to #052659 behind it; entry/exit blend naturally.
+   ::before softens top edge transition.
+   ============================================================ */
 
 .story-section {
   min-height: auto;
@@ -1189,6 +1398,32 @@ textarea:focus-visible {
     radial-gradient(ellipse at 86% 46%, rgba(124, 173, 218, 0.46), transparent 44%),
     radial-gradient(ellipse at 48% 72%, rgba(78, 138, 191, 0.38), transparent 50%),
     linear-gradient(180deg, #eef8ff 0%, #d9ecfb 16%, #85b9e0 42%, #4f88bd 72%, #eaf6ff 100%);
+}
+
+/* Soft top-edge gradient to melt light section into dark story */
+.story-section::before {
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  z-index: 0;
+  height: 140px;
+  pointer-events: none;
+  content: "";
+  background: linear-gradient(180deg, rgba(232, 242, 254, 0.9), transparent);
+}
+
+.story-section::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+  content: "";
+  height: 380px;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.86), transparent 58%),
+    linear-gradient(180deg, rgba(79, 136, 189, 0), rgba(229, 243, 253, 0.7) 50%, rgba(248, 251, 255, 0.98) 100%);
 }
 
 .story-background-shader {
@@ -1211,32 +1446,6 @@ textarea:focus-visible {
   filter: blur(34px);
   opacity: 0.92;
   transform: scale(1.04);
-}
-
-.story-section::before,
-.story-section::after {
-  position: absolute;
-  right: 0;
-  left: 0;
-  z-index: 1;
-  pointer-events: none;
-  content: "";
-}
-
-.story-section::before {
-  top: 0;
-  height: 380px;
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.82), transparent 58%),
-    linear-gradient(180deg, #f4fbff 0%, rgba(229, 243, 253, 0.88) 28%, rgba(168, 209, 240, 0.34) 68%, transparent 100%);
-}
-
-.story-section::after {
-  bottom: 0;
-  height: 380px;
-  background:
-    radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.86), transparent 58%),
-    linear-gradient(180deg, rgba(79, 136, 189, 0), rgba(229, 243, 253, 0.7) 50%, rgba(248, 251, 255, 0.98) 100%);
 }
 
 .story-pin {
@@ -1344,9 +1553,63 @@ textarea:focus-visible {
   z-index: 2;
 }
 
+/* ============================================================
+   STORY LINE & WORD
+   GSAP now drives per-word opacity — .story-line loses its
+   old opacity/transform so everything is readable without JS.
+   ============================================================ */
+
+.story-line {
+  display: block;
+  /* opacity and transform intentionally REMOVED — GSAP drives words */
+  will-change: opacity, transform, filter;
+}
+
+.story-word {
+  display: inline-block;
+  margin-inline-end: 0.32em;
+  will-change: opacity, transform;
+}
+
+/* ============================================================
+   GSAP REVEAL  (base hidden state for scroll-triggered reveals)
+   ============================================================ */
+
+.gsap-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+}
+
+/* ============================================================
+   SITE FOOTER SEAM  — melts light contact section into dark footer
+   ============================================================ */
+
+.site-footer {
+  position: relative;
+}
+
+.site-footer::before {
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  height: 140px;
+  pointer-events: none;
+  content: "";
+  background: linear-gradient(180deg, #eef7ff, rgba(238, 247, 255, 0));
+  z-index: 0;
+}
+
+/* ============================================================
+   TEXT UTILITIES
+   ============================================================ */
+
 .text-balance {
   text-wrap: balance;
 }
+
+/* ============================================================
+   TEXTURE OVERLAYS  (unchanged)
+   ============================================================ */
 
 .texture-soft {
   position: absolute;
@@ -1374,6 +1637,10 @@ textarea:focus-visible {
   mix-blend-mode: multiply;
 }
 
+/* ============================================================
+   FLOATING DOCK NAV  (unchanged)
+   ============================================================ */
+
 .dock-link {
   position: relative;
 }
@@ -1396,6 +1663,10 @@ textarea:focus-visible {
   opacity: 1;
   transform: translateX(50%) scale(1);
 }
+
+/* ============================================================
+   INTRO OVERLAY  (do not touch — preserved verbatim)
+   ============================================================ */
 
 .intro-overlay {
   position: fixed;
@@ -1485,6 +1756,10 @@ textarea:focus-visible {
   animation: intro-button-enter 0.72s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards;
 }
 
+/* ============================================================
+   BACKGROUND SHADER  (do not touch — preserved verbatim)
+   ============================================================ */
+
 .background-shader-fallback {
   position: absolute;
   inset: 0;
@@ -1550,6 +1825,10 @@ textarea:focus-visible {
   mask-image: radial-gradient(circle at center, black, transparent 72%);
 }
 
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+
 @keyframes intro-title-word {
   to {
     opacity: 1;
@@ -1565,37 +1844,29 @@ textarea:focus-visible {
 }
 
 @keyframes intro-video {
-  to {
-    transform: scale(1);
-  }
+  to { transform: scale(1); }
 }
 
 @keyframes shader-roll {
-  0% {
-    transform: translate3d(-4%, 3%, 0) rotate(0deg) scale(1);
-  }
-
-  50% {
-    transform: translate3d(8%, -6%, 0) rotate(18deg) scale(1.12);
-  }
-
-  100% {
-    transform: translate3d(-2%, -10%, 0) rotate(-14deg) scale(0.95);
-  }
+  0%   { transform: translate3d(-4%, 3%, 0) rotate(0deg) scale(1); }
+  50%  { transform: translate3d(8%, -6%, 0) rotate(18deg) scale(1.12); }
+  100% { transform: translate3d(-2%, -10%, 0) rotate(-14deg) scale(0.95); }
 }
 
 @keyframes mobile-blue-bloom {
-  0%,
-  100% {
+  0%, 100% {
     opacity: 0.46;
     transform: translate(-48%, -48%) scale(0.88);
   }
-
   50% {
     opacity: 0.9;
     transform: translate(-52%, -52%) scale(1.08);
   }
 }
+
+/* ============================================================
+   RESPONSIVE — TABLET / MOBILE
+   ============================================================ */
 
 @media (max-width: 900px) {
   .hero-aura-layer {
@@ -1745,6 +2016,44 @@ textarea:focus-visible {
   }
 }
 
+/* ============================================================
+   MOBILE GPU RELIEF — backdrop-filter is the #1 scroll cost on mobile.
+   Strip it on viewports ≤ 900 px; the semi-opaque backgrounds still
+   read clearly without the blur. Desktop blurs are NOT touched.
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .eyebrow,
+  .premium-panel,
+  .blue-glass,
+  .hero-floating-note,
+  .about-photo-caption,
+  .project-open-cue,
+  .project-info,
+  .contact-form-card,
+  .contact-call,
+  .btn-secondary,
+  .floating-dock-shell,
+  .story-result-panel {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  /* Soften large blur orbs to reduce GPU paint cost */
+  .hero-lume {
+    filter: blur(26px);
+  }
+
+  .contact-lume {
+    filter: blur(34px);
+  }
+}
+
+/* ============================================================
+   PREFERS-REDUCED-MOTION
+   All GSAP-driven and CSS animations off; everything visible/static.
+   ============================================================ */
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1757,6 +2066,8 @@ textarea:focus-visible {
 
   .gsap-reveal,
   .story-line,
+  .story-word,
+  .hero-scroll-cue__line,
   .hero-word-animated,
   .intro-overlay__title span,
   .intro-overlay__button {

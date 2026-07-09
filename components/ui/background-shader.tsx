@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 // Loaded client-only: the MeshGradient renders a WebGL canvas, so we keep it out
@@ -14,6 +14,8 @@ const MeshGradient = dynamic(
 export function BackgroundShader({ className }: { className?: string }) {
   const [reducedMotion, setReducedMotion] = useState(false);
   const [canUseWebGL, setCanUseWebGL] = useState(false);
+  const [intersecting, setIntersecting] = useState(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -32,13 +34,29 @@ export function BackgroundShader({ className }: { className?: string }) {
     return () => mq.removeEventListener("change", update);
   }, []);
 
+  useEffect(() => {
+    const el = wrapperRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIntersecting(entry.isIntersecting);
+      },
+      { rootMargin: "240px 0px", threshold: 0 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div
+      ref={wrapperRef}
       className={cn("absolute inset-0 z-0 overflow-hidden", className)}
       aria-hidden="true"
     >
       <div className="background-shader-fallback" />
-      {canUseWebGL ? (
+      {canUseWebGL && intersecting ? (
         <MeshGradient
           style={{ height: "100%", width: "100%" }}
           distortion={0.8}

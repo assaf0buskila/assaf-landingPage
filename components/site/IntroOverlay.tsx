@@ -12,7 +12,10 @@ export function IntroOverlay() {
   useEffect(() => {
     if (window.location.search.includes("skipIntro=1")) {
       setVisible(false);
+      return;
     }
+    const timer = setTimeout(() => setVisible(false), 5000);
+    return () => clearTimeout(timer);
   }, []);
 
   if (!visible) return null;
