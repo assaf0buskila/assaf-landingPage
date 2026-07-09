@@ -86,7 +86,7 @@ export function ScrollEffects() {
       // ────────────────────────────────────────────────────────────────────────
       // 5. SCROLL-SPY NAV LINKS
       // ────────────────────────────────────────────────────────────────────────
-      (["projects", "story", "process", "contact"] as const).forEach((id) => {
+      (["works", "story", "process", "contact"] as const).forEach((id) => {
         const section = document.getElementById(id);
         const link = qs<HTMLAnchorElement>(`header .nav-link[href="#${id}"]`);
         if (!section || !link) return;
@@ -103,35 +103,10 @@ export function ScrollEffects() {
       });
 
       // ────────────────────────────────────────────────────────────────────────
-      // 6. HERO — INTRO TWEENS (kept from original)
+      // 6. HERO — entrance is pure CSS (hero-word-in / hero-kicker-in keyframes).
+      // GSAP used to double-animate the same elements and could freeze mid-tween
+      // on remount, leaving the H1 permanently blurred.
       // ────────────────────────────────────────────────────────────────────────
-      gsap.fromTo(
-        ".hero-word-animated",
-        { opacity: 0, y: 72, filter: "blur(8px)" },
-        {
-          opacity: 1,
-          y: 0,
-          filter: "blur(0px)",
-          delay: 0.12,
-          duration: 1,
-          stagger: 0.08,
-          ease: "power4.out",
-        }
-      );
-
-      gsap.fromTo(
-        ".hero-kicker",
-        { opacity: 0, y: 24, scale: 0.94 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          delay: 0.3,
-          duration: 0.8,
-          stagger: 0.12,
-          ease: "power3.out",
-        }
-      );
 
       // 6c. Scroll-cue fast fade (first 14% of hero scroll)
       const heroSection = qs<HTMLElement>(".hero-section");

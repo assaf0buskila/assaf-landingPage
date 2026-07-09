@@ -12,13 +12,25 @@ export function IntroOverlay() {
   const exitTimer = useRef<number | null>(null);
 
   const dismiss = useCallback(() => {
-    if (!chatDone || exiting) return;
+    if (exiting) return;
     setExiting(true);
+    try {
+      sessionStorage.setItem("assaf-intro-seen", "1");
+    } catch {
+      // storage unavailable (private mode) — overlay will just replay next visit
+    }
     exitTimer.current = window.setTimeout(() => setVisible(false), 460);
-  }, [chatDone, exiting]);
+  }, [exiting]);
 
   useEffect(() => {
-    if (window.location.search.includes("skipIntro=1")) {
+    let seen = false;
+    try {
+      seen = sessionStorage.getItem("assaf-intro-seen") === "1";
+    } catch {
+      seen = false;
+    }
+
+    if (seen || window.location.search.includes("skipIntro=1")) {
       setVisible(false);
       return;
     }
@@ -74,8 +86,8 @@ export function IntroOverlay() {
               <Sparkles size={15} />
               הדגמה חיה לפני הכניסה
             </span>
-            <h1>האתר של אסף</h1>
-            <p>תראו איך רעיון לאתר הופך לכיוון ברור תוך כמה שניות.</p>
+            <p className="intro-overlay__title">האתר של אסף</p>
+            <p className="intro-overlay__sub">תראו איך רעיון לאתר הופך לכיוון ברור תוך כמה שניות.</p>
           </div>
         </div>
 
@@ -87,10 +99,9 @@ export function IntroOverlay() {
           type="button"
           className="intro-overlay__button"
           aria-label="כניסה לאתר של אסף"
-          disabled={!chatDone}
           onClick={dismiss}
         >
-          {chatDone ? "כניסה לאתר" : "מסיים לבנות כיוון"}
+          {chatDone ? "כניסה לאתר" : "דלגו לאתר"}
           <ChevronLeft size={18} aria-hidden="true" />
         </button>
       </div>

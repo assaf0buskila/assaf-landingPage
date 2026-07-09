@@ -389,11 +389,6 @@ export function LandingPage() {
                 ולקבל יותר פניות איכותיות בוואטסאפ.
               </p>
 
-              <p className="hero-legacy-copy">
-                אני אסף בוסקילה. אני בונה אתרים לעסקים שרוצים להפסיק להיראות כמו עוד תבנית,
-                להסביר מהר למה לבחור בהם, ולקבל פניות מאנשים שכבר מבינים מה הם רוצים.
-              </p>
-
               <div className="hero-cta-row flex flex-col gap-3 sm:flex-row">
                 <a href="#contact" className="btn-primary magnetic">
                   שלחו לי עסק ואבנה לכם כיוון
@@ -405,37 +400,6 @@ export function LandingPage() {
                 </a>
               </div>
 
-              <div className="hero-legacy-cta">
-                <a href="#contact" className="btn-primary magnetic">
-                  בואו נסגור כיוון
-                  <MessageCircle size={19} />
-                </a>
-                <a href="#process" className="btn-secondary magnetic">
-                  לראות תהליך
-                  <ChevronLeft size={19} />
-                </a>
-              </div>
-            </div>
-
-            <div className="hero-visual hero-visual--legacy" aria-hidden="true">
-              <div className="hero-profile-shell">
-                <Image
-                  src="/assets/assaf-photo.jpg"
-                  alt="אסף בוסקילה"
-                  width={1100}
-                  height={880}
-                  sizes="(min-width: 1024px) 390px, 72vw"
-                  className="hero-profile-photo"
-                />
-              </div>
-              <div className="hero-floating-note hero-floating-note--top">
-                <span>מסר ברור</span>
-                <strong>לפני העיצוב</strong>
-              </div>
-              <div className="hero-floating-note hero-floating-note--bottom">
-                <span>חוויה זכירה</span>
-                <strong>שמובילה לפנייה</strong>
-              </div>
             </div>
           </div>
 
@@ -545,22 +509,6 @@ export function LandingPage() {
           <div className="texture-soft opacity-70" />
           <div className="section-shell about-layout grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
             <AboutProfile />
-            <div className="hidden">
-              <div className="about-photo-glow" />
-              <Image
-                src="/assets/about-me.png"
-                alt="אסף בוסקילה"
-                width={433}
-                height={577}
-                sizes="(min-width: 1024px) 340px, 72vw"
-                className="about-photo"
-              />
-              <div className="about-photo-caption">
-                <span>אסף בוסקילה</span>
-                <strong>סטודנט לתעשייה וניהול, יוצר אתרים ותוכן לעסקים</strong>
-              </div>
-            </div>
-
             <div className="gsap-reveal about-copy space-y-6">
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
                 אני לא רק בונה אתר. אני עוזר לסגור את הכיוון.

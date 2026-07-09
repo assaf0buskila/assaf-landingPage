@@ -1,13 +1,16 @@
 # Keep legacy/source-only artifacts out of Vercel's deployment bundle.
 # The active site is the Next app in app/, components/, lib/, and public/.
-index.html
-website.html
-ref/
-assets/
-candy/
-.well-known/
-llms.txt
-pricing.md
-robots.txt
-schemamap.xml
-sitemap.xml
+# IMPORTANT: patterns are anchored with a leading "/" so they only match at the
+# repo root. Unanchored patterns follow gitignore semantics and match at ANY
+# depth — an unanchored "assets/" also excluded public/assets/ and broke prod.
+/index.html
+/website.html
+/ref/
+/assets/
+/candy/
+/.well-known/
+/llms.txt
+/pricing.md
+/robots.txt
+/schemamap.xml
+/sitemap.xml
