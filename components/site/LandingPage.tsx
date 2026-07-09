@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { FormEvent, useState } from "react";
 import type { CSSProperties } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
   ArrowUpLeft,
   BadgeCheck,
@@ -31,13 +30,10 @@ const whatsapp = "https://wa.me/972523393768";
 const email = "mailto:assaf.buskila10@gmail.com";
 
 const navItems = [
-  { href: "#projects", label: "עבודות" },
   { href: "#story", label: "סיפור" },
   { href: "#process", label: "תהליך" },
   { href: "#contact", label: "יצירת קשר" },
 ];
-
-const heroLines = ["אתרים", "שמעבירים מסר", "בצורה", "בלתי נשכחת"];
 
 const capabilityItems = [
   {
@@ -90,36 +86,6 @@ const stats = [
     suffix: "%",
     label: "עברית, מובייל, וואטסאפ ומסר ברור מהמסך הראשון",
     icon: MousePointer2,
-  },
-];
-
-const projects = [
-  {
-    title: "מותג ממתקים בוטיק",
-    subtitle: "שפה צבעונית שמרגישה מתוקה ונקייה",
-    result: "דף שמוביל מהר מהחשק לפנייה",
-    image: "/assets/projects/candy-phone.jpeg",
-    siteUrl: "/candy/",
-    domain: "assafweb.com/candy",
-    tags: ["מותג", "חנות", "מובייל"],
-  },
-  {
-    title: "מוצ׳י",
-    subtitle: "מותג רך, מדויק וזכיר מהרגע הראשון",
-    result: "נוכחות שמכניסה את המבקר לעולם של המותג",
-    image: "/assets/projects/mochi-phone.jpeg",
-    siteUrl: "https://www.mochi-israel.com/",
-    domain: "mochi-israel.com",
-    tags: ["מותג", "חוויה", "אמון"],
-  },
-  {
-    title: "בית קפה מקומי",
-    subtitle: "אתר עם אופי, מקום ותפריט ברור",
-    result: "יותר אמון לפני ההגעה הראשונה",
-    image: "/assets/projects/cafe-ana-phone.jpeg",
-    siteUrl: "https://www.cafe-ana.com/",
-    domain: "cafe-ana.com",
-    tags: ["תדמית", "מקומי", "תוכן"],
   },
 ];
 
@@ -212,88 +178,6 @@ function AnimatedNumber({
       <span dir="rtl">{cleanSuffix}</span>
       <bdi className="count-target" data-countup={value}>{value}</bdi>
     </span>
-  );
-}
-
-function TiltProjectCard({
-  project,
-}: {
-  project: (typeof projects)[number];
-}) {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const smoothX = useSpring(x, { stiffness: 120, damping: 18 });
-  const smoothY = useSpring(y, { stiffness: 120, damping: 18 });
-  const rotateX = useTransform(smoothY, [-80, 80], [4, -4]);
-  const rotateY = useTransform(smoothX, [-80, 80], [-4, 4]);
-
-  return (
-    <motion.article
-      className="project-phone-card group relative"
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      onMouseMove={(event) => {
-        const rect = event.currentTarget.getBoundingClientRect();
-        x.set(event.clientX - rect.left - rect.width / 2);
-        y.set(event.clientY - rect.top - rect.height / 2);
-      }}
-      onMouseLeave={() => {
-        x.set(0);
-        y.set(0);
-      }}
-    >
-      <div className="project-phone-stage project-phone-stage--bare">
-        <div className="project-phone-frame">
-          <span className="project-phone-button project-phone-button--top" />
-          <span className="project-phone-button project-phone-button--side" />
-          <div className="project-phone-screen">
-            <div className="project-phone-dynamic" />
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              sizes="(min-width: 1024px) 24vw, 72vw"
-              className="object-cover object-top transition duration-700 group-hover:scale-105"
-            />
-          </div>
-          <div className="project-phone-home" />
-        </div>
-        <a
-          href={project.siteUrl}
-          target={project.siteUrl.startsWith("http") ? "_blank" : undefined}
-          rel={project.siteUrl.startsWith("http") ? "noreferrer" : undefined}
-          aria-label={`כניסה לאתר ${project.title}`}
-          title={`כניסה לאתר ${project.title}`}
-          className="project-phone-hit"
-        >
-          <span className="project-open-cue" aria-hidden="true">
-            <ArrowUpLeft size={17} strokeWidth={2.35} />
-          </span>
-        </a>
-      </div>
-
-      <div className="project-info gsap-reveal">
-        <div className="project-tags">
-          {project.tags.map((tag) => (
-            <span key={tag}>{tag}</span>
-          ))}
-        </div>
-        <h3>{project.title}</h3>
-        <p>{project.subtitle}</p>
-        <p className="project-result">{project.result}</p>
-        <div className="project-links">
-          <a
-            href={project.siteUrl}
-            target={project.siteUrl.startsWith("http") ? "_blank" : undefined}
-            rel={project.siteUrl.startsWith("http") ? "noreferrer" : undefined}
-            className="project-live-link"
-          >
-            צפו באתר החי
-            <ArrowUpLeft size={16} />
-          </a>
-          <span className="project-domain" dir="ltr">{project.domain}</span>
-        </div>
-      </div>
-    </motion.article>
   );
 }
 
@@ -522,9 +406,9 @@ export function LandingPage() {
                   שלחו לי עסק ואבנה לכם כיוון
                   <MessageCircle size={19} />
                 </a>
-                <a href="#projects" className="btn-secondary magnetic">
-                  לראות עבודות
-                  <ArrowUpLeft size={19} />
+                <a href="#process" className="btn-secondary magnetic">
+                  לראות תהליך
+                  <ChevronLeft size={19} />
                 </a>
               </div>
 
@@ -533,9 +417,9 @@ export function LandingPage() {
                   בואו נסגור כיוון
                   <MessageCircle size={19} />
                 </a>
-                <a href="#projects" className="btn-secondary magnetic">
-                  לראות עבודות
-                  <ArrowUpLeft size={19} />
+                <a href="#process" className="btn-secondary magnetic">
+                  לראות תהליך
+                  <ChevronLeft size={19} />
                 </a>
               </div>
             </div>
@@ -617,23 +501,6 @@ export function LandingPage() {
                 </div>
               );
             })}
-          </div>
-        </section>
-
-        <section id="projects" data-bg="#e8f2fe" className="projects-section relative overflow-hidden py-16 md:py-24">
-          <div className="section-shell mb-12 max-w-3xl space-y-4">
-            <span className="eyebrow gsap-reveal">עבודות נבחרות</span>
-            <h2 className="gsap-reveal text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
-              אתרים שכבר עובדים בשטח
-            </h2>
-            <p className="gsap-reveal text-lg font-semibold leading-8 text-muted">
-              כל פרויקט נבנה סביב מסר אחד ברור ופעולה אחת שרוצים שהמבקר יעשה.
-            </p>
-          </div>
-          <div className="section-shell grid gap-10 lg:grid-cols-3 lg:items-start">
-            {projects.map((project) => (
-              <TiltProjectCard key={project.title} project={project} />
-            ))}
           </div>
         </section>
 

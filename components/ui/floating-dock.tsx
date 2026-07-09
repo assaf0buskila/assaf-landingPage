@@ -3,7 +3,6 @@
 import { motion, useMotionValue, useSpring, useTransform, type MotionValue } from "framer-motion";
 import {
   ArrowUp,
-  BriefcaseBusiness,
   Home,
   MessageCircle,
   PenTool,
@@ -21,7 +20,6 @@ type DockItem = {
 
 const dockItems: DockItem[] = [
   { href: "#top", label: "בית", icon: Home },
-  { href: "#projects", label: "עבודות", icon: BriefcaseBusiness },
   { href: "#story", label: "סיפור", icon: Sparkles },
   { href: "#process", label: "תהליך", icon: PenTool },
 ];

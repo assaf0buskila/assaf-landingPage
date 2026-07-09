@@ -372,27 +372,6 @@ export function ScrollEffects() {
       }
 
       // ────────────────────────────────────────────────────────────────────────
-      // 10. PROJECTS — card rise
-      // ────────────────────────────────────────────────────────────────────────
-      qsa<HTMLElement>(".project-phone-card").forEach((card, index) => {
-        gsap.fromTo(
-          card,
-          { opacity: 0, y: 70, rotate: index % 2 === 0 ? 4 : -4 },
-          {
-            opacity: 1,
-            y: 0,
-            rotate: 0,
-            duration: 1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 78%",
-            },
-          }
-        );
-      });
-
-      // ────────────────────────────────────────────────────────────────────────
       // 11. PROCESS PANEL CLIP-PATH REVEAL
       // ────────────────────────────────────────────────────────────────────────
       const processPanels = qsa<HTMLElement>("#process .premium-panel");
@@ -583,26 +562,6 @@ export function ScrollEffects() {
           .to(".hero-lume--left", { y: 60, ease: "none" }, 0);
       }
 
-      // Per-card phone screen inner parallax
-      qsa<HTMLElement>(".project-phone-card").forEach((card) => {
-        const img = qs<HTMLElement>(".project-phone-screen img", card);
-        if (!img) return;
-
-        gsap.fromTo(
-          img,
-          { yPercent: -7 },
-          {
-            yPercent: 7,
-            ease: "none",
-            scrollTrigger: {
-              trigger: card,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true,
-            },
-          }
-        );
-      });
     });
 
     // ────────────────────────────────────────────────────────────────────────
