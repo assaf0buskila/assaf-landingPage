@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import { BackgroundShader } from "@/components/ui/background-shader";
+import { AiHeroChat } from "@/components/site/AiHeroChat";
 import { IntroOverlay } from "@/components/site/IntroOverlay";
 import { ScrollEffects } from "@/components/site/ScrollEffects";
 
@@ -191,9 +192,8 @@ function AnimatedNumber({
 
   if (cleanSuffix === "שותף") {
     return (
-      <span className="stat-value" dir="rtl" style={{ direction: "rtl" }}>
-        <bdi className="count-target" data-countup={value}>{value}</bdi>
-        <span dir="rtl">שותף</span>
+      <span className="stat-value stat-value--phrase" dir="rtl">
+        <span>שותף אחד</span>
       </span>
     );
   }
@@ -416,6 +416,8 @@ function ContactForm() {
 }
 
 export function LandingPage() {
+  const [heroChatDone, setHeroChatDone] = useState(false);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": ["Person", "ProfessionalService"],
@@ -486,10 +488,15 @@ export function LandingPage() {
           <div className="hero-lume hero-lume--left" />
           <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-paper to-transparent" />
 
-          <div className="section-shell relative z-10 grid min-h-[calc(100vh-120px)] items-center gap-10 py-8 lg:grid-cols-[0.95fr_1.05fr] md:py-20">
-            <div className="max-w-3xl space-y-5 text-center md:space-y-7 md:text-right">
+          <div className="section-shell hero-ai-grid relative z-10 grid min-h-[calc(100vh-120px)] items-center gap-10 py-8 md:py-20">
+            <div className="hero-demo-shell">
+              <AiHeroChat onComplete={() => setHeroChatDone(true)} />
+            </div>
+
+            <div className={`hero-copy hero-conclusion max-w-3xl space-y-5 text-center md:space-y-7 md:text-right ${heroChatDone ? "hero-conclusion--ready" : ""}`}>
+              <span className="hero-kicker">סטודיו אתרים עם חשיבה חכמה</span>
               <h1 className="max-w-3xl text-balance text-[clamp(2.75rem,7vw,7rem)] font-black leading-[0.92] tracking-normal text-ink">
-                {heroLines.map((line, index) => (
+                {["אתר שמבין", "את העסק", "לפני שהוא", "מעצב אותו"].map((line, index) => (
                   <span
                     key={line}
                     className="hero-word hero-word-line hero-word-animated"
@@ -501,11 +508,27 @@ export function LandingPage() {
               </h1>
 
               <p className="max-w-2xl text-xl font-semibold leading-9 text-muted md:text-2xl">
+                אני אסף בוסקילה. אני בונה אתרים חכמים לעסקים שרוצים להסביר מהר למה לבחור בהם, ליצור אמון,
+                ולקבל יותר פניות איכותיות בוואטסאפ.
+              </p>
+
+              <p className="hero-legacy-copy">
                 אני אסף בוסקילה. אני בונה אתרים לעסקים שרוצים להפסיק להיראות כמו עוד תבנית,
                 להסביר מהר למה לבחור בהם, ולקבל פניות מאנשים שכבר מבינים מה הם רוצים.
               </p>
 
-              <div className="flex flex-col gap-3 sm:flex-row">
+              <div className="hero-cta-row flex flex-col gap-3 sm:flex-row">
+                <a href="#contact" className="btn-primary magnetic">
+                  שלחו לי עסק ואבנה לכם כיוון
+                  <MessageCircle size={19} />
+                </a>
+                <a href="#projects" className="btn-secondary magnetic">
+                  לראות עבודות
+                  <ArrowUpLeft size={19} />
+                </a>
+              </div>
+
+              <div className="hero-legacy-cta">
                 <a href="#contact" className="btn-primary magnetic">
                   בואו נסגור כיוון
                   <MessageCircle size={19} />
@@ -517,7 +540,7 @@ export function LandingPage() {
               </div>
             </div>
 
-            <div className="hero-visual" aria-hidden="true">
+            <div className="hero-visual hero-visual--legacy" aria-hidden="true">
               <div className="hero-profile-shell">
                 <Image
                   src="/assets/assaf-photo.jpg"
@@ -526,7 +549,6 @@ export function LandingPage() {
                   height={880}
                   sizes="(min-width: 1024px) 390px, 72vw"
                   className="hero-profile-photo"
-                  priority
                 />
               </div>
               <div className="hero-floating-note hero-floating-note--top">

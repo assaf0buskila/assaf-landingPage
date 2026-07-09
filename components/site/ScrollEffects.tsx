@@ -120,13 +120,12 @@ export function ScrollEffects() {
       );
 
       gsap.fromTo(
-        ".hero-profile-shell",
-        { opacity: 0, scale: 0.82, rotate: -12, filter: "blur(10px)" },
+        ".ai-hero-chat",
+        { opacity: 0, y: 24, scale: 0.96 },
         {
           opacity: 1,
+          y: 0,
           scale: 1,
-          rotate: 0,         // final rotate MUST be 0
-          filter: "blur(0px)",
           delay: 0.18,
           duration: 1.15,
           ease: "power4.out",
@@ -134,7 +133,7 @@ export function ScrollEffects() {
       );
 
       gsap.fromTo(
-        ".hero-floating-note",
+        ".hero-kicker",
         { opacity: 0, y: 24, scale: 0.94 },
         {
           opacity: 1,
