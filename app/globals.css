@@ -215,6 +215,20 @@ textarea {
   grid-template-columns: minmax(320px, 0.96fr) minmax(0, 1.04fr);
 }
 
+.hero-ai-grid--copy-only {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.hero-ai-grid--copy-only .hero-copy {
+  justify-self: center;
+  text-align: center;
+}
+
+.hero-ai-grid--copy-only .hero-kicker,
+.hero-ai-grid--copy-only .hero-cta-row {
+  margin-inline: auto;
+}
+
 .hero-demo-shell,
 .hero-copy {
   direction: rtl;
@@ -1623,7 +1637,7 @@ textarea:focus-visible {
 }
 
 /* ============================================================
-   INTRO OVERLAY  (do not touch — preserved verbatim)
+   INTRO OVERLAY
    ============================================================ */
 
 .intro-overlay {
@@ -1632,86 +1646,150 @@ textarea:focus-visible {
   z-index: 9999;
   display: grid;
   place-items: center;
-  overflow: hidden;
-  cursor: pointer;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: clamp(0.9rem, 2.4vw, 1.5rem);
+  background: #f8fbff;
+  opacity: 1;
   touch-action: manipulation;
-  background: #021024;
+  transition: opacity 460ms ease, transform 460ms ease;
+}
+
+.intro-overlay--exit {
+  opacity: 0;
+  transform: scale(1.015);
 }
 
 .intro-overlay__video {
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(1.08) contrast(1.02) brightness(0.92);
+  filter: saturate(0.96) contrast(0.98) brightness(1.08);
+  opacity: 0.2;
   transform: scale(1.04);
   animation: intro-video 4.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .intro-overlay__wash {
-  position: absolute;
+  position: fixed;
   z-index: 1;
   inset: 0;
   background:
-    radial-gradient(circle at 50% 48%, rgba(193, 232, 255, 0.16), transparent 34%),
-    linear-gradient(180deg, rgba(2, 16, 36, 0.04), rgba(2, 16, 36, 0.5));
+    radial-gradient(circle at 18% 18%, rgba(217, 238, 255, 0.82), transparent 31%),
+    radial-gradient(circle at 78% 20%, rgba(168, 209, 240, 0.55), transparent 34%),
+    linear-gradient(180deg, rgba(248, 251, 255, 0.9), rgba(239, 247, 255, 0.86));
 }
 
 .intro-overlay__content {
   position: relative;
   z-index: 2;
   display: grid;
-  place-items: center;
-  width: min(980px, calc(100vw - 28px));
-  color: white;
-  text-align: center;
+  width: min(980px, 100%);
+  min-height: min(820px, calc(100dvh - 2rem));
+  align-content: center;
+  gap: clamp(0.85rem, 2vh, 1.2rem);
+  color: var(--ink);
 }
 
-.intro-overlay__title {
+.intro-overlay__header {
   display: grid;
-  gap: 0.03em;
-  font-family: Inter, Assistant, sans-serif;
-  font-size: clamp(3rem, 9.2vw, 8.4rem);
-  font-weight: 900;
-  line-height: 0.88;
-  letter-spacing: 0;
-  text-transform: lowercase;
-  text-shadow:
-    0 0 34px rgba(193, 232, 255, 0.86),
-    0 0 84px rgba(37, 99, 235, 0.52),
-    0 16px 44px rgba(2, 16, 36, 0.36);
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.95rem;
+  width: min(680px, 100%);
+  margin-inline: auto;
+  border: 1px solid rgba(5, 38, 89, 0.1);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 0.78rem;
+  box-shadow: 0 20px 60px rgba(5, 38, 89, 0.1);
+  backdrop-filter: blur(20px);
 }
 
-.intro-overlay__title span {
-  display: block;
-  opacity: 0;
-  user-select: none;
-  white-space: nowrap;
-  transform: translateY(24px) scale(0.98);
-  animation: intro-title-word 0.86s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.intro-overlay__avatar {
+  width: clamp(48px, 7vw, 72px);
+  height: clamp(48px, 7vw, 72px);
+  border: 3px solid rgba(255, 255, 255, 0.92);
+  border-radius: 999px;
+  object-fit: cover;
+  object-position: center top;
+  box-shadow: 0 14px 34px rgba(37, 99, 235, 0.18);
 }
 
-.intro-overlay__title span:nth-child(2) {
-  animation-delay: 0.16s;
+.intro-overlay__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.36rem;
+  color: var(--action);
+  font-size: 0.78rem;
+  font-weight: 950;
+}
+
+.intro-overlay__header h1 {
+  margin-top: 0.08rem;
+  color: var(--ink);
+  font-size: clamp(1.55rem, 3vw, 2.45rem);
+  font-weight: 950;
+  line-height: 1;
+}
+
+.intro-overlay__header p {
+  margin-top: 0.32rem;
+  color: var(--muted);
+  font-size: clamp(0.9rem, 1.4vw, 1rem);
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.intro-overlay__chat {
+  width: min(760px, 100%);
+  margin-inline: auto;
+}
+
+.intro-overlay__chat .ai-hero-chat {
+  border-radius: 26px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 30px 90px rgba(5, 38, 89, 0.16);
+}
+
+.intro-overlay__chat .ai-hero-chat__messages {
+  min-height: clamp(270px, 38vh, 360px);
 }
 
 .intro-overlay__button {
-  margin-top: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.42rem;
+  justify-self: center;
+  border: 1px solid rgba(37, 99, 235, 0.22);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  padding: 0.78rem 1.2rem;
+  background: linear-gradient(135deg, var(--navy), var(--action));
+  padding: 0.82rem 1.22rem;
   color: white;
   font-family: Inter, Assistant, sans-serif;
-  font-weight: 900;
+  font-weight: 950;
   letter-spacing: 0;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 20px 70px rgba(2, 16, 36, 0.25);
+  box-shadow: 0 18px 48px rgba(37, 99, 235, 0.26);
   opacity: 0;
   transform: translateY(12px);
   animation: intro-button-enter 0.72s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards;
+  transition: opacity 220ms ease, transform 220ms ease, filter 220ms ease;
+}
+
+.intro-overlay__button:not(:disabled):hover {
+  transform: translateY(-2px);
+}
+
+.intro-overlay__button:disabled {
+  cursor: wait;
+  filter: grayscale(0.2);
+  opacity: 0.62 !important;
 }
 
 /* ============================================================
@@ -1961,6 +2039,34 @@ textarea:focus-visible {
 }
 
 @media (max-width: 640px) {
+  .intro-overlay {
+    align-items: start;
+    padding: 0.75rem;
+  }
+
+  .intro-overlay__content {
+    min-height: calc(100dvh - 1.5rem);
+    align-content: start;
+    padding-block: 0.2rem 1rem;
+  }
+
+  .intro-overlay__header {
+    gap: 0.72rem;
+    border-radius: 18px;
+  }
+
+  .intro-overlay__header p {
+    display: none;
+  }
+
+  .intro-overlay__chat .ai-hero-chat__messages {
+    min-height: min(300px, 48vh);
+  }
+
+  .intro-overlay__button {
+    width: min(100%, 320px);
+  }
+
   .contact-section {
     padding-bottom: 9.5rem;
   }
@@ -2077,6 +2183,7 @@ textarea:focus-visible {
   .blue-glass,
   .hero-floating-note,
   .about-photo-caption,
+  .intro-overlay__header,
   .contact-form-card,
   .contact-call,
   .btn-secondary,
@@ -2119,7 +2226,8 @@ textarea:focus-visible {
   .story-word,
   .hero-scroll-cue__line,
   .hero-word-animated,
-  .intro-overlay__title span,
+  .intro-overlay__header,
+  .intro-overlay__chat,
   .intro-overlay__button {
     animation: none !important;
     opacity: 1 !important;

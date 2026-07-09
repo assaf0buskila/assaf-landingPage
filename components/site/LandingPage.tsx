@@ -22,7 +22,6 @@ import {
 } from "lucide-react";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import { BackgroundShader } from "@/components/ui/background-shader";
-import { AiHeroChat } from "@/components/site/AiHeroChat";
 import { IntroOverlay } from "@/components/site/IntroOverlay";
 import { ScrollEffects } from "@/components/site/ScrollEffects";
 
@@ -300,8 +299,6 @@ function ContactForm() {
 }
 
 export function LandingPage() {
-  const [heroChatDone, setHeroChatDone] = useState(false);
-
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": ["Person", "ProfessionalService"],
@@ -372,12 +369,8 @@ export function LandingPage() {
           <div className="hero-lume hero-lume--left" />
           <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-paper to-transparent" />
 
-          <div className="section-shell hero-ai-grid relative z-10 grid min-h-[calc(100vh-120px)] items-center gap-10 py-8 md:py-20">
-            <div className="hero-demo-shell">
-              <AiHeroChat onComplete={() => setHeroChatDone(true)} />
-            </div>
-
-            <div className={`hero-copy hero-conclusion max-w-3xl space-y-5 text-center md:space-y-7 md:text-right ${heroChatDone ? "hero-conclusion--ready" : ""}`}>
+          <div className="section-shell hero-ai-grid hero-ai-grid--copy-only relative z-10 grid min-h-[calc(100vh-120px)] items-center gap-10 py-8 md:py-20">
+            <div className="hero-copy hero-conclusion hero-conclusion--ready mx-auto max-w-3xl space-y-5 text-center md:space-y-7">
               <span className="hero-kicker">סטודיו אתרים עם חשיבה חכמה</span>
               <h1 className="max-w-3xl text-balance text-[clamp(2.75rem,7vw,7rem)] font-black leading-[0.92] tracking-normal text-ink">
                 {["אתר שמבין", "את העסק", "לפני שהוא", "מעצב אותו"].map((line, index) => (

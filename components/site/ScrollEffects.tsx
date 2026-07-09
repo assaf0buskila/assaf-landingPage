@@ -120,19 +120,6 @@ export function ScrollEffects() {
       );
 
       gsap.fromTo(
-        ".ai-hero-chat",
-        { opacity: 0, y: 24, scale: 0.96 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          delay: 0.18,
-          duration: 1.15,
-          ease: "power4.out",
-        }
-      );
-
-      gsap.fromTo(
         ".hero-kicker",
         { opacity: 0, y: 24, scale: 0.94 },
         {
