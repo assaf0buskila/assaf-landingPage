@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.assafweb.com/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -12,23 +12,23 @@
       <image:caption>אסף בוסקילה, בניית אתרים לעסקים בעברית</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://www.assafweb.com/assets/about-me.png</image:loc>
+      <image:loc>https://www.assafweb.com/assets/assaf-photo.jpg</image:loc>
       <image:title>אסף בוסקילה</image:title>
       <image:caption>אסף בוסקילה, מעצב ובונה אתרים לעסקים</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://www.assafweb.com/assets/projects/mochi-phone.jpeg</image:loc>
+      <image:loc>https://www.assafweb.com/assets/projects/mochi-phone.webp</image:loc>
       <image:title>פרויקט מוצ׳י</image:title>
       <image:caption>אתר מותג למוצ׳י בתצוגת מובייל</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://www.assafweb.com/assets/projects/cafe-ana-phone.jpeg</image:loc>
+      <image:loc>https://www.assafweb.com/assets/projects/cafe-ana-phone.webp</image:loc>
       <image:title>פרויקט קפה אנה</image:title>
       <image:caption>אתר בית קפה מקומי בתצוגת מובייל</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://www.assafweb.com/assets/projects/candy-phone.jpeg</image:loc>
-      <image:title>פרויקט מותג ממתקים</image:title>
+      <image:loc>https://www.assafweb.com/assets/projects/candy-phone.webp</image:loc>
+      <image:title>מנגינת ממתקים, פרויקט קונספט</image:title>
       <image:caption>אתר קונספט למותג ממתקים בתצוגת מובייל</image:caption>
     </image:image>
   </url>
@@ -45,19 +45,19 @@
   </url>
   <url>
     <loc>https://www.assafweb.com/pricing.md</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.assafweb.com/llms.txt</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.assafweb.com/agent.html</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

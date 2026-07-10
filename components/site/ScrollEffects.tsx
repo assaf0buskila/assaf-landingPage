@@ -156,8 +156,8 @@ export function ScrollEffects() {
       const storyLines = qsa<HTMLElement>(".story-line");
 
       if (storySection && storyWords.length > 0) {
-        // Set initial word state
-        gsap.set(storyWords, { opacity: 0.12, yPercent: 18 });
+        // Set initial word state (ink text on light act — keep ghosts readable)
+        gsap.set(storyWords, { opacity: 0.2, yPercent: 18 });
 
         if (storyResultPanel) {
           gsap.set(storyResultPanel, { opacity: 0, y: 34 });
@@ -168,7 +168,7 @@ export function ScrollEffects() {
           scrollTrigger: {
             trigger: storySection,
             start: "top 30%",
-            end: () => `+=${window.innerHeight * 1.35}`,
+            end: () => `+=${window.innerHeight * 1.1}`,
             scrub: 0.5,
             invalidateOnRefresh: true,
           },
@@ -226,7 +226,7 @@ export function ScrollEffects() {
           scrollTrigger: {
             trigger: storySection,
             start: isMobile ? "top top" : "top 8%",
-            end: () => `+=${window.innerHeight * (isMobile ? 2.55 : 1.9)}`,
+            end: () => `+=${window.innerHeight * (isMobile ? 1.9 : 1.6)}`,
             scrub: isMobile ? 0.7 : 0.5,
             pin: storyPin,
             pinSpacing: true,
@@ -306,77 +306,9 @@ export function ScrollEffects() {
       });
 
       // ────────────────────────────────────────────────────────────────────────
-      // 9. CAPABILITY CHIPS
+      // 9-12. Card entrances are handled by the single generic .gsap-reveal
+      // pattern below — one motion voice for every card on the page.
       // ────────────────────────────────────────────────────────────────────────
-      const chips = qsa<HTMLElement>(".capability-chip");
-      if (chips.length > 0) {
-        gsap.fromTo(
-          chips,
-          (index: number) => ({
-            opacity: 0,
-            y: 34,
-            rotateY: index % 2 ? 9 : -9,
-            transformPerspective: 900,
-          }),
-          {
-            opacity: 1,
-            y: 0,
-            rotateY: 0,
-            duration: 0.75,
-            ease: "power3.out",
-            stagger: 0.07,
-            scrollTrigger: {
-              trigger: ".capability-section",
-              start: "top 70%",
-            },
-          }
-        );
-      }
-
-      // ────────────────────────────────────────────────────────────────────────
-      // 11. PROCESS PANEL CLIP-PATH REVEAL
-      // ────────────────────────────────────────────────────────────────────────
-      const processPanels = qsa<HTMLElement>("#process .premium-panel");
-      if (processPanels.length > 0) {
-        gsap.fromTo(
-          processPanels,
-          { clipPath: "inset(0 0 100% 0)", y: 26, opacity: 0.35 },
-          {
-            clipPath: "inset(0 0 0% 0)",
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: "power3.inOut",
-            stagger: 0.09,
-            scrollTrigger: {
-              trigger: "#process",
-              start: "top 72%",
-            },
-          }
-        );
-      }
-
-      // ────────────────────────────────────────────────────────────────────────
-      // 12. TESTIMONIALS — alternating x slide-in
-      // ────────────────────────────────────────────────────────────────────────
-      const figures = qsa<HTMLElement>(".testimonials-section figure");
-      if (figures.length > 0) {
-        gsap.fromTo(
-          figures,
-          (index: number) => ({ x: index % 2 === 0 ? 42 : -42, opacity: 0 }),
-          {
-            x: 0,
-            opacity: 1,
-            duration: 0.75,
-            ease: "power3.out",
-            stagger: 0.1,
-            scrollTrigger: {
-              trigger: ".testimonials-section",
-              start: "top 75%",
-            },
-          }
-        );
-      }
 
       // ────────────────────────────────────────────────────────────────────────
       // 13. CONTACT — card 3D entrance + form controls stagger
@@ -435,11 +367,9 @@ export function ScrollEffects() {
       );
 
       // ────────────────────────────────────────────────────────────────────────
-      // 15. GENERIC .gsap-reveal (exclude #process and .testimonials-section)
+      // 15. GENERIC .gsap-reveal — the one entrance pattern for cards
       // ────────────────────────────────────────────────────────────────────────
       qsa<HTMLElement>(".gsap-reveal").forEach((el) => {
-        if (el.closest("#process") || el.closest(".testimonials-section")) return;
-
         gsap.to(el, {
           opacity: 1,
           y: 0,
@@ -461,20 +391,6 @@ export function ScrollEffects() {
           ease: "none",
           scrollTrigger: {
             trigger: el,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
-      });
-
-      qsa<HTMLElement>(".background-shader__orb").forEach((orb, index) => {
-        gsap.to(orb, {
-          xPercent: index % 2 === 0 ? 8 : -8,
-          yPercent: index % 2 === 0 ? -6 : 6,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".story-section",
             start: "top bottom",
             end: "bottom top",
             scrub: true,

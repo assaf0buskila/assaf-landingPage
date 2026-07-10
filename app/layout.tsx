@@ -1,5 +1,12 @@
 import type { Metadata, Viewport } from "next";
+import { Assistant } from "next/font/google";
 import "./globals.css";
+
+const assistant = Assistant({
+  subsets: ["hebrew", "latin"],
+  weight: ["400", "600", "700", "800"],
+  display: "swap",
+});
 
 const title = "האתר של אסף | אתרים שמעבירים מסר בלתי נשכח";
 const description =
@@ -71,10 +78,6 @@ export const metadata: Metadata = {
     description,
     images: ["/assets/og-cover.jpg"],
   },
-  icons: {
-    icon: "/assets/about-me.png",
-    apple: "/assets/about-me.png",
-  },
 };
 
 export const viewport: Viewport = {
@@ -90,15 +93,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="he" dir="rtl">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body>{children}</body>
+      <body className={assistant.className}>{children}</body>
     </html>
   );
 }

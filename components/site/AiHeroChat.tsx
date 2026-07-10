@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Bot, CheckCircle2, MessageCircle, Sparkles } from "lucide-react";
 
 type ChatRole = "visitor" | "assaf";
@@ -52,6 +51,20 @@ const heroMessages: HeroMessage[] = [
     pauseAfter: 0,
   },
 ];
+
+function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReduced(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  return reduced;
+}
 
 function TypedMessage({
   message,
@@ -105,9 +118,9 @@ function TypedMessage({
 }
 
 export function AiHeroChat({ onComplete }: { onComplete?: () => void }) {
-  const reduceMotion = Boolean(useReducedMotion());
-  const [activeIndex, setActiveIndex] = useState(reduceMotion ? heroMessages.length - 1 : -1);
-  const [complete, setComplete] = useState(reduceMotion);
+  const reduceMotion = usePrefersReducedMotion();
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const [complete, setComplete] = useState(false);
 
   useEffect(() => {
     if (reduceMotion) {
@@ -162,56 +175,45 @@ export function AiHeroChat({ onComplete }: { onComplete?: () => void }) {
       </div>
 
       <div className="ai-hero-chat__messages" aria-live="polite">
-        <AnimatePresence initial={false}>
-          {visibleMessages.map((message, index) => {
-            const isAssaf = message.role === "assaf";
-            const isActive = index === activeIndex && !complete;
+        {visibleMessages.map((message, index) => {
+          const isAssaf = message.role === "assaf";
+          const isActive = index === activeIndex && !complete;
 
-            return (
-              <motion.div
-                key={message.id}
-                className={`ai-hero-message ${isAssaf ? "ai-hero-message--assaf" : "ai-hero-message--visitor"}`}
-                initial={reduceMotion ? false : { opacity: 0, y: 14, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.28, ease: "easeOut" }}
-              >
-                <div className="ai-hero-message__avatar" aria-hidden="true">
-                  {isAssaf ? (
-                    <Image
-                      src="/assets/about-me.png"
-                      alt=""
-                      width={44}
-                      height={44}
-                      sizes="44px"
-                    />
-                  ) : (
-                    <MessageCircle size={17} />
-                  )}
+          return (
+            <div
+              key={message.id}
+              className={`ai-hero-message ${isAssaf ? "ai-hero-message--assaf" : "ai-hero-message--visitor"}`}
+            >
+              <div className="ai-hero-message__avatar" aria-hidden="true">
+                {isAssaf ? (
+                  <Image
+                    src="/assets/assaf-photo.jpg"
+                    alt=""
+                    width={44}
+                    height={44}
+                    sizes="44px"
+                  />
+                ) : (
+                  <MessageCircle size={17} />
+                )}
+              </div>
+              <div className="ai-hero-message__content">
+                <span className="ai-hero-message__label">{message.label}</span>
+                <div className="ai-hero-message__bubble">
+                  <TypedMessage
+                    message={message}
+                    active={isActive}
+                    instant={reduceMotion || index < activeIndex || complete}
+                    onDone={() => handleDone(message.id)}
+                  />
                 </div>
-                <div className="ai-hero-message__content">
-                  <span className="ai-hero-message__label">{message.label}</span>
-                  <div className="ai-hero-message__bubble">
-                    <TypedMessage
-                      message={message}
-                      active={isActive}
-                      instant={reduceMotion || index < activeIndex || complete}
-                      onDone={() => handleDone(message.id)}
-                    />
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </AnimatePresence>
+              </div>
+            </div>
+          );
+        })}
       </div>
 
-      <motion.div
-        className="ai-hero-insight"
-        initial={reduceMotion ? false : { opacity: 0, y: 18 }}
-        animate={complete ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
-        transition={{ duration: 0.42, ease: "easeOut" }}
-      >
+      <div className={`ai-hero-insight ${complete ? "ai-hero-insight--visible" : ""}`}>
         <span className="ai-hero-insight__icon" aria-hidden="true">
           <Sparkles size={17} />
         </span>
@@ -220,7 +222,7 @@ export function AiHeroChat({ onComplete }: { onComplete?: () => void }) {
           <p>מסר ברור, אמון מהיר, תפריט דיגיטלי ופנייה קלה בוואטסאפ.</p>
         </div>
         <CheckCircle2 className="ai-hero-insight__check" size={20} aria-hidden="true" />
-      </motion.div>
+      </div>
     </div>
   );
 }

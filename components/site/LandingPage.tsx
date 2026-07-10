@@ -12,13 +12,8 @@ import {
   Mail,
   MessageCircle,
   MousePointer2,
-  Palette,
-  Search,
   Send,
-  Smartphone,
   Star,
-  Target,
-  Zap,
 } from "lucide-react";
 import { BackgroundShader } from "@/components/ui/background-shader";
 import { AiHeroChat } from "@/components/site/AiHeroChat";
@@ -82,36 +77,12 @@ const faqItems = [
 ];
 
 const capabilityItems = [
-  {
-    label: "SEO",
-    text: "מבנה שמנועי חיפוש מבינים",
-    icon: Search,
-  },
-  {
-    label: "לידים",
-    text: "מסלול פנייה ברור לוואטסאפ",
-    icon: Target,
-  },
-  {
-    label: "עיצוב",
-    text: "שפה שמרגישה כמו מותג",
-    icon: Palette,
-  },
-  {
-    label: "מובייל",
-    text: "חוויה חדה בטלפון",
-    icon: Smartphone,
-  },
-  {
-    label: "אינטגרציות",
-    text: "טפסים, וואטסאפ ומעקב",
-    icon: Zap,
-  },
-  {
-    label: "לוגו",
-    text: "עזרה בכיוון בסיסי למותג",
-    icon: BadgeCheck,
-  },
+  { label: "עיצוב", text: "שפה שמרגישה כמו מותג" },
+  { label: "לידים", text: "מסלול פנייה ברור לוואטסאפ" },
+  { label: "SEO", text: "מבנה שמנועי חיפוש מבינים" },
+  { label: "מובייל", text: "חוויה חדה בטלפון" },
+  { label: "אינטגרציות", text: "טפסים, וואטסאפ ומעקב" },
+  { label: "לוגו", text: "עזרה בכיוון בסיסי למותג" },
 ];
 
 const stats = [
@@ -374,13 +345,29 @@ export function LandingPage() {
     email: "assaf.buskila10@gmail.com",
     telephone: "+972523393768",
     areaServed: "Israel",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "IL",
+    },
+    sameAs: [
+      "https://www.instagram.com/assaf_buskila/",
+      "https://www.linkedin.com/in/assaf-buskila-11ab7a347/",
+    ],
     knowsAbout: ["בניית אתרים", "דפי נחיתה", "עיצוב אתרים", "עברית RTL", "אינטגרציות וואטסאפ", "תוכן לעסקים"],
     makesOffer: [
       "אתר תדמית בעברית",
       "דף נחיתה ממיר",
       "אתר אינטראקטיבי עם אלמנטים מותאמים",
       "חודש ליווי אחרי השקה",
-    ],
+    ].map((name) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name },
+    })),
+    workExample: works.map((work) => ({
+      "@type": "WebSite",
+      name: work.name,
+      url: work.href.startsWith("http") ? work.href : `https://www.assafweb.com${work.href}`,
+    })),
   };
 
   return (
@@ -394,7 +381,7 @@ export function LandingPage() {
       <main id="top" className="site-flow relative overflow-hidden">
         <div className="bg-morph" aria-hidden="true" />
         <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-6 md:pt-5">
-          <div className="relative mx-auto flex w-full max-w-6xl items-center justify-between rounded-full border border-white/80 bg-white/80 px-3 py-2 shadow-soft backdrop-blur-2xl md:px-4">
+          <div className="relative mx-auto flex w-full max-w-6xl items-center justify-between rounded-full border border-white/80 bg-white/95 px-3 py-2 shadow-soft backdrop-blur-2xl md:px-4">
             <span className="nav-progress" aria-hidden="true" />
             <a href="#top" className="site-brand flex items-center gap-3">
               <span className="grid h-10 w-10 place-items-center rounded-full bg-navy text-sm font-black text-white">
@@ -427,10 +414,6 @@ export function LandingPage() {
 
         <section data-bg="#ffffff" className="hero-section relative min-h-screen overflow-hidden pt-28 md:pt-32">
           <BackgroundShader className="hero-background-shader" />
-          <div className="hero-aura-layer" />
-          <div className="hero-holo-layer" />
-          <div className="hero-lume hero-lume--right" />
-          <div className="hero-lume hero-lume--left" />
           <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-paper to-transparent" />
 
           <div className="section-shell hero-ai-grid relative z-10 grid min-h-[calc(100vh-120px)] items-center gap-10 py-8 md:py-16">
@@ -452,7 +435,7 @@ export function LandingPage() {
                 ))}
               </h1>
 
-              <p className="max-w-2xl text-lg font-semibold leading-8 text-muted md:text-xl md:leading-9">
+              <p className="max-w-2xl text-lg font-medium leading-8 text-muted md:text-xl md:leading-9">
                 אני אסף בוסקילה. אני בונה אתרים חכמים לעסקים שרוצים להסביר מהר למה לבחור בהם, ליצור אמון,
                 ולקבל יותר פניות איכותיות בוואטסאפ.
               </p>
@@ -483,7 +466,7 @@ export function LandingPage() {
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
                 אתרים שאפשר לפתוח, לגלול ולבדוק
               </h2>
-              <p className="max-w-2xl text-lg font-semibold leading-8 text-muted">
+              <p className="max-w-2xl text-lg font-medium leading-8 text-muted">
                 לא מוקאפים ולא הדמיות. אלה אתרים חיים — לוחצים, נכנסים ורואים איך זה מרגיש ללקוח.
               </p>
             </div>
@@ -512,7 +495,7 @@ export function LandingPage() {
                       <strong className="text-xl font-black text-ink">{work.name}</strong>
                       <span className="work-card__tag">{work.tag}</span>
                     </div>
-                    <p className="text-sm font-semibold leading-6 text-muted">{work.line}</p>
+                    <p className="text-sm font-medium leading-6 text-muted">{work.line}</p>
                     <span className="work-card__cta">
                       לפתוח את האתר
                       <ArrowUpLeft size={16} />
@@ -525,33 +508,24 @@ export function LandingPage() {
         </section>
 
         <section id="capabilities" data-bg="#eef7ff" className="capability-section relative overflow-hidden py-16 md:py-20">
-          <div className="capability-belt-glow" />
           <div className="section-shell capability-stack">
             <div className="capability-head gsap-reveal">
               <span className="eyebrow">מה האתר מחבר</span>
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
                 עיצוב, קופי, לידים וטכנולוגיה במקום אחד
               </h2>
-              <p className="text-lg font-bold leading-8 text-muted md:text-xl">
+              <p className="text-lg font-medium leading-8 text-muted md:text-xl">
                 אני בונה אתר שמסדר ללקוח את הראש: מה אתם עושים, למה לסמוך עליכם, ואיך פונים אליכם מהר.
               </p>
             </div>
 
-            <div className="capability-grid" aria-label="יכולות שנכנסות לאתר">
-              {capabilityItems.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <div key={item.label} className="capability-chip">
-                    <span className="capability-chip-icon">
-                      <Icon size={24} strokeWidth={2.2} />
-                    </span>
-                    <span className="capability-chip-copy">
-                      <strong>{item.label}</strong>
-                      <span>{item.text}</span>
-                    </span>
-                  </div>
-                );
-              })}
+            <div className="capability-list" aria-label="יכולות שנכנסות לאתר">
+              {capabilityItems.map((item) => (
+                <div key={item.label} className="capability-row">
+                  <strong>{item.label}</strong>
+                  <span>{item.text}</span>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -569,7 +543,7 @@ export function LandingPage() {
                   <p className="text-5xl font-black leading-none text-navy md:text-6xl">
                     <AnimatedNumber value={stat.value} suffix={stat.suffix} />
                   </p>
-                  <p className="mt-4 text-lg font-bold leading-8 text-muted">{stat.label}</p>
+                  <p className="mt-4 text-lg font-medium leading-8 text-muted">{stat.label}</p>
                 </div>
               );
             })}
@@ -577,23 +551,22 @@ export function LandingPage() {
         </section>
 
         <section id="story" data-bg="#d9ecfb" className="story-section relative overflow-hidden text-ink">
-          <BackgroundShader className="story-background-shader" />
           <div className="story-blue-blur-bg" />
           <div className="story-pin">
           <div className="section-shell story-intro-row">
             <div className="story-portrait-chip" aria-hidden="true">
               <Image
-                src="/assets/about-me.png"
+                src="/assets/assaf-photo.jpg"
                 alt=""
-                width={433}
-                height={577}
+                width={1100}
+                height={880}
                 sizes="92px"
                 className="story-portrait-image"
               />
             </div>
 
             <div className="story-intro-copy">
-              <p className="max-w-md text-lg font-semibold leading-8 text-navy/85">
+              <p className="max-w-md text-lg font-medium leading-8 text-navy/85">
                 אתר טוב לא אמור לגרום לאנשים להתאמץ להבין. הוא צריך לקחת את הסיפור
                 שלכם, לסדר אותו נכון, ולהפוך אותו לחוויה שמרגישה מקצועית כבר בגלילה הראשונה.
               </p>
@@ -628,12 +601,12 @@ export function LandingPage() {
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
                 אני לא רק בונה אתר. אני עוזר לסגור את הכיוון.
               </h2>
-              <p className="text-xl font-semibold leading-9 text-muted">
+              <p className="text-xl font-medium leading-9 text-muted">
                 אני סטודנט לתעשייה וניהול, יוצר אתרים ותוכן לעסקים, ועובד בצורה מסודרת
                 מהרעיון הראשון ועד אתר שאפשר להראות ללקוחות בגאווה. אם אתם לא רוצים להתעסק
                 באתר לבד, לרדוף אחרי עצמכם ולגלות שכל פרט קטן נופל עליכם, אני נכנס כשותף לתהליך.
               </p>
-              <p className="text-lg font-bold leading-8 text-navy">
+              <p className="text-lg font-semibold leading-8 text-navy">
                 מתחילים במפגש ותיאום ציפיות. לא חייבים להגיע עם רעיון מוכן. אני עוזר לסגור
                 מסר, מבנה, תוכן, עיצוב ופעולות באתר. אחרי העלייה יש חודש ליווי, ומשם כל שינוי
                 נוסף נעשה בתשלום ברור.
@@ -669,7 +642,7 @@ export function LandingPage() {
                     <ChevronLeft className="text-action" />
                   </div>
                   <h3 className="text-2xl font-black text-ink">{step.title}</h3>
-                  <p className="mt-3 text-base font-semibold leading-8 text-muted">{step.text}</p>
+                  <p className="mt-3 text-base font-normal leading-8 text-muted">{step.text}</p>
                 </div>
               ))}
             </div>
@@ -683,7 +656,7 @@ export function LandingPage() {
                 כשנותנים מעבר, מרגישים את זה באתר
               </h2>
             </div>
-            <p className="text-lg font-semibold leading-8 text-muted">
+            <p className="text-lg font-medium leading-8 text-muted">
               אלה לא משפטי פרסום. זה מה שקורה כשעובדים קרוב, מקשיבים לפרטים הקטנים
               ובונים אתר שמשרת את העסק גם אחרי שהעיצוב עולה לאוויר.
             </p>
@@ -697,10 +670,10 @@ export function LandingPage() {
                     <Star key={star} size={18} fill="currentColor" />
                   ))}
                 </div>
-                <blockquote className="text-xl font-black leading-9 text-ink">
+                <blockquote className="text-lg font-semibold leading-8 text-ink">
                   ״{item.quote}״
                 </blockquote>
-                <figcaption className="mt-6 text-sm font-extrabold text-muted">
+                <figcaption className="mt-6 text-sm font-bold text-muted">
                   {item.name}
                 </figcaption>
               </figure>
@@ -715,7 +688,7 @@ export function LandingPage() {
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-5xl">
                 הדברים ששואלים אותי לפני שמתחילים
               </h2>
-              <p className="text-lg font-semibold leading-8 text-muted">
+              <p className="text-lg font-medium leading-8 text-muted">
                 ואם יש שאלה שלא כאן — שלחו אותה בוואטסאפ, עונה גם על שאלות קטנות.
               </p>
             </div>
@@ -735,14 +708,12 @@ export function LandingPage() {
         </section>
 
         <section id="contact" data-bg="#eef7ff" className="contact-section relative overflow-hidden py-20 md:py-28">
-          <div className="contact-lume contact-lume--side" />
-          <div className="contact-lume contact-lume--floor" />
           <div className="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div className="gsap-reveal space-y-7">
               <h2 className="text-balance text-5xl font-black leading-[0.95] text-ink md:text-7xl">
                 יש לך עסק טוב. עכשיו צריך אתר שמסביר את זה מהר.
               </h2>
-              <p className="text-xl font-semibold leading-9 text-muted">
+              <p className="text-xl font-medium leading-9 text-muted">
                 שלחו כמה מילים על העסק ומה הייתם רוצים שהאתר יעזור לסגור. גם אם אין לכם
                 רעיון מוכן, אני יודע לעזור לסדר את הכיוון ולהבין מה באמת צריך להופיע שם.
               </p>
@@ -774,15 +745,6 @@ export function LandingPage() {
             </div>
 
             <div className="gsap-reveal contact-form-stage">
-              <div className="contact-road-signs" aria-hidden="true">
-                <Image
-                  src="/assets/generated/hero-wayfinder-desktop.png"
-                  alt=""
-                  fill
-                  sizes="(min-width: 1024px) 46vw, 100vw"
-                  className="object-cover"
-                />
-              </div>
               <ContactForm />
             </div>
           </div>
