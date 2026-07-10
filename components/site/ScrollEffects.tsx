@@ -103,7 +103,7 @@ export function ScrollEffects() {
       });
 
       // ────────────────────────────────────────────────────────────────────────
-      // 6. HERO — entrance is pure CSS (hero-word-in / hero-kicker-in keyframes).
+      // 6. HERO: entrance is pure CSS (hero-word-in / hero-kicker-in keyframes).
       // GSAP used to double-animate the same elements and could freeze mid-tween
       // on remount, leaving the H1 permanently blurred.
       // ────────────────────────────────────────────────────────────────────────
@@ -156,7 +156,7 @@ export function ScrollEffects() {
       const storyLines = qsa<HTMLElement>(".story-line");
 
       if (storySection && storyWords.length > 0) {
-        // Set initial word state (ink text on light act — keep ghosts readable)
+        // Set initial word state (ink text on light act, keep ghosts readable)
         gsap.set(storyWords, { opacity: 0.2, yPercent: 18 });
 
         if (storyResultPanel) {
@@ -193,7 +193,7 @@ export function ScrollEffects() {
       }
 
       // Preserve the portrait chip + intro copy entrance (from original per-LINE timeline)
-      // if the pinned story block exists — run a separate non-scrubbed reveal
+      // if the pinned story block exists, run a separate non-scrubbed reveal
       if (storySection && storyPin && storyLines.length > 0) {
         const isMobile = window.matchMedia("(max-width: 640px)").matches;
         const storyStep = isMobile ? 0.54 : 0.44;
@@ -307,11 +307,11 @@ export function ScrollEffects() {
 
       // ────────────────────────────────────────────────────────────────────────
       // 9-12. Card entrances are handled by the single generic .gsap-reveal
-      // pattern below — one motion voice for every card on the page.
+      // pattern below, one motion voice for every card on the page.
       // ────────────────────────────────────────────────────────────────────────
 
       // ────────────────────────────────────────────────────────────────────────
-      // 13. CONTACT — card 3D entrance + form controls stagger
+      // 13. CONTACT: card 3D entrance + form controls stagger
       // ────────────────────────────────────────────────────────────────────────
       gsap.fromTo(
         ".contact-form-card",
@@ -367,7 +367,7 @@ export function ScrollEffects() {
       );
 
       // ────────────────────────────────────────────────────────────────────────
-      // 15. GENERIC .gsap-reveal — the one entrance pattern for cards
+      // 15. GENERIC .gsap-reveal, the one entrance pattern for cards
       // ────────────────────────────────────────────────────────────────────────
       qsa<HTMLElement>(".gsap-reveal").forEach((el) => {
         gsap.to(el, {

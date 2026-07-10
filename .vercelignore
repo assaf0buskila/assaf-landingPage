@@ -2,7 +2,7 @@
 # The active site is the Next app in app/, components/, lib/, and public/.
 # IMPORTANT: patterns are anchored with a leading "/" so they only match at the
 # repo root. Unanchored patterns follow gitignore semantics and match at ANY
-# depth — an unanchored "assets/" also excluded public/assets/ and broke prod.
+# depth; an unanchored "assets/" also excluded public/assets/ and broke prod.
 /index.html
 /website.html
 /ref/

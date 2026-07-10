@@ -36,7 +36,7 @@ html {
   scroll-padding-top: 96px;
 }
 
-/* Body keeps a flat base — bg-morph paints colour on top of it.
+/* Body keeps a flat base: bg-morph paints colour on top of it.
    font-family comes from next/font (Assistant) via the body className. */
 body {
   min-height: 100vh;
@@ -61,7 +61,7 @@ body {
 }
 
 /* ============================================================
-   SITE FLOW — transparent so bg-morph bleeds through
+   SITE FLOW: transparent so bg-morph bleeds through
    ============================================================ */
 
 .site-flow {
@@ -116,7 +116,7 @@ textarea {
 }
 
 /* ============================================================
-   NAV PROGRESS BAR  (inside header pill — GSAP scrubs scaleX)
+   NAV PROGRESS BAR  (inside header pill: GSAP scrubs scaleX)
    RTL: origin at inline-end so it fills from right to left
    ============================================================ */
 
@@ -148,7 +148,7 @@ textarea {
 }
 
 /* ============================================================
-   HERO SECTION — translucent wash; morph shows beneath
+   HERO SECTION: translucent wash; morph shows beneath
    ============================================================ */
 
 .hero-section {
@@ -166,7 +166,7 @@ textarea {
   mix-blend-mode: multiply;
 }
 
-/* Softened bottom fade — alpha ≤ 0.55 */
+/* Softened bottom fade: alpha ≤ 0.55 */
 .hero-section::after {
   position: absolute;
   right: 0;
@@ -517,7 +517,7 @@ textarea {
 }
 
 /* ============================================================
-   ABOUT SECTION — translucent wash
+   ABOUT SECTION: translucent wash
    ============================================================ */
 
 .about-section {
@@ -630,7 +630,7 @@ textarea {
 }
 
 /* ============================================================
-   CONTACT SECTION — translucent wash
+   CONTACT SECTION: translucent wash
    ============================================================ */
 
 .contact-section {
@@ -831,7 +831,7 @@ textarea:focus-visible {
 }
 
 /* ============================================================
-   CAPABILITY SECTION — translucent wash (orb ::before kept)
+   CAPABILITY SECTION: translucent wash (orb ::before kept)
    ============================================================ */
 
 .capability-section {
@@ -883,7 +883,7 @@ textarea:focus-visible {
 }
 
 /* ============================================================
-   STATS SECTION — translucent wash
+   STATS SECTION: translucent wash
    ============================================================ */
 
 .stats-section {
@@ -907,7 +907,7 @@ textarea:focus-visible {
 }
 
 /* ============================================================
-   STORY SECTION — stays opaque dark navy (intentional dark act)
+   STORY SECTION: stays opaque dark navy (intentional dark act)
    morph tweens to #052659 behind it; entry/exit blend naturally.
    ::before softens top edge transition.
    ============================================================ */
@@ -1068,13 +1068,13 @@ textarea:focus-visible {
 
 /* ============================================================
    STORY LINE & WORD
-   GSAP now drives per-word opacity — .story-line loses its
+   GSAP now drives per-word opacity: .story-line loses its
    old opacity/transform so everything is readable without JS.
    ============================================================ */
 
 .story-line {
   display: block;
-  /* opacity and transform intentionally REMOVED — GSAP drives words */
+  /* opacity and transform intentionally REMOVED: GSAP drives words */
   will-change: opacity, transform, filter;
 }
 
@@ -1094,7 +1094,7 @@ textarea:focus-visible {
 }
 
 /* ============================================================
-   SITE FOOTER SEAM  — melts light contact section into dark footer
+   SITE FOOTER SEAM : melts light contact section into dark footer
    ============================================================ */
 
 .site-footer {
@@ -1151,7 +1151,7 @@ textarea:focus-visible {
 }
 
 /* ============================================================
-   BACKGROUND SHADER  (do not touch — preserved verbatim)
+   BACKGROUND SHADER  (do not touch: preserved verbatim)
    ============================================================ */
 
 .background-shader-fallback {
@@ -1180,7 +1180,7 @@ textarea:focus-visible {
 }
 
 /* ============================================================
-   WORKS — live-site proof cards
+   WORKS: live-site proof cards
    ============================================================ */
 
 .works-section {
@@ -1264,7 +1264,7 @@ textarea:focus-visible {
 }
 
 /* ============================================================
-   FAQ — native details/summary accordion
+   FAQ: native details/summary accordion
    ============================================================ */
 
 .faq-item {
@@ -1311,7 +1311,7 @@ textarea:focus-visible {
 }
 
 /* ============================================================
-   WHATSAPP FAB (mobile only — desktop has the header CTA)
+   WHATSAPP FAB (mobile only: desktop has the header CTA)
    ============================================================ */
 
 .whatsapp-fab {
@@ -1336,7 +1336,7 @@ textarea:focus-visible {
 }
 
 /* ============================================================
-   RESPONSIVE — TABLET / MOBILE
+   RESPONSIVE: TABLET / MOBILE
    ============================================================ */
 
 @media (max-width: 900px) {
@@ -1524,7 +1524,7 @@ textarea:focus-visible {
 }
 
 /* ============================================================
-   MOBILE GPU RELIEF — backdrop-filter is the #1 scroll cost on mobile.
+   MOBILE GPU RELIEF: backdrop-filter is the #1 scroll cost on mobile.
    Strip it on viewports ≤ 900 px; the semi-opaque backgrounds still
    read clearly without the blur. Desktop blurs are NOT touched.
    ============================================================ */

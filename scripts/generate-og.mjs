@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 
 // Renders the WhatsApp/OG share card (1200x630) as a branded typographic
-// composition — white-first with a restrained blue accent, matching the site
+// composition: white-first with a restrained blue accent, matching the site
 // palette. Output goes to public/assets/ (the served asset folder).
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT = resolve(__dirname, '../public/assets/og-cover.jpg');
