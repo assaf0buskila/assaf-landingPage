@@ -171,7 +171,7 @@ const stats = [
   {
     value: 4,
     suffix: " פרויקטים",
-    label: "מוצר AI ואתרים חיים שרצים עכשיו, פתוחים לבדיקה כאן בעמוד",
+    label: "מוצר AI ואתרים חיים, פתוחים לבדיקה כאן בעמוד",
     icon: MousePointer2,
   },
 ];
@@ -547,7 +547,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
               </h2>
               <p className="max-w-2xl text-lg font-medium leading-8 text-muted">
                 זה סוכן קולי חי שבניתי. הוא מדבר עברית, מכיר את העסק שלי, ובנוי בדיוק כמו
-                סוכן שהעסק שלכם יכול לקבל. שיחה אחת קצרה ותבינו לבד למה זה משנה הכול.
+                סוכן שהעסק שלכם יכול לקבל. שיחה אחת קצרה ותבינו לבד איך זה מרגיש ללקוח שלכם.
               </p>
             </div>
             <div className="gsap-reveal">
@@ -564,7 +564,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
                 פרויקטים חיים שאפשר לפתוח ולבדוק
               </h2>
               <p className="max-w-2xl text-lg font-medium leading-8 text-muted">
-                לא מוקאפים ולא הדמיות. מוצר AI שרץ עכשיו ואתרים חיים של לקוחות אמיתיים:
+                לא מוקאפים ולא הדמיות. מוצר AI אמיתי ואתרים חיים של לקוחות:
                 לוחצים, נכנסים ורואים איך זה מרגיש.
               </p>
             </div>
@@ -724,7 +724,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
               </h2>
               <p className="text-xl font-medium leading-9 text-muted">
                 אני אסף, מהנדס פתרונות AI וסטודנט להנדסת תעשייה וניהול בשנקר. בניתי את
-                MYstudio, פלטפורמת AI חיה שעסקים עובדים איתה, ומערכת לניתוח מסמכים פיננסיים.
+                MYstudio, פלטפורמת AI מלאה עם משתמשים ותשלומים, ומערכת לניתוח מסמכים פיננסיים.
                 לפני זה הייתי קצין קרבי בצנחנים, אז סדר, אחריות ועמידה בלחץ הם לא סיסמאות אצלי.
               </p>
               <p className="text-lg font-semibold leading-8 text-navy">
@@ -733,7 +733,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
                 ההשקה לוודא שהכול באמת עובד.
               </p>
               <div className="grid gap-3 sm:grid-cols-2">
-                {["סוכני AI ואוטומציות בהתאמה אישית", "Python, FastAPI ו-RAG מאחורי הקלעים", "חיבור לוואטסאפ ולמערכות קיימות", "מוצר חי בפרודקשן: MYstudio", "מחיר סופי בלי הפתעות"].map((item) => (
+                {["סוכני AI ואוטומציות בהתאמה אישית", "Python, FastAPI ו-RAG מאחורי הקלעים", "חיבור לוואטסאפ ולמערכות קיימות", "מוצר שלם מקצה לקצה: MYstudio", "מחיר סופי בלי הפתעות"].map((item) => (
                   <div key={item} className="about-point">
                     <CircleCheck size={18} className="text-action" />
                     {item}
