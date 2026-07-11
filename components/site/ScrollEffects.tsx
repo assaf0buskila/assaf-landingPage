@@ -155,57 +155,20 @@ export function ScrollEffects() {
       const storyPin = qs<HTMLElement>(".story-pin");
       const storyLines = qsa<HTMLElement>(".story-line");
 
-      if (storySection && storyWords.length > 0) {
-        // Set initial word state (ink text on light act, keep ghosts readable)
-        gsap.set(storyWords, { opacity: 0.2, yPercent: 18 });
-
-        if (storyResultPanel) {
-          gsap.set(storyResultPanel, { opacity: 0, y: 34 });
-        }
-
-        // Per-word scrub timeline
-        const wordTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: storySection,
-            start: "top 30%",
-            end: () => `+=${window.innerHeight * 1.1}`,
-            scrub: 0.5,
-            invalidateOnRefresh: true,
-          },
-        });
-
-        wordTl.to(storyWords, {
-          opacity: 1,
-          yPercent: 0,
-          duration: 0.35,
-          ease: "none",
-          stagger: 0.05,
-        });
-
-        if (storyResultPanel) {
-          wordTl.fromTo(
-            storyResultPanel,
-            { opacity: 0, y: 34 },
-            { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
-            ">-0.1"
-          );
-        }
-      }
-
-      // Preserve the portrait chip + intro copy entrance (from original per-LINE timeline)
-      // if the pinned story block exists, run a separate non-scrubbed reveal
-      if (storySection && storyPin && storyLines.length > 0) {
+      // ONE pinned timeline owns the whole story act. The old setup layered a
+      // global per-word scrub on top of a per-line karaoke (with dimming), and
+      // the two drifted out of sync: later lines could light up while earlier
+      // ones were still ghosts. Now words reveal strictly in reading order and
+      // stay bright once revealed.
+      if (storySection && storyPin && storyLines.length > 0 && storyWords.length > 0) {
         const isMobile = window.matchMedia("(max-width: 640px)").matches;
         const storyStep = isMobile ? 0.54 : 0.44;
         const introOffset = isMobile ? 0.26 : 0.34;
-        const dimOpacity = isMobile ? 0.24 : 0.34;
 
-        gsap.set(storyLines, {
-          opacity: isMobile ? 0.18 : 0.36,
-          y: isMobile ? 16 : 22,
-          filter: "blur(0px)",
-        });
-
+        gsap.set(storyWords, { opacity: 0.16, yPercent: 14 });
+        if (storyResultPanel) {
+          gsap.set(storyResultPanel, { opacity: 0, y: 34 });
+        }
         if (storyPortrait) {
           gsap.set(storyPortrait, {
             opacity: 0,
@@ -265,19 +228,22 @@ export function ScrollEffects() {
         }
 
         storyLines.forEach((line, index) => {
+          const lineWords = line.querySelectorAll<HTMLElement>(".story-word");
+          if (!lineWords.length) return;
           storyTl.to(
-            line,
-            { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.7, ease: "power2.out" },
+            lineWords,
+            { opacity: 1, yPercent: 0, duration: 0.6, ease: "power2.out", stagger: 0.05 },
             introOffset + index * storyStep
           );
-          if (index > 0) {
-            storyTl.to(
-              storyLines[index - 1],
-              { opacity: dimOpacity, y: isMobile ? -5 : -8, duration: 0.6, ease: "power2.out" },
-              introOffset + index * storyStep
-            );
-          }
         });
+
+        if (storyResultPanel) {
+          storyTl.to(
+            storyResultPanel,
+            { opacity: 1, y: 0, duration: 0.55, ease: "power2.out" },
+            introOffset + storyLines.length * storyStep
+          );
+        }
       }
 
       // ────────────────────────────────────────────────────────────────────────
