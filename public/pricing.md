@@ -82,6 +82,18 @@ For a professional who needs a fast, polished entry-level presence.
 
 Final quote after a short discovery call (owner sets final prices; עוסק פטור - no VAT added).
 
+### Social Media and AI Content
+
+For a business that wants a steady, branded presence on social without hiring a content team.
+
+- Branded posts, stories and visuals produced with AI tools
+- Content plan matched to the business voice and audience
+- Hebrew-first copy with a native tone
+- Batch delivery at the pace the business needs
+- Works standalone or on top of the AI agent and website tracks
+
+Final quote after a short discovery call (owner sets final prices; עוסק פטור - no VAT added).
+
 ### Care After Launch
 
 Every launch includes a month of guidance (חודש ליווי). Ongoing support is available after that.

@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { FormEvent, useState } from "react";
-import type { CSSProperties } from "react";
 import {
   ArrowUpLeft,
   BadgeCheck,
@@ -14,6 +13,7 @@ import {
   Globe,
   LayoutGrid,
   Mail,
+  Megaphone,
   MessageCircle,
   Mic,
   MousePointer2,
@@ -22,6 +22,9 @@ import {
   Zap,
 } from "lucide-react";
 import { BackgroundShader } from "@/components/ui/background-shader";
+import { PortfolioGallery } from "@/components/ui/portfolio-gallery";
+import { ScrollMorphServices } from "@/components/ui/scroll-morph-services";
+import { BrickDef, TechStackBuilder } from "@/components/ui/interactive-tech-stack-builder";
 import { AiHeroChat } from "@/components/site/AiHeroChat";
 import { ScrollEffects } from "@/components/site/ScrollEffects";
 import { VoiceAgentSection } from "@/components/site/VoiceAgentSection";
@@ -41,15 +44,15 @@ const works = [
   {
     name: "MYstudio",
     href: "https://mystudio.pics",
-    image: "/assets/projects/mystudio-phone.webp",
-    tag: "מוצר AI חי",
+    showcase: "/assets/services/service-7.webp",
+    tag: "מוצר AI",
     external: true,
-    line: "פלטפורמת AI שבניתי מאפס והיא רצה עכשיו: מעלים תמונת מוצר ומקבלים תוכן שיווקי ממותג, כולל משתמשים ותשלומים.",
+    line: "פלטפורמת AI שבניתי מאפס: מעלים תמונת מוצר ומקבלים תוכן שיווקי ממותג, כולל משתמשים ותשלומים.",
   },
   {
     name: "מוצ׳י",
     href: "https://mochi-israel.com",
-    image: "/assets/projects/mochi-phone.webp",
+    showcase: "/assets/projects/showcase-mochi.webp",
     tag: "אתר חי",
     external: true,
     line: "אתר מותג עם אלמנטים שנבנו מאפס, שמכניס לידים והזמנות לאירועים דרך וואטסאפ.",
@@ -57,7 +60,7 @@ const works = [
   {
     name: "קפה אנה",
     href: "https://cafe-ana.com",
-    image: "/assets/projects/cafe-ana-phone.webp",
+    showcase: "/assets/projects/showcase-ana.webp",
     tag: "אתר חי",
     external: true,
     line: "אתר לבית קפה שכונתי: תפריט, אווירה ופנייה מהירה, עם ליווי צמוד של חודש.",
@@ -65,7 +68,7 @@ const works = [
   {
     name: "מנגינת ממתקים",
     href: "/candy/",
-    image: "/assets/projects/candy-phone.webp",
+    showcase: "/assets/projects/showcase-candy.webp",
     tag: "פרויקט קונספט",
     external: true,
     line: "אתר חוויה למותג ממתקים. טעימה מהצד האינטראקטיבי והמשחקי שאני אוהב לבנות.",
@@ -133,6 +136,23 @@ const solutionItems = [
     text: "דרך מהירה ומשתלמת להיראות מקצועי: כל הפרטים, הקישורים והפנייה בלחיצה אחת.",
     href: null,
   },
+  {
+    icon: Megaphone,
+    label: "סושיאל מדיה ותוכן",
+    text: "תוכן ממותג לרשתות בעזרת AI: פוסטים, גרפיקה וסטוריז, בקצב שהעסק באמת צריך.",
+    href: null,
+  },
+];
+
+const serviceShowcase = [
+  { src: "/assets/services/service-4.webp", label: "סוכן AI" },
+  { src: "/assets/services/service-5.webp", label: "סוכן קולי" },
+  { src: "/assets/services/service-6.webp", label: "אתרים ודפי נחיתה" },
+  { src: "/assets/services/service-1.webp", label: "אוטומציות" },
+  { src: "/assets/services/service-2.webp", label: "כרטיס ביקור דיגיטלי" },
+  { src: "/assets/services/service-3.webp", label: "אפליקציות" },
+  { src: "/assets/services/service-8.webp", label: "סושיאל מדיה" },
+  { src: "/assets/services/service-7.webp", label: "יצירת תוכן ב-AI" },
 ];
 
 const stats = [
@@ -256,42 +276,14 @@ function AnimatedNumber({
   );
 }
 
-function AboutProfile() {
-  const [spot, setSpot] = useState({ x: 50, y: 42 });
-
-  return (
-    <div
-      className="gsap-reveal about-profile-card parallax-soft"
-      style={
-        {
-          "--spot-x": `${spot.x}%`,
-          "--spot-y": `${spot.y}%`,
-        } as CSSProperties
-      }
-      onMouseMove={(event) => {
-        const rect = event.currentTarget.getBoundingClientRect();
-        setSpot({
-          x: ((event.clientX - rect.left) / rect.width) * 100,
-          y: ((event.clientY - rect.top) / rect.height) * 100,
-        });
-      }}
-      onMouseLeave={() => setSpot({ x: 50, y: 42 })}
-    >
-      <span className="about-bloom about-bloom--mouse" />
-      <span className="about-bloom about-bloom--mobile" />
-      <div className="about-circle-frame">
-        <Image
-          src="/assets/assaf-photo.jpg"
-          alt="אסף בוסקילה"
-          width={1100}
-          height={880}
-          sizes="(min-width: 1024px) 340px, 72vw"
-          className="about-circle-photo"
-        />
-      </div>
-    </div>
-  );
-}
+const stackBricks: BrickDef[] = [
+  { id: "agents", label: "סוכני AI", studs: 4, theme: "action" },
+  { id: "python", label: "Python", studs: 4, theme: "navy" },
+  { id: "react", label: "React / Next.js", studs: 4, theme: "ink" },
+  { id: "rag", label: "RAG / LangGraph", studs: 4, theme: "steel" },
+  { id: "fastapi", label: "FastAPI", studs: 2, theme: "sky" },
+  { id: "supabase", label: "Supabase", studs: 2, theme: "mist" },
+];
 
 function ContactForm() {
   const [sent, setSent] = useState(false);
@@ -392,7 +384,7 @@ function ContactForm() {
   );
 }
 
-export function LandingPage() {
+export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": ["Person", "ProfessionalService"],
@@ -434,6 +426,7 @@ export function LandingPage() {
       "בניית אפליקציות ופיצ'רים",
       "אתרים ודפי נחיתה בעברית",
       "כרטיס ביקור דיגיטלי",
+      "סושיאל מדיה ותוכן AI",
       "חודש ליווי אחרי השקה",
     ].map((name) => ({
       "@type": "Offer",
@@ -558,7 +551,7 @@ export function LandingPage() {
               </p>
             </div>
             <div className="gsap-reveal">
-              <VoiceAgentSection whatsapp={whatsapp} />
+              <VoiceAgentSection whatsapp={whatsapp} enabled={voiceEnabled} />
             </div>
           </div>
         </section>
@@ -576,54 +569,56 @@ export function LandingPage() {
               </p>
             </div>
 
-            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            <PortfolioGallery
+              items={works.map((work) => ({
+                src: work.showcase,
+                alt: `צילום מסך של ${work.name}`,
+                href: work.href,
+                name: work.name,
+              }))}
+            />
+
+            <div className="mt-8 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
               {works.map((work) => (
                 <a
                   key={work.name}
                   href={work.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="gsap-reveal work-card group"
+                  className="gsap-reveal premium-panel group p-4"
                 >
-                  <div className="work-card__frame">
-                    <Image
-                      src={work.image}
-                      alt={`צילום מסך של ${work.name}`}
-                      width={880}
-                      height={1565}
-                      sizes="(min-width: 1280px) 24vw, (min-width: 768px) 45vw, 88vw"
-                      className="work-card__shot"
-                    />
+                  <div className="flex items-center justify-between gap-3">
+                    <strong className="text-lg font-black text-ink">{work.name}</strong>
+                    <span className="work-card__tag">{work.tag}</span>
                   </div>
-                  <div className="work-card__meta">
-                    <div className="flex items-center justify-between gap-3">
-                      <strong className="text-xl font-black text-ink">{work.name}</strong>
-                      <span className="work-card__tag">{work.tag}</span>
-                    </div>
-                    <p className="text-sm font-medium leading-6 text-muted">{work.line}</p>
-                    <span className="work-card__cta">
-                      לפתוח את האתר
-                      <ArrowUpLeft size={16} />
-                    </span>
-                  </div>
+                  <p className="mt-2 text-sm font-medium leading-6 text-muted">{work.line}</p>
+                  <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-black text-action">
+                    לפתוח את הפרויקט
+                    <ArrowUpLeft size={16} className="transition-transform group-hover:-translate-x-0.5" />
+                  </span>
                 </a>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="solutions" data-bg="#eef7ff" className="solutions-section relative overflow-hidden py-20 md:py-28">
-          <div className="section-shell">
-            <div className="mb-10 max-w-3xl space-y-4">
+        <section id="solutions" data-bg="#eef7ff" className="solutions-section relative">
+          <div className="section-shell pt-20 md:pt-28">
+            <div className="mb-6 max-w-3xl space-y-4">
               <span className="eyebrow">מה אני בונה</span>
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
                 מה עובד דיגיטלי יכול לעשות בשבילכם
               </h2>
-              <p className="max-w-2xl text-lg font-medium leading-8 text-muted md:text-xl">
-                כל עסק מפסיד זמן וכסף במקום אחר. בוחרים מה הכי כואב, ואני בונה פתרון
-                שמתחבר למה שכבר יש לכם.
-              </p>
             </div>
+          </div>
+
+          <ScrollMorphServices cards={serviceShowcase} />
+
+          <div className="section-shell pb-20 md:pb-28 pt-6">
+            <p className="mb-10 max-w-2xl text-lg font-medium leading-8 text-muted md:text-xl">
+              כל עסק מפסיד זמן וכסף במקום אחר. בוחרים מה הכי כואב, ואני בונה פתרון
+              שמתחבר למה שכבר יש לכם.
+            </p>
 
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3" aria-label="הפתרונות שאני בונה">
               {solutionItems.map((item) => {
@@ -713,8 +708,16 @@ export function LandingPage() {
 
         <section id="about" data-bg="#f8fbff" className="about-section relative py-20 md:py-28">
           <div className="texture-soft opacity-70" />
-          <div className="section-shell about-layout grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
-            <AboutProfile />
+          <div className="section-shell about-layout grid gap-10 lg:grid-cols-[1.05fr_1.1fr] lg:items-center">
+            <div className="gsap-reveal">
+              <TechStackBuilder
+                bricks={stackBricks}
+                baseLabel="אסף בוסקילה"
+                baseSubtitle="AI Solutions Engineer"
+                baseImage="/assets/assaf-photo.jpg"
+                whatsapp={whatsapp}
+              />
+            </div>
             <div className="gsap-reveal about-copy space-y-6">
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
                 אני לא מוכר כלים. אני בונה עובדים דיגיטליים.

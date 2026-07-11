@@ -546,87 +546,6 @@ textarea {
   direction: rtl;
 }
 
-.about-profile-card {
-  --spot-x: 50%;
-  --spot-y: 42%;
-  position: relative;
-  display: grid;
-  min-height: 430px;
-  place-items: center;
-  justify-self: center;
-  isolation: isolate;
-}
-
-.about-profile-card::before {
-  position: absolute;
-  inset: 8%;
-  z-index: 0;
-  border-radius: 999px;
-  pointer-events: none;
-  content: "";
-  background: radial-gradient(circle at var(--spot-x) var(--spot-y), rgba(37, 99, 235, 0.42), rgba(193, 232, 255, 0.42) 22%, transparent 58%);
-  filter: blur(22px);
-  opacity: 0.92;
-  transition: opacity 220ms ease;
-}
-
-.about-bloom {
-  position: absolute;
-  z-index: 0;
-  border-radius: 999px;
-  pointer-events: none;
-}
-
-.about-bloom--mouse {
-  top: 50%;
-  left: 50%;
-  width: 330px;
-  height: 330px;
-  background: rgba(37, 99, 235, 0.18);
-  filter: blur(52px);
-  transform: translate(-50%, -50%);
-}
-
-.about-bloom--mobile {
-  display: none;
-}
-
-.about-circle-frame {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  width: min(340px, 70vw);
-  aspect-ratio: 1;
-  place-items: center;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.82);
-  border-radius: 20px;
-  background:
-    radial-gradient(circle at 52% 28%, rgba(255, 255, 255, 0.92), rgba(193, 232, 255, 0.46) 42%, rgba(37, 99, 235, 0.16)),
-    #eef7ff;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    0 34px 98px rgba(5, 38, 89, 0.18),
-    0 0 92px rgba(193, 232, 255, 0.86);
-}
-
-.about-circle-frame::after {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  content: "";
-  background: linear-gradient(132deg, rgba(255, 255, 255, 0.42), transparent 42%);
-}
-
-.about-circle-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  filter: none;
-  transform: none;
-}
-
 .about-point {
   display: flex;
   align-items: center;
@@ -842,55 +761,14 @@ textarea:focus-visible {
 }
 
 /* ============================================================
-   CAPABILITY SECTION: translucent wash (orb ::before kept)
+   SOLUTIONS SECTION: translucent wash
    ============================================================ */
 
-.capability-section {
+.solutions-section {
   background:
     radial-gradient(circle at 16% 18%, rgba(217, 238, 255, 0.44), transparent 32%),
     radial-gradient(circle at 88% 58%, rgba(125, 174, 219, 0.1), transparent 34%),
     linear-gradient(180deg, rgba(242, 249, 255, 0.48), rgba(248, 251, 255, 0.42) 30%, rgba(255, 255, 255, 0.38) 70%, rgba(244, 250, 255, 0.44));
-  box-shadow: 0 36px 90px rgba(5, 38, 89, 0.05);
-}
-
-.capability-stack {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.35fr);
-  align-items: center;
-  gap: clamp(2rem, 5vw, 4.5rem);
-}
-
-.capability-head {
-  display: grid;
-  gap: 1.1rem;
-}
-
-.capability-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 clamp(1.5rem, 3vw, 3rem);
-}
-
-.capability-row {
-  display: grid;
-  gap: 0.2rem;
-  border-top: 1px solid rgba(6, 27, 53, 0.12);
-  padding: 1.05rem 0.15rem 1.15rem;
-}
-
-.capability-row strong {
-  color: var(--ink);
-  font-size: 1.18rem;
-  font-weight: 800;
-}
-
-.capability-row span {
-  color: var(--muted);
-  font-size: 0.98rem;
-  font-weight: 500;
-  line-height: 1.55;
 }
 
 /* ============================================================
@@ -1165,29 +1043,15 @@ textarea:focus-visible {
    BACKGROUND SHADER  (do not touch: preserved verbatim)
    ============================================================ */
 
+/* Mirrors the WebGL mesh palette (teal/peach/sage) for non-WebGL devices */
 .background-shader-fallback {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 18% 18%, rgba(217, 238, 255, 0.92), transparent 32%),
-    radial-gradient(circle at 78% 22%, rgba(168, 209, 240, 0.72), transparent 34%),
-    radial-gradient(circle at 46% 78%, rgba(47, 95, 147, 0.4), transparent 42%),
-    linear-gradient(135deg, #f8fbff 0%, #d9eeff 36%, #8fbee2 66%, #eef8ff 100%);
-}
-
-/* ============================================================
-   KEYFRAMES
-   ============================================================ */
-
-@keyframes mobile-blue-bloom {
-  0%, 100% {
-    opacity: 0.46;
-    transform: translate(-48%, -48%) scale(0.88);
-  }
-  50% {
-    opacity: 0.9;
-    transform: translate(-52%, -52%) scale(1.08);
-  }
+    radial-gradient(circle at 18% 18%, rgba(181, 217, 217, 0.85), transparent 36%),
+    radial-gradient(circle at 80% 24%, rgba(255, 209, 189, 0.7), transparent 38%),
+    radial-gradient(circle at 44% 80%, rgba(140, 197, 184, 0.55), transparent 44%),
+    linear-gradient(135deg, #ffffff 0%, #ffebe0 34%, #b5d9d9 68%, #f4faf7 100%);
 }
 
 /* ============================================================
@@ -1200,50 +1064,6 @@ textarea:focus-visible {
     linear-gradient(180deg, rgba(248, 251, 255, 0.5), rgba(255, 255, 255, 0.42) 40%, rgba(244, 250, 255, 0.46) 100%);
 }
 
-.work-card {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border: 1px solid rgba(5, 38, 89, 0.1);
-  border-radius: 20px;
-  background: #ffffff;
-  box-shadow: 0 12px 32px rgba(6, 27, 53, 0.08);
-  transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
-}
-
-.work-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(37, 99, 235, 0.3);
-  box-shadow: 0 24px 54px rgba(6, 27, 53, 0.13);
-}
-
-.work-card__frame {
-  position: relative;
-  overflow: hidden;
-  /* crop the tall phone screenshots to a consistent window */
-  aspect-ratio: 5 / 4;
-  border-bottom: 1px solid rgba(5, 38, 89, 0.08);
-  background: #eef7ff;
-}
-
-.work-card__shot {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.work-card:hover .work-card__shot {
-  transform: translateY(-3.5%) scale(1.02);
-}
-
-.work-card__meta {
-  display: grid;
-  gap: 0.55rem;
-  padding: 1.1rem 1.15rem 1.2rem;
-}
-
 .work-card__tag {
   flex: 0 0 auto;
   border: 1px solid rgba(37, 99, 235, 0.2);
@@ -1254,24 +1074,6 @@ textarea:focus-visible {
   font-size: 0.74rem;
   font-weight: 800;
   white-space: nowrap;
-}
-
-.work-card__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  margin-top: 0.2rem;
-  color: var(--action);
-  font-size: 0.9rem;
-  font-weight: 800;
-}
-
-.work-card__cta svg {
-  transition: transform 200ms ease;
-}
-
-.work-card:hover .work-card__cta svg {
-  transform: translate(-2px, -2px);
 }
 
 /* ============================================================
@@ -1382,34 +1184,6 @@ textarea:focus-visible {
     min-height: 360px;
   }
 
-  .capability-stack {
-    grid-template-columns: 1fr;
-  }
-
-  .about-profile-card {
-    min-height: 330px;
-    order: -1;
-  }
-
-  .about-circle-frame {
-    width: min(300px, 72vw);
-  }
-
-  .about-bloom--mouse {
-    display: none;
-  }
-
-  .about-bloom--mobile {
-    top: 50%;
-    left: 50%;
-    display: block;
-    width: min(360px, 86vw);
-    height: min(360px, 86vw);
-    background: rgba(37, 99, 235, 0.2);
-    filter: blur(46px);
-    animation: mobile-blue-bloom 3.6s ease-in-out infinite;
-  }
-
   .story-pin {
     min-height: 100svh;
     padding: 5.75rem 0 4.5rem;
@@ -1505,10 +1279,6 @@ textarea:focus-visible {
     display: none;
   }
 
-  .capability-list {
-    grid-template-columns: 1fr;
-  }
-
   .story-wide-flow {
     width: min(100%, calc(100vw - 28px));
     padding-inline: 0;
@@ -1535,6 +1305,114 @@ textarea:focus-visible {
 }
 
 /* ============================================================
+   SCROLL-MORPH SERVICES SHOWCASE
+   Sticky stage: cards scatter -> line -> circle, then scroll
+   morphs the circle into a bottom arc. Fallback = snap strip.
+   ============================================================ */
+
+.smorph-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.smorph-hint {
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 0;
+  text-align: center;
+  pointer-events: none;
+}
+
+.smorph-hint p {
+  font-size: clamp(1.4rem, 2.6vw, 2.4rem);
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.smorph-hint span {
+  display: block;
+  margin-top: 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+}
+
+.smorph-strip {
+  display: flex;
+  gap: 0.9rem;
+  overflow-x: auto;
+  padding: 0.5rem 1rem 1.1rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.smorph-strip__item {
+  flex: 0 0 auto;
+  width: min(68vw, 300px);
+  scroll-snap-align: center;
+}
+
+.smorph-strip__item img {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 12px 32px rgba(6, 27, 53, 0.12);
+}
+
+.smorph-strip__item figcaption {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+/* ============================================================
+   TECH STACK BUILDER (Lego about section)
+   ============================================================ */
+
+.tech-stack-builder__hint {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+/* ============================================================
+   PORTFOLIO GALLERY: 3D fan on desktop, marquee on mobile
+   ============================================================ */
+
+.portfolio-gallery__badge {
+  position: absolute;
+  bottom: 8px;
+  inset-inline-start: 8px;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--navy);
+  font-size: 0.72rem;
+  font-weight: 800;
+  box-shadow: 0 4px 14px rgba(6, 27, 53, 0.16);
+}
+
+.marquee-track {
+  animation: marquee var(--duration, 36s) linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap, 1rem)));
+  }
+}
+
+/* ============================================================
    VOICE SECTION: live agent stage + orb
    ============================================================ */
 
@@ -1545,6 +1423,39 @@ textarea:focus-visible {
   gap: 1.25rem;
   padding: 2.6rem 1.75rem;
   text-align: center;
+}
+
+.voice-robot {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.voice-robot__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.voice-robot__loading {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: linear-gradient(120deg, var(--mist), #ffffff, var(--mist));
+  background-size: 200% 100%;
+  animation: voice-loading-sheen 1.6s ease-in-out infinite;
+}
+
+@keyframes voice-loading-sheen {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 .voice-orb {
@@ -1613,6 +1524,61 @@ textarea:focus-visible {
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--muted);
+}
+
+.voice-live {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  width: 100%;
+}
+
+.voice-live__indicator {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  color: #ffffff;
+  background: var(--navy);
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.voice-live__indicator--listening {
+  background: var(--action);
+  animation: voice-ring-pulse 1.6s ease-in-out infinite;
+}
+
+.voice-live__indicator--speaking {
+  background: var(--navy);
+  transform: scale(1.08);
+}
+
+.voice-live__status {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--ink);
+  text-align: center;
+}
+
+.voice-live__status--error {
+  color: var(--muted);
+  font-weight: 600;
+  max-width: 30rem;
+}
+
+.voice-live__countdown {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--action);
+}
+
+.voice-live__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem;
 }
 
 /* ============================================================

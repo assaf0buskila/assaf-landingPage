@@ -57,22 +57,21 @@ export function BackgroundShader({ className }: { className?: string }) {
     >
       <div className="background-shader-fallback" />
       {canUseWebGL && intersecting ? (
-        <MeshGradient
-          style={{ height: "100%", width: "100%" }}
-          distortion={0.8}
-          swirl={0.1}
-          offsetX={0}
-          offsetY={0}
-          scale={1}
-          rotation={0}
-          speed={reducedMotion ? 0 : 1}
-          colors={[
-            "hsl(204, 92%, 92%)",
-            "hsl(207, 78%, 78%)",
-            "hsl(212, 76%, 66%)",
-            "hsl(198, 82%, 84%)",
-          ]}
-        />
+        <>
+          <MeshGradient
+            style={{ height: "100%", width: "100%" }}
+            distortion={0.8}
+            swirl={0.6}
+            offsetX={0.08}
+            offsetY={0}
+            scale={1}
+            rotation={0}
+            speed={reducedMotion ? 0 : 0.42}
+            colors={["#72b9bb", "#b5d9d9", "#ffd1bd", "#ffebe0", "#8cc5b8", "#dbf4a4"]}
+          />
+          {/* soft veil keeps the hero text readable over the gradient */}
+          <div className="pointer-events-none absolute inset-0 bg-white/20" />
+        </>
       ) : null}
       {/* Fade the bottom of the shader into the next (light) section */}
       <div

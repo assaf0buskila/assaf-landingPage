@@ -420,27 +420,8 @@ export function ScrollEffects() {
     // 6a & 10b. DESKTOP-ONLY: hero parallax + phone inner parallax
     // wrapped in matchMedia so mobile skips them for performance
     // ────────────────────────────────────────────────────────────────────────
-    mm.add("(min-width: 900px)", () => {
-      const heroEl = qs<HTMLElement>(".hero-section");
-
-      if (heroEl) {
-        const heroParallaxTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: heroEl,
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
-
-        heroParallaxTl
-          .to(".hero-aura-layer", { yPercent: 16, ease: "none" }, 0)
-          .to(".hero-holo-layer", { yPercent: -12, ease: "none" }, 0)
-          .to(".hero-lume--right", { y: -70, ease: "none" }, 0)
-          .to(".hero-lume--left", { y: 60, ease: "none" }, 0);
-      }
-
-    });
+    // (Former hero aura/holo/lume parallax removed: those layers no longer
+    // exist in the hero markup and only produced GSAP target warnings.)
 
     // ────────────────────────────────────────────────────────────────────────
     // 16. MAGNETIC BUTTONS (hover devices only)

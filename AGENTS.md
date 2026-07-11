@@ -5,9 +5,17 @@ This repository hosts the personal landing page for Assaf Buskila, an AI solutio
 ## Site facts
 
 - Primary language: Hebrew (RTL).
-- Tech stack: Next.js, TypeScript, Tailwind CSS, GSAP ScrollTrigger and Lenis for scroll and animation. Framer Motion is being added specifically for the new About Lego component; it is not used elsewhere on the site.
+- Tech stack: Next.js, TypeScript, Tailwind CSS, GSAP ScrollTrigger and Lenis for scroll choreography, Framer Motion for the interactive components (About Lego builder, services scroll-morph, portfolio gallery), Spline for the voice-section robot.
 - Hosting: Vercel.
 - Production URL: https://www.assafweb.com
+
+## Environment variables
+
+- `ELEVENLABS_API_KEY` and `ELEVENLABS_AGENT_ID` (server-only, never `NEXT_PUBLIC_`) power the live Hebrew voice-agent demo in the `#voice` section via `app/api/voice/signed-url/route.ts`. Without them the section renders a "coming soon" card and the site works normally. Set them in `.env.local` for dev and in the Vercel dashboard for production.
+
+## Palette single source of truth
+
+- All colors live as CSS variables in `app/globals.css` `:root`, including `-rgb` channel triplets. `tailwind.config.ts` reads those triplets via `rgb(var(--x-rgb) / <alpha-value>)`. When changing a color, update the hex var AND its `-rgb` triplet together; never hardcode a new hex in `tailwind.config.ts`.
 
 ## For AI agents
 

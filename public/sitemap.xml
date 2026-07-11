@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.assafweb.com/</loc>
-    <lastmod>2026-07-11</lastmod>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -17,24 +17,24 @@
       <image:caption>אסף בוסקילה, בונה פתרונות AI, אוטומציות ואתרים לעסקים</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://www.assafweb.com/assets/projects/mystudio-phone.webp</image:loc>
+      <image:loc>https://www.assafweb.com/assets/services/service-7.webp</image:loc>
       <image:title>MYstudio</image:title>
       <image:caption>MYstudio, פלטפורמת AI חיה ליצירת תוכן שאסף בנה ומפעיל</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://www.assafweb.com/assets/projects/mochi-phone.webp</image:loc>
+      <image:loc>https://www.assafweb.com/assets/projects/showcase-mochi.webp</image:loc>
       <image:title>פרויקט מוצ׳י</image:title>
-      <image:caption>אתר מותג למוצ׳י בתצוגת מובייל</image:caption>
+      <image:caption>אתר מותג למוצ׳י, פרויקט חי</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://www.assafweb.com/assets/projects/cafe-ana-phone.webp</image:loc>
+      <image:loc>https://www.assafweb.com/assets/projects/showcase-ana.webp</image:loc>
       <image:title>פרויקט קפה אנה</image:title>
-      <image:caption>אתר בית קפה מקומי בתצוגת מובייל</image:caption>
+      <image:caption>אתר בית קפה מקומי, פרויקט חי</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://www.assafweb.com/assets/projects/candy-phone.webp</image:loc>
+      <image:loc>https://www.assafweb.com/assets/projects/showcase-candy.webp</image:loc>
       <image:title>מנגינת ממתקים, פרויקט קונספט</image:title>
-      <image:caption>אתר קונספט למותג ממתקים בתצוגת מובייל</image:caption>
+      <image:caption>אתר קונספט למותג ממתקים</image:caption>
     </image:image>
   </url>
   <url>

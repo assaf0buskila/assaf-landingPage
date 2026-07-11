@@ -1,5 +1,5 @@
-# assafweb.com robots.txt
-# Updated 2026-06-28
+# assafweb.com robots.txt - AI solutions studio
+# Updated 2026-07-12
 
 User-agent: *
 Allow: /
