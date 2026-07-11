@@ -19,6 +19,17 @@
   --mist: #d9eeff;
   --line: rgba(47, 95, 147, 0.13);
   --panel: rgba(255, 255, 255, 0.78);
+  /* RGB channel triplets: single source of truth for Tailwind utilities
+     (tailwind.config.ts reads these via rgb(var(--x-rgb) / <alpha-value>)).
+     Keep in sync with the hex vars above. */
+  --paper-rgb: 248 251 255;
+  --ink-rgb: 6 27 53;
+  --muted-rgb: 91 111 134;
+  --navy-rgb: 47 95 147;
+  --action-rgb: 37 99 235;
+  --steel-rgb: 123 167 211;
+  --sky-rgb: 168 209 240;
+  --mist-rgb: 217 238 255;
 }
 
 /* ============================================================
