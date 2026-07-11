@@ -417,7 +417,7 @@ export function TechStackBuilder({
                 <span className="grid text-right">
                   <strong className="text-[17px] font-black leading-tight text-ink">{baseLabel}</strong>
                   <small className="mt-1 text-[11px] font-bold uppercase tracking-[0.14em] text-muted" dir="ltr">
-                    {equipped.length === 0 ? baseSubtitle : `${equipped.length * 10}XP · צוות פעיל`}
+                    {baseSubtitle}
                   </small>
                 </span>
               </div>

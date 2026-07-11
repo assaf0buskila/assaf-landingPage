@@ -986,18 +986,43 @@ textarea:focus-visible {
    SITE FOOTER SEAM : melts light contact section into dark footer
    ============================================================ */
 
+/* Footer = nightfall: the page's daylight blues descend into the ink sky
+   where the digital worker keeps answering. Smooth multi-stop horizon
+   instead of the old white-fade band, plus a faint star field. */
 .site-footer {
   position: relative;
+  background:
+    radial-gradient(circle at 80% 30%, rgba(37, 99, 235, 0.16), transparent 34%),
+    radial-gradient(circle at 14% 44%, rgba(123, 167, 211, 0.1), transparent 30%),
+    linear-gradient(
+      180deg,
+      #eef7ff 0%,
+      #a8c8e4 6%,
+      #4f76a0 13%,
+      #1d3b5f 21%,
+      #0c2440 32%,
+      #061b35 52%,
+      #040f1f 100%
+    );
 }
 
 .site-footer::before {
   position: absolute;
-  top: 0;
-  inset-inline: 0;
-  height: 140px;
+  inset: 0;
   pointer-events: none;
   content: "";
-  background: linear-gradient(180deg, #eef7ff, rgba(238, 247, 255, 0));
+  background-image:
+    radial-gradient(1.6px 1.6px at 11% 46%, rgba(255, 255, 255, 0.9), transparent 100%),
+    radial-gradient(1.2px 1.2px at 24% 32%, rgba(255, 255, 255, 0.7), transparent 100%),
+    radial-gradient(1.8px 1.8px at 37% 58%, rgba(217, 238, 255, 0.8), transparent 100%),
+    radial-gradient(1.1px 1.1px at 52% 38%, rgba(255, 255, 255, 0.65), transparent 100%),
+    radial-gradient(1.5px 1.5px at 64% 52%, rgba(217, 238, 255, 0.75), transparent 100%),
+    radial-gradient(1.2px 1.2px at 73% 30%, rgba(255, 255, 255, 0.6), transparent 100%),
+    radial-gradient(1.7px 1.7px at 85% 62%, rgba(255, 255, 255, 0.8), transparent 100%),
+    radial-gradient(1.1px 1.1px at 93% 40%, rgba(217, 238, 255, 0.6), transparent 100%),
+    radial-gradient(1.3px 1.3px at 45% 74%, rgba(255, 255, 255, 0.5), transparent 100%),
+    radial-gradient(1.4px 1.4px at 18% 70%, rgba(217, 238, 255, 0.55), transparent 100%);
+  opacity: 0.55;
   z-index: 0;
 }
 
@@ -1322,15 +1347,23 @@ textarea:focus-visible {
   inset-inline: 0;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 0;
+  /* Above the cards so the message stays readable inside the circle */
+  z-index: 30;
   text-align: center;
   pointer-events: none;
+  padding-inline: 1rem;
 }
 
 .smorph-hint p {
-  font-size: clamp(1.4rem, 2.6vw, 2.4rem);
+  max-width: 16ch;
+  margin-inline: auto;
+  font-size: clamp(1.25rem, 2vw, 1.9rem);
   font-weight: 800;
   color: var(--ink);
+  text-shadow:
+    0 0 14px rgba(255, 255, 255, 0.95),
+    0 0 30px rgba(255, 255, 255, 0.85),
+    0 0 46px rgba(255, 255, 255, 0.7);
 }
 
 .smorph-hint span {

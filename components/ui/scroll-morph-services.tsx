@@ -87,8 +87,9 @@ export function ScrollMorphServices({ cards }: { cards: ServiceCard[] }) {
   const introStarted = useRef(false);
 
   // Scroll progress across the tall wrapper drives the morph; springs smooth it.
-  const smoothMorph = useSpring(0, { stiffness: 40, damping: 20 });
-  const smoothRotate = useSpring(0, { stiffness: 40, damping: 20 });
+  // Stiffness tuned high enough to track the scrollbar without feeling laggy.
+  const smoothMorph = useSpring(0, { stiffness: 75, damping: 22 });
+  const smoothRotate = useSpring(0, { stiffness: 75, damping: 22 });
   const [morphValue, setMorphValue] = useState(0);
   const [rotateValue, setRotateValue] = useState(0);
 
@@ -168,10 +169,10 @@ export function ScrollMorphServices({ cards }: { cards: ServiceCard[] }) {
   if (!capable) return <StaticStrip cards={cards} />;
 
   const total = cards.length;
-  const hintOpacity = introPhase === "circle" ? Math.max(0, 1 - morphValue * 2) : 0;
+  const hintOpacity = introPhase === "circle" ? Math.max(0, 1 - morphValue * 3) : 0;
 
   return (
-    <div ref={wrapperRef} className="smorph-wrapper" style={{ height: "230vh" }}>
+    <div ref={wrapperRef} className="smorph-wrapper" style={{ height: "175vh" }}>
       <div ref={stageRef} className="smorph-stage">
         <div className="smorph-hint" style={{ opacity: hintOpacity }} aria-hidden="true">
           <p>כל עסק מפסיד זמן במקום אחר.</p>
@@ -189,7 +190,7 @@ export function ScrollMorphServices({ cards }: { cards: ServiceCard[] }) {
               target = { x: i * spacing - (total * spacing) / 2 + spacing / 2, y: 0, rotation: 0, scale: 1, opacity: 1 };
             } else {
               const minDim = Math.min(stageSize.width, stageSize.height);
-              const circleRadius = Math.min(minDim * 0.33, 330);
+              const circleRadius = Math.min(minDim * 0.37, 365);
               const circleAngle = (i / total) * 360;
               const circleRad = (circleAngle * Math.PI) / 180;
               const circlePos = {

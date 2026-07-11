@@ -573,12 +573,16 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
             </div>
 
             <PortfolioGallery
-              items={works.map((work) => ({
-                src: work.showcase,
-                alt: `צילום מסך של ${work.name}`,
-                href: work.live === false ? undefined : work.href,
-                name: work.name,
-              }))}
+              items={works
+                // Real screenshots only in the gallery; MYstudio joins once
+                // its deployment is back and a genuine capture exists.
+                .filter((work) => work.name !== "MYstudio")
+                .map((work) => ({
+                  src: work.showcase,
+                  alt: `צילום מסך של ${work.name}`,
+                  href: work.live === false ? undefined : work.href,
+                  name: work.name,
+                }))}
             />
 
             <div className="mt-8 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
@@ -889,8 +893,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
         </section>
       </main>
 
-      <footer className="site-footer relative overflow-hidden bg-ink px-4 py-14 text-white">
-        <div className="texture-holo opacity-20" />
+      <footer className="site-footer relative overflow-hidden px-4 pb-14 pt-28 text-white md:pt-36">
         <div className="section-shell relative z-10 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-sm font-black text-mist">האתר של אסף</p>
