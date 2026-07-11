@@ -47,6 +47,9 @@ const works = [
     showcase: "/assets/services/service-7.webp",
     tag: "מוצר AI",
     external: true,
+    // Domain is being re-pointed; keep the card unlinked until it is back up
+    // so production never ships a dead click. JSON-LD keeps the canonical URL.
+    live: false,
     line: "פלטפורמת AI שבניתי מאפס: מעלים תמונת מוצר ומקבלים תוכן שיווקי ממותג, כולל משתמשים ותשלומים.",
   },
   {
@@ -573,31 +576,45 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
               items={works.map((work) => ({
                 src: work.showcase,
                 alt: `צילום מסך של ${work.name}`,
-                href: work.href,
+                href: work.live === false ? undefined : work.href,
                 name: work.name,
               }))}
             />
 
             <div className="mt-8 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-              {works.map((work) => (
-                <a
-                  key={work.name}
-                  href={work.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="gsap-reveal premium-panel group p-4"
-                >
-                  <div className="flex items-center justify-between gap-3">
-                    <strong className="text-lg font-black text-ink">{work.name}</strong>
-                    <span className="work-card__tag">{work.tag}</span>
+              {works.map((work) => {
+                const inner = (
+                  <>
+                    <div className="flex items-center justify-between gap-3">
+                      <strong className="text-lg font-black text-ink">{work.name}</strong>
+                      <span className="work-card__tag">{work.tag}</span>
+                    </div>
+                    <p className="mt-2 text-sm font-medium leading-6 text-muted">{work.line}</p>
+                    {work.live === false ? null : (
+                      <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-black text-action">
+                        לפתוח את הפרויקט
+                        <ArrowUpLeft size={16} className="transition-transform group-hover:-translate-x-0.5" />
+                      </span>
+                    )}
+                  </>
+                );
+
+                return work.live === false ? (
+                  <div key={work.name} className="gsap-reveal premium-panel p-4">
+                    {inner}
                   </div>
-                  <p className="mt-2 text-sm font-medium leading-6 text-muted">{work.line}</p>
-                  <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-black text-action">
-                    לפתוח את הפרויקט
-                    <ArrowUpLeft size={16} className="transition-transform group-hover:-translate-x-0.5" />
-                  </span>
-                </a>
-              ))}
+                ) : (
+                  <a
+                    key={work.name}
+                    href={work.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="gsap-reveal premium-panel group p-4"
+                  >
+                    {inner}
+                  </a>
+                );
+              })}
             </div>
           </div>
         </section>

@@ -6,7 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 export type GalleryItem = {
   src: string;
   alt: string;
-  href: string;
+  href?: string;
   name: string;
 };
 
@@ -43,10 +43,10 @@ export function PortfolioGallery({ items }: { items: GalleryItem[] }) {
               <motion.a
                 key={item.name}
                 href={item.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`לפתוח את ${item.name}`}
-                className="group flex-shrink-0 cursor-pointer"
+                target={item.href ? "_blank" : undefined}
+                rel={item.href ? "noreferrer" : undefined}
+                aria-label={item.href ? `לפתוח את ${item.name}` : item.name}
+                className={`group flex-shrink-0 ${item.href ? "cursor-pointer" : "cursor-default"}`}
                 style={{ zIndex: items.length - index }}
                 initial={
                   reduced
@@ -93,9 +93,9 @@ export function PortfolioGallery({ items }: { items: GalleryItem[] }) {
                 <a
                   key={`${copy}-${item.name}`}
                   href={item.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  tabIndex={copy > 0 ? -1 : undefined}
+                  target={item.href ? "_blank" : undefined}
+                  rel={item.href ? "noreferrer" : undefined}
+                  tabIndex={copy > 0 || !item.href ? -1 : undefined}
                   className="flex-shrink-0"
                 >
                   <div
