@@ -1,9 +1,9 @@
 {
   "schema_version": "v1",
-  "name_for_human": "Assaf Buskila, בניית אתרים",
-  "name_for_model": "assaf_buskila_web_design",
-  "description_for_human": "אסף בוסקילה, מעצב ובונה אתרים לעסקים קטנים וצומחים בישראל.",
-  "description_for_model": "Personal portfolio site for Assaf Buskila, an independent Israeli web designer building Hebrew RTL websites and landing pages for small businesses. Services include design, copy direction, SEO basics, lead flow, mobile fit, WhatsApp contact paths, logo direction and GSAP based interactive storytelling. No self-serve flow, no API, no MCP server. Direct new projects to WhatsApp +972-52-339-3768 or email assaf.buskila10@gmail.com.",
+  "name_for_human": "Assaf Buskila, פתרונות AI לעסקים",
+  "name_for_model": "assaf_buskila_ai_solutions",
+  "description_for_human": "אסף בוסקילה, סטודיו לפתרונות AI לעסקים קטנים בישראל: עובדים דיגיטליים, אוטומציות, סוכן קולי בעברית, אפליקציות, אתרים וכרטיסי ביקור דיגיטליים.",
+  "description_for_model": "AI solutions studio of Assaf Buskila, an independent Israeli AI Solutions Engineer building digital workers and AI solutions for small businesses in Israel. Services include business automations (lead follow-up, reminders, system syncing), AI agents that answer, qualify and sell 24/7 on WhatsApp and web, Hebrew voice agents that answer the phone after hours and book appointments (live demo in the #voice section of the homepage), internal apps and dashboards (Python, FastAPI, Supabase), Hebrew RTL websites and landing pages, digital business cards, and a month of guidance after every launch. No self-serve flow, no API, no MCP server. Direct new projects to WhatsApp +972-52-339-3768 or email assaf.buskila10@gmail.com.",
   "api": null,
   "contact_email": "assaf.buskila10@gmail.com",
   "legal_info_url": "https://www.assafweb.com/pricing.md"

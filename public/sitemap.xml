@@ -3,18 +3,23 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.assafweb.com/</loc>
-    <lastmod>2026-07-10</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://www.assafweb.com/assets/og-cover.jpg</image:loc>
       <image:title>האתר של אסף</image:title>
-      <image:caption>אסף בוסקילה, בניית אתרים לעסקים בעברית</image:caption>
+      <image:caption>אסף בוסקילה, פתרונות AI ועובדים דיגיטליים לעסקים בעברית</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.assafweb.com/assets/assaf-photo.jpg</image:loc>
       <image:title>אסף בוסקילה</image:title>
-      <image:caption>אסף בוסקילה, מעצב ובונה אתרים לעסקים</image:caption>
+      <image:caption>אסף בוסקילה, בונה פתרונות AI, אוטומציות ואתרים לעסקים</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.assafweb.com/assets/projects/mystudio-phone.webp</image:loc>
+      <image:title>MYstudio</image:title>
+      <image:caption>MYstudio, פלטפורמת AI חיה ליצירת תוכן שאסף בנה ומפעיל</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.assafweb.com/assets/projects/mochi-phone.webp</image:loc>

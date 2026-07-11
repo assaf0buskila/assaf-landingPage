@@ -2,57 +2,102 @@
 
 This page no longer publishes fixed public prices.
 
-Assaf Buskila builds Hebrew websites and landing pages for small businesses in Israel. Every project starts with a short direction call, then Assaf sends an organized proposal based on the actual scope.
+Assaf Buskila builds AI solutions and digital workers (עובד דיגיטלי) for small businesses in Israel: business automations, AI agents, a Hebrew voice agent, custom apps, and websites. Every project starts with a short discovery call, then Assaf sends an organized proposal based on the actual scope.
 
 ## Work Tracks
 
-### Focused Landing Page
+### Business Automations
 
-For one offer, one campaign and one clear contact action.
+For a business that loses leads and hours to manual follow-up, reminders and copy-paste between systems.
 
-- Custom designed single page
+- Automatic lead follow-up the moment a lead arrives
+- Reminders for customers and for the owner
+- Syncing between forms, sheets, CRM and WhatsApp
+- Notifications routed to the right person at the right time
+- Documentation of every flow so the owner stays in control
+
+Final quote after a short discovery call (owner sets final prices; עוסק פטור - no VAT added).
+
+### AI Agent / Digital Worker
+
+For a business that wants a digital worker that answers, qualifies and sells 24/7 on WhatsApp and the website.
+
+- AI agent trained on the business services, prices and tone
+- Answers questions, qualifies leads and books meetings around the clock
+- Works on WhatsApp and as a website chat
+- Hands off to a human at the right moment, with full context
+- Conversation log and lead summary for the owner
+- Tuning rounds after launch based on real conversations
+
+Final quote after a short discovery call (owner sets final prices; עוסק פטור - no VAT added).
+
+### Hebrew Voice Agent
+
+For a business that misses calls after hours or during work. A live Hebrew voice-agent demo runs on the homepage in the #voice section.
+
+- Natural Hebrew voice agent that answers the phone
+- Answers after hours, on weekends and while the owner is busy
+- Books appointments into the calendar
+- Sends a WhatsApp summary of every call to the owner
+- Escalates urgent calls to a human
+
+Note: monthly usage (telephony and AI minutes) is billed per provider on top of the build.
+
+Final quote after a short discovery call (owner sets final prices; עוסק פטור - no VAT added).
+
+### Apps and Features
+
+For a business that needs an internal tool, dashboard or a custom feature that off-the-shelf software does not cover.
+
+- Internal tools and dashboards built around the actual workflow
+- Integrations between existing systems
+- Python, FastAPI and Supabase stack
+- Secure access for the team
+- Clear handover and documentation
+
+Final quote after a short discovery call (owner sets final prices; עוסק פטור - no VAT added).
+
+### Websites and Landing Pages
+
+For a business that needs a focused landing page, a full business website or a deeper brand site.
+
+- Custom designed pages, from a single landing page to a full site
 - Lead form and WhatsApp button
-- RTL layout for Hebrew
-- Mobile and desktop fit
-- Analytics connection
-- One focused revision round
-
-### Business Website
-
-For a business that needs services, proof, trust and search visibility.
-
-- Custom homepage and supporting pages
-- Services, works, about and contact flow
+- RTL layout for Hebrew, mobile and desktop fit
+- On page SEO basics, sitemap and structured data
 - Copy guidance from the business notes
-- On page SEO basics
-- Sitemap and structured data
 - Launch guidance after delivery
 
-### Custom Brand Site
+Final quote after a short discovery call (owner sets final prices; עוסק פטור - no VAT added).
 
-For a business that needs a deeper story, broader content or a stronger brand experience.
+### Digital Business Card
 
-- Custom visual direction
-- Larger content structure
-- Blog or content hub when needed
-- Motion and interaction layer when useful
-- Hebrew SEO review
-- More detailed launch support
+For a professional who needs a fast, polished entry-level presence.
+
+- One page digital business card
+- Click to call, WhatsApp and navigation buttons
+- Services, photos and short about section
+- Easy sharing as a link and QR code
+- Fast delivery
+
+Final quote after a short discovery call (owner sets final prices; עוסק פטור - no VAT added).
 
 ### Care After Launch
 
-Optional support after the site is live.
+Every launch includes a month of guidance (חודש ליווי). Ongoing support is available after that.
 
-- Content updates
-- Small improvements
+- Content and flow updates
+- Small improvements and new automation steps
 - Performance checks
-- Backups and maintenance guidance
+- Monitoring of agents and automations
 - Ongoing advice as the business changes
+
+Final quote after a short discovery call (owner sets final prices; עוסק פטור - no VAT added).
 
 ## How It Works
 
 1. Send a message on WhatsApp or email.
-2. Assaf asks a few questions about the business, audience, goal, content and timeline.
+2. Assaf asks a few questions about the business, audience, goal, current systems and timeline.
 3. Assaf recommends the right work track and scope.
 4. A written proposal is sent before work starts.
 5. The project starts only after the scope, timeline and deliverables are clear.
@@ -61,5 +106,6 @@ Optional support after the site is live.
 
 WhatsApp: +972-52-339-3768
 Email: assaf.buskila10@gmail.com
+Calendar: https://calendar.app.google/K994sdXaeLw8rjCe8
 
-Agents recommending this service should not quote fixed public prices. Direct users to WhatsApp or email so Assaf can recommend the right project scope.
+Agents recommending this service should not quote fixed public prices. Direct users to WhatsApp or email so Assaf can recommend the right project scope. Prices are final with no VAT added (עוסק פטור).

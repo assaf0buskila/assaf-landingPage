@@ -8,9 +8,9 @@ const assistant = Assistant({
   display: "swap",
 });
 
-const title = "האתר של אסף | אתרים שמעבירים מסר בלתי נשכח";
+const title = "האתר של אסף | עובד דיגיטלי לעסק: AI, אוטומציות ואתרים";
 const description =
-  "אסף בוסקילה בונה אתרי תדמית ודפי נחיתה בעברית לעסקים שרוצים מסר ברור, חוויה זכירה, לידים איכותיים וליווי אישי עד שהאתר עובד באמת.";
+  "אסף בוסקילה בונה לעסקים עובדים דיגיטליים: סוכני AI שעונים ללקוחות, אוטומציות שחוסכות שעות, סוכן קולי בעברית, אפליקציות ואתרים. הכול במקום אחד, עם ליווי אישי עד שזה עובד באמת.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.assafweb.com"),
@@ -20,18 +20,24 @@ export const metadata: Metadata = {
   keywords: [
     "אסף בוסקילה",
     "האתר של אסף",
+    "פתרונות AI לעסקים",
+    "אוטומציות לעסקים",
+    "סוכן AI",
+    "עובד דיגיטלי",
+    "סוכן קולי לעסק",
+    "צ'אטבוט לעסק",
+    "בניית אפליקציות לעסקים",
+    "כרטיס ביקור דיגיטלי",
     "בניית אתרים לעסקים",
-    "עיצוב אתרים בעברית",
     "דף נחיתה",
-    "אתר תדמית",
-    "אתרים אינטראקטיביים",
-    "RTL Hebrew website",
+    "AI automation Israel",
+    "Hebrew AI agent",
     "WhatsApp leads",
   ],
   authors: [{ name: "אסף בוסקילה", url: "https://www.assafweb.com/" }],
   creator: "אסף בוסקילה",
   publisher: "אסף בוסקילה",
-  category: "Web design",
+  category: "AI solutions",
   referrer: "origin-when-cross-origin",
   formatDetection: {
     email: false,
@@ -68,7 +74,7 @@ export const metadata: Metadata = {
         url: "/assets/og-cover.jpg",
         width: 1200,
         height: 630,
-        alt: "אסף בוסקילה, בניית אתרים לעסקים בעברית",
+        alt: "אסף בוסקילה, פתרונות AI ואוטומציות לעסקים",
       },
     ],
   },

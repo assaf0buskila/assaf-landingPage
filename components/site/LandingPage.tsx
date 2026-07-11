@@ -6,31 +6,46 @@ import type { CSSProperties } from "react";
 import {
   ArrowUpLeft,
   BadgeCheck,
+  Bot,
   ChevronLeft,
   CircleCheck,
   Clock3,
+  Contact,
+  Globe,
+  LayoutGrid,
   Mail,
   MessageCircle,
+  Mic,
   MousePointer2,
   Send,
   Star,
+  Zap,
 } from "lucide-react";
 import { BackgroundShader } from "@/components/ui/background-shader";
 import { AiHeroChat } from "@/components/site/AiHeroChat";
 import { ScrollEffects } from "@/components/site/ScrollEffects";
+import { VoiceAgentSection } from "@/components/site/VoiceAgentSection";
 
 const whatsapp = "https://wa.me/972523393768";
 const email = "mailto:assaf.buskila10@gmail.com";
 const calendarCall = "https://calendar.app.google/K994sdXaeLw8rjCe8";
 
 const navItems = [
+  { href: "#solutions", label: "פתרונות" },
+  { href: "#voice", label: "דברו איתו" },
   { href: "#works", label: "עבודות" },
-  { href: "#story", label: "סיפור" },
-  { href: "#process", label: "תהליך" },
   { href: "#contact", label: "יצירת קשר" },
 ];
 
 const works = [
+  {
+    name: "MYstudio",
+    href: "https://mystudio.pics",
+    image: "/assets/projects/mystudio-phone.webp",
+    tag: "מוצר AI חי",
+    external: true,
+    line: "פלטפורמת AI שבניתי מאפס והיא רצה עכשיו: מעלים תמונת מוצר ומקבלים תוכן שיווקי ממותג, כולל משתמשים ותשלומים.",
+  },
   {
     name: "מוצ׳י",
     href: "https://mochi-israel.com",
@@ -59,77 +74,112 @@ const works = [
 
 const faqItems = [
   {
-    q: "כמה עולה אתר?",
-    a: "אין מחירון אחיד, כי אין שני עסקים זהים. אחרי שיחת כיוון קצרה תקבלו הצעה מסודרת עם מחיר סופי. לא נוסף מע״מ ואין הפתעות בהמשך.",
+    q: "מה זה בעצם עובד דיגיטלי?",
+    a: "סוכן AI שבנוי סביב העסק שלכם: מכיר את השירותים והמחירים, עונה ללקוחות בוואטסאפ, באתר או בטלפון, ויודע מתי להעביר אליכם. הוא לא מחליף אתכם. הוא תופס את מה שהיום פשוט נופל.",
   },
   {
-    q: "כמה זמן לוקח עד שהאתר באוויר?",
-    a: "תלוי בהיקף: דף נחיתה ממוקד עולה מהר, אתר תדמית מלא לוקח יותר. את לוח הזמנים סוגרים יחד במפגש הכיוון, ואתם מעודכנים בכל שלב.",
+    q: "כמה עולה פתרון AI?",
+    a: "תלוי מה בונים: אוטומציה ממוקדת עולה הרבה פחות מסוכן קולי מלא. אחרי שיחת אבחון קצרה תקבלו הצעה מסודרת עם מחיר סופי. לא נוסף מע״מ ואין הפתעות בהמשך.",
   },
   {
-    q: "אין לי רעיון סגור או תוכן מוכן. זו בעיה?",
-    a: "ממש לא. רוב הלקוחות מגיעים בדיוק ככה. אני עוזר לסגור מסר, מבנה, תוכן ועיצוב. מגיעים עם העסק, יוצאים עם כיוון ברור.",
+    q: "אני לא מבין בטכנולוגיה. זה מסובך להטמיע?",
+    a: "לא. אני בונה את הכול, מחבר למערכות שכבר יש לכם ומדריך אתכם בעברית פשוטה. אם אתם יודעים לענות לוואטסאפ, אתם יודעים לעבוד עם עובד דיגיטלי.",
   },
   {
-    q: "יש לי כבר אתר ואני לא מרוצה. אפשר לשדרג?",
-    a: "כן. לפעמים נכון לשדרג את הקיים ולפעמים משתלם יותר לבנות מחדש. בשיחת הכיוון בודקים את המצב וממליצים על המסלול הנכון לכם.",
+    q: "אני בכלל עוד צריך אתר?",
+    a: "אתר טוב הוא עדיין הבית של העסק, ואני עדיין בונה כאלה. ההבדל הוא שהיום הוא לא חייב להיות דומם: מוסיפים לו סוכן שעונה, טופס חכם ואוטומציות שממשיכות את השיחה.",
+  },
+  {
+    q: "המידע של העסק והלקוחות שלי בטוח?",
+    a: "כן. אני עובד רק עם ספקים מוכרים, מפתחות הגישה נשמרים בצד השרת בלבד, והמידע שלכם משמש רק לפתרון עצמו. מה שלא חייב להישמר, לא נשמר.",
   },
 ];
 
-const capabilityItems = [
-  { label: "עיצוב", text: "שפה שמרגישה כמו מותג" },
-  { label: "לידים", text: "מסלול פנייה ברור לוואטסאפ" },
-  { label: "SEO", text: "מבנה שמנועי חיפוש מבינים" },
-  { label: "מובייל", text: "חוויה חדה בטלפון" },
-  { label: "אינטגרציות", text: "טפסים, וואטסאפ ומעקב" },
-  { label: "לוגו", text: "עזרה בכיוון בסיסי למותג" },
+const solutionItems = [
+  {
+    icon: Zap,
+    label: "אוטומציות עסקיות",
+    text: "מעקב אחרי לידים, תזכורות, סנכרון בין מערכות. העבודה שחוזרת על עצמה נעשית לבד.",
+    href: null,
+  },
+  {
+    icon: Bot,
+    label: "סוכן AI לעסק",
+    text: "עובד דיגיטלי שעונה ללקוחות בוואטסאפ ובאתר, מסנן, מתאם ומוכר. בטון שלכם, 24/7.",
+    href: null,
+  },
+  {
+    icon: Mic,
+    label: "סוכן קולי",
+    text: "עונה לטלפון כשאתם עסוקים, קובע תורים ומסכם לכם בוואטסאפ. אפשר לשמוע אותו כאן בעמוד.",
+    href: "#voice",
+    linkLabel: "לשמוע אותו חי",
+  },
+  {
+    icon: LayoutGrid,
+    label: "אפליקציות ופיצ'רים",
+    text: "כלים פנימיים, דשבורדים וחיבורים בין מערכות, בדיוק לפי איך שהעסק שלכם עובד.",
+    href: null,
+  },
+  {
+    icon: Globe,
+    label: "אתרים ודפי נחיתה",
+    text: "המקצוע שממנו התחלתי: אתר שמסביר מהר, מרגיש כמו העסק ומכניס פניות בוואטסאפ.",
+    href: null,
+  },
+  {
+    icon: Contact,
+    label: "כרטיס ביקור דיגיטלי",
+    text: "דרך מהירה ומשתלמת להיראות מקצועי: כל הפרטים, הקישורים והפנייה בלחיצה אחת.",
+    href: null,
+  },
 ];
 
 const stats = [
   {
     value: 1,
     suffix: " שותף",
-    label: "עיצוב, תוכן, בנייה וליווי במקום אחד",
+    label: "אבחון, בנייה, הטמעה וליווי, הכול מול אדם אחד",
     icon: Clock3,
   },
   {
-    value: 30,
-    suffix: " יום",
-    label: "ליווי אחרי העלייה כדי לסגור את כל הפרטים",
+    value: 24,
+    suffix: "/7",
+    label: "העובד הדיגיטלי לא יוצא לחופש ולא מפספס פנייה",
     icon: BadgeCheck,
   },
   {
-    value: 3,
+    value: 4,
     suffix: " פרויקטים",
-    label: "אתרים חיים שאפשר לפתוח ולבדוק, כולם כאן בעמוד",
+    label: "מוצר AI ואתרים חיים שרצים עכשיו, פתוחים לבדיקה כאן בעמוד",
     icon: MousePointer2,
   },
 ];
 
 const process = [
   {
-    title: "מפגש כיוון",
-    text: "פותחים בשיחה קצרה על העסק, הלקוחות, המטרה והדברים שחייבים לעבוד באתר.",
+    title: "שיחת אבחון",
+    text: "שיחה קצרה על העסק: איפה הולך הזמן, איפה נופלות פניות, ומה הכי כואב עכשיו.",
   },
   {
-    title: "מסר וסיפור",
-    text: "מסדרים מה אומרים קודם, מה מוכיח אמון ומה גורם לאנשים לרצות להמשיך.",
+    title: "מיפוי תהליכים",
+    text: "עוברים על איך העסק עובד היום ומסמנים מה שווה להפוך לאוטומטי. בלי לשבור כלום.",
   },
   {
-    title: "כיוון ויזואלי",
-    text: "בוחרים שפה, צבעים, תמונות ותנועה שמרגישים כמו העסק ולא כמו תבנית.",
+    title: "פיילוט קטן",
+    text: "בונים קודם את הפתרון הכי משתלם, כדי שתראו תוצאה אמיתית מהר ובלי סיכון.",
   },
   {
-    title: "אלמנטים מאפס",
-    text: "יוצרים חלקים מיוחדים, אנימציות ואזורי תוכן שמחזקים את הסיפור שלכם.",
+    title: "חיבור למערכות",
+    text: "מחברים את הפתרון לוואטסאפ, ליומן, לטפסים ולכלים שאתם כבר עובדים איתם.",
   },
   {
-    title: "בנייה ואינטגרציות",
-    text: "מחברים טפסים, וואטסאפ וכל פעולה שצריכה להפוך עניין לפנייה אמיתית.",
+    title: "השקה ומדידה",
+    text: "עולים לאוויר, עוקבים אחרי מה שקורה באמת, ומדייקים עד שהמספרים מדברים.",
   },
   {
     title: "חודש ליווי",
-    text: "אחרי העלייה אני נשאר איתכם חודש כדי לדייק פרטים, לשנות ולוודא שהכול יושב.",
+    text: "אחרי ההשקה אני נשאר איתכם חודש: שינויים, כיוונונים ותשובות לכל שאלה.",
   },
 ];
 
@@ -149,11 +199,11 @@ const testimonials = [
 ];
 
 const storyLines = [
-  "אתרים אינטראקטיביים יוצרים חווית גלישה שאנשים זוכרים.",
-  "הם לא נועדו רק להרשים.",
-  "הם גורמים ללקוח להבין מהר יותר מי אתם ולמה לבחור דווקא בכם.",
-  "כשהמסר, התנועה וההוכחות יושבים נכון, התדמית מרגישה מקצועית יותר.",
-  "ובסוף זה מביא יותר פניות, יותר אמון ויותר כסף לעסק.",
+  "רוב העסקים לא מפסידים לקוחות בגלל המחיר.",
+  "הם מפסידים אותם כשאף אחד לא עונה.",
+  "עובד דיגיטלי תופס כל פנייה, עונה מיד, ונשמע בדיוק כמוכם.",
+  "פתאום העסק מרגיש גדול, זמין ומסודר, גם כשאתם באמצע עבודה.",
+  "ובסוף זה אומר יותר פניות, יותר זמן, ויותר כסף שנשאר אצלכם.",
 ];
 
 function AnimatedNumber({
@@ -169,6 +219,14 @@ function AnimatedNumber({
     return (
       <span className="stat-value" dir="ltr">
         <bdi className="count-target" data-countup={value}>{value}</bdi>%
+      </span>
+    );
+  }
+
+  if (cleanSuffix === "/7") {
+    return (
+      <span className="stat-value" dir="ltr">
+        <bdi className="count-target" data-countup={value}>{value}</bdi>/7
       </span>
     );
   }
@@ -247,11 +305,11 @@ function ContactForm() {
     const project = String(formData.get("project") || "");
     const goal = String(formData.get("goal") || "");
     const message = [
-      "היי אסף, אני רוצה לבדוק כיוון לאתר.",
+      "היי אסף, אני רוצה לבדוק פתרון AI לעסק.",
       `שם: ${name}`,
       `טלפון: ${phone}`,
-      `מה צריך לבנות: ${project}`,
-      `מה חשוב לי שיקרה באתר: ${goal}`,
+      `מה מעניין אותי: ${project}`,
+      `מה חשוב לי שיקרה: ${goal}`,
     ].join("\n");
 
     const url = `${whatsapp}?text=${encodeURIComponent(message)}`;
@@ -291,18 +349,18 @@ function ContactForm() {
           name="project"
           required
           className="form-control"
-          placeholder="אתר תדמית, דף נחיתה, אתר לעסק קיים"
+          placeholder="אוטומציה, סוכן AI, סוכן קולי, אתר, אפליקציה"
         />
       </label>
 
       <label className="space-y-2 block">
-        <span className="text-sm font-black text-navy">מה חשוב לך שיקרה באתר?</span>
+        <span className="text-sm font-black text-navy">מה חשוב לך שיקרה?</span>
         <textarea
           name="goal"
           required
           rows={4}
           className="form-control resize-none"
-          placeholder="אפשר לבוא גם בלי רעיון סגור. תכתוב מה העסק עושה ומה היית רוצה שהאתר יעזור לסגור."
+          placeholder="ספרו מה העסק עושה ומה גוזל לכם הכי הרבה זמן. אפשר לבוא גם בלי רעיון סגור."
         />
       </label>
 
@@ -353,21 +411,49 @@ export function LandingPage() {
       "https://www.instagram.com/assaf_buskila/",
       "https://www.linkedin.com/in/assaf-buskila-11ab7a347/",
     ],
-    knowsAbout: ["בניית אתרים", "דפי נחיתה", "עיצוב אתרים", "עברית RTL", "אינטגרציות וואטסאפ", "תוכן לעסקים"],
+    jobTitle: "AI Solutions Engineer",
+    knowsAbout: [
+      "פתרונות AI לעסקים",
+      "אוטומציות עסקיות",
+      "סוכני AI",
+      "סוכן קולי",
+      "בניית אתרים",
+      "LLM applications",
+      "RAG",
+      "LangGraph",
+      "Python",
+      "FastAPI",
+      "Next.js",
+      "Supabase",
+      "אינטגרציות וואטסאפ",
+    ],
     makesOffer: [
-      "אתר תדמית בעברית",
-      "דף נחיתה ממיר",
-      "אתר אינטראקטיבי עם אלמנטים מותאמים",
+      "אוטומציות עסקיות",
+      "סוכן AI לעסק (עובד דיגיטלי)",
+      "סוכן קולי בעברית",
+      "בניית אפליקציות ופיצ'רים",
+      "אתרים ודפי נחיתה בעברית",
+      "כרטיס ביקור דיגיטלי",
       "חודש ליווי אחרי השקה",
     ].map((name) => ({
       "@type": "Offer",
       itemOffered: { "@type": "Service", name },
     })),
-    workExample: works.map((work) => ({
-      "@type": "WebSite",
-      name: work.name,
-      url: work.href.startsWith("http") ? work.href : `https://www.assafweb.com${work.href}`,
-    })),
+    workExample: works.map((work) =>
+      work.name === "MYstudio"
+        ? {
+            "@type": "SoftwareApplication",
+            name: work.name,
+            url: work.href,
+            applicationCategory: "DesignApplication",
+            operatingSystem: "Web",
+          }
+        : {
+            "@type": "WebSite",
+            name: work.name,
+            url: work.href.startsWith("http") ? work.href : `https://www.assafweb.com${work.href}`,
+          }
+    ),
   };
 
   return (
@@ -389,7 +475,7 @@ export function LandingPage() {
               </span>
               <span className="hidden text-sm font-black leading-tight text-navy sm:block">
                 אסף בוסקילה
-                <span className="block text-xs font-bold text-muted">Web design studio</span>
+                <span className="block text-xs font-bold text-muted">AI solutions studio</span>
               </span>
             </a>
 
@@ -422,9 +508,9 @@ export function LandingPage() {
             </div>
 
             <div className="hero-copy max-w-3xl space-y-5 md:space-y-6">
-              <span className="hero-kicker">סטודיו אתרים עם חשיבה חכמה</span>
+              <span className="hero-kicker">סטודיו לפתרונות AI לעסקים</span>
               <h1 className="max-w-3xl text-balance text-[clamp(2.5rem,4.4vw,4.5rem)] font-black leading-[1.02] tracking-normal text-ink">
-                {["אתר שמבין", "את העסק", "לפני שהוא", "מעצב אותו"].map((line, index) => (
+                {["עובד דיגיטלי", "שעונה, מוכר", "ומתאם.", "גם ב-2 בלילה"].map((line, index) => (
                   <span
                     key={line}
                     className="hero-word hero-word-line hero-word-animated"
@@ -436,8 +522,8 @@ export function LandingPage() {
               </h1>
 
               <p className="max-w-2xl text-lg font-medium leading-8 text-muted md:text-xl md:leading-9">
-                אני אסף בוסקילה. אני בונה אתרים חכמים לעסקים שרוצים להסביר מהר למה לבחור בהם, ליצור אמון,
-                ולקבל יותר פניות איכותיות בוואטסאפ.
+                אני אסף בוסקילה, מהנדס פתרונות AI. אני בונה לעסקים סוכנים חכמים, אוטומציות
+                ואפליקציות שתופסים כל פנייה ועונים כמוכם, כדי שיישאר לכם זמן לעבודה עצמה. וכן, גם אתרים.
               </p>
 
               <div className="hero-cta-row flex flex-col gap-3 sm:flex-row">
@@ -445,33 +531,52 @@ export function LandingPage() {
                   בואו נדבר בוואטסאפ
                   <MessageCircle size={19} />
                 </a>
-                <a href="#works" className="btn-secondary magnetic">
-                  לראות עבודות
+                <a href="#voice" className="btn-secondary magnetic">
+                  לשמוע את הסוכן
                   <ChevronLeft size={19} />
                 </a>
               </div>
             </div>
           </div>
 
-          <a href="#works" className="hero-scroll-cue" aria-label="גללו למטה">
+          <a href="#voice" className="hero-scroll-cue" aria-label="גללו למטה">
             <span className="hero-scroll-cue__line" aria-hidden="true" />
             <span>גללו</span>
           </a>
         </section>
 
-        <section id="works" data-bg="#f4f9ff" className="works-section relative py-20 md:py-28">
+        <section id="voice" data-bg="#f4f9ff" className="voice-section relative overflow-hidden py-20 md:py-28">
+          <div className="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div className="gsap-reveal space-y-5">
+              <span className="eyebrow">דברו איתו</span>
+              <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
+                אל תאמינו לי. תדברו איתו.
+              </h2>
+              <p className="max-w-2xl text-lg font-medium leading-8 text-muted">
+                זה סוכן קולי חי שבניתי. הוא מדבר עברית, מכיר את העסק שלי, ובנוי בדיוק כמו
+                סוכן שהעסק שלכם יכול לקבל. שיחה אחת קצרה ותבינו לבד למה זה משנה הכול.
+              </p>
+            </div>
+            <div className="gsap-reveal">
+              <VoiceAgentSection whatsapp={whatsapp} />
+            </div>
+          </div>
+        </section>
+
+        <section id="works" data-bg="#ffffff" className="works-section relative py-20 md:py-28">
           <div className="section-shell">
             <div className="mb-10 max-w-3xl space-y-4">
               <span className="eyebrow">עבודות</span>
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
-                אתרים שאפשר לפתוח, לגלול ולבדוק
+                פרויקטים חיים שאפשר לפתוח ולבדוק
               </h2>
               <p className="max-w-2xl text-lg font-medium leading-8 text-muted">
-                לא מוקאפים ולא הדמיות. אלה אתרים חיים: לוחצים, נכנסים ורואים איך זה מרגיש ללקוח.
+                לא מוקאפים ולא הדמיות. מוצר AI שרץ עכשיו ואתרים חיים של לקוחות אמיתיים:
+                לוחצים, נכנסים ורואים איך זה מרגיש.
               </p>
             </div>
 
-            <div className="grid gap-5 md:grid-cols-3">
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
               {works.map((work) => (
                 <a
                   key={work.name}
@@ -483,10 +588,10 @@ export function LandingPage() {
                   <div className="work-card__frame">
                     <Image
                       src={work.image}
-                      alt={`צילום מסך של אתר ${work.name}`}
+                      alt={`צילום מסך של ${work.name}`}
                       width={880}
                       height={1565}
-                      sizes="(min-width: 768px) 30vw, 88vw"
+                      sizes="(min-width: 1280px) 24vw, (min-width: 768px) 45vw, 88vw"
                       className="work-card__shot"
                     />
                   </div>
@@ -507,25 +612,38 @@ export function LandingPage() {
           </div>
         </section>
 
-        <section id="capabilities" data-bg="#eef7ff" className="capability-section relative overflow-hidden py-16 md:py-20">
-          <div className="section-shell capability-stack">
-            <div className="capability-head gsap-reveal">
-              <span className="eyebrow">מה האתר מחבר</span>
+        <section id="solutions" data-bg="#eef7ff" className="solutions-section relative overflow-hidden py-20 md:py-28">
+          <div className="section-shell">
+            <div className="mb-10 max-w-3xl space-y-4">
+              <span className="eyebrow">מה אני בונה</span>
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
-                עיצוב, קופי, לידים וטכנולוגיה במקום אחד
+                מה עובד דיגיטלי יכול לעשות בשבילכם
               </h2>
-              <p className="text-lg font-medium leading-8 text-muted md:text-xl">
-                אני בונה אתר שמסדר ללקוח את הראש: מה אתם עושים, למה לסמוך עליכם, ואיך פונים אליכם מהר.
+              <p className="max-w-2xl text-lg font-medium leading-8 text-muted md:text-xl">
+                כל עסק מפסיד זמן וכסף במקום אחר. בוחרים מה הכי כואב, ואני בונה פתרון
+                שמתחבר למה שכבר יש לכם.
               </p>
             </div>
 
-            <div className="capability-list" aria-label="יכולות שנכנסות לאתר">
-              {capabilityItems.map((item) => (
-                <div key={item.label} className="capability-row">
-                  <strong>{item.label}</strong>
-                  <span>{item.text}</span>
-                </div>
-              ))}
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3" aria-label="הפתרונות שאני בונה">
+              {solutionItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div key={item.label} className="gsap-reveal premium-panel solution-card p-6">
+                    <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-navy text-white">
+                      <Icon size={21} />
+                    </div>
+                    <h3 className="text-2xl font-black text-ink">{item.label}</h3>
+                    <p className="mt-3 text-base font-medium leading-8 text-muted">{item.text}</p>
+                    {item.href ? (
+                      <a href={item.href} className="mt-4 inline-flex items-center gap-1.5 text-sm font-black text-action">
+                        {item.linkLabel}
+                        <ArrowUpLeft size={16} />
+                      </a>
+                    ) : null}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -567,8 +685,8 @@ export function LandingPage() {
 
             <div className="story-intro-copy">
               <p className="max-w-md text-lg font-medium leading-8 text-navy/85">
-                אתר טוב לא אמור לגרום לאנשים להתאמץ להבין. הוא צריך לקחת את הסיפור
-                שלכם, לסדר אותו נכון, ולהפוך אותו לחוויה שמרגישה מקצועית כבר בגלילה הראשונה.
+                טכנולוגיה טובה לא אמורה לסבך אתכם. היא צריכה לתפוס את העבודה שחוזרת
+                על עצמה, לענות כשאתם לא פנויים, ולהשאיר לכם את מה שאתם הכי טובים בו.
               </p>
             </div>
           </div>
@@ -587,7 +705,7 @@ export function LandingPage() {
             </div>
             <div className="story-result-panel">
               <span>התוצאה</span>
-              <strong>יותר אמון, יותר פניות ותחושה של עסק שאפשר לבחור בו.</strong>
+              <strong>עסק שמרגיש כאילו יש לו צוות שלם, גם כשהוא עסק של אדם אחד.</strong>
             </div>
           </div>
           </div>
@@ -599,20 +717,20 @@ export function LandingPage() {
             <AboutProfile />
             <div className="gsap-reveal about-copy space-y-6">
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
-                אני לא רק בונה אתר. אני עוזר לסגור את הכיוון.
+                אני לא מוכר כלים. אני בונה עובדים דיגיטליים.
               </h2>
               <p className="text-xl font-medium leading-9 text-muted">
-                אני סטודנט לתעשייה וניהול, יוצר אתרים ותוכן לעסקים, ועובד בצורה מסודרת
-                מהרעיון הראשון ועד אתר שאפשר להראות ללקוחות בגאווה. אם אתם לא רוצים להתעסק
-                באתר לבד, לרדוף אחרי עצמכם ולגלות שכל פרט קטן נופל עליכם, אני נכנס כשותף לתהליך.
+                אני אסף, מהנדס פתרונות AI וסטודנט להנדסת תעשייה וניהול בשנקר. בניתי את
+                MYstudio, פלטפורמת AI חיה שעסקים עובדים איתה, ומערכת לניתוח מסמכים פיננסיים.
+                לפני זה הייתי קצין קרבי בצנחנים, אז סדר, אחריות ועמידה בלחץ הם לא סיסמאות אצלי.
               </p>
               <p className="text-lg font-semibold leading-8 text-navy">
-                מתחילים במפגש ותיאום ציפיות. לא חייבים להגיע עם רעיון מוכן. אני עוזר לסגור
-                מסר, מבנה, תוכן, עיצוב ופעולות באתר. אחרי העלייה יש חודש ליווי, ומשם כל שינוי
-                נוסף נעשה בתשלום ברור.
+                מתחילים בשיחת אבחון קצרה. לא צריך להבין ב-AI, זה בדיוק התפקיד שלי: אני ממפה
+                איפה הולך לכם זמן, בונה פתרון שמתחבר למה שכבר יש לכם, ונשאר חודש ליווי אחרי
+                ההשקה לוודא שהכול באמת עובד.
               </p>
               <div className="grid gap-3 sm:grid-cols-2">
-                {["יוצר אלמנטים מאפס", "מחבר טפסים ווואטסאפ", "עוזר גם בתוכן ובסושיאל", "עוזר גם בכיוון ללוגו", "שומר על מחיר משתלם לכיס"].map((item) => (
+                {["סוכני AI ואוטומציות בהתאמה אישית", "Python, FastAPI ו-RAG מאחורי הקלעים", "חיבור לוואטסאפ ולמערכות קיימות", "מוצר חי בפרודקשן: MYstudio", "מחיר סופי בלי הפתעות"].map((item) => (
                   <div key={item} className="about-point">
                     <CircleCheck size={18} className="text-action" />
                     {item}
@@ -628,7 +746,7 @@ export function LandingPage() {
           <div className="section-shell">
             <div className="mb-12 max-w-3xl space-y-4">
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
-                ככה הופכים רעיון לאתר שאפשר לשלוח בגאווה
+                ככה מכניסים AI לעסק, בלי כאב ראש
               </h2>
             </div>
 
@@ -653,12 +771,12 @@ export function LandingPage() {
           <div className="mb-10 grid gap-5 md:grid-cols-[0.8fr_1.2fr] md:items-end">
             <div className="space-y-4">
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
-                כשנותנים מעבר, מרגישים את זה באתר
+                ככה מרגיש לעבוד איתי
               </h2>
             </div>
             <p className="text-lg font-medium leading-8 text-muted">
-              אלה לא משפטי פרסום. זה מה שקורה כשעובדים קרוב, מקשיבים לפרטים הקטנים
-              ובונים אתר שמשרת את העסק גם אחרי שהעיצוב עולה לאוויר.
+              אלה לא משפטי פרסום. אלה לקוחות מהפרויקטים שמהם התחלתי, והם מקבלים
+              בדיוק את אותה רמת ליווי שנכנסת עכשיו לפתרונות ה-AI.
             </p>
           </div>
 
@@ -711,11 +829,11 @@ export function LandingPage() {
           <div className="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div className="gsap-reveal space-y-7">
               <h2 className="text-balance text-5xl font-black leading-[0.95] text-ink md:text-7xl">
-                יש לך עסק טוב. עכשיו צריך אתר שמסביר את זה מהר.
+                יש לך עסק טוב. עכשיו תן לו עובד שלא ישן.
               </h2>
               <p className="text-xl font-medium leading-9 text-muted">
-                שלחו כמה מילים על העסק ומה הייתם רוצים שהאתר יעזור לסגור. גם אם אין לכם
-                רעיון מוכן, אני יודע לעזור לסדר את הכיוון ולהבין מה באמת צריך להופיע שם.
+                שלחו כמה מילים על העסק ומה גוזל לכם הכי הרבה זמן. גם אם אין לכם מושג מה
+                אפשר להפוך לאוטומטי, זה בדיוק בשביל זה יש שיחת אבחון.
               </p>
 
               <div className="grid gap-3 sm:grid-cols-2">
@@ -757,7 +875,7 @@ export function LandingPage() {
           <div>
             <p className="text-sm font-black text-mist">האתר של אסף</p>
             <h2 className="mt-3 max-w-2xl text-4xl font-black leading-tight md:text-6xl">
-              בונים אתר שמרגיש כמו העסק, ולא כמו משהו שבחרו מתבנית
+              עסק שמרגיש כאילו יש לו צוות שלם. גם בשתיים בלילה.
             </h2>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">

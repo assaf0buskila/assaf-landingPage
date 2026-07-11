@@ -19,35 +19,35 @@ const heroMessages: HeroMessage[] = [
     id: 1,
     role: "visitor",
     label: "לקוח",
-    text: "היי אסף, יש לי בית קפה קטן ואני צריך אתר שיעזור לי לקבל יותר הזמנות.",
+    text: "היי אסף, יש לי מוסך ואני מפספס שיחות של לקוחות אחרי שש בערב.",
     pauseAfter: 420,
   },
   {
     id: 2,
     role: "assaf",
     label: "אסף",
-    text: "מעולה. קודם נסדר את המסר: למה לבוא דווקא אליכם, איפה רואים תפריט, ואיך מזמינים בלי להסתבך.",
+    text: "וכל שיחה כזאת היא לקוח שממשיך למוסך הבא בגוגל. בוא נסגור את החור הזה.",
     pauseAfter: 500,
   },
   {
     id: 3,
     role: "visitor",
     label: "לקוח",
-    text: "חשוב לי שיפנו בוואטסאפ ושיראו שהתפריט איכותי.",
+    text: "רק בלי מערכות מסובכות. אין לי זמן ללמוד תוכנה חדשה.",
     pauseAfter: 440,
   },
   {
     id: 4,
     role: "assaf",
     label: "אסף",
-    text: "אז הכיוון ברור: דף פתיחה חזק, תפריט דיגיטלי, כפתור וואטסאפ קבוע, תמונות שמרגישות אמיתיות, ועוזר AI קטן לשאלות חוזרות.",
+    text: "לא תצטרך. סוכן קולי שעונה אחרי שעות הפעילות, קובע תור ושולח לך סיכום לוואטסאפ. ואוטומציה שעושה פולואפ להצעות מחיר.",
     pauseAfter: 520,
   },
   {
     id: 5,
     role: "assaf",
     label: "אסף",
-    text: "זה לא רק אתר. זה מסלול קצר מעניין לפנייה.",
+    text: "זו לא עוד תוכנה שצריך לתחזק. זה עובד שעובד בשבילך.",
     pauseAfter: 0,
   },
 ];
@@ -157,15 +157,15 @@ export function AiHeroChat({ onComplete }: { onComplete?: () => void }) {
   };
 
   return (
-    <div className="ai-hero-chat" dir="rtl" aria-label="הדגמת שיחת אפיון לאתר">
+    <div className="ai-hero-chat" dir="rtl" aria-label="הדגמת שיחת אבחון לפתרון AI">
       <div className="ai-hero-chat__topbar">
         <div className="ai-hero-chat__brand">
           <span className="ai-hero-chat__bot">
             <Bot size={17} />
           </span>
           <span>
-            <strong>סטודיו האתר של אסף</strong>
-            <small>ככה נראית שיחת אפיון</small>
+            <strong>סטודיו ה-AI של אסף</strong>
+            <small>ככה נראית שיחת אבחון</small>
           </span>
         </div>
         <span className="ai-hero-chat__status">
@@ -218,8 +218,8 @@ export function AiHeroChat({ onComplete }: { onComplete?: () => void }) {
           <Sparkles size={17} />
         </span>
         <div>
-          <strong>כיוון ראשון לאתר</strong>
-          <p>מסר ברור, אמון מהיר, תפריט דיגיטלי ופנייה קלה בוואטסאפ.</p>
+          <strong>כיוון ראשון לפתרון</strong>
+          <p>סוכן קולי אחרי שעות, פולואפ אוטומטי, והכול מתנקז לוואטסאפ שכבר יש לך.</p>
         </div>
         <CheckCircle2 className="ai-hero-insight__check" size={20} aria-hidden="true" />
       </div>

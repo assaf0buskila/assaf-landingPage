@@ -1,11 +1,11 @@
 # Agent Instructions, assafweb.com
 
-This repository hosts the personal landing page for Assaf Buskila, an independent web designer in Israel. The site is also commonly searched as "האתר של אסף" or "האתר של אסף בוסקילה".
+This repository hosts the personal landing page for Assaf Buskila, an AI solutions studio for Israeli small businesses. Assaf builds "digital workers" (עובד דיגיטלי) and AI solutions: business automations, AI agents that answer, qualify and sell 24/7 on WhatsApp and web, a Hebrew voice agent (live demo in the homepage `#voice` section), apps and internal tools (Python/FastAPI/Supabase), websites and landing pages (his original craft), and digital business cards. Every launch includes a month of guidance (חודש ליווי). Proof points: MYstudio (https://mystudio.pics), a live AI content-generation platform he built and operates, plus works at mochi-israel.com and cafe-ana.com. The site is also commonly searched as "האתר של אסף" or "האתר של אסף בוסקילה".
 
 ## Site facts
 
 - Primary language: Hebrew (RTL).
-- Tech stack: Next.js, TypeScript, Tailwind CSS, Framer Motion, GSAP ScrollTrigger and Lenis.
+- Tech stack: Next.js, TypeScript, Tailwind CSS, GSAP ScrollTrigger and Lenis for scroll and animation. Framer Motion is being added specifically for the new About Lego component; it is not used elsewhere on the site.
 - Hosting: Vercel.
 - Production URL: https://www.assafweb.com
 

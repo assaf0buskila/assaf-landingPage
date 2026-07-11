@@ -86,7 +86,7 @@ export function ScrollEffects() {
       // ────────────────────────────────────────────────────────────────────────
       // 5. SCROLL-SPY NAV LINKS
       // ────────────────────────────────────────────────────────────────────────
-      (["works", "story", "process", "contact"] as const).forEach((id) => {
+      (["solutions", "voice", "works", "contact"] as const).forEach((id) => {
         const section = document.getElementById(id);
         const link = qs<HTMLAnchorElement>(`header .nav-link[href="#${id}"]`);
         if (!section || !link) return;

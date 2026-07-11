@@ -28,9 +28,9 @@ const svg = `
   <text x="1130" y="300" text-anchor="end" font-family="Segoe UI, Arial, sans-serif"
         font-size="92" font-weight="800" fill="#061b35">אסף בוסקילה</text>
   <text x="1130" y="382" text-anchor="end" font-family="Segoe UI, Arial, sans-serif"
-        font-size="42" font-weight="600" fill="#2f5f93">אתרים שמסבירים את העסק מהר</text>
+        font-size="42" font-weight="600" fill="#2f5f93">עובד דיגיטלי לעסק שלך: AI, אוטומציות ואתרים</text>
   <text x="1130" y="448" text-anchor="end" font-family="Segoe UI, Arial, sans-serif"
-        font-size="34" font-weight="600" fill="#5b6f86">בעברית, במובייל, עם פנייה קלה בוואטסאפ</text>
+        font-size="34" font-weight="600" fill="#5b6f86">עונה, מוכר ומתאם. גם בשתיים בלילה</text>
 
   <text x="1130" y="546" text-anchor="end" font-family="Segoe UI, Arial, sans-serif"
         font-size="30" font-weight="700" fill="#2563eb">assafweb.com</text>
