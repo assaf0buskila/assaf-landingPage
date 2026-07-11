@@ -104,21 +104,6 @@ textarea {
   margin-inline: auto;
 }
 
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  width: fit-content;
-  border: 1px solid rgba(6, 27, 53, 0.1);
-  border-radius: 999px;
-  background: #ffffff;
-  padding: 0.5rem 0.82rem;
-  color: var(--navy);
-  font-size: 0.88rem;
-  font-weight: 800;
-  box-shadow: 0 12px 32px rgba(6, 27, 53, 0.08);
-}
-
 .premium-panel {
   border: 1px solid rgba(6, 27, 53, 0.1);
   border-radius: 12px;
@@ -210,18 +195,14 @@ textarea {
   justify-self: end;
 }
 
+/* Quiet typographic kicker: no pill, just a spaced small-caps-feel line */
 .hero-kicker {
-  display: inline-flex;
+  display: inline-block;
   width: fit-content;
-  align-items: center;
-  border: 1px solid rgba(37, 99, 235, 0.16);
-  border-radius: 999px;
-  background: #ffffff;
-  padding: 0.52rem 0.9rem;
   color: var(--navy);
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   font-weight: 800;
-  box-shadow: 0 12px 32px rgba(6, 27, 53, 0.08);
+  letter-spacing: 0.16em;
 }
 
 .hero-demo-shell .ai-hero-chat__messages {
@@ -1641,7 +1622,6 @@ textarea:focus-visible {
    ============================================================ */
 
 @media (max-width: 900px) {
-  .eyebrow,
   .premium-panel,
   .contact-form-card,
   .contact-call,

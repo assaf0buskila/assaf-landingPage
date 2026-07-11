@@ -544,7 +544,6 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
         <section id="voice" data-bg="#f4f9ff" className="voice-section relative overflow-hidden py-20 md:py-28">
           <div className="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <div className="gsap-reveal space-y-5">
-              <span className="eyebrow">דברו איתו</span>
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
                 אל תאמינו לי. תדברו איתו.
               </h2>
@@ -562,7 +561,6 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
         <section id="works" data-bg="#ffffff" className="works-section relative py-20 md:py-28">
           <div className="section-shell">
             <div className="mb-10 max-w-3xl space-y-4">
-              <span className="eyebrow">עבודות</span>
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
                 פרויקטים חיים שאפשר לפתוח ולבדוק
               </h2>
@@ -626,7 +624,6 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
         <section id="solutions" data-bg="#eef7ff" className="solutions-section relative">
           <div className="section-shell pt-20 md:pt-28">
             <div className="mb-6 max-w-3xl space-y-4">
-              <span className="eyebrow">מה אני בונה</span>
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
                 מה עובד דיגיטלי יכול לעשות בשבילכם
               </h2>
@@ -826,7 +823,6 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
         <section id="faq" data-bg="#ffffff" className="faq-section relative py-20 md:py-24">
           <div className="section-shell grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
             <div className="gsap-reveal space-y-4">
-              <span className="eyebrow">שאלות נפוצות</span>
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-5xl">
                 הדברים ששואלים אותי לפני שמתחילים
               </h2>
