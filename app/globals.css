@@ -527,19 +527,6 @@ textarea {
   direction: rtl;
 }
 
-.about-point {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  border: 1px solid rgba(6, 27, 53, 0.1);
-  border-radius: 12px;
-  background: #ffffff;
-  padding: 0.9rem 1rem;
-  color: var(--navy);
-  font-weight: 700;
-  box-shadow: 0 12px 32px rgba(6, 27, 53, 0.08);
-}
-
 /* ============================================================
    CONTACT SECTION: translucent wash
    ============================================================ */
@@ -1068,18 +1055,6 @@ textarea:focus-visible {
   background:
     radial-gradient(circle at 84% 20%, rgba(217, 238, 255, 0.4), transparent 30%),
     linear-gradient(180deg, rgba(248, 251, 255, 0.5), rgba(255, 255, 255, 0.42) 40%, rgba(244, 250, 255, 0.46) 100%);
-}
-
-.work-card__tag {
-  flex: 0 0 auto;
-  border: 1px solid rgba(37, 99, 235, 0.2);
-  border-radius: 999px;
-  background: rgba(217, 238, 255, 0.55);
-  padding: 0.24rem 0.62rem;
-  color: var(--navy);
-  font-size: 0.74rem;
-  font-weight: 800;
-  white-space: nowrap;
 }
 
 /* ============================================================

@@ -7,7 +7,6 @@ import {
   BadgeCheck,
   Bot,
   ChevronLeft,
-  CircleCheck,
   Clock3,
   Contact,
   Globe,
@@ -45,36 +44,24 @@ const works = [
     name: "MYstudio",
     href: "https://mystudio.pics",
     showcase: "/assets/services/service-7.webp",
-    tag: "מוצר AI",
-    external: true,
-    // Domain is being re-pointed; keep the card unlinked until it is back up
-    // so production never ships a dead click. JSON-LD keeps the canonical URL.
+    // Domain is being re-pointed; stays out of the visible gallery until it
+    // is back up. JSON-LD keeps the canonical URL.
     live: false,
-    line: "פלטפורמת AI שבניתי מאפס: מעלים תמונת מוצר ומקבלים תוכן שיווקי ממותג, כולל משתמשים ותשלומים.",
   },
   {
     name: "מוצ׳י",
     href: "https://mochi-israel.com",
     showcase: "/assets/projects/showcase-mochi.webp",
-    tag: "אתר חי",
-    external: true,
-    line: "אתר מותג עם אלמנטים שנבנו מאפס, שמכניס לידים והזמנות לאירועים דרך וואטסאפ.",
   },
   {
     name: "קפה אנה",
     href: "https://cafe-ana.com",
     showcase: "/assets/projects/showcase-ana.webp",
-    tag: "אתר חי",
-    external: true,
-    line: "אתר לבית קפה שכונתי: תפריט, אווירה ופנייה מהירה, עם ליווי צמוד של חודש.",
   },
   {
     name: "מנגינת ממתקים",
     href: "/candy/",
     showcase: "/assets/projects/showcase-candy.webp",
-    tag: "פרויקט קונספט",
-    external: true,
-    line: "אתר חוויה למותג ממתקים. טעימה מהצד האינטראקטיבי והמשחקי שאני אוהב לבנות.",
   },
 ];
 
@@ -583,41 +570,6 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
                 }))}
             />
 
-            <div className="mt-8 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-              {works.map((work) => {
-                const inner = (
-                  <>
-                    <div className="flex items-center justify-between gap-3">
-                      <strong className="text-lg font-black text-ink">{work.name}</strong>
-                      <span className="work-card__tag">{work.tag}</span>
-                    </div>
-                    <p className="mt-2 text-sm font-medium leading-6 text-muted">{work.line}</p>
-                    {work.live === false ? null : (
-                      <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-black text-action">
-                        לפתוח את הפרויקט
-                        <ArrowUpLeft size={16} className="transition-transform group-hover:-translate-x-0.5" />
-                      </span>
-                    )}
-                  </>
-                );
-
-                return work.live === false ? (
-                  <div key={work.name} className="gsap-reveal premium-panel p-4">
-                    {inner}
-                  </div>
-                ) : (
-                  <a
-                    key={work.name}
-                    href={work.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="gsap-reveal premium-panel group p-4"
-                  >
-                    {inner}
-                  </a>
-                );
-              })}
-            </div>
           </div>
         </section>
 
@@ -750,14 +702,6 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
                 איפה הולך לכם זמן, בונה פתרון שמתחבר למה שכבר יש לכם, ונשאר חודש ליווי אחרי
                 ההשקה לוודא שהכול באמת עובד.
               </p>
-              <div className="grid gap-3 sm:grid-cols-2">
-                {["סוכני AI ואוטומציות בהתאמה אישית", "Python, FastAPI ו-RAG מאחורי הקלעים", "חיבור לוואטסאפ ולמערכות קיימות", "מוצר שלם מקצה לקצה: MYstudio", "מחיר סופי בלי הפתעות"].map((item) => (
-                  <div key={item} className="about-point">
-                    <CircleCheck size={18} className="text-action" />
-                    {item}
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </section>
