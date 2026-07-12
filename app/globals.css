@@ -965,11 +965,15 @@ textarea:focus-visible {
     linear-gradient(
       180deg,
       #eef7ff 0%,
-      #a8c8e4 6%,
-      #4f76a0 13%,
-      #1d3b5f 21%,
-      #0c2440 32%,
-      #061b35 52%,
+      #dcebf8 4%,
+      #c2d9ee 9%,
+      #9dbddf 15%,
+      #7096bc 22%,
+      #476f98 30%,
+      #2a4d74 39%,
+      #163254 49%,
+      #0a2140 60%,
+      #061b35 72%,
       #040f1f 100%
     );
 }
@@ -1016,19 +1020,6 @@ textarea:focus-visible {
   background-position: center;
   background-size: cover;
   opacity: 0.26;
-  mix-blend-mode: multiply;
-}
-
-.texture-holo {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background-image: url("/assets/inspiration/holo-pro.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  opacity: 0.16;
   mix-blend-mode: multiply;
 }
 

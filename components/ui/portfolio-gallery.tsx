@@ -23,21 +23,24 @@ export function PortfolioGallery({ items }: { items: GalleryItem[] }) {
 
   return (
     <div className="portfolio-gallery">
-      {/* Desktop: 3D overlapping fan */}
+      {/* Desktop: balanced 3D arc — middle card highest, gentle idle float,
+          hovered card turns toward the viewer and lifts above the others */}
       <div className="relative hidden h-[400px] overflow-hidden md:block">
-        <div className="flex -space-x-72 md:-space-x-80 items-end justify-center pb-8 pt-40">
+        <div className="flex -space-x-40 lg:-space-x-48 items-end justify-center pb-10 pt-36">
           {items.map((item, index) => {
-            const middle = Math.floor(items.length / 2);
-            const staggerOffset = 120 - Math.abs(index - middle) * 26;
+            const middle = (items.length - 1) / 2;
+            const lift = 96 - Math.abs(index - middle) * 44;
             const isHovered = hoveredIndex === index;
             const isOtherHovered = hoveredIndex !== null && !isHovered;
-            const yOffset = reduced
-              ? -staggerOffset
+
+            const restY = -lift;
+            const y = reduced
+              ? restY
               : isHovered
-                ? -140
+                ? restY - 24
                 : isOtherHovered
-                  ? 0
-                  : -staggerOffset;
+                  ? restY + 10
+                  : [restY, restY - 9, restY];
 
             return (
               <motion.a
@@ -46,23 +49,29 @@ export function PortfolioGallery({ items }: { items: GalleryItem[] }) {
                 target={item.href ? "_blank" : undefined}
                 rel={item.href ? "noreferrer" : undefined}
                 aria-label={item.href ? `לפתוח את ${item.name}` : item.name}
-                className={`group flex-shrink-0 ${item.href ? "cursor-pointer" : "cursor-default"}`}
-                style={{ zIndex: items.length - index }}
-                initial={
-                  reduced
-                    ? false
-                    : { transform: "perspective(5000px) rotateY(45deg) translateY(200px)", opacity: 0 }
-                }
+                className={`flex-shrink-0 ${item.href ? "cursor-pointer" : "cursor-default"}`}
+                style={{ zIndex: isHovered ? 50 : items.length - index, transformPerspective: 1400 }}
+                initial={reduced ? false : { opacity: 0, y: 160, rotateY: 30 }}
                 animate={{
-                  transform: `perspective(5000px) rotateY(45deg) translateY(${yOffset}px)`,
-                  opacity: 1,
+                  opacity: isOtherHovered ? 0.75 : 1,
+                  y,
+                  rotateY: isHovered ? 6 : 30,
+                  scale: isHovered ? 1.06 : isOtherHovered ? 0.97 : 1,
                 }}
-                transition={{ duration: 0.25, delay: reduced ? 0 : index * 0.05, ease: [0.25, 0.1, 0.25, 1] }}
+                transition={{
+                  opacity: { duration: 0.35 },
+                  rotateY: { duration: 0.35, ease: [0.25, 0.1, 0.25, 1] },
+                  scale: { duration: 0.35, ease: [0.25, 0.1, 0.25, 1] },
+                  y:
+                    reduced || hoveredIndex !== null
+                      ? { duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }
+                      : { duration: 4.6 + index * 0.9, repeat: Infinity, ease: "easeInOut", delay: index * 0.4 },
+                }}
                 onHoverStart={() => setHoveredIndex(index)}
                 onHoverEnd={() => setHoveredIndex(null)}
               >
                 <div
-                  className="relative aspect-video w-72 overflow-hidden rounded-lg bg-white transition-transform duration-300 group-hover:scale-105 lg:w-96"
+                  className="relative aspect-video w-80 overflow-hidden rounded-xl bg-white lg:w-[26rem]"
                   style={{ boxShadow: CARD_SHADOW }}
                 >
                   <img

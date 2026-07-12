@@ -348,38 +348,6 @@ export function ScrollEffects() {
         });
       });
 
-      // ────────────────────────────────────────────────────────────────────────
-      // Existing misc parallax helpers (kept from original)
-      // ────────────────────────────────────────────────────────────────────────
-      qsa<HTMLElement>(".parallax-soft").forEach((el) => {
-        gsap.to(el, {
-          yPercent: -8,
-          ease: "none",
-          scrollTrigger: {
-            trigger: el,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
-      });
-
-      // ── About points (kept from original) ───────────────────────────────────
-      gsap.fromTo(
-        ".about-point",
-        { opacity: 0, x: 28 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.55,
-          stagger: 0.08,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: ".about-section",
-            start: "top 64%",
-          },
-        }
-      );
     }); // end ctx
 
     // ────────────────────────────────────────────────────────────────────────
