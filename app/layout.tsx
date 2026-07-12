@@ -49,6 +49,9 @@ export const metadata: Metadata = {
     languages: {
       "he-IL": "/",
     },
+    types: {
+      "text/markdown": "/index.md",
+    },
   },
   robots: {
     index: true,

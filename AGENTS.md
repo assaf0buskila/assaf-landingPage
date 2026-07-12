@@ -19,7 +19,8 @@ This repository hosts the personal landing page for Assaf Buskila, an AI solutio
 
 ## For AI agents
 
-- Site index: `/llms.txt`
+- Site index: `/llms.txt`; full text: `/llms-full.txt`
+- Markdown homepage: `/index.md` (also served for `Accept: text/markdown` requests to `/` via `proxy.ts`)
 - Scope policy, no public prices: `/pricing.md`
 - Agent discovery: `/.well-known/agent.json` (no API), `/.well-known/agent-card.json` (A2A, no skills), `/.well-known/mcp.json` (no MCP server)
 - Stripped-down view: `/agent.html`

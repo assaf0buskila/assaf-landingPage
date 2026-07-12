@@ -4,8 +4,6 @@
   <url>
     <loc>https://www.assafweb.com/</loc>
     <lastmod>2026-07-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
     <image:image>
       <image:loc>https://www.assafweb.com/assets/og-cover.jpg</image:loc>
       <image:title>האתר של אסף</image:title>
@@ -40,8 +38,6 @@
   <url>
     <loc>https://www.assafweb.com/candy/</loc>
     <lastmod>2026-06-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
     <image:image>
       <image:loc>https://www.assafweb.com/assets/candy-hero.png</image:loc>
       <image:title>מנגינת ממתקים</image:title>
@@ -51,19 +47,17 @@
   <url>
     <loc>https://www.assafweb.com/pricing.md</loc>
     <lastmod>2026-07-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.assafweb.com/llms.txt</loc>
-    <lastmod>2026-07-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <lastmod>2026-07-12</lastmod>
+  </url>
+  <url>
+    <loc>https://www.assafweb.com/llms-full.txt</loc>
+    <lastmod>2026-07-12</lastmod>
   </url>
   <url>
     <loc>https://www.assafweb.com/agent.html</loc>
     <lastmod>2026-07-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
 </urlset>

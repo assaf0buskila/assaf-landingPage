@@ -5,6 +5,7 @@
 ## Main Content
 
 - Homepage: https://www.assafweb.com/
+- Markdown homepage for agents: https://www.assafweb.com/index.md
 - Scope policy: https://www.assafweb.com/pricing.md
 - Agent view: https://www.assafweb.com/agent.html
 - Agent manifest: https://www.assafweb.com/.well-known/agent.json
@@ -31,6 +32,14 @@
 - Email: assaf.buskila10@gmail.com
 - Instagram: https://www.instagram.com/assaf_buskila/
 - LinkedIn: https://www.linkedin.com/in/assaf-buskila-11ab7a347/
+
+## Full content
+
+- Full text version: https://www.assafweb.com/llms-full.txt
+
+## MCP
+
+No MCP server available for this site.
 
 ## Agent Instructions
 

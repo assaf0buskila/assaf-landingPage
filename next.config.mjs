@@ -16,6 +16,21 @@ const nextConfig = {
       },
     ];
   },
+  async headers() {
+    return [
+      {
+        source: "/",
+        headers: [
+          {
+            // RFC 8288 discovery links for agents: markdown alternate + site metadata.
+            key: "Link",
+            value:
+              '</index.md>; rel="alternate"; type="text/markdown", </llms.txt>; rel="describedby"; type="text/plain", </pricing.md>; rel="license"; type="text/markdown"',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

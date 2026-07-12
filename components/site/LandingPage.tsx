@@ -375,9 +375,10 @@ function ContactForm() {
 }
 
 export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }) {
-  const jsonLd = {
-    "@context": "https://schema.org",
+  const siteUrl = "https://www.assafweb.com";
+  const assafNode = {
     "@type": ["Person", "ProfessionalService"],
+    "@id": `${siteUrl}/#assaf`,
     name: "Assaf Buskila",
     alternateName: ["אסף בוסקילה", "האתר של אסף"],
     url: "https://www.assafweb.com/",
@@ -434,9 +435,47 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
         : {
             "@type": "WebSite",
             name: work.name,
-            url: work.href.startsWith("http") ? work.href : `https://www.assafweb.com${work.href}`,
+            url: work.href.startsWith("http") ? work.href : `${siteUrl}${work.href}`,
           }
     ),
+  };
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      assafNode,
+      {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        url: `${siteUrl}/`,
+        name: "האתר של אסף",
+        inLanguage: "he",
+        publisher: { "@id": `${siteUrl}/#assaf` },
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${siteUrl}/#webpage`,
+        url: `${siteUrl}/`,
+        name: "האתר של אסף | עובד דיגיטלי לעסק: AI, אוטומציות ואתרים",
+        isPartOf: { "@id": `${siteUrl}/#website` },
+        about: { "@id": `${siteUrl}/#assaf` },
+        inLanguage: "he",
+        dateModified: "2026-07-12",
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["h1", ".hero-copy p"],
+        },
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${siteUrl}/#faq`,
+        mainEntity: faqItems.map((item) => ({
+          "@type": "Question",
+          name: item.q,
+          acceptedAnswer: { "@type": "Answer", text: item.a },
+        })),
+      },
+    ],
   };
 
   return (
