@@ -251,13 +251,17 @@ export function ScrollEffects() {
       // ────────────────────────────────────────────────────────────────────────
       qsa<HTMLElement>(".count-target[data-countup]").forEach((el) => {
         const target = parseInt(el.dataset.countup ?? "0", 10);
-        el.textContent = "0";
 
         ScrollTrigger.create({
           trigger: el,
           start: "top 82%",
           once: true,
           onEnter: () => {
+            // Zero only once the count is about to run. Zeroing on mount left
+            // the server-rendered number as "0 פרויקטים" / "0/7" for anything
+            // that renders JS without scrolling: crawlers, link previews and
+            // any visitor whose ScrollTrigger never fires.
+            el.textContent = "0";
             const proxy = { value: 0 };
             gsap.to(proxy, {
               value: target,
@@ -279,30 +283,37 @@ export function ScrollEffects() {
       // ────────────────────────────────────────────────────────────────────────
       // 13. CONTACT: card 3D entrance + form controls stagger
       // ────────────────────────────────────────────────────────────────────────
+      // Transform-only, like the fields below: fromTo applies its from-state at
+      // page load, so an opacity 0 start hides the site's only lead form until
+      // a trigger fires. The pinned story above changes the page height, which
+      // is exactly the situation that leaves a trigger stale. A slide-and-turn
+      // entrance reads the same and can never cost a lead.
       gsap.fromTo(
         ".contact-form-card",
-        { opacity: 0, y: 46, rotateY: -7 },
+        { y: 46, rotateY: -7 },
         {
-          opacity: 1,
           y: 0,
           rotateY: 0,
           duration: 0.9,
           ease: "power3.out",
           scrollTrigger: {
             trigger: ".contact-section",
-            start: "top 66%",
+            start: "top 90%",
+            once: true,
           },
         }
       );
 
+      // Transform-only: a fromTo opacity would hold the fields at 0 from page
+      // load until its trigger fires, so any missed trigger (anchor jump,
+      // smooth-scroll desync) leaves the site's only lead form invisible.
       const formControls = qsa<HTMLElement>(".form-control");
       if (formControls.length > 0) {
         gsap.fromTo(
           formControls,
-          { y: 16, opacity: 0 },
+          { y: 16 },
           {
             y: 0,
-            opacity: 1,
             duration: 0.6,
             ease: "power2.out",
             stagger: 0.06,

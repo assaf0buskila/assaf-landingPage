@@ -159,9 +159,11 @@ const stats = [
     icon: BadgeCheck,
   },
   {
-    value: 4,
+    // Counts what the gallery actually opens. MYstudio stays out while its
+    // deployment is down, so claiming four openable projects would overstate.
+    value: 3,
     suffix: " פרויקטים",
-    label: "מוצר AI ואתרים חיים, פתוחים לבדיקה כאן בעמוד",
+    label: "פרויקטים חיים, פתוחים לפתיחה ולבדיקה כאן בעמוד",
     icon: MousePointer2,
   },
 ];
