@@ -6,6 +6,8 @@ import {
   ArrowUpLeft,
   BadgeCheck,
   Bot,
+  Briefcase,
+  ChefHat,
   ChevronLeft,
   Clock3,
   Contact,
@@ -16,8 +18,12 @@ import {
   MessageCircle,
   Mic,
   MousePointer2,
+  Scissors,
   Send,
+  ShoppingBag,
   Star,
+  Stethoscope,
+  Wrench,
   Zap,
 } from "lucide-react";
 import { BackgroundShader } from "@/components/ui/background-shader";
@@ -131,6 +137,55 @@ const solutionItems = [
     label: "סושיאל מדיה ותוכן",
     text: "תוכן ממותג לרשתות בעזרת AI: פוסטים, גרפיקה וסטוריז, בקצב שהעסק באמת צריך.",
     href: null,
+  },
+];
+
+// Illustrative builds, deliberately NOT presented as clients. They answer the
+// question the rest of the page never does: "is this for a business like mine?"
+// Every job listed here is something the solutions above already cover, so the
+// section adds specificity without adding a single new claim.
+const scenarios = [
+  {
+    icon: Stethoscope,
+    who: "מרפאה או קליניקה",
+    pain: "הטלפון מצלצל באמצע טיפול, ואי אפשר לעצור כדי לענות.",
+    jobs: ["עונה לשיחות הנכנסות ומסביר שעות וזמינות", "קובע תור ביומן שכבר יש לכם", "שולח תזכורת יום לפני"],
+    result: "פחות תורים שנופלים בין הכיסאות.",
+  },
+  {
+    icon: Scissors,
+    who: "מספרה או סטודיו יופי",
+    pain: "הודעות נכנסות באינסטגרם, בוואטסאפ ובטלפון, כל היום, תוך כדי עבודה.",
+    jobs: ["עונה על שעות, זמינות ומה כולל כל טיפול", "קובע ומזיז תורים", "מרכז את הכול לשיחה אחת בוואטסאפ"],
+    result: "היד לא על הטלפון כל היום.",
+  },
+  {
+    icon: Wrench,
+    who: "מוסך או נותן שירות בשטח",
+    pain: "חצי מהשיחות הן שאלה אחת: הרכב מוכן?",
+    jobs: ["עונה על סטטוס העבודה", "מתאם מועד איסוף", "מעדכן את הלקוח כשמשהו משתנה"],
+    result: "פחות הפרעות באמצע העבודה עצמה.",
+  },
+  {
+    icon: ChefHat,
+    who: "קייטרינג ואירועים",
+    pain: "הפניות מגיעות בערב ובסופי שבוע, בדיוק כשאתם באירוע.",
+    jobs: ["שואל תאריך, כמות אנשים ואופי האירוע", "מסנן מה רלוונטי ומה לא", "מעביר אליכם ליד מסודר עם כל הפרטים"],
+    result: "בבוקר מחכות לכם פניות ממוינות, לא ערימה.",
+  },
+  {
+    icon: ShoppingBag,
+    who: "חנות אונליין",
+    pain: "אותן שאלות על משלוחים, מידות והחזרות, שוב ושוב.",
+    jobs: ["עונה מיד באתר ובוואטסאפ", "מחזיר לקוח לעגלה שנשארה פתוחה", "מעביר אליכם רק את המקרים החריגים"],
+    result: "פחות לקוחות שמוותרים באמצע.",
+  },
+  {
+    icon: Briefcase,
+    who: "פרילנסר או סטודיו קטן",
+    pain: "הצעות מחיר יוצאות, ואז נשכחות. הפולואפ תמיד נדחה.",
+    jobs: ["עוקב אחרי כל פנייה שנכנסה", "מזכיר לכם מי לא חזר", "שולח תזכורת מנומסת ללקוח בזמן"],
+    result: "פחות עסקאות שנעלמות בלי תשובה.",
   },
 ];
 
@@ -654,6 +709,50 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
           </div>
         </section>
 
+        <section id="scenarios" data-bg="#ffffff" className="scenarios-section relative py-20 md:py-28">
+          <div className="section-shell">
+            <div className="mb-10 max-w-3xl space-y-4">
+              <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
+                ככה זה נראה בעסק כמו שלכם
+              </h2>
+              <p className="max-w-2xl text-lg font-medium leading-8 text-muted">
+                שישה תרחישים נפוצים אצל עסקים קטנים בישראל. אלה דוגמאות בנייה ולא רשימת
+                לקוחות: הן מראות איך נראה פתרון עוד לפני שבונים אותו. אם העסק שלכם לא ברשימה,
+                זה בדיוק מה שנברר בשיחת האבחון.
+              </p>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {scenarios.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div key={item.who} className="gsap-reveal premium-panel p-6">
+                    <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-navy text-white">
+                      <Icon size={21} />
+                    </div>
+                    <h3 className="text-2xl font-black text-ink">{item.who}</h3>
+                    <p className="mt-3 text-base font-medium leading-8 text-muted">{item.pain}</p>
+
+                    <ul className="mt-5 space-y-2 border-t border-ink/10 pt-5">
+                      {item.jobs.map((job) => (
+                        <li key={job} className="flex items-start gap-2.5 text-base font-medium leading-7 text-navy">
+                          <BadgeCheck size={17} className="mt-1 shrink-0 text-action" aria-hidden="true" />
+                          <span>{job}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <p className="mt-5 text-base font-bold leading-7 text-ink">
+                      <span className="block text-sm font-black text-muted">מה משתנה</span>
+                      {item.result}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
         <section data-bg="#f8fbff" className="stats-section relative py-20 md:py-28">
           <div className="texture-soft" />
           <div className="section-shell grid gap-5 md:grid-cols-3">
@@ -754,6 +853,13 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
                 ככה מכניסים AI לעסק, בלי כאב ראש
               </h2>
+              {/* The same facts already answered in FAQ #2, surfaced where they
+                  actually reduce friction: before the visitor commits, not
+                  after they go looking. No numbers, no new promises. */}
+              <p className="text-lg font-medium leading-8 text-muted">
+                אחרי שיחת האבחון תקבלו הצעה מסודרת עם מחיר סופי. לא נוסף מע״מ, אין הפתעות
+                בהמשך, וחודש הליווי כלול בכל השקה.
+              </p>
             </div>
 
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
