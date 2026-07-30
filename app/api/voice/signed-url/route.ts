@@ -89,6 +89,15 @@ export async function GET(request: Request) {
   );
 
   if (!upstream.ok) {
+    // Log the real reason to the server (Vercel function logs) while keeping
+    // the client response generic. Without this a misconfigured agent, an
+    // unpublished agent and a key missing the agents scope are all an
+    // indistinguishable 502, which is exactly how this went unnoticed once.
+    // ElevenLabs error bodies do not echo the key, so this is safe to log.
+    const detail = await upstream.text().catch(() => "<unreadable body>");
+    console.error(
+      `[voice] ElevenLabs get-signed-url failed: ${upstream.status} ${upstream.statusText} :: ${detail.slice(0, 500)}`
+    );
     return Response.json(
       { error: "voice-provider-unavailable" },
       { status: 502, headers: { "Cache-Control": "no-store" } }
@@ -97,6 +106,7 @@ export async function GET(request: Request) {
 
   const data = (await upstream.json()) as { signed_url?: string };
   if (!data.signed_url) {
+    console.error("[voice] ElevenLabs returned 200 without a signed_url field");
     return Response.json(
       { error: "voice-provider-unavailable" },
       { status: 502, headers: { "Cache-Control": "no-store" } }
