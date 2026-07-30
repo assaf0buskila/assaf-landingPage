@@ -2,7 +2,11 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const WINDOW_MS = 10 * 60_000;
-const MAX_PER_WINDOW = 3;
+// 5, not 3: a visitor who accidentally denies the mic prompt, retries, then
+// reloads and tries once more burns three attempts without doing anything
+// wrong. The real cost ceiling is the per-agent duration cap in ElevenLabs,
+// so this only needs to stop scripted hammering, not honest fumbling.
+const MAX_PER_WINDOW = 5;
 
 // Best-effort, in-process rate limit. Vercel runs several instances and
 // recycles them, so this is a speed bump against casual abuse, not a
