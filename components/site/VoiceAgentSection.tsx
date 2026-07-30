@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import { MessageCircle, Mic } from "lucide-react";
 import { InteractiveRobotSpline } from "@/components/ui/interactive-3d-robot";
+import { VoiceErrorBoundary } from "@/components/site/VoiceErrorBoundary";
 
 const ROBOT_SCENE_URL = "https://prod.spline.design/PyzDhpQ9E5f1E3MT/scene.splinecode";
 
@@ -58,7 +59,9 @@ export function VoiceAgentSection({ whatsapp, enabled = false }: { whatsapp: str
 
       {enabled ? (
         launched ? (
-          <VoiceConversation whatsapp={whatsapp} onClose={() => setLaunched(false)} />
+          <VoiceErrorBoundary whatsapp={whatsapp}>
+            <VoiceConversation whatsapp={whatsapp} onClose={() => setLaunched(false)} />
+          </VoiceErrorBoundary>
         ) : (
           <>
             <div className="voice-stage__copy">

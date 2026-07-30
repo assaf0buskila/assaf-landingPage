@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useConversation } from "@elevenlabs/react";
+import { ConversationProvider, useConversation } from "@elevenlabs/react";
 import { MessageCircle, Mic, PhoneOff } from "lucide-react";
 
 const MAX_SESSION_MS = 180_000;
@@ -11,7 +11,21 @@ type UiState = "connecting" | "live" | "ended" | "error";
 
 // Loaded dynamically (client-only) the moment the visitor asks to talk, so
 // the ElevenLabs WebRTC stack never touches the initial bundle.
-export function VoiceConversation({ whatsapp, onClose }: { whatsapp: string; onClose: () => void }) {
+//
+// useConversation() throws "must be used within a ConversationProvider" unless
+// a provider sits ABOVE the component calling it, so the hook cannot live in
+// this outer component. TypeScript cannot catch a missing provider (it is a
+// runtime context lookup), which is how this shipped green and still broke the
+// page in production.
+export function VoiceConversation(props: { whatsapp: string; onClose: () => void }) {
+  return (
+    <ConversationProvider>
+      <VoiceConversationInner {...props} />
+    </ConversationProvider>
+  );
+}
+
+function VoiceConversationInner({ whatsapp, onClose }: { whatsapp: string; onClose: () => void }) {
   const [uiState, setUiState] = useState<UiState>("connecting");
   const [mode, setMode] = useState<"listening" | "speaking">("listening");
   const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
