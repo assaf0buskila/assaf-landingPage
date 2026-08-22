@@ -1102,7 +1102,8 @@ textarea:focus-visible {
 .whatsapp-fab {
   position: fixed;
   bottom: max(1.1rem, env(safe-area-inset-bottom));
-  left: 1.1rem;
+  /* Opposite Ask Mia (`inset-inline-end` = left in RTL). */
+  right: 1.1rem;
   z-index: 60;
   display: grid;
   width: 56px;

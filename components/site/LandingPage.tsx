@@ -359,7 +359,7 @@ function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="contact-form-card space-y-4 p-4 md:p-6">
+    <form onSubmit={handleSubmit} className="contact-form-card space-y-4 p-4 md:p-6" data-mia-form>
       <div className="grid gap-4 md:grid-cols-2">
         <label className="space-y-2">
           <span className="text-sm font-black text-navy">שם</span>
@@ -570,14 +570,14 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
               ))}
             </nav>
 
-            <a href="#contact" className="btn-primary min-h-10 px-4 text-sm">
+            <a href="#contact" className="btn-primary min-h-10 px-4 text-sm" data-mia-cta="nav_contact">
               בואו נדבר
               <MessageCircle size={17} />
             </a>
           </div>
         </header>
 
-        <section data-bg="#ffffff" className="hero-section relative min-h-screen overflow-hidden pt-28 md:pt-32">
+        <section data-bg="#ffffff" data-mia-section="hero" className="hero-section relative min-h-screen overflow-hidden pt-28 md:pt-32">
           <BackgroundShader className="hero-background-shader" />
           <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-paper to-transparent" />
 
@@ -606,11 +606,11 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
               </p>
 
               <div className="hero-cta-row flex flex-col gap-3 sm:flex-row">
-                <a href="#contact" className="btn-primary magnetic">
+                <a href="#contact" className="btn-primary magnetic" data-mia-cta="hero_whatsapp">
                   בואו נדבר בוואטסאפ
                   <MessageCircle size={19} />
                 </a>
-                <a href="#voice" className="btn-secondary magnetic">
+                <a href="#voice" className="btn-secondary magnetic" data-mia-cta="hero_voice">
                   לשמוע את הסוכן
                   <ChevronLeft size={19} />
                 </a>
@@ -624,7 +624,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
           </a>
         </section>
 
-        <section id="voice" data-bg="#f4f9ff" className="voice-section relative overflow-hidden py-20 md:py-28">
+        <section id="voice" data-bg="#f4f9ff" data-mia-section="voice" className="voice-section relative overflow-hidden py-20 md:py-28">
           <div className="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <div className="gsap-reveal space-y-5">
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
@@ -641,7 +641,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
           </div>
         </section>
 
-        <section id="works" data-bg="#ffffff" className="works-section relative py-20 md:py-28">
+        <section id="works" data-bg="#ffffff" data-mia-section="works" className="works-section relative py-20 md:py-28">
           <div className="section-shell">
             <div className="mb-10 max-w-3xl space-y-4">
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
@@ -669,7 +669,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
           </div>
         </section>
 
-        <section id="solutions" data-bg="#eef7ff" className="solutions-section relative">
+        <section id="solutions" data-bg="#eef7ff" data-mia-section="solutions" className="solutions-section relative">
           <div className="section-shell pt-20 md:pt-28">
             <div className="mb-6 max-w-3xl space-y-4">
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
@@ -709,7 +709,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
           </div>
         </section>
 
-        <section id="scenarios" data-bg="#ffffff" className="scenarios-section relative py-20 md:py-28">
+        <section id="scenarios" data-bg="#ffffff" data-mia-section="scenarios" className="scenarios-section relative py-20 md:py-28">
           <div className="section-shell">
             <div className="mb-10 max-w-3xl space-y-4">
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
@@ -773,7 +773,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
           </div>
         </section>
 
-        <section id="story" data-bg="#d9ecfb" className="story-section relative overflow-hidden text-ink">
+        <section id="story" data-bg="#d9ecfb" data-mia-section="story" className="story-section relative overflow-hidden text-ink">
           <div className="story-blue-blur-bg" />
           <div className="story-pin">
           <div className="section-shell story-intro-row">
@@ -816,7 +816,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
           </div>
         </section>
 
-        <section id="about" data-bg="#f8fbff" className="about-section relative py-20 md:py-28">
+        <section id="about" data-bg="#f8fbff" data-mia-section="about" className="about-section relative py-20 md:py-28">
           <div className="texture-soft opacity-70" />
           <div className="section-shell about-layout grid gap-10 lg:grid-cols-[1.05fr_1.1fr] lg:items-center">
             <div className="gsap-reveal">
@@ -846,7 +846,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
           </div>
         </section>
 
-        <section id="process" data-bg="#ffffff" className="process-section relative overflow-hidden py-20 md:py-28">
+        <section id="process" data-bg="#ffffff" data-mia-section="process" className="process-section relative overflow-hidden py-20 md:py-28">
           <div className="texture-soft opacity-80" />
           <div className="section-shell">
             <div className="mb-12 max-w-3xl space-y-4">
@@ -911,7 +911,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
           </div>
         </section>
 
-        <section id="faq" data-bg="#ffffff" className="faq-section relative py-20 md:py-24">
+        <section id="faq" data-bg="#ffffff" data-mia-section="faq" className="faq-section relative py-20 md:py-24">
           <div className="section-shell grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
             <div className="gsap-reveal space-y-4">
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-5xl">
@@ -936,7 +936,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
           </div>
         </section>
 
-        <section id="contact" data-bg="#eef7ff" className="contact-section relative overflow-hidden py-20 md:py-28">
+        <section id="contact" data-bg="#eef7ff" data-mia-section="contact" className="contact-section relative overflow-hidden py-20 md:py-28">
           <div className="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div className="gsap-reveal space-y-7">
               <h2 className="text-balance text-5xl font-black leading-[0.95] text-ink md:text-7xl">
@@ -948,11 +948,11 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
               </p>
 
               <div className="grid gap-3 sm:grid-cols-2">
-                <a href={whatsapp} target="_blank" rel="noreferrer" className="btn-primary">
+                <a href={whatsapp} target="_blank" rel="noreferrer" className="btn-primary" data-mia-cta="contact_whatsapp">
                   וואטסאפ לאסף
                   <MessageCircle size={19} />
                 </a>
-                <a href={email} className="btn-secondary">
+                <a href={email} className="btn-secondary" data-mia-cta="contact_email">
                   מייל ישיר
                   <Mail size={19} />
                 </a>
@@ -961,6 +961,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
                   target="_blank"
                   rel="noreferrer"
                   className="contact-call sm:col-span-2"
+                  data-mia-cta="contact_calendar"
                 >
                   <span className="contact-call__icon">
                     <Clock3 size={20} />
@@ -989,11 +990,11 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
             </h2>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <a href="#contact" className="btn-primary">
+            <a href="#contact" className="btn-primary" data-mia-cta="footer_contact">
               בואו נדבר
               <MessageCircle size={19} />
             </a>
-            <a href="https://www.instagram.com/assaf_buskila/" target="_blank" rel="noreferrer" className="btn-secondary bg-white text-navy">
+            <a href="https://www.instagram.com/assaf_buskila/" target="_blank" rel="noreferrer" className="btn-secondary bg-white text-navy" data-mia-cta="footer_instagram">
               אינסטגרם
               <ArrowUpLeft size={19} />
             </a>
@@ -1015,6 +1016,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
         rel="noreferrer"
         className="whatsapp-fab md:hidden"
         aria-label="וואטסאפ לאסף"
+        data-mia-cta="fab_whatsapp"
       >
         <MessageCircle size={24} strokeWidth={2.2} />
       </a>
