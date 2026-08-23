@@ -1009,17 +1009,6 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
           </span>
         </div>
       </footer>
-
-      <a
-        href={whatsapp}
-        target="_blank"
-        rel="noreferrer"
-        className="whatsapp-fab md:hidden"
-        aria-label="וואטסאפ לאסף"
-        data-mia-cta="fab_whatsapp"
-      >
-        <MessageCircle size={24} strokeWidth={2.2} />
-      </a>
     </>
   );
 }
