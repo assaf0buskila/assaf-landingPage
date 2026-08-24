@@ -651,6 +651,12 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
               <h2 className="text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
                 מה עובד דיגיטלי יכול לעשות בשבילכם
               </h2>
+              <p className="text-base font-black text-navy">
+                <a href="/blog/oved-digitali" className="inline-flex items-center gap-1.5 text-action">
+                  קראו עוד: מה זה עובד דיגיטלי לעסק?
+                  <ArrowUpLeft size={16} />
+                </a>
+              </p>
             </div>
           </div>
 

@@ -5,6 +5,8 @@
 ## Main Content
 
 - Homepage: https://www.assafweb.com/
+- [מה זה עובד דיגיטלי לעסק?](https://www.assafweb.com/blog/oved-digitali)
+- Blog: https://www.assafweb.com/blog
 - Markdown homepage for agents: https://www.assafweb.com/index.md
 - Scope policy: https://www.assafweb.com/pricing.md
 - Agent view: https://www.assafweb.com/agent.html
