@@ -569,7 +569,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
             <div className="hero-copy max-w-3xl space-y-5 md:space-y-6">
               <span className="hero-kicker">סטודיו לפתרונות AI לעסקים</span>
               <h1 className="max-w-3xl text-balance text-[clamp(2.5rem,4.4vw,4.5rem)] font-black leading-[1.02] tracking-normal text-ink">
-                {["עובד דיגיטלי", "שעונה, מוכר", "ומתאם.", "גם ב-2 בלילה"].map((line, index) => (
+                {["עובד דיגיטלי ", "שעונה, מוכר ", "ומתאם. ", "גם ב-2 בלילה"].map((line, index) => (
                   <span
                     key={line}
                     className="hero-word hero-word-line hero-word-animated"
@@ -756,7 +756,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
             <div className="story-portrait-chip" aria-hidden="true">
               <Image
                 src="/assets/assaf-photo.jpg"
-                alt=""
+                alt="אסף בוסקילה"
                 width={1100}
                 height={880}
                 sizes="92px"
