@@ -15,6 +15,7 @@
 כל השקה כוללת חודש ליווי.
 
 מאמר: [מה זה עובד דיגיטלי לעסק?](https://www.assafweb.com/blog/oved-digitali)
+מאמר: [מה זה בניית אתרים לעסק קטן בישראל?](https://www.assafweb.com/blog/bniat-atarim)
 
 ## עבודות חיות
 

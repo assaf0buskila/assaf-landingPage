@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Clock3, Mail, MessageCircle } from "lucide-react";
-import { ovedDigitaliPost as post } from "@/lib/blog";
+import { bniatAtarimPost as post } from "@/lib/blog";
 import { CALENDAR_URL, EMAIL, SITE_URL, WHATSAPP_URL } from "@/lib/site";
 
 const title = `${post.title} | האתר של אסף`;
@@ -83,7 +83,7 @@ const jsonLd = {
   ],
 };
 
-export default function OvedDigitaliPage() {
+export default function BniatAtarimPage() {
   return (
     <main className="relative min-h-[70vh] bg-paper pb-20 pt-28 md:pt-32">
       <script
@@ -120,46 +120,37 @@ export default function OvedDigitaliPage() {
         </p>
 
         <div className="blog-prose mt-12 space-y-6 text-lg font-medium leading-9 text-muted">
-          <h2 className="text-3xl font-black leading-tight text-ink">מה הוא עושה ביום רגיל</h2>
+          <h2 className="text-3xl font-black leading-tight text-ink">מה האתר באמת צריך לכלול</h2>
           <p>
-            עסק קטן בישראל מקבל פניות בוואטסאפ, בטופס באתר, ולפעמים בטלפון. חלק מגיעות באמצע
-            העבודה. חלק אחרי שהדלת נסגרה. עובד דיגיטלי יושב על הערוצים האלה ועונה כמו העסק:
-            מה כלול, כמה זה עולה, מתי יש מקום, ומה הצעד הבא.
+            עסק קטן לא צריך חנות ענק. הוא צריך עמוד שמסביר את השירות בשפה של העסק: מה מוכרים,
+            למי זה מתאים, ומה קורה אחרי שיוצרים קשר.
           </p>
           <p>
-            אם השאלה פשוטה, הוא סוגר אותה. אם צריך תור, הוא מתאם. אם מישהו מתאים לשירות, הוא
-            ממשיך את השיחה במקום לתת לפנייה ליפול. אם צריך אתכם, הוא מעביר עם ההקשר: מה הלקוח
-            שאל, מה כבר נענה, ומה חסר.
+            תמונות של המקום האמיתי עוזרות יותר מסטוק גנרי. אם יש כתובת או אזור שירות, הם צריכים
+            להופיע. וצריך כפתור אחד ברור שמוביל לוואטסאפ או לטופס, לא כמה מסלולים שמבלבלים.
           </p>
           <p>
-            יש גם גרסה קולית: סוכן שעונה לטלפון בעברית. בעמוד הבית, בסקשן{" "}
-            <Link href="/#voice" className="font-black text-action underline-offset-4 hover:underline">
-              הסוכן הקולי
+            אם כבר יש עובד דיגיטלי, הוא יושב על אותו אתר ועונה כשאין מישהו ליד המסך. מה זה אומר
+            בפועל מוסבר במאמר{" "}
+            <Link href="/blog/oved-digitali" className="font-black text-action underline-offset-4 hover:underline">
+              מה זה עובד דיגיטלי לעסק?
             </Link>
-            , רץ דמו חי. אפשר לשמוע איך זה מרגיש לפני שמדברים על בנייה.
+            .
           </p>
 
-          <h2 className="text-3xl font-black leading-tight text-ink">מה הוא לא</h2>
+          <h2 className="text-3xl font-black leading-tight text-ink">מה זה לא</h2>
           <p>
-            הוא לא מחליף את בעל העסק. הוא לא מחליט בשבילכם מי הלקוח הנכון, ולא סוגר לבד עסקה
-            שדורשת שיקול דעת. הוא גם לא הבוט של כולם: בלי ידע על השירותים והמחירים של העסק
-            הספציפי, זה רק תפריט מדבר.
+            זה לא קמפיין ממומן. זה לא חנות עם אלפי מוצרים. וזה לא הבטחה שמחר תהיו ראשונים בגוגל.
           </p>
           <p>
-            המטרה צנועה יותר. רוב העסקים לא מפסידים לקוחות בגלל המחיר. הם מפסידים אותם כשאף
-            אחד לא עונה.
+            דף טוב נותן ללקוח סיבה לפנות: להבין מה מוכרים, לראות שהמקום אמיתי, ולדעת איך כותבים.
+            דירוג נבנה לאורך זמן עם תוכן אמיתי ועם שם העסק, לא עם הבטחה ביום ההשקה.
           </p>
 
           <h2 className="text-3xl font-black leading-tight text-ink">איך זה נבנה אצל אסף בוסקילה</h2>
           <p>
-            אני אסף בוסקילה, מהנדס פתרונות AI. אני בונה לעסקים קטנים בישראל עובדים דיגיטליים:
-            אוטומציות שחוסכות שעות, סוכן שעונה בוואטסאפ ובאתר, סוכן קולי בעברית, אפליקציות
-            וכלים פנימיים, וגם אתרים, דפי נחיתה וכרטיס ביקור דיגיטלי. כל השקה כוללת חודש ליווי.
-            מה האתר עצמו צריך לכלול מוסבר ב{" "}
-            <Link href="/blog/bniat-atarim" className="font-black text-action underline-offset-4 hover:underline">
-              מה זה בניית אתרים לעסק קטן בישראל?
-            </Link>
-            .
+            אני אסף בוסקילה, מהנדס פתרונות AI. אני בונה לעסקים קטנים בישראל אתרים, דפי נחיתה
+            וכרטיס ביקור דיגיטלי, וגם עובדים דיגיטליים. כל השקה כוללת חודש ליווי.
           </p>
           <p>
             אין מחירון ציבורי. אחרי שיחת אבחון קצרה נשלחת הצעה לפי ההיקף האמיתי. את רשימת
@@ -206,8 +197,8 @@ export default function OvedDigitaliPage() {
 
           <h2 className="text-3xl font-black leading-tight text-ink">איך מתחילים</h2>
           <p>
-            אם יש עסק ופניות שנופלות, כתבו בוואטסאפ או קבעו שיחת היכרות של 15 דקות. גם מייל
-            עובד. אפשר גם לחזור ל{" "}
+            אם חסר לעסק דף קבוע שהלקוח יכול לחזור אליו, כתבו בוואטסאפ או קבעו שיחת היכרות של 15
+            דקות. אפשר גם לחזור ל{" "}
             <Link href="/#contact" className="font-black text-action underline-offset-4 hover:underline">
               יצירת הקשר
             </Link>{" "}
