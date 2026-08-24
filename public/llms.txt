@@ -24,7 +24,6 @@
 - Digital business card, a fast entry-level product.
 - Social media and AI content: branded posts, stories and visuals produced with AI at the pace the business needs.
 - Month of guidance after every launch, then further changes by agreed paid update.
-- Proof of depth: Assaf built MYstudio (https://mystudio.pics), a full AI content-generation platform with user accounts, payments and image-generation workflows.
 
 ## Contact
 

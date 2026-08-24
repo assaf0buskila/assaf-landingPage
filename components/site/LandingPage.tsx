@@ -47,14 +47,6 @@ const navItems = [
 
 const works = [
   {
-    name: "MYstudio",
-    href: "https://mystudio.pics",
-    showcase: "/assets/services/service-7.webp",
-    // Domain is being re-pointed; stays out of the visible gallery until it
-    // is back up. JSON-LD keeps the canonical URL.
-    live: false,
-  },
-  {
     name: "מוצ׳י",
     href: "https://mochi-israel.com",
     showcase: "/assets/projects/showcase-mochi.webp",
@@ -214,8 +206,6 @@ const stats = [
     icon: BadgeCheck,
   },
   {
-    // Counts what the gallery actually opens. MYstudio stays out while its
-    // deployment is down, so claiming four openable projects would overstate.
     value: 3,
     suffix: " פרויקטים",
     label: "פרויקטים חיים, פתוחים לפתיחה ולבדיקה כאן בעמוד",
@@ -480,21 +470,11 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
       "@type": "Offer",
       itemOffered: { "@type": "Service", name },
     })),
-    workExample: works.map((work) =>
-      work.name === "MYstudio"
-        ? {
-            "@type": "SoftwareApplication",
-            name: work.name,
-            url: work.href,
-            applicationCategory: "DesignApplication",
-            operatingSystem: "Web",
-          }
-        : {
-            "@type": "WebSite",
-            name: work.name,
-            url: work.href.startsWith("http") ? work.href : `${siteUrl}${work.href}`,
-          }
-    ),
+    workExample: works.map((work) => ({
+      "@type": "WebSite",
+      name: work.name,
+      url: work.href.startsWith("http") ? work.href : `${siteUrl}${work.href}`,
+    })),
   };
 
   const jsonLd = {
@@ -648,22 +628,18 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
                 פרויקטים חיים שאפשר לפתוח ולבדוק
               </h2>
               <p className="max-w-2xl text-lg font-medium leading-8 text-muted">
-                לא מוקאפים ולא הדמיות. מוצר AI אמיתי ואתרים חיים של לקוחות:
+                לא מוקאפים ולא הדמיות. אתרים חיים שאפשר לפתוח ולבדוק:
                 לוחצים, נכנסים ורואים איך זה מרגיש.
               </p>
             </div>
 
             <PortfolioGallery
-              items={works
-                // Real screenshots only in the gallery; MYstudio joins once
-                // its deployment is back and a genuine capture exists.
-                .filter((work) => work.name !== "MYstudio")
-                .map((work) => ({
-                  src: work.showcase,
-                  alt: `צילום מסך של ${work.name}`,
-                  href: work.live === false ? undefined : work.href,
-                  name: work.name,
-                }))}
+              items={works.map((work) => ({
+                src: work.showcase,
+                alt: `צילום מסך של ${work.name}`,
+                href: work.href,
+                name: work.name,
+              }))}
             />
 
           </div>
@@ -833,9 +809,9 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
                 אני לא מוכר כלים. אני בונה עובדים דיגיטליים.
               </h2>
               <p className="text-xl font-medium leading-9 text-muted">
-                אני אסף, מהנדס פתרונות AI וסטודנט להנדסת תעשייה וניהול בשנקר. בניתי את
-                MYstudio, פלטפורמת AI מלאה עם משתמשים ותשלומים, ומערכת לניתוח מסמכים פיננסיים.
-                לפני זה הייתי קצין קרבי בצנחנים, אז סדר, אחריות ועמידה בלחץ הם לא סיסמאות אצלי.
+                אני אסף, מהנדס פתרונות AI וסטודנט להנדסת תעשייה וניהול בשנקר. בניתי
+                מערכת לניתוח מסמכים פיננסיים. לפני זה הייתי קצין קרבי בצנחנים, אז סדר,
+                אחריות ועמידה בלחץ הם לא סיסמאות אצלי.
               </p>
               <p className="text-lg font-semibold leading-8 text-navy">
                 מתחילים בשיחת אבחון קצרה. לא צריך להבין ב-AI, זה בדיוק התפקיד שלי: אני ממפה

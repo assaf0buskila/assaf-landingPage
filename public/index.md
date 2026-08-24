@@ -16,7 +16,6 @@
 
 ## עבודות חיות
 
-- MYstudio - פלטפורמת AI ליצירת תוכן שאסף בנה ומפעיל: https://mystudio.pics
 - מוצ׳י: https://mochi-israel.com
 - קפה אנה: https://cafe-ana.com
 - מנגינת ממתקים (קונספט): https://www.assafweb.com/candy/
