@@ -11,7 +11,9 @@ const assistant = Assistant({
 const title = "האתר של אסף | עובד דיגיטלי לעסק: AI, אוטומציות ואתרים";
 const description =
   "אסף בוסקילה בונה לעסקים עובדים דיגיטליים: סוכני AI שעונים ללקוחות, אוטומציות שחוסכות שעות, סוכן קולי בעברית, אפליקציות ואתרים. הכול במקום אחד, עם ליווי אישי עד שזה עובד באמת.";
-const siteUrl = "https://www.assafweb.com/";
+// Next Metadata emits the homepage without a trailing slash when
+// trailingSlash is unset. Sitemap loc matches that emitted form.
+const siteUrl = "https://www.assafweb.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -48,7 +50,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
     languages: {
-      "he-IL": siteUrl,
+      "he-IL": "/",
     },
     types: {
       "text/markdown": "/index.md",
