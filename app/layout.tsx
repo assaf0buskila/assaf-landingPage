@@ -11,9 +11,12 @@ const assistant = Assistant({
 const title = "האתר של אסף | עובד דיגיטלי לעסק: AI, אוטומציות ואתרים";
 const description =
   "אסף בוסקילה בונה לעסקים עובדים דיגיטליים: סוכני AI שעונים ללקוחות, אוטומציות שחוסכות שעות, סוכן קולי בעברית, אפליקציות ואתרים. הכול במקום אחד, עם ליווי אישי עד שזה עובד באמת.";
+// Next Metadata emits the homepage without a trailing slash when
+// trailingSlash is unset. Sitemap loc matches that emitted form.
+const siteUrl = "https://www.assafweb.com";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.assafweb.com"),
+  metadataBase: new URL(siteUrl),
   applicationName: "האתר של אסף",
   title,
   description,
@@ -34,7 +37,7 @@ export const metadata: Metadata = {
     "Hebrew AI agent",
     "WhatsApp leads",
   ],
-  authors: [{ name: "אסף בוסקילה", url: "https://www.assafweb.com/" }],
+  authors: [{ name: "אסף בוסקילה", url: siteUrl }],
   creator: "אסף בוסקילה",
   publisher: "אסף בוסקילה",
   category: "AI solutions",
@@ -45,7 +48,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   alternates: {
-    canonical: "/",
+    canonical: siteUrl,
     languages: {
       "he-IL": "/",
     },
@@ -68,7 +71,7 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description,
-    url: "https://www.assafweb.com/",
+    url: siteUrl,
     siteName: "האתר של אסף",
     locale: "he_IL",
     type: "website",
