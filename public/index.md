@@ -14,6 +14,8 @@
 
 כל השקה כוללת חודש ליווי.
 
+מאמר: [מה זה עובד דיגיטלי לעסק?](https://www.assafweb.com/blog/oved-digitali)
+
 ## עבודות חיות
 
 - מוצ׳י: https://mochi-israel.com
