@@ -440,6 +440,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
     sameAs: [
       "https://www.instagram.com/assaf_buskila/",
       "https://www.linkedin.com/in/assaf-buskila-11ab7a347/",
+      "https://github.com/assaf0buskila",
     ],
     jobTitle: "AI Solutions Engineer",
     knowsAbout: [
@@ -497,7 +498,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
         isPartOf: { "@id": `${siteUrl}/#website` },
         about: { "@id": `${siteUrl}/#assaf` },
         inLanguage: "he",
-        dateModified: "2026-07-12",
+        dateModified: "2026-08-25",
         speakable: {
           "@type": "SpeakableSpecification",
           cssSelector: ["h1", ".hero-copy p"],
