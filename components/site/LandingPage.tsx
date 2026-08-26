@@ -33,6 +33,7 @@ import { BrickDef, TechStackBuilder } from "@/components/ui/interactive-tech-sta
 import { AiHeroChat } from "@/components/site/AiHeroChat";
 import { ScrollEffects } from "@/components/site/ScrollEffects";
 import { VoiceAgentSection } from "@/components/site/VoiceAgentSection";
+import { INSTAGRAM_URL } from "@/lib/site";
 
 const whatsapp = "https://wa.me/972523393768";
 const email = "mailto:assaf.buskila10@gmail.com";
@@ -439,6 +440,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
     },
     sameAs: [
       "https://www.instagram.com/assaf_buskila/",
+      INSTAGRAM_URL,
       "https://www.linkedin.com/in/assaf-buskila-11ab7a347/",
       "https://github.com/assaf0buskila",
     ],
@@ -977,7 +979,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
               בואו נדבר
               <MessageCircle size={19} />
             </a>
-            <a href="https://www.instagram.com/assaf_buskila/" target="_blank" rel="noreferrer" className="btn-secondary bg-white text-navy" data-mia-cta="footer_instagram">
+            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="btn-secondary bg-white text-navy" data-mia-cta="footer_instagram">
               אינסטגרם
               <ArrowUpLeft size={19} />
             </a>
