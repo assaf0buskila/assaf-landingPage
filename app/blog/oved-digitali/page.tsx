@@ -197,9 +197,10 @@ export default function OvedDigitaliPage() {
               </a>
             </li>
             <li>
-              <Link href="/candy/" className="font-black text-action underline-offset-4 hover:underline">
+              {/* Native <a> keeps the trailing slash; next/link would emit /candy. */}
+              <a href="/candy/" className="font-black text-action underline-offset-4 hover:underline">
                 מנגינת ממתקים
-              </Link>
+              </a>
               , אתר קונספט
             </li>
           </ul>
