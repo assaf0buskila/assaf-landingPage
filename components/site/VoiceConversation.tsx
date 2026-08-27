@@ -2,12 +2,13 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ConversationProvider, useConversation } from "@elevenlabs/react";
-import { MessageCircle, Mic, PhoneOff } from "lucide-react";
+import { MessageCircle, Mic, MicOff, PhoneOff } from "lucide-react";
+import { collectVisitorContext, requestMicrophone } from "@/lib/voice-context";
 
 const MAX_SESSION_MS = 180_000;
 const COUNTDOWN_FROM_S = 30;
 
-type UiState = "connecting" | "live" | "ended" | "error";
+type UiState = "connecting" | "live" | "ended" | "error" | "mic-denied";
 
 // Loaded dynamically (client-only) the moment the visitor asks to talk, so
 // the ElevenLabs WebRTC stack never touches the initial bundle.
@@ -29,6 +30,9 @@ function VoiceConversationInner({ whatsapp, onClose }: { whatsapp: string; onClo
   const [uiState, setUiState] = useState<UiState>("connecting");
   const [mode, setMode] = useState<"listening" | "speaking">("listening");
   const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
+  // Bumped by the retry button: a denied mic is the one failure the visitor
+  // can fix in place, so it gets a second run of the start effect.
+  const [attempt, setAttempt] = useState(0);
   const startedAt = useRef<number>(0);
   const startedRef = useRef(false);
 
@@ -50,7 +54,18 @@ function VoiceConversationInner({ whatsapp, onClose }: { whatsapp: string; onClo
     }
   }, [conversation]);
 
-  // Single-flight start on mount: signed URL -> mic permission -> session.
+  const retry = useCallback(() => {
+    startedRef.current = false;
+    setUiState("connecting");
+    setAttempt((n) => n + 1);
+  }, []);
+
+  // Single-flight start: mic permission -> signed URL -> session.
+  //
+  // The mic comes first on purpose. It is the step most likely to fail, it is
+  // the only one the visitor can fix, and asking for the signed URL first
+  // would spend one of the five per-window issues from the rate limiter on a
+  // call that never happens.
   useEffect(() => {
     if (startedRef.current) return;
     startedRef.current = true;
@@ -58,12 +73,28 @@ function VoiceConversationInner({ whatsapp, onClose }: { whatsapp: string; onClo
     let cancelled = false;
     (async () => {
       try {
+        await requestMicrophone();
+      } catch {
+        if (!cancelled) setUiState("mic-denied");
+        return;
+      }
+      if (cancelled) return;
+
+      try {
         const res = await fetch("/api/voice/signed-url", { cache: "no-store" });
         if (!res.ok) throw new Error("signed-url-failed");
         const { signedUrl } = (await res.json()) as { signedUrl?: string };
         if (!signedUrl) throw new Error("signed-url-missing");
         if (cancelled) return;
-        await conversation.startSession({ signedUrl });
+        // startSession() is void on the React hook, so a failure inside it
+        // surfaces through onError rather than this catch.
+        conversation.startSession({
+          signedUrl,
+          // Where the visitor came from, on what device, at what hour in
+          // Israel. Turns the agent's opener into something specific instead
+          // of a question it already has the answer to.
+          dynamicVariables: collectVisitorContext(),
+        });
       } catch {
         if (!cancelled) setUiState("error");
       }
@@ -74,7 +105,7 @@ function VoiceConversationInner({ whatsapp, onClose }: { whatsapp: string; onClo
       endSession();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [attempt]);
 
   // Cost guardrails: hard 3-minute cap with a visible countdown, and end the
   // session when the tab goes to the background.
@@ -99,11 +130,34 @@ function VoiceConversationInner({ whatsapp, onClose }: { whatsapp: string; onClo
     };
   }, [uiState, endSession]);
 
+  if (uiState === "mic-denied") {
+    return (
+      <div className="voice-live" dir="rtl">
+        <div className="voice-live__indicator" aria-hidden="true">
+          <MicOff size={18} />
+        </div>
+        <p className="voice-live__status voice-live__status--error">
+          בלי מיקרופון אין שיחה. אפשר לאשר גישה בסמל שליד כתובת האתר, ולנסות שוב.
+        </p>
+        <div className="voice-live__actions">
+          <button type="button" className="btn-primary" onClick={retry}>
+            נסו שוב
+            <Mic size={18} />
+          </button>
+          <a href={whatsapp} target="_blank" rel="noreferrer" className="btn-secondary">
+            או דברו איתי בוואטסאפ
+            <MessageCircle size={17} />
+          </a>
+        </div>
+      </div>
+    );
+  }
+
   if (uiState === "error") {
     return (
       <div className="voice-live" dir="rtl">
         <p className="voice-live__status voice-live__status--error">
-          לא הצלחנו לפתוח שיחה כרגע. יכול להיות שאין גישה למיקרופון, או שהסוכן עמוס.
+          לא הצלחנו לפתוח שיחה כרגע. יכול להיות שהסוכן עמוס, או שהחיבור נפל באמצע.
         </p>
         <div className="voice-live__actions">
           <a href={whatsapp} target="_blank" rel="noreferrer" className="btn-primary">
