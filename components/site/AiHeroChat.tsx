@@ -188,7 +188,7 @@ export function AiHeroChat({ onComplete }: { onComplete?: () => void }) {
                 {isAssaf ? (
                   <Image
                     src="/assets/assaf-photo.jpg"
-                    alt=""
+                    alt="אסף בוסקילה"
                     width={44}
                     height={44}
                     sizes="44px"
