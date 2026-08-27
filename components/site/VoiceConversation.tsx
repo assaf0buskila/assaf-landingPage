@@ -60,7 +60,7 @@ function VoiceConversationInner({ whatsapp, onClose }: { whatsapp: string; onClo
     setAttempt((n) => n + 1);
   }, []);
 
-  // Single-flight start: mic permission -> signed URL -> session.
+  // Single-flight start: mic permission -> WebRTC token -> session.
   //
   // The mic comes first on purpose. It is the step most likely to fail, it is
   // the only one the visitor can fix, and asking for the signed URL first
@@ -81,15 +81,16 @@ function VoiceConversationInner({ whatsapp, onClose }: { whatsapp: string; onClo
       if (cancelled) return;
 
       try {
-        const res = await fetch("/api/voice/signed-url", { cache: "no-store" });
-        if (!res.ok) throw new Error("signed-url-failed");
-        const { signedUrl } = (await res.json()) as { signedUrl?: string };
-        if (!signedUrl) throw new Error("signed-url-missing");
+        const res = await fetch("/api/voice/token", { cache: "no-store" });
+        if (!res.ok) throw new Error("conversation-token-failed");
+        const { conversationToken } = (await res.json()) as { conversationToken?: string };
+        if (!conversationToken) throw new Error("conversation-token-missing");
         if (cancelled) return;
         // startSession() is void on the React hook, so a failure inside it
         // surfaces through onError rather than this catch.
         conversation.startSession({
-          signedUrl,
+          conversationToken,
+          connectionType: "webrtc",
           // Where the visitor came from, on what device, at what hour in
           // Israel. Turns the agent's opener into something specific instead
           // of a question it already has the answer to.
@@ -102,6 +103,9 @@ function VoiceConversationInner({ whatsapp, onClose }: { whatsapp: string; onClo
 
     return () => {
       cancelled = true;
+      // React Strict Mode replays effects in development. Release the
+      // single-flight guard so the second setup can start normally.
+      startedRef.current = false;
       endSession();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -206,8 +210,12 @@ function VoiceConversationInner({ whatsapp, onClose }: { whatsapp: string; onClo
           השיחה תסתיים בעוד {secondsLeft} שניות
         </p>
       ) : null}
-      <button type="button" className="btn-secondary" onClick={endSession}>
-        סיום שיחה
+      <button
+        type="button"
+        className="btn-secondary"
+        onClick={uiState === "connecting" ? onClose : endSession}
+      >
+        {uiState === "connecting" ? "ביטול" : "סיום שיחה"}
         <PhoneOff size={17} />
       </button>
     </div>

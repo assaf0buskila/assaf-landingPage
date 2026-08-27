@@ -11,8 +11,8 @@ This repository hosts the personal landing page for Assaf Buskila, an AI solutio
 
 ## Environment variables
 
-- `ELEVENLABS_API_KEY` and `ELEVENLABS_AGENT_ID` (server-only, never `NEXT_PUBLIC_`) power the live Hebrew voice-agent demo in the `#voice` section via `app/api/voice/signed-url/route.ts`. Without them the section renders a "coming soon" card and the site works normally. Set them in `.env.local` for dev and in the Vercel dashboard for production.
-- `NEXT_PUBLIC_MIA_BASE_URL` (HTTPS origin only, no trailing slash) loads Ask Mia from `{origin}/v1/website/widget.js` on the homepage. Empty, http, or localhost = script not injected. Set in Vercel after Mia has a stable HTTPS host. CORS on Mia must allow `https://www.assafweb.com` and `https://assafweb.com`. Do not put LAN IPs here.
+- `ELEVENLABS_API_KEY` and `ELEVENLABS_AGENT_ID` (server-only, never `NEXT_PUBLIC_`) power the live Hebrew voice-agent demo in the `#voice` section via `app/api/voice/token/route.ts`. Without them the section renders a "coming soon" card and the site works normally. Set them in `.env.local` for dev and in the Vercel dashboard for production.
+- `NEXT_PUBLIC_MIA_BASE_URL` loads Ask Mia from `{origin}/v1/website/widget.js` on the homepage. Production: HTTPS public origin only (no trailing slash). Local `next dev`: `http://localhost:8000` is allowed because `NODE_ENV=development` (`lib/mia.ts`). Empty = script not injected. CORS on Mia must allow `https://www.assafweb.com` and `https://assafweb.com`. Do not put LAN IPs in Vercel.
 
 ## Palette single source of truth
 

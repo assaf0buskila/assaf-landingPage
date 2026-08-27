@@ -5,9 +5,14 @@ export function miaWidgetSrc(): string | null {
   if (!raw) return null;
   try {
     const url = new URL(raw);
-    if (url.protocol !== "https:") return null;
     const host = url.hostname.toLowerCase();
-    if (host === "localhost" || host === "127.0.0.1") return null;
+    const isLocal = host === "localhost" || host === "127.0.0.1";
+    if (isLocal) {
+      if (process.env.NODE_ENV !== "development") return null;
+      if (url.protocol !== "http:" && url.protocol !== "https:") return null;
+    } else if (url.protocol !== "https:") {
+      return null;
+    }
     return `${url.origin}/v1/website/widget.js`;
   } catch {
     return null;

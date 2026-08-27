@@ -20,6 +20,7 @@ export function VoiceAgentSection({ whatsapp, enabled = false }: { whatsapp: str
   const stageRef = useRef<HTMLDivElement>(null);
   const [robotCapable, setRobotCapable] = useState(false);
   const [inView, setInView] = useState(false);
+  const [robotReady, setRobotReady] = useState(false);
   const [launched, setLaunched] = useState(false);
 
   useEffect(() => {
@@ -35,14 +36,24 @@ export function VoiceAgentSection({ whatsapp, enabled = false }: { whatsapp: str
     const el = stageRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
-      { rootMargin: "200px 0px", threshold: 0 }
+      ([entry]) => setInView(entry.isIntersecting && entry.intersectionRatio >= 0.35),
+      { rootMargin: "0px", threshold: 0.35 }
     );
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
-  const showRobot = robotCapable && inView;
+  useEffect(() => {
+    if (!robotCapable || !inView || launched) {
+      setRobotReady(false);
+      return;
+    }
+
+    const timer = window.setTimeout(() => setRobotReady(true), 4_000);
+    return () => window.clearTimeout(timer);
+  }, [robotCapable, inView, launched]);
+
+  const showRobot = robotCapable && inView && robotReady && !launched;
 
   return (
     <div ref={stageRef} className="voice-stage premium-panel">

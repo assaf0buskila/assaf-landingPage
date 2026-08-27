@@ -127,6 +127,7 @@ export function PortfolioGallery({ items }: { items: GalleryItem[] }) {
                 src={item.src}
                 alt={item.alt}
                 className="portfolio-gallery__shot"
+                loading="lazy"
                 decoding="async"
               />
               <span className="portfolio-gallery__badge">{item.name}</span>
