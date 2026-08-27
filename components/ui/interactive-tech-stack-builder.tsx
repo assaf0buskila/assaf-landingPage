@@ -412,7 +412,7 @@ export function TechStackBuilder({
             <LegoBlock mouseX={mouseX} mouseY={mouseY} theme="gold" studs={GRID.COLS} hideStuds={hiddenBaseStuds} className="relative z-10">
               <div className="flex items-center gap-4 px-5 py-4 pt-5" dir="rtl">
                 <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border border-white shadow-soft">
-                  <Image src={baseImage} alt="" width={88} height={88} sizes="44px" className="h-full w-full object-cover" />
+                  <Image src={baseImage} alt="אסף בוסקילה" width={88} height={88} sizes="44px" className="h-full w-full object-cover" />
                 </span>
                 <span className="grid text-right">
                   <strong className="text-[17px] font-black leading-tight text-ink">{baseLabel}</strong>
