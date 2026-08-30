@@ -43,6 +43,7 @@ const navItems = [
   { href: "#solutions", label: "פתרונות" },
   { href: "#voice", label: "דברו איתו" },
   { href: "#works", label: "עבודות" },
+  { href: "/blog", label: "בלוג" },
   { href: "#contact", label: "יצירת קשר" },
 ];
 
@@ -117,7 +118,8 @@ const solutionItems = [
     icon: Globe,
     label: "אתרים ודפי נחיתה",
     text: "המקצוע שממנו התחלתי: אתר שמסביר מהר, מרגיש כמו העסק ומכניס פניות בוואטסאפ.",
-    href: null,
+    href: "/blog/bniat-atarim",
+    linkLabel: "קראו עוד: מה זה בניית אתרים לעסק קטן בישראל?",
   },
   {
     icon: Contact,
