@@ -24,11 +24,11 @@ export const MIC_CONSTRAINTS: MediaTrackConstraints = {
 /**
  * Asks for the microphone before anything else happens, then releases it.
  *
- * Two reasons this runs ahead of the signed-URL fetch rather than inside the
+ * Two reasons this runs ahead of the conversation-token fetch rather than inside the
  * SDK's own start path: a visitor who denies the prompt no longer burns one of
- * their five signed URLs per 10 minutes, and a denial becomes a distinct,
+ * their five token-request attempts per 10 minutes, and a denial becomes a distinct,
  * catchable failure instead of the generic "the agent is busy" copy. The
- * React hook's `startSession` returns void, so a rejection inside it can only
+ * React provider's `startSession` control returns void, so a rejection inside it can only
  * ever reach us through `onError` with no way to tell the causes apart.
  */
 export async function requestMicrophone(): Promise<void> {

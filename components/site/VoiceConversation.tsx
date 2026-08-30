@@ -29,6 +29,7 @@ export function VoiceConversation(props: { whatsapp: string; onClose: () => void
 function VoiceConversationInner({ whatsapp, onClose }: { whatsapp: string; onClose: () => void }) {
   const [uiState, setUiState] = useState<UiState>("connecting");
   const [mode, setMode] = useState<"listening" | "speaking">("listening");
+  const [interruptionObserved, setInterruptionObserved] = useState(false);
   const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
   // Bumped by the retry button: a denied mic is the one failure the visitor
   // can fix in place, so it gets a second run of the start effect.
@@ -39,11 +40,24 @@ function VoiceConversationInner({ whatsapp, onClose }: { whatsapp: string; onClo
   const conversation = useConversation({
     onConnect: () => {
       startedAt.current = Date.now();
+      setInterruptionObserved(false);
       setUiState("live");
     },
     onDisconnect: () => setUiState((prev) => (prev === "error" ? prev : "ended")),
     onError: () => setUiState("error"),
-    onModeChange: ({ mode: nextMode }: { mode: "listening" | "speaking" }) => setMode(nextMode),
+    onModeChange: ({ mode: nextMode }: { mode: "listening" | "speaking" }) => {
+      setMode(nextMode);
+      if (nextMode === "speaking") setInterruptionObserved(false);
+    },
+    // ElevenLabs performs the actual barge-in server-side. These callbacks
+    // only acknowledge that an interruption/correction event reached the
+    // browser; onModeChange remains the source of truth for the audio mode.
+    onInterruption: () => {
+      setInterruptionObserved(true);
+    },
+    onAgentResponseCorrection: () => {
+      setInterruptionObserved(true);
+    },
   });
 
   const endSession = useCallback(() => {
@@ -56,6 +70,7 @@ function VoiceConversationInner({ whatsapp, onClose }: { whatsapp: string; onClo
 
   const retry = useCallback(() => {
     startedRef.current = false;
+    setInterruptionObserved(false);
     setUiState("connecting");
     setAttempt((n) => n + 1);
   }, []);
@@ -63,14 +78,15 @@ function VoiceConversationInner({ whatsapp, onClose }: { whatsapp: string; onClo
   // Single-flight start: mic permission -> WebRTC token -> session.
   //
   // The mic comes first on purpose. It is the step most likely to fail, it is
-  // the only one the visitor can fix, and asking for the signed URL first
-  // would spend one of the five per-window issues from the rate limiter on a
+  // the only one the visitor can fix, and asking for a conversation token first
+  // would spend one of the five per-window attempts from the rate limiter on a
   // call that never happens.
   useEffect(() => {
     if (startedRef.current) return;
     startedRef.current = true;
 
     let cancelled = false;
+    const controller = new AbortController();
     (async () => {
       try {
         await requestMicrophone();
@@ -81,7 +97,10 @@ function VoiceConversationInner({ whatsapp, onClose }: { whatsapp: string; onClo
       if (cancelled) return;
 
       try {
-        const res = await fetch("/api/voice/token", { cache: "no-store" });
+        const res = await fetch("/api/voice/token", {
+          cache: "no-store",
+          signal: controller.signal,
+        });
         if (!res.ok) throw new Error("conversation-token-failed");
         const { conversationToken } = (await res.json()) as { conversationToken?: string };
         if (!conversationToken) throw new Error("conversation-token-missing");
@@ -103,6 +122,7 @@ function VoiceConversationInner({ whatsapp, onClose }: { whatsapp: string; onClo
 
     return () => {
       cancelled = true;
+      controller.abort();
       // React Strict Mode replays effects in development. Release the
       // single-flight guard so the second setup can start normally.
       startedRef.current = false;
@@ -203,6 +223,8 @@ function VoiceConversationInner({ whatsapp, onClose }: { whatsapp: string; onClo
           ? "פותח שיחה... נבקש גישה למיקרופון"
           : mode === "speaking"
             ? "הסוכן מדבר"
+          : interruptionObserved
+            ? "הסוכן עצר ומקשיב, אפשר להמשיך"
             : "הסוכן מקשיב, אפשר לדבר"}
       </p>
       {secondsLeft !== null ? (
