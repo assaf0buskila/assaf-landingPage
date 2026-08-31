@@ -105,8 +105,10 @@ const solutionItems = [
     icon: Bot,
     label: "עובד AI לוואטסאפ ולאתר",
     text: "עובד דיגיטלי שעונה ללקוחות בוואטסאפ ובאתר, מסנן, מתאם ומוכר. בטון שלכם, 24/7.",
-    href: "/blog/oved-digitali",
-    linkLabel: "קראו עוד: מה זה עובד דיגיטלי לעסק?",
+    href: "/sherut/oved-digitali",
+    linkLabel: "לעמוד השירות",
+    moreHref: "/blog/oved-digitali",
+    moreLabel: "קראו עוד: מה זה עובד דיגיטלי לעסק?",
     ctaHref: WHATSAPP_URL,
   },
   {
@@ -668,13 +670,30 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
                     <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-navy text-white">
                       <Icon size={21} />
                     </div>
-                    <h3 className="text-2xl font-black text-ink">{item.label}</h3>
+                    <h3 className="text-2xl font-black text-ink">
+                      {"moreHref" in item && item.moreHref ? (
+                        <a href={item.href} className="transition hover:text-action">
+                          {item.label}
+                        </a>
+                      ) : (
+                        item.label
+                      )}
+                    </h3>
                     <p className="mt-3 text-base font-medium leading-8 text-muted">{item.text}</p>
                     <div className="mt-4 flex flex-col items-start gap-2">
                       <a href={item.href} className="inline-flex items-center gap-1.5 text-sm font-black text-action">
                         {item.linkLabel}
                         <ArrowUpLeft size={16} />
                       </a>
+                      {"moreHref" in item && item.moreHref && item.moreLabel ? (
+                        <a
+                          href={item.moreHref}
+                          className="inline-flex items-center gap-1.5 text-sm font-black text-action"
+                        >
+                          {item.moreLabel}
+                          <ArrowUpLeft size={16} />
+                        </a>
+                      ) : null}
                       <a
                         href={item.ctaHref}
                         target="_blank"
