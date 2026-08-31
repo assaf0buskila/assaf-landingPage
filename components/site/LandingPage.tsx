@@ -115,8 +115,8 @@ const solutionItems = [
     icon: Zap,
     label: "אוטומציות עסקיות",
     text: "מעקב אחרי לידים, תזכורות, סנכרון בין מערכות. העבודה שחוזרת על עצמה נעשית לבד.",
-    href: "#contact",
-    linkLabel: "ליצירת קשר",
+    href: "/sherut/otomatziot",
+    linkLabel: "לעמוד השירות",
     ctaHref: WHATSAPP_URL,
   },
   {
@@ -671,7 +671,8 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
                       <Icon size={21} />
                     </div>
                     <h3 className="text-2xl font-black text-ink">
-                      {"moreHref" in item && item.moreHref ? (
+                      {item.href.startsWith("/sherut/") ||
+                      ("moreHref" in item && item.moreHref) ? (
                         <a href={item.href} className="transition hover:text-action">
                           {item.label}
                         </a>
