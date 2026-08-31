@@ -9,11 +9,7 @@ import {
   ChefHat,
   ChevronLeft,
   Clock3,
-  Contact,
   Globe,
-  LayoutGrid,
-  Mail,
-  Megaphone,
   MessageCircle,
   Mic,
   MousePointer2,
@@ -32,11 +28,28 @@ import { BrickDef, TechStackBuilder } from "@/components/ui/interactive-tech-sta
 import { AiHeroChat } from "@/components/site/AiHeroChat";
 import { ScrollEffects } from "@/components/site/ScrollEffects";
 import { VoiceAgentSection } from "@/components/site/VoiceAgentSection";
-import { INSTAGRAM_URL } from "@/lib/site";
+import { INSTAGRAM_URL, WHATSAPP_URL } from "@/lib/site";
 
-const whatsapp = "https://wa.me/972523393768";
-const email = "mailto:assaf.buskila10@gmail.com";
+const whatsapp = WHATSAPP_URL;
 const calendarCall = "https://calendar.app.google/K994sdXaeLw8rjCe8";
+
+const HERO_H1 =
+  "עובד דיגיטלי לעסק שעונה ללידים, מתאם פגישות וחוסך שעות עבודה";
+
+const heroLeadBlocks = [
+  {
+    title: "למי זה מתאים",
+    text: "לבעלי עסק קטן בישראל שמקבלים פניות בוואטסאפ, באתר או בטלפון, ולא מספיקים לענות כשהם בעבודה או בלילה.",
+  },
+  {
+    title: "איזה כאב זה פותר",
+    text: "ליד כותב בערב ולא מקבל תשובה, אז הוא עובר הלאה. תיאום פגישות ידני גוזל שעות, והפניות מתפזרות בין וואטסאפ לאתר.",
+  },
+  {
+    title: "דוגמה מוחשית לתהליך",
+    text: "לקוח שולח הודעה. העובד הדיגיטלי עונה בעברית, שואל מה צריך, מציע שעה פנויה, ושולח לכם סיכום בוואטסאפ. אפשר גם לשמוע סוכן קולי חי בעמוד הזה.",
+  },
+];
 
 const navItems = [
   { href: "#solutions", label: "פתרונות" },
@@ -89,29 +102,28 @@ const faqItems = [
 
 const solutionItems = [
   {
+    icon: Bot,
+    label: "עובד AI לוואטסאפ ולאתר",
+    text: "עובד דיגיטלי שעונה ללקוחות בוואטסאפ ובאתר, מסנן, מתאם ומוכר. בטון שלכם, 24/7.",
+    href: "/blog/oved-digitali",
+    linkLabel: "קראו עוד: מה זה עובד דיגיטלי לעסק?",
+    ctaHref: WHATSAPP_URL,
+  },
+  {
     icon: Zap,
     label: "אוטומציות עסקיות",
     text: "מעקב אחרי לידים, תזכורות, סנכרון בין מערכות. העבודה שחוזרת על עצמה נעשית לבד.",
-    href: null,
-  },
-  {
-    icon: Bot,
-    label: "סוכן AI לעסק",
-    text: "עובד דיגיטלי שעונה ללקוחות בוואטסאפ ובאתר, מסנן, מתאם ומוכר. בטון שלכם, 24/7.",
-    href: null,
+    href: "#contact",
+    linkLabel: "ליצירת קשר",
+    ctaHref: WHATSAPP_URL,
   },
   {
     icon: Mic,
-    label: "סוכן קולי",
+    label: "סוכן קולי בעברית",
     text: "עונה לטלפון כשאתם עסוקים, קובע תורים ומסכם לכם בוואטסאפ. אפשר לשמוע אותו כאן בעמוד.",
     href: "/blog/soken-koli",
     linkLabel: "קראו עוד: מה זה סוכן קולי לעסק קטן בישראל?",
-  },
-  {
-    icon: LayoutGrid,
-    label: "אפליקציות ופיצ'רים",
-    text: "כלים פנימיים, דשבורדים וחיבורים בין מערכות, בדיוק לפי איך שהעסק שלכם עובד.",
-    href: null,
+    ctaHref: WHATSAPP_URL,
   },
   {
     icon: Globe,
@@ -119,18 +131,7 @@ const solutionItems = [
     text: "המקצוע שממנו התחלתי: אתר שמסביר מהר, מרגיש כמו העסק ומכניס פניות בוואטסאפ.",
     href: "/blog/bniat-atarim",
     linkLabel: "קראו עוד: מה זה בניית אתרים לעסק קטן בישראל?",
-  },
-  {
-    icon: Contact,
-    label: "כרטיס ביקור דיגיטלי",
-    text: "דרך מהירה ומשתלמת להיראות מקצועי: כל הפרטים, הקישורים והפנייה בלחיצה אחת.",
-    href: null,
-  },
-  {
-    icon: Megaphone,
-    label: "סושיאל מדיה ותוכן",
-    text: "תוכן ממותג לרשתות בעזרת AI: פוסטים, גרפיקה וסטוריז, בקצב שהעסק באמת צריך.",
-    href: null,
+    ctaHref: WHATSAPP_URL,
   },
 ];
 
@@ -424,8 +425,6 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
     alternateName: ["אסף בוסקילה", "האתר של אסף"],
     url: "https://www.assafweb.com/",
     image: "https://www.assafweb.com/assets/og-cover.jpg",
-    email: "assaf.buskila10@gmail.com",
-    telephone: "+972523393768",
     areaServed: "Israel",
     address: {
       "@type": "PostalAddress",
@@ -489,14 +488,14 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
         "@type": "WebPage",
         "@id": `${siteUrl}/#webpage`,
         url: `${siteUrl}/`,
-        name: "האתר של אסף | עובד דיגיטלי לעסק: AI, אוטומציות ואתרים",
+        name: "האתר של אסף | עובד דיגיטלי לעסק שעונה ללידים, מתאם פגישות וחוסך שעות עבודה",
         isPartOf: { "@id": `${siteUrl}/#website` },
         about: { "@id": `${siteUrl}/#assaf` },
         inLanguage: "he",
-        dateModified: "2026-08-25",
+        dateModified: "2026-08-31",
         speakable: {
           "@type": "SpeakableSpecification",
-          cssSelector: ["h1", ".hero-copy p"],
+          cssSelector: ["h1", ".hero-lead-blocks p"],
         },
       },
       {
@@ -553,7 +552,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
           </div>
         </header>
 
-        <section data-bg="#ffffff" data-mia-section="hero" className="hero-section relative min-h-screen overflow-hidden pt-28 md:pt-32">
+        <section data-bg="#ffffff" data-mia-section="hero" className="hero-section relative min-h-screen overflow-x-hidden pt-28 pb-24 md:pt-32">
           <BackgroundShader className="hero-background-shader" />
           <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-paper to-transparent" />
 
@@ -564,31 +563,28 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
 
             <div className="hero-copy max-w-3xl space-y-5 md:space-y-6">
               <span className="hero-kicker">סטודיו לפתרונות AI לעסקים</span>
-              <h1 className="max-w-3xl text-balance text-[clamp(2.5rem,4.4vw,4.5rem)] font-black leading-[1.02] tracking-normal text-ink">
-                {["עובד דיגיטלי ", "שעונה, מוכר ", "ומתאם. ", "גם ב-2 בלילה"].map((line, index) => (
-                  <span
-                    key={line}
-                    className="hero-word hero-word-line hero-word-animated"
-                    style={{ animationDelay: `${index * 80}ms` }}
-                  >
-                    {line}
-                  </span>
-                ))}
+              <h1 className="hero-word-animated max-w-3xl text-balance text-[clamp(2.15rem,3.8vw,3.65rem)] font-black leading-[1.12] tracking-normal text-ink">
+                {HERO_H1}
               </h1>
 
-              <p className="max-w-2xl text-lg font-medium leading-8 text-muted md:text-xl md:leading-9">
-                אני אסף בוסקילה, מהנדס פתרונות AI. אני בונה לעסקים סוכנים חכמים, אוטומציות
-                ואפליקציות שתופסים כל פנייה ועונים כמוכם, כדי שיישאר לכם זמן לעבודה עצמה. וכן, גם אתרים.
-              </p>
-
-              <div className="hero-cta-row flex flex-col gap-3 sm:flex-row">
-                <a href="#contact" className="btn-primary magnetic" data-mia-cta="hero_whatsapp">
-                  בואו נדבר בוואטסאפ
+              <div className="hero-lead-blocks grid gap-4">
+                {heroLeadBlocks.map((block) => (
+                  <div key={block.title}>
+                    <p className="text-sm font-black text-navy">{block.title}</p>
+                    <p className="mt-1 text-base font-medium leading-7 text-muted">
+                      {block.text}
+                    </p>
+                  </div>
+                ))}
+                <a
+                  href={whatsapp}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-primary magnetic w-fit"
+                  data-mia-cta="hero_fit_check"
+                >
+                  בדיקת התאמה קצרה
                   <MessageCircle size={19} />
-                </a>
-                <a href="#voice" className="btn-secondary magnetic" data-mia-cta="hero_voice">
-                  לשמוע את הסוכן
-                  <ChevronLeft size={19} />
                 </a>
               </div>
             </div>
@@ -664,7 +660,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
               שמתחבר למה שכבר יש לכם.
             </p>
 
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3" aria-label="הפתרונות שאני בונה">
+            <div className="grid gap-4 md:grid-cols-2" aria-label="הפתרונות שאני בונה">
               {solutionItems.map((item) => {
                 const Icon = item.icon;
                 return (
@@ -674,12 +670,22 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
                     </div>
                     <h3 className="text-2xl font-black text-ink">{item.label}</h3>
                     <p className="mt-3 text-base font-medium leading-8 text-muted">{item.text}</p>
-                    {item.href ? (
-                      <a href={item.href} className="mt-4 inline-flex items-center gap-1.5 text-sm font-black text-action">
+                    <div className="mt-4 flex flex-col items-start gap-2">
+                      <a href={item.href} className="inline-flex items-center gap-1.5 text-sm font-black text-action">
                         {item.linkLabel}
                         <ArrowUpLeft size={16} />
                       </a>
-                    ) : null}
+                      <a
+                        href={item.ctaHref}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-black text-navy"
+                        data-mia-cta="service_fit_check"
+                      >
+                        בדיקת התאמה קצרה
+                        <MessageCircle size={16} />
+                      </a>
+                    </div>
                   </div>
                 );
               })}
@@ -882,20 +888,16 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
                 אפשר להפוך לאוטומטי, זה בדיוק בשביל זה יש שיחת אבחון.
               </p>
 
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="grid gap-3">
                 <a href={whatsapp} target="_blank" rel="noreferrer" className="btn-primary" data-mia-cta="contact_whatsapp">
                   וואטסאפ לאסף
                   <MessageCircle size={19} />
-                </a>
-                <a href={email} className="btn-secondary" data-mia-cta="contact_email">
-                  מייל ישיר
-                  <Mail size={19} />
                 </a>
                 <a
                   href={calendarCall}
                   target="_blank"
                   rel="noreferrer"
-                  className="contact-call sm:col-span-2"
+                  className="contact-call"
                   data-mia-cta="contact_calendar"
                 >
                   <span className="contact-call__icon">
@@ -937,11 +939,6 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
         </div>
         <div className="section-shell relative z-10 mt-10 flex flex-col gap-3 border-t border-white/10 pt-5 text-sm font-bold text-white/60 md:flex-row md:items-center md:justify-between">
           <span>© 2026 אסף בוסקילה</span>
-          <span dir="ltr" className="flex flex-wrap items-center gap-x-2">
-            <a href={email} className="transition hover:text-white">assaf.buskila10@gmail.com</a>
-            <span aria-hidden="true">·</span>
-            <a href="tel:+972523393768" className="transition hover:text-white">+972 52 339 3768</a>
-          </span>
         </div>
       </footer>
     </>

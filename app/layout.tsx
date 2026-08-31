@@ -8,9 +8,10 @@ const assistant = Assistant({
   display: "swap",
 });
 
-const title = "האתר של אסף | עובד דיגיטלי לעסק: AI, אוטומציות ואתרים";
+const title =
+  "האתר של אסף | עובד דיגיטלי לעסק שעונה ללידים, מתאם פגישות וחוסך שעות עבודה";
 const description =
-  "אסף בוסקילה בונה לעסקים עובדים דיגיטליים: סוכני AI שעונים ללקוחות, אוטומציות שחוסכות שעות, סוכן קולי בעברית, אפליקציות ואתרים. הכול במקום אחד, עם ליווי אישי עד שזה עובד באמת.";
+  "עובד דיגיטלי לעסק שעונה ללידים, מתאם פגישות וחוסך שעות עבודה. אסף בוסקילה בונה סוכני AI בוואטסאפ ובאתר, אוטומציות וסוכן קולי בעברית לעסקים קטנים בישראל.";
 // Next Metadata emits the homepage without a trailing slash when
 // trailingSlash is unset. Sitemap loc matches that emitted form.
 const siteUrl = "https://www.assafweb.com";

@@ -213,6 +213,15 @@ textarea {
   align-items: stretch;
 }
 
+.hero-lead-blocks {
+  max-width: 42rem;
+}
+
+.hero-lead-blocks > div {
+  padding-inline-start: 0.85rem;
+  border-inline-start: 2px solid rgb(var(--action-rgb) / 0.35);
+}
+
 .ai-hero-chat {
   position: relative;
   overflow: hidden;
