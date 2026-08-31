@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { FormEvent, useState } from "react";
 import {
   ArrowUpLeft,
@@ -256,14 +255,6 @@ const testimonials = [
     quote: "באתי בלי רעיון סגור. אסף עזר לי להבין מה נכון לעסק, מה צריך להופיע באתר ואיך להפוך מחשבה למשהו שאנשים באמת מבינים.",
     name: "לקוח אתר תדמית",
   },
-];
-
-const storyLines = [
-  "רוב העסקים לא מפסידים לקוחות בגלל המחיר.",
-  "הם מפסידים אותם כשאף אחד לא עונה.",
-  "עובד דיגיטלי תופס כל פנייה, עונה מיד, ונשמע בדיוק כמוכם.",
-  "פתאום העסק מרגיש גדול, זמין ומסודר, גם כשאתם באמצע עבודה.",
-  "ובסוף זה אומר יותר פניות, יותר זמן, ויותר כסף שנשאר אצלכם.",
 ];
 
 function AnimatedNumber({
@@ -757,49 +748,6 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
                 </div>
               );
             })}
-          </div>
-        </section>
-
-        <section id="story" data-bg="#d9ecfb" data-mia-section="story" className="story-section relative overflow-hidden text-ink">
-          <div className="story-blue-blur-bg" />
-          <div className="story-pin">
-          <div className="section-shell story-intro-row">
-            <div className="story-portrait-chip" aria-hidden="true">
-              <Image
-                src="/assets/assaf-photo.jpg"
-                alt="אסף בוסקילה"
-                width={1100}
-                height={880}
-                sizes="92px"
-                className="story-portrait-image"
-              />
-            </div>
-
-            <div className="story-intro-copy">
-              <p className="max-w-md text-lg font-medium leading-8 text-navy/85">
-                טכנולוגיה טובה לא אמורה לסבך אתכם. היא צריכה לתפוס את העבודה שחוזרת
-                על עצמה, לענות כשאתם לא פנויים, ולהשאיר לכם את מה שאתם הכי טובים בו.
-              </p>
-            </div>
-          </div>
-
-          <div className="story-wide-flow px-4 md:px-10">
-            <div className="story-scroll-copy text-[clamp(1.75rem,3.8vw,4.2rem)] font-black leading-[1.12] tracking-normal">
-              {storyLines.map((line) => (
-                <span key={line} className="story-line text-balance">
-                  {line.split(" ").map((word, wordIndex) => (
-                    <span key={`${word}-${wordIndex}`} className="story-word">
-                      {word}
-                    </span>
-                  ))}
-                </span>
-              ))}
-            </div>
-            <div className="story-result-panel">
-              <span>התוצאה</span>
-              <strong>עסק שמרגיש כאילו יש לו צוות שלם, גם כשהוא עסק של אדם אחד.</strong>
-            </div>
-          </div>
           </div>
         </section>
 

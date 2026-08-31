@@ -141,112 +141,6 @@ export function ScrollEffects() {
       }
 
       // ────────────────────────────────────────────────────────────────────────
-      // 7. STORY PER-WORD REVEAL (Magic-UI-style)
-      // ────────────────────────────────────────────────────────────────────────
-      const storySection = qs<HTMLElement>(".story-section");
-      const storyWords = qsa<HTMLElement>(".story-word");
-      const storyResultPanel = qs<HTMLElement>(".story-result-panel");
-
-      // Also keep existing portrait / intro tweens that live inside the old
-      // per-LINE scrub. We layer the new per-WORD spec on top with its own
-      // trigger while preserving the portrait/intro chip intro.
-      const storyPortrait = qs<HTMLElement>(".story-portrait-chip");
-      const storyIntro = qs<HTMLElement>(".story-intro-copy");
-      const storyPin = qs<HTMLElement>(".story-pin");
-      const storyLines = qsa<HTMLElement>(".story-line");
-
-      // ONE pinned timeline owns the whole story act. The old setup layered a
-      // global per-word scrub on top of a per-line karaoke (with dimming), and
-      // the two drifted out of sync: later lines could light up while earlier
-      // ones were still ghosts. Now words reveal strictly in reading order and
-      // stay bright once revealed.
-      if (storySection && storyPin && storyLines.length > 0 && storyWords.length > 0) {
-        const isMobile = window.matchMedia("(max-width: 640px)").matches;
-        const storyStep = isMobile ? 0.54 : 0.44;
-        const introOffset = isMobile ? 0.26 : 0.34;
-
-        gsap.set(storyWords, { opacity: 0.16, yPercent: 14 });
-        if (storyResultPanel) {
-          gsap.set(storyResultPanel, { opacity: 0, y: 34 });
-        }
-        if (storyPortrait) {
-          gsap.set(storyPortrait, {
-            opacity: 0,
-            y: isMobile ? 12 : 20,
-            scale: 0.88,
-            filter: isMobile ? "blur(0px)" : "blur(8px)",
-          });
-        }
-        if (storyIntro) {
-          gsap.set(storyIntro, {
-            opacity: 0,
-            y: isMobile ? 12 : 18,
-            filter: isMobile ? "blur(0px)" : "blur(6px)",
-          });
-        }
-
-        const storyTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: storySection,
-            start: isMobile ? "top top" : "top 8%",
-            end: () => `+=${window.innerHeight * (isMobile ? 1.9 : 1.6)}`,
-            scrub: isMobile ? 0.7 : 0.5,
-            pin: storyPin,
-            pinSpacing: true,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-          },
-        });
-
-        if (storyPortrait) {
-          storyTl.to(
-            storyPortrait,
-            {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              filter: "blur(0px)",
-              duration: isMobile ? 0.45 : 0.55,
-              ease: "power3.out",
-            },
-            0
-          );
-        }
-
-        if (storyIntro) {
-          storyTl.to(
-            storyIntro,
-            {
-              opacity: 1,
-              y: 0,
-              filter: "blur(0px)",
-              duration: isMobile ? 0.5 : 0.65,
-              ease: "power3.out",
-            },
-            0.08
-          );
-        }
-
-        storyLines.forEach((line, index) => {
-          const lineWords = line.querySelectorAll<HTMLElement>(".story-word");
-          if (!lineWords.length) return;
-          storyTl.to(
-            lineWords,
-            { opacity: 1, yPercent: 0, duration: 0.6, ease: "power2.out", stagger: 0.05 },
-            introOffset + index * storyStep
-          );
-        });
-
-        if (storyResultPanel) {
-          storyTl.to(
-            storyResultPanel,
-            { opacity: 1, y: 0, duration: 0.55, ease: "power2.out" },
-            introOffset + storyLines.length * storyStep
-          );
-        }
-      }
-
-      // ────────────────────────────────────────────────────────────────────────
       // 8. STATS COUNT-UP
       // ────────────────────────────────────────────────────────────────────────
       qsa<HTMLElement>(".count-target[data-countup]").forEach((el) => {
@@ -285,9 +179,8 @@ export function ScrollEffects() {
       // ────────────────────────────────────────────────────────────────────────
       // Transform-only, like the fields below: fromTo applies its from-state at
       // page load, so an opacity 0 start hides the site's only lead form until
-      // a trigger fires. The pinned story above changes the page height, which
-      // is exactly the situation that leaves a trigger stale. A slide-and-turn
-      // entrance reads the same and can never cost a lead.
+      // a trigger fires. A slide-and-turn entrance reads the same and can never
+      // cost a lead.
       gsap.fromTo(
         ".contact-form-card",
         { y: 46, rotateY: -7 },
