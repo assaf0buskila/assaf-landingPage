@@ -2,33 +2,33 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronLeft, MessageCircle } from "lucide-react";
 import {
-  ovedDigitaliFaqs,
-  ovedDigitaliProcess,
-  ovedDigitaliServiceDefinition,
-  ovedDigitaliServiceDescription,
-  ovedDigitaliServicePath,
-  ovedDigitaliServiceTitle,
-  ovedDigitaliServiceUrl,
-} from "@/lib/oved-digitali-service";
+  otomatziotFaqs,
+  otomatziotProcess,
+  otomatziotServiceDefinition,
+  otomatziotServiceDescription,
+  otomatziotServicePath,
+  otomatziotServiceTitle,
+  otomatziotServiceUrl,
+} from "@/lib/otomatziot-service";
 import { SITE_URL, WHATSAPP_URL } from "@/lib/site";
 
-const title = `${ovedDigitaliServiceTitle} | האתר של אסף`;
+const title = `${otomatziotServiceTitle} | האתר של אסף`;
 
 export const metadata: Metadata = {
   title,
-  description: ovedDigitaliServiceDescription,
+  description: otomatziotServiceDescription,
   authors: [{ name: "אסף בוסקילה", url: SITE_URL }],
   alternates: {
-    canonical: ovedDigitaliServicePath,
+    canonical: otomatziotServicePath,
     languages: {
-      "he-IL": ovedDigitaliServicePath,
+      "he-IL": otomatziotServicePath,
     },
     types: {},
   },
   openGraph: {
     title,
-    description: ovedDigitaliServiceDescription,
-    url: ovedDigitaliServiceUrl,
+    description: otomatziotServiceDescription,
+    url: otomatziotServiceUrl,
     siteName: "האתר של אסף",
     locale: "he_IL",
     type: "website",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title,
-    description: ovedDigitaliServiceDescription,
+    description: otomatziotServiceDescription,
     images: ["/assets/og-cover.jpg"],
   },
 };
@@ -54,13 +54,13 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Service",
-      "@id": `${ovedDigitaliServiceUrl}#service`,
-      name: "עובד דיגיטלי",
-      alternateName: ["סוכן AI", "עובד AI לוואטסאפ ולאתר"],
-      description: ovedDigitaliServiceDescription,
-      url: ovedDigitaliServiceUrl,
+      "@id": `${otomatziotServiceUrl}#service`,
+      name: "אוטומציות לעסקים קטנים",
+      alternateName: ["אוטומציות עסקיות", "אוטומציות לעסק קטן"],
+      description: otomatziotServiceDescription,
+      url: otomatziotServiceUrl,
       inLanguage: "he",
-      serviceType: "עובד דיגיטלי",
+      serviceType: "אוטומציות לעסקים",
       areaServed: {
         "@type": "Country",
         name: "IL",
@@ -72,12 +72,12 @@ const jsonLd = {
         alternateName: ["אסף בוסקילה", "האתר של אסף"],
         url: `${SITE_URL}/`,
       },
-      mainEntityOfPage: ovedDigitaliServiceUrl,
+      mainEntityOfPage: otomatziotServiceUrl,
     },
     {
       "@type": "FAQPage",
-      "@id": `${ovedDigitaliServiceUrl}#faq`,
-      mainEntity: ovedDigitaliFaqs.map((item) => ({
+      "@id": `${otomatziotServiceUrl}#faq`,
+      mainEntity: otomatziotFaqs.map((item) => ({
         "@type": "Question",
         name: item.q,
         acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -86,7 +86,7 @@ const jsonLd = {
   ],
 };
 
-export default function OvedDigitaliServicePage() {
+export default function OtomatziotServicePage() {
   return (
     <main className="relative min-h-[70vh] bg-paper pb-20 pt-28 md:pt-32">
       <script
@@ -102,64 +102,52 @@ export default function OvedDigitaliServicePage() {
           <span className="mx-2 text-muted" aria-hidden="true">
             /
           </span>
-          עובד דיגיטלי
+          אוטומציות לעסקים קטנים
         </p>
 
         <h1 className="mt-4 text-balance text-4xl font-black leading-tight text-ink md:text-6xl">
-          {ovedDigitaliServiceTitle}
+          {otomatziotServiceTitle}
         </h1>
 
         <p className="service-definition premium-panel mt-8 p-6 text-lg font-medium leading-9 text-ink">
-          {ovedDigitaliServiceDefinition}
+          {otomatziotServiceDefinition}
         </p>
 
         <div className="mt-12 space-y-6 text-lg font-medium leading-9 text-muted">
           <h2 className="text-3xl font-black leading-tight text-ink">הבעיה</h2>
           <p>
-            עסק קטן בישראל מקבל פניות בוואטסאפ ובאתר כל היום. חלק מגיעות באמצע עבודה. חלק בערב.
-            חלק אחרי שהדלת נסגרה. בלי מענה מיידי הליד עובר הלאה. תיאום פגישות ידני גוזל שעות,
-            והשיחות מתפזרות בין וואטסאפ להודעות באתר. לא חסר ביקוש. חסר מי שעונה בזמן.
+            עסק קטן בישראל מפסיד שעות על עבודה שחוזרת על עצמה. ליד נכנס באתר, מישהו מעתיק לגיליון,
+            ואז שוכחים לחזור. תזכורת לתור נשלחת ידנית, או לא נשלחת בכלל. וואטסאפ, טפסים ויומן לא
+            מדברים אחד עם השני. לא חסר ביקוש. חסר מי שעוקב בזמן.
           </p>
 
           <h2 className="text-3xl font-black leading-tight text-ink">איך זה עובד</h2>
           <p>
-            לקוח שולח הודעה. העובד הדיגיטלי עונה בעברית, בטון של העסק. הוא שואל מה צריך, מסנן מה
-            רלוונטי, ומציע שעה פנויה כשמתאים לקבוע. סיכום מגיע אליכם בוואטסאפ. אם צריך אתכם, הוא
-            מעביר עם ההקשר: מה נשאל, מה כבר נענה, ומה חסר.
+            ממפים את מה שחוזר על עצמו. ליד מגיע, האוטומציה פותחת מעקב. תור מתקרב, נשלחת תזכורת.
+            משימה נתקעת, אתם מקבלים הודעה. החיבור הוא לכלים שכבר יש: טפסים, גיליונות, יומן ווואטסאפ.
+            בלי להחליף את כל התשתית, ובלי לבנות בוט שעונה במקומכם.
           </p>
           <p>
-            יש גם גרסה קולית לטלפון. בעמוד הבית, בסקשן{" "}
-            <Link href="/#voice" className="font-black text-action underline-offset-4 hover:underline">
-              הסוכן הקולי
-            </Link>
-            , רץ דמו חי. הסבר קצר על המושג עצמו נמצא במאמר{" "}
+            אם מה שחסר הוא מי שעונה ללידים בוואטסאפ ובאתר, זה{" "}
             <Link
-              href="/blog/oved-digitali"
+              href="/sherut/oved-digitali"
               className="font-black text-action underline-offset-4 hover:underline"
             >
-              מה זה עובד דיגיטלי לעסק?
+              עובד דיגיטלי
             </Link>
-            , בלי לחזור כאן על אותו טקסט.
+            . האוטומציה כאן חוסכת את השעות שנשרפות על מעקב, תזכורות וסנכרון.
           </p>
 
           <h2 className="text-3xl font-black leading-tight text-ink">למי זה מתאים</h2>
           <p>
-            לבעלי עסק קטן בישראל שמקבלים פניות בוואטסאפ או באתר, ולא מספיקים לענות כשהם בעבודה
-            או בלילה. אם הפניות מגיעות בהודעות והתורים נקבעים בשיחה, זה רלוונטי. אם אין בכלל
-            פניות, קודם צריך מקום שהלקוח ימצא אתכם. אם מה שחסר הוא מעקב, תזכורות וסנכרון בין
-            מערכות, זה{" "}
-            <Link
-              href="/sherut/otomatziot"
-              className="font-black text-action underline-offset-4 hover:underline"
-            >
-              עמוד האוטומציות
-            </Link>
-            .
+            לבעלי עסק קטן בישראל שכבר מקבלים פניות, ומבזבזים זמן על העתקה בין מערכות, מעקב אחרי
+            לידים, או תזכורות ידניות. אם אין בכלל פניות, קודם צריך מקום שהלקוח ימצא אתכם. אם הכאב
+            הוא מענה ללקוחות בזמן אמת, מתחילים מעובד דיגיטלי.
           </p>
 
           <h2 className="text-3xl font-black leading-tight text-ink">התהליך</h2>
           <ol className="list-decimal space-y-4 pr-5">
-            {ovedDigitaliProcess.map((step) => (
+            {otomatziotProcess.map((step) => (
               <li key={step.title}>
                 <strong className="text-ink">{step.title}.</strong> {step.text}
               </li>
@@ -168,7 +156,7 @@ export default function OvedDigitaliServicePage() {
 
           <h2 className="text-3xl font-black leading-tight text-ink">שאלות נפוצות</h2>
           <div className="space-y-3">
-            {ovedDigitaliFaqs.map((item) => (
+            {otomatziotFaqs.map((item) => (
               <details key={item.q} className="faq-item">
                 <summary>
                   <span>{item.q}</span>
