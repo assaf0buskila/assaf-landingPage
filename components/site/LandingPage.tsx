@@ -105,8 +105,8 @@ const solutionItems = [
     icon: Mic,
     label: "סוכן קולי",
     text: "עונה לטלפון כשאתם עסוקים, קובע תורים ומסכם לכם בוואטסאפ. אפשר לשמוע אותו כאן בעמוד.",
-    href: "#voice",
-    linkLabel: "לשמוע אותו חי",
+    href: "/blog/soken-koli",
+    linkLabel: "קראו עוד: מה זה סוכן קולי לעסק קטן בישראל?",
   },
   {
     icon: LayoutGrid,

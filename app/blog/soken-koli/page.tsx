@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Clock3, Mail, MessageCircle } from "lucide-react";
-import { ovedDigitaliPost as post } from "@/lib/blog";
+import { sokenKoliPost as post } from "@/lib/blog";
 import { CALENDAR_URL, EMAIL, SITE_URL, WHATSAPP_URL } from "@/lib/site";
 
 const title = `${post.title} | האתר של אסף`;
@@ -83,7 +83,7 @@ const jsonLd = {
   ],
 };
 
-export default function OvedDigitaliPage() {
+export default function SokenKoliPage() {
   return (
     <main className="relative min-h-[70vh] bg-paper pb-20 pt-28 md:pt-32">
       <script
@@ -122,49 +122,43 @@ export default function OvedDigitaliPage() {
         <div className="blog-prose mt-12 space-y-6 text-lg font-medium leading-9 text-muted">
           <h2 className="text-3xl font-black leading-tight text-ink">מה הוא עושה ביום רגיל</h2>
           <p>
-            עסק קטן בישראל מקבל פניות בוואטסאפ, בטופס באתר, ולפעמים בטלפון. חלק מגיעות באמצע
-            העבודה. חלק אחרי שהדלת נסגרה. עובד דיגיטלי יושב על הערוצים האלה ועונה כמו העסק:
-            מה כלול, כמה זה עולה, מתי יש מקום, ומה הצעד הבא.
+            עסק קטן בישראל מקבל שיחות באמצע העבודה, אחרי שהדלת נסגרה, ולפעמים בשתיים בלילה.
+            סוכן קולי יושב על הקו בעברית ועונה כמו העסק: מה כלול, מתי יש מקום, ומה הצעד הבא.
           </p>
           <p>
-            אם השאלה פשוטה, הוא סוגר אותה. אם צריך תור, הוא מתאם. אם מישהו מתאים לשירות, הוא
-            ממשיך את השיחה במקום לתת לפנייה ליפול. אם צריך אתכם, הוא מעביר עם ההקשר: מה הלקוח
-            שאל, מה כבר נענה, ומה חסר.
+            אם השאלה פשוטה, הוא סוגר אותה. אם צריך תור, הוא מתאם ליומן. אחר כך הוא שולח סיכום
+            בוואטסאפ, כדי שתראו מה נאמר בלי לחזור על השיחה. אם צריך אתכם, הוא מעביר עם ההקשר.
           </p>
           <p>
-            יש גם גרסה קולית: סוכן שעונה לטלפון בעברית. בעמוד הבית, בסקשן{" "}
+            בעמוד הבית, בסקשן{" "}
             <Link href="/#voice" className="font-black text-action underline-offset-4 hover:underline">
               הסוכן הקולי
             </Link>
-            , רץ דמו חי. אפשר לשמוע איך זה מרגיש לפני שמדברים על בנייה. מה זה סוכן קולי
-            מוסבר ב{" "}
-            <Link href="/blog/soken-koli" className="font-black text-action underline-offset-4 hover:underline">
-              מה זה סוכן קולי לעסק קטן בישראל?
+            , רץ דמו חי. אפשר לשמוע איך זה מרגיש לפני שמדברים על בנייה. סוכן קולי הוא גרסה
+            קולית של{" "}
+            <Link href="/blog/oved-digitali" className="font-black text-action underline-offset-4 hover:underline">
+              עובד דיגיטלי
             </Link>
-            .
+            : אותו רעיון, על הטלפון במקום על וואטסאפ או על האתר.
           </p>
 
           <h2 className="text-3xl font-black leading-tight text-ink">מה הוא לא</h2>
           <p>
             הוא לא מחליף את בעל העסק. הוא לא מחליט בשבילכם מי הלקוח הנכון, ולא סוגר לבד עסקה
-            שדורשת שיקול דעת. הוא גם לא הבוט של כולם: בלי ידע על השירותים והמחירים של העסק
-            הספציפי, זה רק תפריט מדבר.
+            שדורשת שיקול דעת. הוא גם לא מענה מוקלט: בלי ידע על השירותים והשעות של העסק הספציפי,
+            זה רק תפריט מדבר.
           </p>
           <p>
             המטרה צנועה יותר. רוב העסקים לא מפסידים לקוחות בגלל המחיר. הם מפסידים אותם כשאף
-            אחד לא עונה.
+            אחד לא מרים.
           </p>
 
           <h2 className="text-3xl font-black leading-tight text-ink">איך זה נבנה אצל אסף בוסקילה</h2>
           <p>
             אני אסף בוסקילה, מהנדס פתרונות AI. אני בונה לעסקים קטנים בישראל עובדים דיגיטליים:
-            אוטומציות שחוסכות שעות, סוכן שעונה בוואטסאפ ובאתר, סוכן קולי בעברית, אפליקציות
-            וכלים פנימיים, וגם אתרים, דפי נחיתה וכרטיס ביקור דיגיטלי. כל השקה כוללת חודש ליווי.
-            מה האתר עצמו צריך לכלול מוסבר ב{" "}
-            <Link href="/blog/bniat-atarim" className="font-black text-action underline-offset-4 hover:underline">
-              מה זה בניית אתרים לעסק קטן בישראל?
-            </Link>
-            .
+            אוטומציות שחוסכות שעות, סוכן שעונה בוואטסאפ ובאתר, סוכן קולי בעברית שעונה לטלפון,
+            קובע תורים ומסכם בוואטסאפ, אפליקציות וכלים פנימיים, וגם אתרים, דפי נחיתה וכרטיס
+            ביקור דיגיטלי. כל השקה כוללת חודש ליווי.
           </p>
           <p>
             אין מחירון ציבורי. אחרי שיחת אבחון קצרה נשלחת הצעה לפי ההיקף האמיתי. את רשימת
@@ -212,8 +206,8 @@ export default function OvedDigitaliPage() {
 
           <h2 className="text-3xl font-black leading-tight text-ink">איך מתחילים</h2>
           <p>
-            אם יש עסק ופניות שנופלות, כתבו בוואטסאפ או קבעו שיחת היכרות של 15 דקות. גם מייל
-            עובד. אפשר גם לחזור ל{" "}
+            אם יש עסק ושיחות שנופלות, כתבו בוואטסאפ או קבעו שיחת היכרות של 15 דקות. אפשר גם
+            לחזור ל{" "}
             <Link href="/#contact" className="font-black text-action underline-offset-4 hover:underline">
               יצירת הקשר
             </Link>{" "}
