@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Clock3, Mail, MessageCircle } from "lucide-react";
+import { Clock3, MessageCircle } from "lucide-react";
 import { sokenKoliPost as post } from "@/lib/blog";
-import { CALENDAR_URL, EMAIL, SITE_URL, WHATSAPP_URL } from "@/lib/site";
+import { CALENDAR_URL, SITE_URL, WHATSAPP_URL } from "@/lib/site";
 
 const title = `${post.title} | האתר של אסף`;
 
@@ -75,8 +75,6 @@ const jsonLd = {
       alternateName: ["אסף בוסקילה", "האתר של אסף"],
       url: `${SITE_URL}/`,
       image: `${SITE_URL}/assets/og-cover.jpg`,
-      email: EMAIL,
-      telephone: "+972523393768",
       jobTitle: "AI Solutions Engineer",
       areaServed: "Israel",
     },
@@ -215,20 +213,16 @@ export default function SokenKoliPage() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-3 sm:grid-cols-2">
+        <div className="mt-12 grid gap-3">
           <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-primary">
             וואטסאפ לאסף
             <MessageCircle size={19} />
-          </a>
-          <a href={`mailto:${EMAIL}`} className="btn-secondary">
-            מייל ישיר
-            <Mail size={19} />
           </a>
           <a
             href={CALENDAR_URL}
             target="_blank"
             rel="noreferrer"
-            className="contact-call sm:col-span-2"
+            className="contact-call"
           >
             <span className="contact-call__icon">
               <Clock3 size={20} />
