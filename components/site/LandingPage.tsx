@@ -10,7 +10,6 @@ import {
   ChevronLeft,
   Clock3,
   Globe,
-  Mail,
   MessageCircle,
   Mic,
   MousePointer2,
@@ -32,7 +31,6 @@ import { VoiceAgentSection } from "@/components/site/VoiceAgentSection";
 import { INSTAGRAM_URL, WHATSAPP_URL } from "@/lib/site";
 
 const whatsapp = WHATSAPP_URL;
-const email = "mailto:assaf.buskila10@gmail.com";
 const calendarCall = "https://calendar.app.google/K994sdXaeLw8rjCe8";
 
 const HERO_H1 =
@@ -890,20 +888,16 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
                 אפשר להפוך לאוטומטי, זה בדיוק בשביל זה יש שיחת אבחון.
               </p>
 
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="grid gap-3">
                 <a href={whatsapp} target="_blank" rel="noreferrer" className="btn-primary" data-mia-cta="contact_whatsapp">
                   וואטסאפ לאסף
                   <MessageCircle size={19} />
-                </a>
-                <a href={email} className="btn-secondary" data-mia-cta="contact_email">
-                  מייל ישיר
-                  <Mail size={19} />
                 </a>
                 <a
                   href={calendarCall}
                   target="_blank"
                   rel="noreferrer"
-                  className="contact-call sm:col-span-2"
+                  className="contact-call"
                   data-mia-cta="contact_calendar"
                 >
                   <span className="contact-call__icon">
