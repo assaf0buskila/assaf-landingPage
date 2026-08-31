@@ -4,7 +4,7 @@ import { SITE_URL } from "@/lib/site";
 
 const title = "בלוג | האתר של אסף";
 const description =
-  "הסברים קצרים בעברית על עובד דיגיטלי, סוכני AI ואוטומציות לעסקים קטנים בישראל.";
+  "הסברים קצרים בעברית על עובד דיגיטלי, סוכן קולי ואוטומציות לעסקים קטנים בישראל.";
 
 export const metadata: Metadata = {
   title,
