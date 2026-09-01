@@ -4,7 +4,7 @@ import { Clock3, Mail, MessageCircle } from "lucide-react";
 import { bniatAtarimPost as post } from "@/lib/blog";
 import { CALENDAR_URL, EMAIL, SITE_URL, WHATSAPP_URL } from "@/lib/site";
 
-const title = `${post.title} | האתר של אסף`;
+const title = `${post.seoTitle ?? post.title} | האתר של אסף`;
 
 export const metadata: Metadata = {
   title,
