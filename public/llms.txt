@@ -8,7 +8,7 @@
 - [איך עובד דיגיטלי עונה ללידים ומתאם פגישות לעסק קטן בישראל?](https://www.assafweb.com/sherut/oved-digitali)
 - [איך אוטומציות חוסכות שעות לעסק קטן בישראל?](https://www.assafweb.com/sherut/otomatziot)
 - [מה זה עובד דיגיטלי לעסק?](https://www.assafweb.com/blog/oved-digitali)
-- [מה זה בניית אתרים לעסק קטן בישראל?](https://www.assafweb.com/blog/bniat-atarim)
+- [בניית אתרים לעסק קטן בישראל, דף קבוע בעברית](https://www.assafweb.com/blog/bniat-atarim)
 - [מה זה סוכן קולי לעסק קטן בישראל?](https://www.assafweb.com/blog/soken-koli)
 - Blog: https://www.assafweb.com/blog
 - Markdown homepage for agents: https://www.assafweb.com/index.md

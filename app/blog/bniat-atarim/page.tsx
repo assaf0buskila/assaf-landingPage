@@ -4,7 +4,7 @@ import { Clock3, Mail, MessageCircle } from "lucide-react";
 import { bniatAtarimPost as post } from "@/lib/blog";
 import { CALENDAR_URL, EMAIL, SITE_URL, WHATSAPP_URL } from "@/lib/site";
 
-const title = `${post.title} | האתר של אסף`;
+const title = `${post.seoTitle ?? post.title} | האתר של אסף`;
 
 export const metadata: Metadata = {
   title,
@@ -75,8 +75,6 @@ const jsonLd = {
       alternateName: ["אסף בוסקילה", "האתר של אסף"],
       url: `${SITE_URL}/`,
       image: `${SITE_URL}/assets/og-cover.jpg`,
-      email: EMAIL,
-      telephone: "+972523393768",
       jobTitle: "AI Solutions Engineer",
       areaServed: "Israel",
     },
