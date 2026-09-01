@@ -75,8 +75,6 @@ const jsonLd = {
       alternateName: ["אסף בוסקילה", "האתר של אסף"],
       url: `${SITE_URL}/`,
       image: `${SITE_URL}/assets/og-cover.jpg`,
-      email: EMAIL,
-      telephone: "+972523393768",
       jobTitle: "AI Solutions Engineer",
       areaServed: "Israel",
     },
