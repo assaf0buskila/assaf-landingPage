@@ -588,6 +588,12 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
                   בדיקת התאמה קצרה
                   <MessageCircle size={19} />
                 </a>
+                <a
+                  href="/landing/leadim"
+                  className="text-sm font-bold text-muted transition hover:text-action"
+                >
+                  לידים שנעלמים כי לא הספקתם לענות
+                </a>
               </div>
             </div>
           </div>
