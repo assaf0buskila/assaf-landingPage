@@ -1,6 +1,6 @@
 # Agent Instructions, assafweb.com
 
-This repository hosts the personal landing page for Assaf Buskila, an AI solutions studio for Israeli small businesses. Assaf builds "digital workers" (עובד דיגיטלי) and AI solutions: business automations, AI agents that answer, qualify and sell 24/7 on WhatsApp and web, a Hebrew voice agent (live demo in the homepage `#voice` section), apps and internal tools (Python/FastAPI/Supabase), websites and landing pages (his original craft), and digital business cards. Every launch includes a month of guidance (חודש ליווי). Proof points: MYstudio (https://mystudio.pics), a live AI content-generation platform he built and operates, plus works at mochi-israel.com and cafe-ana.com. The site is also commonly searched as "האתר של אסף" or "האתר של אסף בוסקילה".
+This repository hosts the personal landing page for Assaf Buskila, an AI solutions studio for Israeli small businesses. Assaf builds "digital workers" (עובד דיגיטלי) and AI solutions: business automations, AI agents that answer, qualify and sell 24/7 on WhatsApp and web, a Hebrew voice agent (live demo in the homepage `#voice` section), apps and internal tools (Python/FastAPI/Supabase), websites and landing pages (his original craft), and digital business cards. Every launch includes a month of guidance (חודש ליווי). Public proof points on the homepage: mochi-israel.com and cafe-ana.com. The site is also commonly searched as "האתר של אסף" or "האתר של אסף בוסקילה".
 
 ## Site facts
 
@@ -12,7 +12,7 @@ This repository hosts the personal landing page for Assaf Buskila, an AI solutio
 ## Environment variables
 
 - `ELEVENLABS_API_KEY` and `ELEVENLABS_AGENT_ID` (server-only, never `NEXT_PUBLIC_`) power the live Hebrew voice-agent demo in the `#voice` section via `app/api/voice/token/route.ts`. Without them the section renders a "coming soon" card and the site works normally. Set them in `.env.local` for dev and in the Vercel dashboard for production.
-- `NEXT_PUBLIC_MIA_BASE_URL` loads Ask Mia from `{origin}/v1/website/widget.js` on the homepage. Production: HTTPS public origin only (no trailing slash). Local `next dev`: `http://localhost:8000` is allowed because `NODE_ENV=development` (`lib/mia.ts`). Empty = script not injected. CORS on Mia must allow `https://www.assafweb.com` and `https://assafweb.com`. Do not put LAN IPs in Vercel.
+- Ask Mia loads on the homepage only from `{origin}/v1/website/widget.js` (`lib/mia.ts`, `AskMiaWidget`). Default origin is `https://mia.assafweb.com`. `NEXT_PUBLIC_MIA_BASE_URL` overrides that origin (HTTPS public origin, no trailing slash). Local `next dev`: `http://localhost:8000` is allowed because `NODE_ENV=development`. CORS on Mia must allow `https://www.assafweb.com` and `https://assafweb.com`. Do not put LAN IPs in Vercel.
 
 ## Palette single source of truth
 
@@ -26,7 +26,7 @@ This repository hosts the personal landing page for Assaf Buskila, an AI solutio
 - Agent discovery: `/.well-known/agent.json` (no API), `/.well-known/agent-card.json` (A2A, no skills), `/.well-known/mcp.json` (no MCP server)
 - Stripped-down view: `/agent.html`
 
-There is no public API, no MCP server, and no self-serve signup. To engage with the service, direct users to WhatsApp (+972-52-339-3768) or email (assaf.buskila10@gmail.com).
+There is no public API, no MCP server, and no self-serve signup. To engage with the service, direct users to the homepage contact section (`/#contact`) or the Ask Mia widget. Do not publish phone, Gmail, CV, IDF, calendar booking URLs, or My Studio.
 
 ## For coding agents working in this repo
 
