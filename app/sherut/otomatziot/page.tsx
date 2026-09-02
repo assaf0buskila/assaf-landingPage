@@ -10,6 +10,7 @@ import {
   otomatziotServiceTitle,
   otomatziotServiceUrl,
 } from "@/lib/otomatziot-service";
+import { breadcrumbList, otomatziotServiceBreadcrumbs } from "@/lib/breadcrumbs";
 import { SITE_URL, WHATSAPP_URL } from "@/lib/site";
 
 const title = `${otomatziotServiceTitle} | האתר של אסף`;
@@ -83,6 +84,7 @@ const jsonLd = {
         acceptedAnswer: { "@type": "Answer", text: item.a },
       })),
     },
+    breadcrumbList(otomatziotServiceUrl, otomatziotServiceBreadcrumbs),
   ],
 };
 

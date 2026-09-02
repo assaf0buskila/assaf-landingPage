@@ -1,10 +1,21 @@
 import Link from "next/link";
 import { ArrowUpLeft } from "lucide-react";
 import { posts } from "@/lib/blog";
+import { blogIndexBreadcrumbs, breadcrumbList } from "@/lib/breadcrumbs";
+import { SITE_URL } from "@/lib/site";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  ...breadcrumbList(`${SITE_URL}/blog`, blogIndexBreadcrumbs),
+};
 
 export default function BlogIndexPage() {
   return (
     <main className="relative min-h-[70vh] bg-paper pb-20 pt-28 md:pt-32">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="section-shell max-w-3xl">
         <p className="text-sm font-black text-navy">
           <Link href="/" className="transition hover:text-action">

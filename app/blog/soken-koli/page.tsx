@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Clock3, MessageCircle } from "lucide-react";
 import { sokenKoliPost as post } from "@/lib/blog";
+import { breadcrumbList, sokenKoliBlogBreadcrumbs } from "@/lib/breadcrumbs";
 import { CALENDAR_URL, SITE_URL, WHATSAPP_URL } from "@/lib/site";
 
 const title = `${post.title} | האתר של אסף`;
@@ -78,6 +79,7 @@ const jsonLd = {
       jobTitle: "AI Solutions Engineer",
       areaServed: "Israel",
     },
+    breadcrumbList(post.url, sokenKoliBlogBreadcrumbs),
   ],
 };
 
