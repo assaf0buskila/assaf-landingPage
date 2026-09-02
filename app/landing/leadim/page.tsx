@@ -12,6 +12,7 @@ import {
   leadimTitle,
   leadimUrl,
 } from "@/lib/leadim-landing";
+import { landingBreadcrumb } from "@/lib/breadcrumbs";
 import { SITE_URL, WHATSAPP_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -51,18 +52,23 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "@id": `${leadimUrl}#webpage`,
-  url: leadimUrl,
-  name: leadimTitle,
-  description: leadimDescription,
-  inLanguage: "he",
-  isPartOf: { "@id": `${SITE_URL}/#website` },
-  about: { "@id": `${SITE_URL}/#assaf` },
-  speakable: {
-    "@type": "SpeakableSpecification",
-    cssSelector: ["h1", ".leadim-cite"],
-  },
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${leadimUrl}#webpage`,
+      url: leadimUrl,
+      name: leadimTitle,
+      description: leadimDescription,
+      inLanguage: "he",
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      about: { "@id": `${SITE_URL}/#assaf` },
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: ["h1", ".leadim-cite"],
+      },
+    },
+    landingBreadcrumb("דף נחיתה לידים", leadimUrl),
+  ],
 };
 
 export default function LeadimLandingPage() {
