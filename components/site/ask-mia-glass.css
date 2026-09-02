@@ -1,0 +1,200 @@
+/* Ask Mia chrome lives in light DOM (#ask-mia-*). widget.js injects its own
+   stylesheet after interactive load, so landing overrides use !important. */
+
+#ask-mia-root {
+  font: inherit !important;
+  color: var(--ink) !important;
+}
+
+#ask-mia-launcher {
+  height: 54px !important;
+  min-height: 54px !important;
+  min-width: 54px !important;
+  gap: 0.55rem !important;
+  border: 1px solid rgb(255 255 255 / 0.62) !important;
+  border-radius: 999px !important;
+  padding-inline-start: 0.38rem !important;
+  padding-inline-end: 1.15rem !important;
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 0.78), rgb(var(--mist-rgb) / 0.38)),
+    rgb(248 251 255 / 0.42) !important;
+  color: var(--ink) !important;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.88),
+    0 0 0 1px rgb(var(--action-rgb) / 0.08),
+    0 18px 48px rgb(var(--action-rgb) / 0.2) !important;
+  backdrop-filter: blur(22px) saturate(1.45) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(1.45) !important;
+}
+
+#ask-mia-launcher:hover {
+  transform: translateY(-2px) !important;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.95),
+    0 0 0 1px rgb(var(--action-rgb) / 0.14),
+    0 22px 56px rgb(var(--action-rgb) / 0.26) !important;
+}
+
+#ask-mia-launcher:focus-visible {
+  outline: 2px solid var(--action) !important;
+  outline-offset: 3px !important;
+}
+
+.ask-mia-launch-mark {
+  width: 2.05rem !important;
+  height: 2.05rem !important;
+  background: rgb(255 255 255 / 0.82) !important;
+  color: var(--navy) !important;
+  box-shadow: inset 0 0 0 1px rgb(var(--navy-rgb) / 0.1) !important;
+}
+
+#ask-mia-launch-label {
+  color: var(--ink) !important;
+  font-size: 0.94rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0 !important;
+}
+
+#ask-mia-panel {
+  width: min(23.5rem, calc(100vw - 1.5rem)) !important;
+  overflow: hidden !important;
+  border: 1px solid rgb(255 255 255 / 0.58) !important;
+  border-radius: 1.4rem !important;
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.74), rgb(var(--mist-rgb) / 0.28)),
+    rgb(248 251 255 / 0.46) !important;
+  color: var(--ink) !important;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.72),
+    0 28px 80px rgb(6 27 53 / 0.18) !important;
+  backdrop-filter: blur(28px) saturate(1.4) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(1.4) !important;
+}
+
+#ask-mia-header {
+  gap: 0.7rem !important;
+  padding: 0.82rem 0.95rem !important;
+  border-bottom: 1px solid rgb(var(--navy-rgb) / 0.1) !important;
+  background: rgb(255 255 255 / 0.36) !important;
+  color: var(--ink) !important;
+}
+
+.ask-mia-avatar {
+  background: rgb(255 255 255 / 0.78) !important;
+  color: var(--navy) !important;
+  box-shadow: inset 0 0 0 1px rgb(var(--navy-rgb) / 0.1) !important;
+}
+
+.ask-mia-name {
+  color: var(--ink) !important;
+  font-weight: 800 !important;
+}
+
+.ask-mia-sub {
+  color: var(--navy) !important;
+  font-weight: 600 !important;
+}
+
+#ask-mia-transcript {
+  max-height: 15.5rem !important;
+  padding: 0.85rem !important;
+  gap: 0.8rem !important;
+}
+
+.ask-mia-mia {
+  border: 1px solid rgb(var(--navy-rgb) / 0.1) !important;
+  background: rgb(255 255 255 / 0.62) !important;
+  color: var(--ink) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+}
+
+.ask-mia-user {
+  background: rgb(var(--navy-rgb) / 0.92) !important;
+  color: #fff !important;
+}
+
+.ask-mia-row-mia .ask-mia-bubble-avatar {
+  background: rgb(255 255 255 / 0.78) !important;
+  color: var(--navy) !important;
+}
+
+.ask-mia-row-user .ask-mia-bubble-avatar {
+  background: var(--navy) !important;
+  color: #fff !important;
+}
+
+#ask-mia-compose {
+  gap: 0.4rem !important;
+  padding: 0.8rem 0.85rem 0.9rem !important;
+  border-top: 1px solid rgb(var(--navy-rgb) / 0.1) !important;
+  background: rgb(255 255 255 / 0.28) !important;
+}
+
+#ask-mia-input {
+  border: 1px solid rgb(var(--steel-rgb) / 0.55) !important;
+  border-radius: 0.85rem !important;
+  background: rgb(255 255 255 / 0.72) !important;
+  color: var(--ink) !important;
+}
+
+#ask-mia-input:focus {
+  border-color: var(--action) !important;
+  outline: 2px solid rgb(var(--action-rgb) / 0.35) !important;
+  outline-offset: 1px !important;
+}
+
+#ask-mia-hint {
+  color: var(--navy) !important;
+}
+
+#ask-mia-actions button {
+  border-radius: 0.8rem !important;
+  font-weight: 700 !important;
+}
+
+#ask-mia-send {
+  background: var(--navy) !important;
+  color: #fff !important;
+}
+
+#ask-mia-mic {
+  border: 1px solid rgb(var(--navy-rgb) / 0.12) !important;
+  background: rgb(255 255 255 / 0.62) !important;
+  color: var(--ink) !important;
+}
+
+#ask-mia-mic.recording {
+  background: #b00 !important;
+  color: #fff !important;
+}
+
+#ask-mia-wa,
+.ask-mia-handoff-cta {
+  background: #25d366 !important;
+  color: #fff !important;
+}
+
+.ask-mia-handoff-title {
+  color: var(--ink) !important;
+}
+
+.ask-mia-handoff-note {
+  color: var(--navy) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ask-mia-launcher:hover {
+    transform: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  #ask-mia-launcher,
+  #ask-mia-panel,
+  .ask-mia-mia,
+  #ask-mia-compose {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
