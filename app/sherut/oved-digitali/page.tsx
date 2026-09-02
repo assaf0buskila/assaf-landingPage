@@ -10,6 +10,7 @@ import {
   ovedDigitaliServiceTitle,
   ovedDigitaliServiceUrl,
 } from "@/lib/oved-digitali-service";
+import { serviceBreadcrumb } from "@/lib/breadcrumbs";
 import { SITE_URL, WHATSAPP_URL } from "@/lib/site";
 
 const title = `${ovedDigitaliServiceTitle} | האתר של אסף`;
@@ -83,6 +84,7 @@ const jsonLd = {
         acceptedAnswer: { "@type": "Answer", text: item.a },
       })),
     },
+    serviceBreadcrumb("עובד דיגיטלי", ovedDigitaliServiceUrl),
   ],
 };
 

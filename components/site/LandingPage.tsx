@@ -28,6 +28,7 @@ import { BrickDef, TechStackBuilder } from "@/components/ui/interactive-tech-sta
 import { AiHeroChat } from "@/components/site/AiHeroChat";
 import { ScrollEffects } from "@/components/site/ScrollEffects";
 import { VoiceAgentSection } from "@/components/site/VoiceAgentSection";
+import { homeBreadcrumb } from "@/lib/breadcrumbs";
 import { INSTAGRAM_URL, WHATSAPP_URL } from "@/lib/site";
 
 const whatsapp = WHATSAPP_URL;
@@ -500,6 +501,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
           cssSelector: ["h1", ".hero-lead-blocks p"],
         },
       },
+      homeBreadcrumb(),
       {
         "@type": "FAQPage",
         "@id": `${siteUrl}/#faq`,

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Clock3, Mail, MessageCircle } from "lucide-react";
 import { ovedDigitaliPost as post } from "@/lib/blog";
+import { blogPostBreadcrumb } from "@/lib/breadcrumbs";
 import { CALENDAR_URL, EMAIL, SITE_URL, WHATSAPP_URL } from "@/lib/site";
 
 const title = `${post.title} | האתר של אסף`;
@@ -75,11 +76,10 @@ const jsonLd = {
       alternateName: ["אסף בוסקילה", "האתר של אסף"],
       url: `${SITE_URL}/`,
       image: `${SITE_URL}/assets/og-cover.jpg`,
-      email: EMAIL,
-      telephone: "+972523393768",
       jobTitle: "AI Solutions Engineer",
       areaServed: "Israel",
     },
+    blogPostBreadcrumb(post.title, post.url),
   ],
 };
 
