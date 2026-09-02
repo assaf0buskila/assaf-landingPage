@@ -7,32 +7,46 @@
 }
 
 #ask-mia-launcher {
-  height: 54px !important;
-  min-height: 54px !important;
-  min-width: 54px !important;
-  gap: 0.55rem !important;
-  border: 1px solid rgb(255 255 255 / 0.62) !important;
+  position: relative !important;
+  isolation: isolate !important;
+  height: 56px !important;
+  min-height: 56px !important;
+  min-width: 56px !important;
+  gap: 0.6rem !important;
+  overflow: hidden !important;
+  border: 1px solid rgb(255 255 255 / 0.78) !important;
   border-radius: 999px !important;
-  padding-inline-start: 0.38rem !important;
-  padding-inline-end: 1.15rem !important;
+  padding-inline-start: 0.4rem !important;
+  padding-inline-end: 1.2rem !important;
   background:
-    linear-gradient(135deg, rgb(255 255 255 / 0.78), rgb(var(--mist-rgb) / 0.38)),
-    rgb(248 251 255 / 0.42) !important;
+    linear-gradient(145deg, rgb(255 255 255 / 0.42), rgb(var(--mist-rgb) / 0.22) 55%, rgb(var(--sky-rgb) / 0.18)) !important;
   color: var(--ink) !important;
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.88),
-    0 0 0 1px rgb(var(--action-rgb) / 0.08),
-    0 18px 48px rgb(var(--action-rgb) / 0.2) !important;
-  backdrop-filter: blur(22px) saturate(1.45) !important;
-  -webkit-backdrop-filter: blur(22px) saturate(1.45) !important;
+    inset 0 1px 0 rgb(255 255 255 / 0.95),
+    inset 0 -1px 0 rgb(var(--navy-rgb) / 0.06),
+    0 0 0 1px rgb(var(--action-rgb) / 0.12),
+    0 16px 40px rgb(var(--action-rgb) / 0.22) !important;
+  backdrop-filter: blur(26px) saturate(1.7) !important;
+  -webkit-backdrop-filter: blur(26px) saturate(1.7) !important;
+}
+
+#ask-mia-launcher::before {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 70%;
+  height: 45%;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.55), transparent);
+  content: "";
 }
 
 #ask-mia-launcher:hover {
   transform: translateY(-2px) !important;
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.95),
-    0 0 0 1px rgb(var(--action-rgb) / 0.14),
-    0 22px 56px rgb(var(--action-rgb) / 0.26) !important;
+    inset 0 1px 0 rgb(255 255 255 / 1),
+    0 0 0 1px rgb(var(--action-rgb) / 0.2),
+    0 22px 56px rgb(var(--action-rgb) / 0.3) !important;
 }
 
 #ask-mia-launcher:focus-visible {
@@ -41,48 +55,56 @@
 }
 
 .ask-mia-launch-mark {
-  width: 2.05rem !important;
-  height: 2.05rem !important;
-  background: rgb(255 255 255 / 0.82) !important;
+  position: relative !important;
+  z-index: 1 !important;
+  width: 2.1rem !important;
+  height: 2.1rem !important;
+  background: rgb(255 255 255 / 0.7) !important;
   color: var(--navy) !important;
-  box-shadow: inset 0 0 0 1px rgb(var(--navy-rgb) / 0.1) !important;
+  box-shadow:
+    inset 0 0 0 1px rgb(var(--navy-rgb) / 0.1),
+    0 0 0 4px rgb(var(--action-rgb) / 0.1) !important;
 }
 
 #ask-mia-launch-label {
+  position: relative !important;
+  z-index: 1 !important;
   color: var(--ink) !important;
-  font-size: 0.94rem !important;
+  font-size: 0.95rem !important;
   font-weight: 800 !important;
   letter-spacing: 0 !important;
 }
 
 #ask-mia-panel {
-  width: min(23.5rem, calc(100vw - 1.5rem)) !important;
+  width: min(24rem, calc(100vw - 1.5rem)) !important;
   overflow: hidden !important;
-  border: 1px solid rgb(255 255 255 / 0.58) !important;
-  border-radius: 1.4rem !important;
+  border: 1px solid rgb(255 255 255 / 0.7) !important;
+  border-radius: 1.5rem !important;
   background:
-    linear-gradient(180deg, rgb(255 255 255 / 0.74), rgb(var(--mist-rgb) / 0.28)),
-    rgb(248 251 255 / 0.46) !important;
+    linear-gradient(180deg, rgb(255 255 255 / 0.38), rgb(var(--mist-rgb) / 0.2) 40%, rgb(238 247 255 / 0.28)) !important;
   color: var(--ink) !important;
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.72),
-    0 28px 80px rgb(6 27 53 / 0.18) !important;
-  backdrop-filter: blur(28px) saturate(1.4) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(1.4) !important;
+    inset 0 1px 0 rgb(255 255 255 / 0.8),
+    0 0 0 1px rgb(var(--navy-rgb) / 0.06),
+    0 28px 80px rgb(6 27 53 / 0.2) !important;
+  backdrop-filter: blur(32px) saturate(1.65) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(1.65) !important;
 }
 
 #ask-mia-header {
   gap: 0.7rem !important;
-  padding: 0.82rem 0.95rem !important;
-  border-bottom: 1px solid rgb(var(--navy-rgb) / 0.1) !important;
-  background: rgb(255 255 255 / 0.36) !important;
+  padding: 0.86rem 1rem !important;
+  border-bottom: 1px solid rgb(255 255 255 / 0.45) !important;
+  background: rgb(255 255 255 / 0.22) !important;
   color: var(--ink) !important;
 }
 
 .ask-mia-avatar {
-  background: rgb(255 255 255 / 0.78) !important;
+  background: rgb(255 255 255 / 0.62) !important;
   color: var(--navy) !important;
-  box-shadow: inset 0 0 0 1px rgb(var(--navy-rgb) / 0.1) !important;
+  box-shadow:
+    inset 0 0 0 1px rgb(var(--navy-rgb) / 0.1),
+    0 0 0 4px rgb(var(--action-rgb) / 0.08) !important;
 }
 
 .ask-mia-name {
@@ -91,31 +113,44 @@
 }
 
 .ask-mia-sub {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
   color: var(--navy) !important;
   font-weight: 600 !important;
 }
 
+.ask-mia-sub::after {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: #22c55e;
+  box-shadow: 0 0 0 4px rgb(34 197 94 / 0.16);
+  content: "";
+}
+
 #ask-mia-transcript {
   max-height: 15.5rem !important;
-  padding: 0.85rem !important;
-  gap: 0.8rem !important;
+  padding: 0.9rem !important;
+  gap: 0.85rem !important;
+  background: transparent !important;
 }
 
 .ask-mia-mia {
-  border: 1px solid rgb(var(--navy-rgb) / 0.1) !important;
-  background: rgb(255 255 255 / 0.62) !important;
+  border: 1px solid rgb(255 255 255 / 0.55) !important;
+  background: rgb(255 255 255 / 0.4) !important;
   color: var(--ink) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
 }
 
 .ask-mia-user {
-  background: rgb(var(--navy-rgb) / 0.92) !important;
+  background: rgb(var(--navy-rgb) / 0.9) !important;
   color: #fff !important;
 }
 
 .ask-mia-row-mia .ask-mia-bubble-avatar {
-  background: rgb(255 255 255 / 0.78) !important;
+  background: rgb(255 255 255 / 0.7) !important;
   color: var(--navy) !important;
 }
 
@@ -125,23 +160,24 @@
 }
 
 #ask-mia-compose {
-  gap: 0.4rem !important;
-  padding: 0.8rem 0.85rem 0.9rem !important;
-  border-top: 1px solid rgb(var(--navy-rgb) / 0.1) !important;
-  background: rgb(255 255 255 / 0.28) !important;
+  gap: 0.45rem !important;
+  padding: 0.85rem 0.95rem 0.95rem !important;
+  border-top: 1px solid rgb(255 255 255 / 0.4) !important;
+  background: rgb(255 255 255 / 0.16) !important;
 }
 
 #ask-mia-input {
-  border: 1px solid rgb(var(--steel-rgb) / 0.55) !important;
-  border-radius: 0.85rem !important;
-  background: rgb(255 255 255 / 0.72) !important;
+  border: 1px solid rgb(var(--steel-rgb) / 0.45) !important;
+  border-radius: 0.9rem !important;
+  background: rgb(255 255 255 / 0.48) !important;
   color: var(--ink) !important;
 }
 
 #ask-mia-input:focus {
   border-color: var(--action) !important;
-  outline: 2px solid rgb(var(--action-rgb) / 0.35) !important;
+  outline: 2px solid rgb(var(--action-rgb) / 0.3) !important;
   outline-offset: 1px !important;
+  background: rgb(255 255 255 / 0.7) !important;
 }
 
 #ask-mia-hint {
@@ -149,7 +185,7 @@
 }
 
 #ask-mia-actions button {
-  border-radius: 0.8rem !important;
+  border-radius: 0.85rem !important;
   font-weight: 700 !important;
 }
 
@@ -159,8 +195,8 @@
 }
 
 #ask-mia-mic {
-  border: 1px solid rgb(var(--navy-rgb) / 0.12) !important;
-  background: rgb(255 255 255 / 0.62) !important;
+  border: 1px solid rgb(255 255 255 / 0.5) !important;
+  background: rgb(255 255 255 / 0.42) !important;
   color: var(--ink) !important;
 }
 
@@ -187,6 +223,10 @@
   #ask-mia-launcher:hover {
     transform: none !important;
   }
+
+  .ask-mia-sub::after {
+    box-shadow: none;
+  }
 }
 
 @media (max-width: 900px) {
@@ -196,5 +236,11 @@
   #ask-mia-compose {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+  }
+
+  #ask-mia-launcher,
+  #ask-mia-panel {
+    background:
+      linear-gradient(180deg, rgb(255 255 255 / 0.94), rgb(var(--mist-rgb) / 0.72)) !important;
   }
 }
