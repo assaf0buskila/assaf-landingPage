@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Clock3, Mail, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { ovedDigitaliPost as post } from "@/lib/blog";
 import { breadcrumbList, ovedDigitaliBlogBreadcrumbs } from "@/lib/breadcrumbs";
-import { CALENDAR_URL, EMAIL, SITE_URL, WHATSAPP_URL } from "@/lib/site";
+import { SITE_URL, WHATSAPP_URL } from "@/lib/site";
 
 const title = `${post.title} | האתר של אסף`;
 
@@ -76,8 +76,6 @@ const jsonLd = {
       alternateName: ["אסף בוסקילה", "האתר של אסף"],
       url: `${SITE_URL}/`,
       image: `${SITE_URL}/assets/og-cover.jpg`,
-      email: EMAIL,
-      telephone: "+972523393768",
       jobTitle: "AI Solutions Engineer",
       areaServed: "Israel",
     },
@@ -214,8 +212,7 @@ export default function OvedDigitaliPage() {
 
           <h2 className="text-3xl font-black leading-tight text-ink">איך מתחילים</h2>
           <p>
-            אם יש עסק ופניות שנופלות, כתבו בוואטסאפ או קבעו שיחת היכרות של 15 דקות. גם מייל
-            עובד. אפשר גם לחזור ל{" "}
+            אם יש עסק ופניות שנופלות, כתבו בוואטסאפ. אפשר גם לחזור ל{" "}
             <Link href="/#contact" className="font-black text-action underline-offset-4 hover:underline">
               יצירת הקשר
             </Link>{" "}
@@ -223,28 +220,10 @@ export default function OvedDigitaliPage() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-3 sm:grid-cols-2">
+        <div className="mt-12 grid gap-3">
           <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-primary">
             וואטסאפ לאסף
             <MessageCircle size={19} />
-          </a>
-          <a href={`mailto:${EMAIL}`} className="btn-secondary">
-            מייל ישיר
-            <Mail size={19} />
-          </a>
-          <a
-            href={CALENDAR_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="contact-call sm:col-span-2"
-          >
-            <span className="contact-call__icon">
-              <Clock3 size={20} />
-            </span>
-            <span className="grid">
-              <strong className="contact-call__title">קבעו שיחת היכרות 15 דק׳</strong>
-              <span className="contact-call__desc">בזום או בטלפון, בלי התחייבות</span>
-            </span>
           </a>
         </div>
       </article>

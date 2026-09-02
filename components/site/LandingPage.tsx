@@ -32,7 +32,6 @@ import { breadcrumbList, homeBreadcrumbs } from "@/lib/breadcrumbs";
 import { INSTAGRAM_URL, WHATSAPP_URL } from "@/lib/site";
 
 const whatsapp = WHATSAPP_URL;
-const calendarCall = "https://calendar.app.google/K994sdXaeLw8rjCe8";
 
 const HERO_H1 =
   "עובד דיגיטלי לעסק שעונה ללידים, מתאם פגישות וחוסך שעות עבודה";
@@ -407,12 +406,6 @@ function ContactForm() {
               </a>
             </p>
           ) : null}
-          <p className="text-muted">
-            מעדיפים לדבר?{" "}
-            <a href={calendarCall} target="_blank" rel="noreferrer" className="text-action underline">
-              קבעו שיחת היכרות של 15 דק׳
-            </a>
-          </p>
         </div>
       ) : null}
     </form>
@@ -802,9 +795,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
                 אני לא מוכר כלים. אני בונה עובדים דיגיטליים.
               </h2>
               <p className="text-xl font-medium leading-9 text-muted">
-                אני אסף, מהנדס פתרונות AI וסטודנט להנדסת תעשייה וניהול בשנקר. בניתי
-                מערכת לניתוח מסמכים פיננסיים. לפני זה הייתי קצין קרבי בצנחנים, אז סדר,
-                אחריות ועמידה בלחץ הם לא סיסמאות אצלי.
+                אני אסף, מהנדס פתרונות AI. אני בונה עובדים דיגיטליים לעסקים קטנים בישראל.
               </p>
               <p className="text-lg font-semibold leading-8 text-navy">
                 מתחילים בשיחת אבחון קצרה. לא צריך להבין ב-AI, זה בדיוק התפקיד שלי: אני ממפה
@@ -920,21 +911,6 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
                 <a href={whatsapp} target="_blank" rel="noreferrer" className="btn-primary" data-mia-cta="contact_whatsapp">
                   וואטסאפ לאסף
                   <MessageCircle size={19} />
-                </a>
-                <a
-                  href={calendarCall}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="contact-call"
-                  data-mia-cta="contact_calendar"
-                >
-                  <span className="contact-call__icon">
-                    <Clock3 size={20} />
-                  </span>
-                  <span className="grid">
-                    <strong className="contact-call__title">קבעו שיחת היכרות 15 דק׳</strong>
-                    <span className="contact-call__desc">בזום או בטלפון, בלי התחייבות</span>
-                  </span>
                 </a>
               </div>
             </div>

@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { ArrowUpLeft, MessageCircle } from "lucide-react";
-import { EMAIL, INSTAGRAM_URL, PHONE_DISPLAY, PHONE_TEL } from "@/lib/site";
+import { INSTAGRAM_URL } from "@/lib/site";
 
 const navItems = [
   { href: "/", label: "הבית" },
@@ -72,15 +72,6 @@ export function SiteChrome({ children }: { children: ReactNode }) {
         </div>
         <div className="section-shell relative z-10 mt-10 flex flex-col gap-3 border-t border-white/10 pt-5 text-sm font-bold text-white/60 md:flex-row md:items-center md:justify-between">
           <span>© 2026 אסף בוסקילה</span>
-          <span dir="ltr" className="flex flex-wrap items-center gap-x-2">
-            <a href={`mailto:${EMAIL}`} className="transition hover:text-white">
-              {EMAIL}
-            </a>
-            <span aria-hidden="true">·</span>
-            <a href={`tel:${PHONE_TEL}`} className="transition hover:text-white">
-              {PHONE_DISPLAY}
-            </a>
-          </span>
         </div>
       </footer>
     </>

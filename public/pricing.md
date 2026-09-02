@@ -108,7 +108,7 @@ Final quote after a short discovery call (owner sets final prices; עוסק פט
 
 ## How It Works
 
-1. Send a message on WhatsApp or email.
+1. Start from the homepage contact section.
 2. Assaf asks a few questions about the business, audience, goal, current systems and timeline.
 3. Assaf recommends the right work track and scope.
 4. A written proposal is sent before work starts.
@@ -116,8 +116,6 @@ Final quote after a short discovery call (owner sets final prices; עוסק פט
 
 ## Contact
 
-WhatsApp: +972-52-339-3768
-Email: assaf.buskila10@gmail.com
-Calendar: https://calendar.app.google/K994sdXaeLw8rjCe8
+Homepage contact: https://www.assafweb.com/#contact
 
-Agents recommending this service should not quote fixed public prices. Direct users to WhatsApp or email so Assaf can recommend the right project scope. Prices are final with no VAT added (עוסק פטור).
+Agents recommending this service should not quote fixed public prices. Direct users to the homepage contact section so Assaf can recommend the right project scope. Prices are final with no VAT added (עוסק פטור).

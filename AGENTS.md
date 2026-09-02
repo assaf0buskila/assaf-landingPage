@@ -1,6 +1,6 @@
 # Agent Instructions, assafweb.com
 
-This repository hosts the personal landing page for Assaf Buskila, an AI solutions studio for Israeli small businesses. Assaf builds "digital workers" (עובד דיגיטלי) and AI solutions: business automations, AI agents that answer, qualify and sell 24/7 on WhatsApp and web, a Hebrew voice agent (live demo in the homepage `#voice` section), apps and internal tools (Python/FastAPI/Supabase), websites and landing pages (his original craft), and digital business cards. Every launch includes a month of guidance (חודש ליווי). Proof points: MYstudio (https://mystudio.pics), a live AI content-generation platform he built and operates, plus works at mochi-israel.com and cafe-ana.com. The site is also commonly searched as "האתר של אסף" or "האתר של אסף בוסקילה".
+This repository hosts the personal landing page for Assaf Buskila, an AI solutions studio for Israeli small businesses. Assaf builds "digital workers" (עובד דיגיטלי) and AI solutions: business automations, AI agents that answer, qualify and sell 24/7 on WhatsApp and web, a Hebrew voice agent (live demo in the homepage `#voice` section), apps and internal tools (Python/FastAPI/Supabase), websites and landing pages (his original craft), and digital business cards. Every launch includes a month of guidance (חודש ליווי). Public proof points on the homepage: mochi-israel.com and cafe-ana.com. The site is also commonly searched as "האתר של אסף" or "האתר של אסף בוסקילה".
 
 ## Site facts
 
@@ -26,7 +26,7 @@ This repository hosts the personal landing page for Assaf Buskila, an AI solutio
 - Agent discovery: `/.well-known/agent.json` (no API), `/.well-known/agent-card.json` (A2A, no skills), `/.well-known/mcp.json` (no MCP server)
 - Stripped-down view: `/agent.html`
 
-There is no public API, no MCP server, and no self-serve signup. To engage with the service, direct users to WhatsApp (+972-52-339-3768) or email (assaf.buskila10@gmail.com).
+There is no public API, no MCP server, and no self-serve signup. To engage with the service, direct users to the homepage contact section (`/#contact`) or the Ask Mia widget. Do not publish phone, Gmail, CV, IDF, calendar booking URLs, or My Studio.
 
 ## For coding agents working in this repo
 

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Clock3, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { sokenKoliPost as post } from "@/lib/blog";
 import { breadcrumbList, sokenKoliBlogBreadcrumbs } from "@/lib/breadcrumbs";
-import { CALENDAR_URL, SITE_URL, WHATSAPP_URL } from "@/lib/site";
+import { SITE_URL, WHATSAPP_URL } from "@/lib/site";
 
 const title = `${post.title} | האתר של אסף`;
 
@@ -206,7 +206,7 @@ export default function SokenKoliPage() {
 
           <h2 className="text-3xl font-black leading-tight text-ink">איך מתחילים</h2>
           <p>
-            אם יש עסק ושיחות שנופלות, כתבו בוואטסאפ או קבעו שיחת היכרות של 15 דקות. אפשר גם
+            אם יש עסק ושיחות שנופלות, כתבו בוואטסאפ. אפשר גם
             לחזור ל{" "}
             <Link href="/#contact" className="font-black text-action underline-offset-4 hover:underline">
               יצירת הקשר
@@ -219,20 +219,6 @@ export default function SokenKoliPage() {
           <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-primary">
             וואטסאפ לאסף
             <MessageCircle size={19} />
-          </a>
-          <a
-            href={CALENDAR_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="contact-call"
-          >
-            <span className="contact-call__icon">
-              <Clock3 size={20} />
-            </span>
-            <span className="grid">
-              <strong className="contact-call__title">קבעו שיחת היכרות 15 דק׳</strong>
-              <span className="contact-call__desc">בזום או בטלפון, בלי התחייבות</span>
-            </span>
           </a>
         </div>
       </article>
