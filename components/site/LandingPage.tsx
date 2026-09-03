@@ -449,17 +449,21 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
       "אינטגרציות וואטסאפ",
     ],
     makesOffer: [
-      "אוטומציות עסקיות",
-      "סוכן AI לעסק (עובד דיגיטלי)",
-      "סוכן קולי בעברית",
-      "בניית אפליקציות ופיצ'רים",
-      "אתרים ודפי נחיתה בעברית",
-      "כרטיס ביקור דיגיטלי",
-      "סושיאל מדיה ותוכן AI",
-      "חודש ליווי אחרי השקה",
-    ].map((name) => ({
+      { name: "אוטומציות עסקיות", url: `${siteUrl}/sherut/otomatziot` },
+      { name: "סוכן AI לעסק (עובד דיגיטלי)", url: `${siteUrl}/sherut/oved-digitali` },
+      { name: "סוכן קולי בעברית", url: `${siteUrl}/blog/soken-koli` },
+      { name: "בניית אפליקציות ופיצ'רים" },
+      { name: "אתרים ודפי נחיתה בעברית", url: `${siteUrl}/blog/bniat-atarim` },
+      { name: "כרטיס ביקור דיגיטלי" },
+      { name: "סושיאל מדיה ותוכן AI" },
+      { name: "חודש ליווי אחרי השקה" },
+    ].map(({ name, url }) => ({
       "@type": "Offer",
-      itemOffered: { "@type": "Service", name },
+      itemOffered: {
+        "@type": "Service",
+        name,
+        ...(url ? { url } : {}),
+      },
     })),
     workExample: works.map((work) => ({
       "@type": "WebSite",
