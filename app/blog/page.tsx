@@ -4,9 +4,44 @@ import { posts } from "@/lib/blog";
 import { blogIndexBreadcrumbs, breadcrumbList } from "@/lib/breadcrumbs";
 import { SITE_URL } from "@/lib/site";
 
+const blogIndexUrl = `${SITE_URL}/blog`;
+const blogIndexName = "בלוג | האתר של אסף";
+const blogIndexDescription =
+  "הסברים קצרים בעברית על עובד דיגיטלי, סוכן קולי ואוטומציות לעסקים קטנים בישראל.";
+
 const jsonLd = {
   "@context": "https://schema.org",
-  ...breadcrumbList(`${SITE_URL}/blog`, blogIndexBreadcrumbs),
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": `${blogIndexUrl}#webpage`,
+      url: blogIndexUrl,
+      name: blogIndexName,
+      description: blogIndexDescription,
+      inLanguage: "he",
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      about: { "@id": `${SITE_URL}/#assaf` },
+      mainEntity: {
+        "@type": "ItemList",
+        numberOfItems: posts.length,
+        itemListElement: posts.map((post, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: post.title,
+          url: post.url,
+          item: {
+            "@type": "Article",
+            "@id": `${post.url}#article`,
+            url: post.url,
+            name: post.title,
+            headline: post.title,
+            datePublished: post.datePublished,
+          },
+        })),
+      },
+    },
+    breadcrumbList(blogIndexUrl, blogIndexBreadcrumbs),
+  ],
 };
 
 export default function BlogIndexPage() {
