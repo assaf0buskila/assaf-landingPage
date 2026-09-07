@@ -17,6 +17,19 @@ export type BlogPost = {
 
 export const posts: BlogPost[] = [
   {
+    slug: "otomatziot",
+    path: "/blog/otomatziot",
+    url: `${SITE_URL}/blog/otomatziot`,
+    title: "מה זה אוטומציה לעסק קטן בישראל?",
+    description:
+      "אוטומציה לעסק קטן בישראל מחברת כלים שכבר יש (טפסים, גיליונות, יומן, מערכת לקוחות, וואטסאפ) למעקב לידים, תזכורות וסנכרון. לא בוט שעונה ללקוחות. חודש ליווי, בלי מחירון ציבורי.",
+    datePublished: "2026-09-07",
+    dateModified: "2026-09-07",
+    publishedLabel: "7 בספטמבר 2026",
+    definition:
+      "אוטומציה לעסק קטן בישראל היא חיבור בין הכלים שהעסק כבר עובד איתם, כדי שהעבודה שחוזרת על עצמה תקרה לבד. זה לא בוט שעונה ללקוחות במקומכם, ולא עובד דיגיטלי שמדבר עם הלקוח. זה מעקב אחרי ליד ברגע שהוא נכנס, תזכורת לפני תור, וסנכרון בין טפסים, גיליונות, יומן, מערכת לקוחות ווואטסאפ. כשלקוח משאיר פרטים באתר, האוטומציה מעבירה אותם למקום הנכון ופותחת מעקב. כשתור מתקרב, נשלחת תזכורת. כשמשימה נתקעת, אתם מקבלים הודעה. האוטומציה לא מחליטה במקומכם ולא סוגרת עסקה שדורשת שיקול דעת. היא חוסכת את השעות שנשרפות על העתקה, תזכורות ומעקב אחרי פניות. זו הסיבה שעסקים קטנים בישראל מבקשים אוטומציה: לא כדי להיעלם מהעסק, אלא כדי להפסיק לבזבז זמן על מה שמכונה יכולה לעשות בזמן שאתם בעבודה. אסף בוסקילה, מהנדס פתרונות AI, בונה אוטומציות כאלה לעסקים קטנים בישראל, עם חודש ליווי אחרי ההשקה. אין מחירון ציבורי באתר. מתחילים מבדיקת התאמה קצרה בוואטסאפ, וההצעה מגיעה לפי ההיקף האמיתי.",
+  },
+  {
     slug: "soken-koli",
     path: "/blog/soken-koli",
     url: `${SITE_URL}/blog/soken-koli`,
@@ -66,6 +79,7 @@ export function getPost(slug: string): BlogPost | undefined {
   return posts.find((post) => post.slug === slug);
 }
 
-export const sokenKoliPost = posts[0];
-export const bniatAtarimPost = posts[1];
-export const ovedDigitaliPost = posts[2];
+export const otomatziotPost = posts[0];
+export const sokenKoliPost = posts[1];
+export const bniatAtarimPost = posts[2];
+export const ovedDigitaliPost = posts[3];

@@ -65,7 +65,7 @@ export default function BlogIndexPage() {
           בלוג
         </h1>
         <p className="mt-4 max-w-2xl text-lg font-medium leading-8 text-muted">
-          שאלות שעסקים קטנים בישראל שואלים לפני שהם בונים אתר, עובד דיגיטלי או סוכן קולי.
+          שאלות שעסקים קטנים בישראל שואלים לפני שהם בונים אתר, עובד דיגיטלי, סוכן קולי או אוטומציה.
         </p>
 
         <ul className="mt-10 space-y-4">
