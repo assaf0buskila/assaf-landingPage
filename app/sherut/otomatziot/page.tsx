@@ -104,6 +104,12 @@ export default function OtomatziotServicePage() {
           <span className="mx-2 text-muted" aria-hidden="true">
             /
           </span>
+          <Link href="/sherut" className="transition hover:text-action">
+            שירותים
+          </Link>
+          <span className="mx-2 text-muted" aria-hidden="true">
+            /
+          </span>
           אוטומציות לעסקים קטנים
         </p>
 

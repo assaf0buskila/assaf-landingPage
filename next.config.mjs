@@ -14,6 +14,21 @@ const nextConfig = {
         destination: "/",
         permanent: true,
       },
+      {
+        source: "/favicon.ico",
+        destination: "/icon.svg",
+        permanent: true,
+      },
+      {
+        source: "/landing",
+        destination: "/landing/leadim",
+        permanent: true,
+      },
+      {
+        source: "/landing/",
+        destination: "/landing/leadim",
+        permanent: true,
+      },
     ];
   },
   async headers() {

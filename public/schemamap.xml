@@ -4,6 +4,7 @@
   <feed type="llms" url="https://www.assafweb.com/llms.txt"/>
   <feed type="html" url="https://www.assafweb.com/agent.html"/>
   <feed type="jsonld" url="https://www.assafweb.com/landing/leadim"/>
+  <feed type="jsonld" url="https://www.assafweb.com/sherut"/>
   <feed type="jsonld" url="https://www.assafweb.com/sherut/oved-digitali"/>
   <feed type="jsonld" url="https://www.assafweb.com/sherut/otomatziot"/>
   <feed type="jsonld" url="https://www.assafweb.com/blog"/>
