@@ -662,11 +662,18 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
           <ScrollMorphServices cards={serviceShowcase} />
 
           <div className="section-shell pb-20 md:pb-28 pt-6">
-            <p className="mb-10 max-w-2xl text-lg font-medium leading-8 text-muted md:text-xl">
+            <p className="mb-3 max-w-2xl text-lg font-medium leading-8 text-muted md:text-xl">
               כל עסק מפסיד זמן וכסף במקום אחר. בוחרים מה הכי כואב, ואני בונה פתרון
               שמתחבר למה שכבר יש לכם.
             </p>
 
+            <p className="mb-10 text-sm font-bold text-muted">
+              פירוט על שני שירותים חיים נמצא ב
+              <a href="/sherut" className="font-black text-action underline-offset-4 hover:underline">
+                עמודי השירות
+              </a>
+              .
+            </p>
             <div className="grid gap-4 md:grid-cols-2" aria-label="הפתרונות שאני בונה">
               {solutionItems.map((item) => {
                 const Icon = item.icon;

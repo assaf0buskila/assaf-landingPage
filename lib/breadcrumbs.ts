@@ -27,10 +27,9 @@ export const homeBreadcrumb: BreadcrumbItem = {
   url: `${SITE_URL}/`,
 };
 
-/** Homepage #solutions lists the public services. There is no /sherut index. */
 export const servicesBreadcrumb: BreadcrumbItem = {
   name: "שירותים",
-  url: `${SITE_URL}/#solutions`,
+  url: `${SITE_URL}/sherut`,
 };
 
 export const blogBreadcrumb: BreadcrumbItem = {
@@ -56,6 +55,8 @@ export const otomatziotServiceBreadcrumbs: BreadcrumbItem[] = [
   servicesBreadcrumb,
   { name: "אוטומציות", url: otomatziotServiceUrl },
 ];
+
+export const sherutIndexBreadcrumbs: BreadcrumbItem[] = [homeBreadcrumb, servicesBreadcrumb];
 
 export const blogIndexBreadcrumbs: BreadcrumbItem[] = [homeBreadcrumb, blogBreadcrumb];
 
