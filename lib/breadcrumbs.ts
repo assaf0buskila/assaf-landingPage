@@ -2,7 +2,7 @@ import { SITE_URL } from "@/lib/site";
 import { leadimUrl } from "@/lib/leadim-landing";
 import { ovedDigitaliServiceUrl } from "@/lib/oved-digitali-service";
 import { otomatziotServiceUrl } from "@/lib/otomatziot-service";
-import { bniatAtarimPost, ovedDigitaliPost, sokenKoliPost } from "@/lib/blog";
+import { bniatAtarimPost, otomatziotPost, ovedDigitaliPost, sokenKoliPost } from "@/lib/blog";
 
 export type BreadcrumbItem = {
   name: string;
@@ -75,4 +75,10 @@ export const sokenKoliBlogBreadcrumbs: BreadcrumbItem[] = [
   homeBreadcrumb,
   blogBreadcrumb,
   { name: "סוכן קולי", url: sokenKoliPost.url },
+];
+
+export const otomatziotBlogBreadcrumbs: BreadcrumbItem[] = [
+  homeBreadcrumb,
+  blogBreadcrumb,
+  { name: "אוטומציה לעסק קטן", url: otomatziotPost.url },
 ];
