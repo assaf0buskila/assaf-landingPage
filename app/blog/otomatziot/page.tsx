@@ -45,6 +45,22 @@ export const metadata: Metadata = {
   },
 };
 
+/** Mirrors the visible Hebrew FAQ on this page. Do not invent extra answers. */
+const otomatziotBlogFaqs = [
+  {
+    q: "האם אוטומציה מחליפה עובד דיגיטלי שעונה ללקוחות?",
+    a: "לא. אוטומציה מטפלת במעקב, תזכורות וסנכרון בין מערכות. מי שעונה ללידים בוואטסאפ ובאתר הוא עובד דיגיטלי.",
+  },
+  {
+    q: "צריך להחליף את הכלים שהעסק כבר עובד איתם?",
+    a: "לא. מחברים לטפסים, ליומן, לוואטסאפ ולמערכות שכבר יש. בלי לכפות תשתית חדשה.",
+  },
+  {
+    q: "כמה זה עולה?",
+    a: "אין מחירון ציבורי. אחרי בדיקת התאמה קצרה נשלחת הצעה לפי ההיקף האמיתי.",
+  },
+];
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -78,6 +94,15 @@ const jsonLd = {
       image: `${SITE_URL}/assets/og-cover.jpg`,
       jobTitle: "AI Solutions Engineer",
       areaServed: "Israel",
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${post.url}#faq`,
+      mainEntity: otomatziotBlogFaqs.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: item.a },
+      })),
     },
     breadcrumbList(post.url, otomatziotBlogBreadcrumbs),
   ],
@@ -239,17 +264,11 @@ export default function OtomatziotBlogPage() {
           </ul>
 
           <h2 className="text-3xl font-black leading-tight text-ink">שאלות נפוצות</h2>
-          <p>
-            האם אוטומציה מחליפה עובד דיגיטלי שעונה ללקוחות? לא. אוטומציה מטפלת במעקב, תזכורות
-            וסנכרון בין מערכות. מי שעונה ללידים בוואטסאפ ובאתר הוא עובד דיגיטלי.
-          </p>
-          <p>
-            צריך להחליף את הכלים שהעסק כבר עובד איתם? לא. מחברים לטפסים, ליומן, לוואטסאפ ולמערכות
-            שכבר יש. בלי לכפות תשתית חדשה.
-          </p>
-          <p>
-            כמה זה עולה? אין מחירון ציבורי. אחרי בדיקת התאמה קצרה נשלחת הצעה לפי ההיקף האמיתי.
-          </p>
+          {otomatziotBlogFaqs.map((item) => (
+            <p key={item.q}>
+              {item.q} {item.a}
+            </p>
+          ))}
 
           <h2 className="text-3xl font-black leading-tight text-ink">איך מתחילים</h2>
           <p>
