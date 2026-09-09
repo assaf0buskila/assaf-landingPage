@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MessageCircle } from "lucide-react";
-import { sokenKoliPost as post } from "@/lib/blog";
+import { ovedDigitaliPost, sokenKoliPost as post } from "@/lib/blog";
 import { breadcrumbList, sokenKoliBlogBreadcrumbs } from "@/lib/breadcrumbs";
+import { ovedDigitaliServiceUrl } from "@/lib/oved-digitali-service";
 import { SITE_URL, WHATSAPP_URL } from "@/lib/site";
 
 const title = `${post.title} | האתר של אסף`;
@@ -64,6 +65,30 @@ const jsonLd = {
       image: `${SITE_URL}/assets/og-cover.jpg`,
       author: { "@id": `${SITE_URL}/#assaf` },
       publisher: { "@id": `${SITE_URL}/#assaf` },
+      about: {
+        "@type": "Thing",
+        name: "סוכן קולי",
+        alternateName: ["Hebrew voice agent", "סוכן קולי לעסק קטן בישראל"],
+        description:
+          "סוכן קולי בעברית לעסקים קטנים בישראל: עונה לטלפון, קובע תורים ומסכם בוואטסאפ.",
+      },
+      mentions: [
+        {
+          "@type": "Service",
+          name: "עובד דיגיטלי",
+          url: ovedDigitaliServiceUrl,
+        },
+        {
+          "@type": "WebPage",
+          name: "דמו סוכן קולי בעברית",
+          url: `${SITE_URL}/#voice`,
+        },
+        {
+          "@type": "Article",
+          name: ovedDigitaliPost.title,
+          url: ovedDigitaliPost.url,
+        },
+      ],
       speakable: {
         "@type": "SpeakableSpecification",
         cssSelector: ["h1", ".blog-definition"],
@@ -134,12 +159,19 @@ export default function SokenKoliPage() {
             <Link href="/#voice" className="font-black text-action underline-offset-4 hover:underline">
               הסוכן הקולי
             </Link>
-            , רץ דמו חי. אפשר לשמוע איך זה מרגיש לפני שמדברים על בנייה. סוכן קולי הוא גרסה
-            קולית של{" "}
-            <Link href="/blog/oved-digitali" className="font-black text-action underline-offset-4 hover:underline">
+            , רץ דמו חי בעברית. אפשר לשמוע איך זה מרגיש לפני שמדברים על בנייה. סוכן קולי הוא
+            גרסה קולית של{" "}
+            <Link
+              href="/sherut/oved-digitali"
+              className="font-black text-action underline-offset-4 hover:underline"
+            >
               עובד דיגיטלי
             </Link>
-            : אותו רעיון, על הטלפון במקום על וואטסאפ או על האתר.
+            : אותו רעיון, על הטלפון במקום על וואטסאפ או על האתר. המושג עצמו מוסבר במאמר{" "}
+            <Link href="/blog/oved-digitali" className="font-black text-action underline-offset-4 hover:underline">
+              מה זה עובד דיגיטלי לעסק?
+            </Link>
+            .
           </p>
 
           <h2 className="text-3xl font-black leading-tight text-ink">מה הוא לא</h2>
