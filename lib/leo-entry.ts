@@ -28,8 +28,8 @@ export function isLeoWidgetEligiblePath(pathname: string): boolean {
   );
 }
 
-export function buildLeoWhatsAppUrl(attribution: LeoAttribution = {}): string {
-  const message = ["היי ליאו, אשמח להכיר אותך", buildAttributionMarker(attribution)].filter(Boolean).join("");
+export function buildLeoWhatsAppUrl(_attribution: LeoAttribution = {}): string {
+  const message = "היי ליאו, אשמח להכיר אותך";
   return `https://wa.me/${leoPhone()}?text=${encodeURIComponent(message)}`;
 }
 
