@@ -12,4 +12,5 @@
   <feed type="jsonld" url="https://www.assafweb.com/blog/bniat-atarim"/>
   <feed type="jsonld" url="https://www.assafweb.com/blog/soken-koli"/>
   <feed type="jsonld" url="https://www.assafweb.com/blog/otomatziot"/>
+  <feed type="jsonld" url="https://www.assafweb.com/candy/"/>
 </schemamap>
