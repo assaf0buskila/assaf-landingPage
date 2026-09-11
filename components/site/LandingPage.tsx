@@ -25,7 +25,7 @@ import { BackgroundShader } from "@/components/ui/background-shader";
 import { PortfolioGallery } from "@/components/ui/portfolio-gallery";
 import { ScrollMorphServices } from "@/components/ui/scroll-morph-services";
 import { BrickDef, TechStackBuilder } from "@/components/ui/interactive-tech-stack-builder";
-import { AiHeroChat } from "@/components/site/AiHeroChat";
+import { MiaHeroChat } from "@/components/site/MiaHeroChat";
 import { ScrollEffects } from "@/components/site/ScrollEffects";
 import { VoiceAgentSection } from "@/components/site/VoiceAgentSection";
 import { breadcrumbList, homeBreadcrumbs } from "@/lib/breadcrumbs";
@@ -559,7 +559,7 @@ export function LandingPage({ voiceEnabled = false }: { voiceEnabled?: boolean }
 
           <div className="section-shell hero-ai-grid relative z-10 grid min-h-[calc(100vh-120px)] items-center gap-10 py-8 md:py-16">
             <div className="hero-demo-shell">
-              <AiHeroChat />
+              <MiaHeroChat />
             </div>
 
             <div className="hero-copy max-w-3xl space-y-5 md:space-y-6">
