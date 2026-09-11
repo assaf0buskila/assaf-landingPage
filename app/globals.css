@@ -191,6 +191,26 @@ textarea {
   justify-self: start;
 }
 
+/* The live Mia box replaces the scripted hero demo. The widget mounts inside and fills
+   this container, so the height has to be explicit rather than content-driven. Matches
+   the footprint the AiHeroChat demo used to occupy. */
+.mia-hero-box {
+  width: 100%;
+  height: clamp(440px, 56vh, 560px);
+}
+
+@media (max-width: 900px) {
+  .mia-hero-box {
+    height: clamp(420px, 64vh, 520px);
+  }
+}
+
+@media (max-width: 640px) {
+  .mia-hero-box {
+    height: clamp(400px, 70vh, 480px);
+  }
+}
+
 .hero-copy {
   justify-self: end;
 }
