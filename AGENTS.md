@@ -13,6 +13,7 @@ This repository hosts the personal landing page for Assaf Buskila, an AI solutio
 
 - `ELEVENLABS_API_KEY` and `ELEVENLABS_AGENT_ID` (server-only, never `NEXT_PUBLIC_`) power the live Hebrew voice-agent demo in the `#voice` section via `app/api/voice/token/route.ts`. Without them the section renders a "coming soon" card and the site works normally. Set them in `.env.local` for dev and in the Vercel dashboard for production.
 - Ask Mia loads on the homepage only from `{origin}/v1/website/widget.js` (`lib/mia.ts`, `AskMiaWidget`). Default origin is `https://mia.assafweb.com`. `NEXT_PUBLIC_MIA_BASE_URL` overrides that origin (HTTPS public origin, no trailing slash). Local `next dev`: `http://localhost:8000` is allowed because `NODE_ENV=development`. CORS on Mia must allow `https://www.assafweb.com` and `https://assafweb.com`. Do not put LAN IPs in Vercel.
+- Leo handoff redirects use server-only `LEO_AGENT_PUBLIC_URL` (an HTTPS origin with no path) and `LEO_HANDOFF_PHONE` (8-15 digits, no `+`). The route proxy exposes only validated GET handoff paths and accepts redirects only to that exact `wa.me` number with one bounded `text` parameter. Keep both variables server-only.
 
 ## Palette single source of truth
 
