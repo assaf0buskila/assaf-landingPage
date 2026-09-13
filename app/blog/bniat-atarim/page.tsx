@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MessageCircle } from "lucide-react";
-import { bniatAtarimPost as post } from "@/lib/blog";
+import { bniatAtarimPost as post, ovedDigitaliPost } from "@/lib/blog";
 import { bniatAtarimBlogBreadcrumbs, breadcrumbList } from "@/lib/breadcrumbs";
+import { ovedDigitaliServiceUrl } from "@/lib/oved-digitali-service";
 import { SITE_URL, WHATSAPP_URL } from "@/lib/site";
 
 const title = `${post.seoTitle ?? post.title} | האתר של אסף`;
@@ -64,6 +65,29 @@ const jsonLd = {
       image: `${SITE_URL}/assets/og-cover.jpg`,
       author: { "@id": `${SITE_URL}/#assaf` },
       publisher: { "@id": `${SITE_URL}/#assaf` },
+      about: {
+        "@type": "Thing",
+        name: "בניית אתרים",
+        url: `${post.url}#about`,
+        description: post.description,
+      },
+      mentions: [
+        {
+          "@type": "Service",
+          name: "עובד דיגיטלי",
+          url: ovedDigitaliServiceUrl,
+        },
+        {
+          "@type": "Article",
+          name: ovedDigitaliPost.title,
+          url: ovedDigitaliPost.url,
+        },
+        {
+          "@type": "WebPage",
+          name: "סקשן הפתרונות",
+          url: `${SITE_URL}/#solutions`,
+        },
+      ],
       speakable: {
         "@type": "SpeakableSpecification",
         cssSelector: ["h1", ".blog-definition"],
@@ -115,7 +139,7 @@ export default function BniatAtarimPage() {
           <time dateTime={post.datePublished}>{post.publishedLabel}</time>
         </p>
 
-        <p className="blog-definition premium-panel mt-8 p-6 text-lg font-medium leading-9 text-ink">
+        <p id="about" className="blog-definition premium-panel mt-8 p-6 text-lg font-medium leading-9 text-ink">
           {post.definition}
         </p>
 
@@ -130,7 +154,14 @@ export default function BniatAtarimPage() {
             להופיע. וצריך כפתור אחד ברור שמוביל לוואטסאפ או לטופס, לא כמה מסלולים שמבלבלים.
           </p>
           <p>
-            אם כבר יש עובד דיגיטלי, הוא יושב על אותו אתר ועונה כשאין מישהו ליד המסך. מה זה אומר
+            אם כבר יש{" "}
+            <Link
+              href="/sherut/oved-digitali"
+              className="font-black text-action underline-offset-4 hover:underline"
+            >
+              עובד דיגיטלי
+            </Link>
+            , הוא יושב על אותו אתר ועונה כשאין מישהו ליד המסך. מה זה אומר
             בפועל מוסבר במאמר{" "}
             <Link href="/blog/oved-digitali" className="font-black text-action underline-offset-4 hover:underline">
               מה זה עובד דיגיטלי לעסק?
