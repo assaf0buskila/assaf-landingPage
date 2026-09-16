@@ -46,6 +46,23 @@ export const metadata: Metadata = {
   },
 };
 
+
+/** Mirrors the visible Hebrew FAQ on this page. Do not invent extra answers. */
+const sokenKoliBlogFaqs = [
+  {
+    q: "האם סוכן קולי מחליף את בעל העסק או את העובד הדיגיטלי?",
+    a: "לא. הוא לא מחליף את בעל העסק ולא מחליט מי הלקוח הנכון. סוכן קולי הוא גרסה קולית של עובד דיגיטלי: אותו רעיון על הטלפון, במקום בוואטסאפ או באתר.",
+  },
+  {
+    q: "מה קורה כשהשיחה צריכה בן אדם?",
+    a: "כשצריך בן אדם, שאלה חריגה או תלונה, הוא מעביר את השיחה עם ההקשר.",
+  },
+  {
+    q: "כמה זה עולה?",
+    a: "אין מחירון ציבורי. אחרי שיחת אבחון קצרה נשלחת הצעה לפי ההיקף האמיתי.",
+  },
+];
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -81,7 +98,7 @@ const jsonLd = {
         {
           "@type": "WebPage",
           name: "דמו סוכן קולי בעברית",
-          url: `${SITE_URL}/#voice`,
+          url: `${SITE_URL}/sherut#agents`,
         },
         {
           "@type": "Article",
@@ -104,7 +121,17 @@ const jsonLd = {
       jobTitle: "AI Solutions Engineer",
       areaServed: "Israel",
     },
+    {
+      "@type": "FAQPage",
+      "@id": `${post.url}#faq`,
+      mainEntity: sokenKoliBlogFaqs.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: item.a },
+      })),
+    },
     breadcrumbList(post.url, sokenKoliBlogBreadcrumbs),
+
   ],
 };
 
@@ -156,7 +183,7 @@ export default function SokenKoliPage() {
           </p>
           <p>
             בעמוד הבית, בסקשן{" "}
-            <Link href="/#voice" className="font-black text-action underline-offset-4 hover:underline">
+            <Link href="/sherut#agents" className="font-black text-action underline-offset-4 hover:underline">
               הסוכן הקולי
             </Link>
             , רץ דמו חי בעברית. אפשר לשמוע איך זה מרגיש לפני שמדברים על בנייה. סוכן קולי הוא
@@ -236,7 +263,15 @@ export default function SokenKoliPage() {
             </li>
           </ul>
 
+          <h2 className="text-3xl font-black leading-tight text-ink">שאלות נפוצות</h2>
+          {sokenKoliBlogFaqs.map((item) => (
+            <p key={item.q}>
+              {item.q} {item.a}
+            </p>
+          ))}
+
           <h2 className="text-3xl font-black leading-tight text-ink">איך מתחילים</h2>
+
           <p>
             אם יש עסק ושיחות שנופלות, כתבו בוואטסאפ. אפשר גם
             לחזור ל{" "}
