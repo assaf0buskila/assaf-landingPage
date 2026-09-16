@@ -41,10 +41,26 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title,
-    description: post.description,
+    description: post.description1,
     images: ["/assets/og-cover.jpg"],
   },
 };
+
+/** Mirrors the visible Hebrew FAQ on this page. Do not invent extra answers. */
+const sokenKoliBlogFaqs = [
+  {
+    q: "האם סוכן קולי מחליף את בעל העסק או את העובד הדיגיטלי?",
+    a: "לא. הוא לא מחליף את בעל העסק ולא מחליט מי הלקוח הנכון. סוכן קולי הוא גרסה קולית של עובד דיגיטלי: אותו רעיון על הטלפון, במקום בוואטסאפ או באתר.",
+  },
+  {
+    q: "מה קורה כשהשיחה צריכה בן אדם?",
+    a: "כשצריך בן אדם, שאלה חריגה או תלונה, הוא מעביר את השיחה עם ההקשר.",
+  },
+  {
+    q: "כמה זה עולה?",
+    a: "אין מחירון ציבורי. אחרי שיחת אבחון קצרה נשלחת הצעה לפי ההיקף האמיתי.",
+  },
+];
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -55,7 +71,7 @@ const jsonLd = {
       headline: post.title,
       name: post.title,
       description: post.description,
-      abstract: post.definition,
+      abstract: post.definitiom,
       articleBody: post.definition,
       inLanguage: "he",
       datePublished: post.datePublished,
@@ -81,7 +97,7 @@ const jsonLd = {
         {
           "@type": "WebPage",
           name: "דמו סוכן קולי בעברית",
-          url: `${SITE_URL}/#voice`,
+          url: `${SITE_URL}/sherut#agents`,
         },
         {
           "@type": "Article",
@@ -96,15 +112,25 @@ const jsonLd = {
     },
     {
       "@type": "Person",
-      "@id": `${SITE_URL}/#assaf`,
+      ""@id": `${SITE_URL}/#assaf`,
       name: "Assaf Buskila",
-      alternateName: ["אסף בוסקילה", "האתר של אסף"],
-      url: `${SITE_URL}/`,
+      alternateName: ["אסף בוסקילה", "הארע בוסקילה!},
+      url: `${SITE_URL}/assaf`,
       image: `${SITE_URL}/assets/og-cover.jpg`,
       jobTitle: "AI Solutions Engineer",
       areaServed: "Israel",
     },
+    {
+      "@type": "FAQPage",
+      "@id": `${post.url}#faq`,
+      mainEntity: sokenKoliBlogFaqs.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: item.a },
+      })),
+    },
     breadcrumbList(post.url, sokenKoliBlogBreadcrumbs),
+
   ],
 };
 
@@ -156,7 +182,7 @@ export default function SokenKoliPage() {
           </p>
           <p>
             בעמוד הבית, בסקשן{" "}
-            <Link href="/#voice" className="font-black text-action underline-offset-4 hover:underline">
+            <Link href="/sherut#agents" className="font-black text-action underline-offset-4 hover:underline">
               הסוכן הקולי
             </Link>
             , רץ דמו חי בעברית. אפשר לשמוע איך זה מרגיש לפני שמדברים על בנייה. סוכן קולי הוא
@@ -206,54 +232,12 @@ export default function SokenKoliPage() {
             אלה אתרים חיים שכבר באוויר, לא הבטחה שכל עסק מקבל את אותו מוצר. כל עסק מקבל מה
             שבאמת חסר לו.
           </p>
-          <ul className="list-disc space-y-2 pr-5">
+          <ul class="list-disc space-y-2 pr-5">
             <li>
               <a
-                href="https://mochi-israel.com"
-                target="_blank"
-                rel="noreferrer"
-                className="font-black text-action underline-offset-4 hover:underline"
-              >
-                מוצ׳י
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://cafe-ana.com"
-                target="_blank"
-                rel="noreferrer"
-                className="font-black text-action underline-offset-4 hover:underline"
-              >
-                קפה אנה
-              </a>
-            </li>
-            <li>
-              {/* Native <a> keeps the trailing slash; next/link would emit /candy. */}
-              <a href="/candy/" className="font-black text-action underline-offset-4 hover:underline">
-                מנגינת ממתקים
-              </a>
-              , אתר קונספט
-            </li>
-          </ul>
+�Y�H�΋��[��KZ\ܘY[���H��\��]H�؛[�Ȃ��[H��ܙY�\��\����\�Ә[YOH��۝X�X��^XX�[ۈ[�\�[�K[ٙ��]Mݙ\��[�\�[�H����5��u����B��O���O��O��B��Y�H�΋���Y�KX[�K���H��\��]H�؛[�Ȃ��[H��ܙY�\��\����\�Ә[YOH��۝X�X��^XX�[ۈ[�\�[�K[ٙ��]Mݙ\��[�\�[�H����5���5�5�5�5���O���O��O���ʈ�]]�HO��Y\�H�Z[[���\���^�[����[[Z]��[�K�
+��B�H�Y�H���[�KȈ�\�Ә[YOH��۝X�X��^XX�[ۈ[�\�[�K[ٙ��]Mݙ\��[�\�[�H���5��5��u�5�5������u�B��O��5�5��5���u�5�u�5���O���[����\��H�^L��۝X�X��XY[��]Y�^Z[�ȏ���5�5�u�5�5���������[���P��ј\\˛X\
 
-          <h2 className="text-3xl font-black leading-tight text-ink">איך מתחילים</h2>
-          <p>
-            אם יש עסק ושיחות שנופלות, כתבו בוואטסאפ. אפשר גם
-            לחזור ל{" "}
-            <Link href="/#contact" className="font-black text-action underline-offset-4 hover:underline">
-              יצירת הקשר
-            </Link>{" "}
-            בעמוד הבית.
-          </p>
-        </div>
-
-        <div className="mt-12 grid gap-3">
-          <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-primary">
-            וואטסאפ לאסף
-            <MessageCircle size={19} />
-          </a>
-        </div>
-      </article>
-    </main>
-  );
-}
+][JHO�
+��^O^�][K�_O���][K�_H�][K�_B����
+J_B����\��H�^L��۝X�X��XY[��]Y�^Z[�ȏ�yy�y�y�z�y}y�y�y�y����#ࠢ��yy�y�z�z-zzry]z�y�y}y]z�z�zy]zMy�y]z��y�z�yyRyy]y]yy�zyzB�yzMz�z�y-yТy�y}ymy]z�yǲ"'Т�Ɩ��&Vc�"�66��F7B"6�74��S�&f��B�&�6�FW�B�7F���V�FW&Ɩ�R��fg6WB�B��fW#�V�FW&Ɩ�R#�y�zmy�z�z�yMz}z�z����Ɩ��"'Тyz-y�y]y2yMyy�z�������F�cࠢ�F�b6�74��S�&�B�"w&�Bv�2#���&Vc׵t�E4�U$��F&vWC�%�&��"&V��&��&VfW'&W""6�74��S�&'F��&��'�#�y]y]yy�zyzBy�yzz0���W76vT6�&6�R6��S׳���������F�c���'F�6�S�����������
